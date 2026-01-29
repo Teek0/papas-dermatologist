@@ -18,6 +18,7 @@ public class mainMenu_Music : MonoBehaviour
     [SerializeField] private string musicMix = "musicMix";
     [SerializeField] private string ambMix = "ambientMix";
     [SerializeField] private string sfxMix = "sfxMix";
+    [SerializeField] private string masterMix = "masterMix";
 
     [Header("Music files")]
     public AudioClip introClip;
@@ -82,6 +83,14 @@ public class mainMenu_Music : MonoBehaviour
         float dB = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20;
         mainMixer.SetFloat(sfxMix, dB);
     }
+
+    public void setGlobalVolume(float sliderValue)
+    {
+        //Sets Master Volume
+        float dB = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20;
+        mainMixer.SetFloat(masterMix, dB);
+    }
+
     IEnumerator FadeInVolume(AudioSource source, float from, float to, float duration)
     {
         float t = 0f;
@@ -122,14 +131,7 @@ public class mainMenu_Music : MonoBehaviour
         
     }
 
-    // Start button action. !!!!! 
-    public void FadeOutAndChangeScene(int sceneIndex)
-    {
-        // Begin fade out and change to next scene.
-        StartCoroutine(FadeOutRoutine(sceneIndex));
-    }
-
-    private IEnumerator FadeOutRoutine(int sceneIndex)
+    public IEnumerator FadeOutRoutine(string sceneIndex)
     {
         float timer = 0;
         float startVolume = musicVolume;

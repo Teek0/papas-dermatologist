@@ -65,6 +65,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 20eaa5cd248588e4e8e9e6445861581c
     name: ambientMix
+  - guid: 3342d747d9e52184e870f4c1e1da2278
+    name: masterMix
   - guid: 5c7c387d5f26c614583ba2b8cb721eaf
     name: musicMix
   - guid: 5475c81ac6fae0c4aa6c3b860b18f921
@@ -126,7 +128,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 9f63522d492b70149b336605b18f0e84
   m_FloatValues:
-    3342d747d9e52184e870f4c1e1da2278: -0.08374829
+    3342d747d9e52184e870f4c1e1da2278: 0
     5475c81ac6fae0c4aa6c3b860b18f921: 1.06
   m_TransitionOverrides: {}
 --- !u!243 &2627464595306118743
