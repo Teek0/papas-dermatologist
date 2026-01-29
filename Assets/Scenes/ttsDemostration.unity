@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimaleseTTS
   speaker: {fileID: 480273951}
   dialogueText: {fileID: 806377233}
-  charactersPerSecond: 8
+  charactersPerSecond: 12
 --- !u!114 &480273951
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1397,6 +1397,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FacePaintSurface
   textureSize: 256
+  paintMask: {fileID: 0}
+  maskThreshold: 0.1
+  invertMaskV: 0
+  maskLookTexture: {fileID: 0}
+  lookTiling: 4
+  maskTint: {r: 1, g: 0.47, b: 0.7, a: 1}
   brushRadius: 10
   brushStrength: 1
 --- !u!114 &2051550470
