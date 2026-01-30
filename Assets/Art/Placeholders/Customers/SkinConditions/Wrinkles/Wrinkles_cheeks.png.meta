@@ -1,0 +1,1287 @@
+fileFormatVersion: 2
+guid: c87d9cd636b049f4ba6e481be4024685
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6750105829936928537
+    second: Wrinkles_cheeks_0
+  - first:
+      213: 3232996912006608422
+    second: Wrinkles_cheeks_1
+  - first:
+      213: 1571770952159534412
+    second: Wrinkles_cheeks_2
+  - first:
+      213: -8560794172083822495
+    second: Wrinkles_cheeks_3
+  - first:
+      213: 1693971823824439895
+    second: Wrinkles_cheeks_4
+  - first:
+      213: -4051206112058146816
+    second: Wrinkles_cheeks_5
+  - first:
+      213: 1527573905868953579
+    second: Wrinkles_cheeks_6
+  - first:
+      213: -1186268444945119233
+    second: Wrinkles_cheeks_7
+  - first:
+      213: 7024899117167605689
+    second: Wrinkles_cheeks_8
+  - first:
+      213: 1057260649360907368
+    second: Wrinkles_cheeks_9
+  - first:
+      213: 2308425697810744954
+    second: Wrinkles_cheeks_10
+  - first:
+      213: -5346106951340751234
+    second: Wrinkles_cheeks_11
+  - first:
+      213: 6388002899859868867
+    second: Wrinkles_cheeks_12
+  - first:
+      213: 336964734438078001
+    second: Wrinkles_cheeks_13
+  - first:
+      213: 4394739377817334843
+    second: Wrinkles_cheeks_14
+  - first:
+      213: 7118778641511944949
+    second: Wrinkles_cheeks_15
+  - first:
+      213: -7512867215076057117
+    second: Wrinkles_cheeks_16
+  - first:
+      213: 5299334999551728342
+    second: Wrinkles_cheeks_17
+  - first:
+      213: -189678070935812424
+    second: Wrinkles_cheeks_18
+  - first:
+      213: 2633582123747836278
+    second: Wrinkles_cheeks_19
+  - first:
+      213: 4530967080650526087
+    second: Wrinkles_cheeks_20
+  - first:
+      213: -688294922239460706
+    second: Wrinkles_cheeks_21
+  - first:
+      213: 2246722562754232714
+    second: Wrinkles_cheeks_22
+  - first:
+      213: -4582641520314534185
+    second: Wrinkles_cheeks_23
+  - first:
+      213: -1022849210615697225
+    second: Wrinkles_cheeks_24
+  - first:
+      213: 2509272099286769290
+    second: Wrinkles_cheeks_25
+  - first:
+      213: -1601284669454462172
+    second: Wrinkles_cheeks_26
+  - first:
+      213: -7874948823662056062
+    second: Wrinkles_cheeks_27
+  - first:
+      213: -1191997585438597205
+    second: Wrinkles_cheeks_28
+  - first:
+      213: -1732130825151820697
+    second: Wrinkles_cheeks_29
+  - first:
+      213: 3134003746664048742
+    second: Wrinkles_cheeks_30
+  - first:
+      213: -253379501560632594
+    second: Wrinkles_cheeks_31
+  - first:
+      213: -2768741401305065869
+    second: Wrinkles_cheeks_32
+  - first:
+      213: -5953309486759745741
+    second: Wrinkles_cheeks_33
+  - first:
+      213: 7873634219208969218
+    second: Wrinkles_cheeks_34
+  - first:
+      213: 6206309917614840028
+    second: Wrinkles_cheeks_35
+  - first:
+      213: 1682399454055759035
+    second: Wrinkles_cheeks_36
+  - first:
+      213: 1624403341433622284
+    second: Wrinkles_cheeks_37
+  - first:
+      213: 2898646857810776199
+    second: Wrinkles_cheeks_38
+  - first:
+      213: 8766116827787364051
+    second: Wrinkles_cheeks_39
+  - first:
+      213: -5607662443718358576
+    second: Wrinkles_cheeks_40
+  - first:
+      213: -5238165266386575977
+    second: Wrinkles_cheeks_41
+  - first:
+      213: -7315471502191579900
+    second: Wrinkles_cheeks_42
+  - first:
+      213: 885620787487329120
+    second: Wrinkles_cheeks_43
+  - first:
+      213: -7617819886366006215
+    second: Wrinkles_cheeks_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_0
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 730
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9171fad1d713dad50800000000000000
+      internalID: 6750105829936928537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_1
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 698
+        width: 39
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626b614ff89eddc20800000000000000
+      internalID: 3232996912006608422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_2
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 709
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4d1fb77a5d00d510800000000000000
+      internalID: 1571770952159534412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_3
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 697
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 160a5b9be03f13980800000000000000
+      internalID: -8560794172083822495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_4
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 694
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75a83921662328710800000000000000
+      internalID: 1693971823824439895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_5
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 691
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00002ea518937c7c0800000000000000
+      internalID: -4051206112058146816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_6
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 683
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be7997bbf58033510800000000000000
+      internalID: 1527573905868953579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_7
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 676
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff78aca6227898fe0800000000000000
+      internalID: -1186268444945119233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_8
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 610
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b7fabd07847d7160800000000000000
+      internalID: 7024899117167605689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_9
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 612
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86cd72085f42cae00800000000000000
+      internalID: 1057260649360907368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_10
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 594
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a76846c01fc290020800000000000000
+      internalID: 2308425697810744954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_11
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 564
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e76861a7d00dec5b0800000000000000
+      internalID: -5346106951340751234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_12
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 566
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cc0056daceb6a850800000000000000
+      internalID: 6388002899859868867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_13
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 596
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 136f30204a32da400800000000000000
+      internalID: 336964734438078001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_14
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 553
+        width: 70
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3439370e204dfc30800000000000000
+      internalID: 4394739377817334843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_15
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 577
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f215f1257bfac260800000000000000
+      internalID: 7118778641511944949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_16
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 555
+        width: 70
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef96b0a21fecb790800000000000000
+      internalID: -7512867215076057117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_17
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 544
+        width: 64
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6da5312ea150b8940800000000000000
+      internalID: 5299334999551728342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_18
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 564
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b68038acc02e5df0800000000000000
+      internalID: -189678070935812424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_19
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 558
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6710fccfcfc5c8420800000000000000
+      internalID: 2633582123747836278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_20
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 546
+        width: 64
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78dc923cd8a31ee30800000000000000
+      internalID: 4530967080650526087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_21
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 556
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9a363b3a6fa276f0800000000000000
+      internalID: -688294922239460706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_22
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 538
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8142d56446fd2f10800000000000000
+      internalID: 2246722562754232714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_23
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 544
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d632b031df2760c0800000000000000
+      internalID: -4582641520314534185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_24
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 535
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b0767eef0c1ec1f0800000000000000
+      internalID: -1022849210615697225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_25
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 537
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e59cafda9b2d220800000000000000
+      internalID: 2509272099286769290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_26
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 546
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42353ecb31817c9e0800000000000000
+      internalID: -1601284669454462172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_27
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 534
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d2e35a4cf86b290800000000000000
+      internalID: -7874948823662056062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_28
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 533
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf1fc2f28c257fe0800000000000000
+      internalID: -1191997585438597205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_29
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 526
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76c4256113c36f7e0800000000000000
+      internalID: -1732130825151820697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_30
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 520
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66867ac8dc73e7b20800000000000000
+      internalID: 3134003746664048742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_31
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 511
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeaec109fa0db7cf0800000000000000
+      internalID: -253379501560632594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_32
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 516
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3765b4c6d547399d0800000000000000
+      internalID: -2768741401305065869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_33
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 514
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 337e8b35098916da0800000000000000
+      internalID: -5953309486759745741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_34
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 506
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20c8f472b94c44d60800000000000000
+      internalID: 7873634219208969218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_35
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 476
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd89a65dcfd312650800000000000000
+      internalID: 6206309917614840028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_36
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 475
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbcfd45c365195710800000000000000
+      internalID: 1682399454055759035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_37
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 501
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fcb1a8b3a0b8610800000000000000
+      internalID: 1624403341433622284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_38
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 503
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7801d11a5ff0a3820800000000000000
+      internalID: 2898646857810776199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_39
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 500
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d607db5fc087a970800000000000000
+      internalID: 8766116827787364051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_40
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 491
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d94ed5d7b49d22b0800000000000000
+      internalID: -5607662443718358576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_41
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 484
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d1d36717c4e47b0800000000000000
+      internalID: -5238165266386575977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_42
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 485
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40da0638d693a7a90800000000000000
+      internalID: -7315471502191579900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_43
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 481
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06b42ebf96b5a4c00800000000000000
+      internalID: 885620787487329120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wrinkles_cheeks_44
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 467
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9346f3e9c21184690800000000000000
+      internalID: -7617819886366006215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Wrinkles_cheeks_0: 6750105829936928537
+      Wrinkles_cheeks_1: 3232996912006608422
+      Wrinkles_cheeks_10: 2308425697810744954
+      Wrinkles_cheeks_11: -5346106951340751234
+      Wrinkles_cheeks_12: 6388002899859868867
+      Wrinkles_cheeks_13: 336964734438078001
+      Wrinkles_cheeks_14: 4394739377817334843
+      Wrinkles_cheeks_15: 7118778641511944949
+      Wrinkles_cheeks_16: -7512867215076057117
+      Wrinkles_cheeks_17: 5299334999551728342
+      Wrinkles_cheeks_18: -189678070935812424
+      Wrinkles_cheeks_19: 2633582123747836278
+      Wrinkles_cheeks_2: 1571770952159534412
+      Wrinkles_cheeks_20: 4530967080650526087
+      Wrinkles_cheeks_21: -688294922239460706
+      Wrinkles_cheeks_22: 2246722562754232714
+      Wrinkles_cheeks_23: -4582641520314534185
+      Wrinkles_cheeks_24: -1022849210615697225
+      Wrinkles_cheeks_25: 2509272099286769290
+      Wrinkles_cheeks_26: -1601284669454462172
+      Wrinkles_cheeks_27: -7874948823662056062
+      Wrinkles_cheeks_28: -1191997585438597205
+      Wrinkles_cheeks_29: -1732130825151820697
+      Wrinkles_cheeks_3: -8560794172083822495
+      Wrinkles_cheeks_30: 3134003746664048742
+      Wrinkles_cheeks_31: -253379501560632594
+      Wrinkles_cheeks_32: -2768741401305065869
+      Wrinkles_cheeks_33: -5953309486759745741
+      Wrinkles_cheeks_34: 7873634219208969218
+      Wrinkles_cheeks_35: 6206309917614840028
+      Wrinkles_cheeks_36: 1682399454055759035
+      Wrinkles_cheeks_37: 1624403341433622284
+      Wrinkles_cheeks_38: 2898646857810776199
+      Wrinkles_cheeks_39: 8766116827787364051
+      Wrinkles_cheeks_4: 1693971823824439895
+      Wrinkles_cheeks_40: -5607662443718358576
+      Wrinkles_cheeks_41: -5238165266386575977
+      Wrinkles_cheeks_42: -7315471502191579900
+      Wrinkles_cheeks_43: 885620787487329120
+      Wrinkles_cheeks_44: -7617819886366006215
+      Wrinkles_cheeks_5: -4051206112058146816
+      Wrinkles_cheeks_6: 1527573905868953579
+      Wrinkles_cheeks_7: -1186268444945119233
+      Wrinkles_cheeks_8: 7024899117167605689
+      Wrinkles_cheeks_9: 1057260649360907368
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

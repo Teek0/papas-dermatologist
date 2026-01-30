@@ -1,0 +1,949 @@
+fileFormatVersion: 2
+guid: c30d9b0e9a1a66f468ab2631902f134c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8221397542549586617
+    second: Acne_cheeks_0
+  - first:
+      213: 2312433988788234482
+    second: Acne_cheeks_1
+  - first:
+      213: 1385608881825402466
+    second: Acne_cheeks_2
+  - first:
+      213: 378032070700041669
+    second: Acne_cheeks_3
+  - first:
+      213: -7380895323881766391
+    second: Acne_cheeks_4
+  - first:
+      213: -8542114580090860928
+    second: Acne_cheeks_5
+  - first:
+      213: -7812549957995043103
+    second: Acne_cheeks_6
+  - first:
+      213: 1640876137501343889
+    second: Acne_cheeks_7
+  - first:
+      213: 884008558451278504
+    second: Acne_cheeks_8
+  - first:
+      213: -458583625433786217
+    second: Acne_cheeks_9
+  - first:
+      213: -7792415903969359976
+    second: Acne_cheeks_10
+  - first:
+      213: -4940363538249649247
+    second: Acne_cheeks_11
+  - first:
+      213: -1057860320209739109
+    second: Acne_cheeks_12
+  - first:
+      213: 7542098023841004306
+    second: Acne_cheeks_13
+  - first:
+      213: 5108574513263366136
+    second: Acne_cheeks_14
+  - first:
+      213: 2267015390530058552
+    second: Acne_cheeks_15
+  - first:
+      213: 7119649529914761676
+    second: Acne_cheeks_16
+  - first:
+      213: 3503558952804040743
+    second: Acne_cheeks_17
+  - first:
+      213: -3987912886365611315
+    second: Acne_cheeks_18
+  - first:
+      213: 3828038475828636484
+    second: Acne_cheeks_19
+  - first:
+      213: -6774827766026813363
+    second: Acne_cheeks_20
+  - first:
+      213: 7989898094778959700
+    second: Acne_cheeks_21
+  - first:
+      213: 2650323281559642900
+    second: Acne_cheeks_22
+  - first:
+      213: 727694417223775129
+    second: Acne_cheeks_23
+  - first:
+      213: 5205586441264170777
+    second: Acne_cheeks_24
+  - first:
+      213: -2426258030022958180
+    second: Acne_cheeks_25
+  - first:
+      213: 5238755605663467892
+    second: Acne_cheeks_26
+  - first:
+      213: -2848800880490315637
+    second: Acne_cheeks_27
+  - first:
+      213: 8636189677398110919
+    second: Acne_cheeks_28
+  - first:
+      213: -2609009083012974061
+    second: Acne_cheeks_29
+  - first:
+      213: -1807104966558553414
+    second: Acne_cheeks_30
+  - first:
+      213: 3595263379172295158
+    second: Acne_cheeks_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Acne_cheeks_0
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 730
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74dff0f6e7ab7ed80800000000000000
+      internalID: -8221397542549586617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_1
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 698
+        width: 39
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f82344067a671020800000000000000
+      internalID: 2312433988788234482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_2
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 709
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26e44decfebaa3310800000000000000
+      internalID: 1385608881825402466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_3
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 697
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c508c75a2a0f3500800000000000000
+      internalID: 378032070700041669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_4
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 694
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9028faffecac19990800000000000000
+      internalID: -7380895323881766391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_5
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 691
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08acff62c00547980800000000000000
+      internalID: -8542114580090860928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_6
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 682
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e666b3b43f349390800000000000000
+      internalID: -7812549957995043103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_7
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 676
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 190ce20472095c610800000000000000
+      internalID: 1640876137501343889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_8
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 577
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2c4e8a911a44c00800000000000000
+      internalID: 884008558451278504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_9
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 571
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79855325f98c2a9f0800000000000000
+      internalID: -458583625433786217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_10
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 563
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8974dc57507cbd390800000000000000
+      internalID: -7792415903969359976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_11
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 556
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a37651898d407bb0800000000000000
+      internalID: -4940363538249649247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_12
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 563
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b92eaefb4a9b151f0800000000000000
+      internalID: -1057860320209739109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_13
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 543
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21bf734613aeaa860800000000000000
+      internalID: 7542098023841004306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_14
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 537
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff4da3147d45e640800000000000000
+      internalID: 5108574513263366136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_15
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 548
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83933ec8c7e067f10800000000000000
+      internalID: 2267015390530058552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_16
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 533
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc1a8d3a6831ec260800000000000000
+      internalID: 7119649529914761676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_17
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 535
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 720468f0e442f9030800000000000000
+      internalID: 3503558952804040743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_18
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 532
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dca99f4db5618a8c0800000000000000
+      internalID: -3987912886365611315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_19
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 524
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b2b4246bcef1530800000000000000
+      internalID: 3828038475828636484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_20
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 519
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d40c4879a0afaf1a0800000000000000
+      internalID: -6774827766026813363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_21
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 515
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 457ced22cf1d1ee60800000000000000
+      internalID: 7989898094778959700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_22
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 512
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4136f498bf6d7c420800000000000000
+      internalID: 2650323281559642900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_23
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 505
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99378ab873a491a00800000000000000
+      internalID: 727694417223775129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_24
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 500
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9170427b945fd3840800000000000000
+      internalID: 5205586441264170777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_25
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 502
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93ea033d23345ed0800000000000000
+      internalID: -2426258030022958180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_26
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 499
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47948ac977cc3b840800000000000000
+      internalID: 5238755605663467892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_27
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 489
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b800e8a51b60778d0800000000000000
+      internalID: -2848800880490315637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_28
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 483
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2b53e41c8e9d770800000000000000
+      internalID: 8636189677398110919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_29
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 481
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31a7e37ef00facbd0800000000000000
+      internalID: -2609009083012974061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_30
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 484
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abaee6c7b9fdbe6e0800000000000000
+      internalID: -1807104966558553414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acne_cheeks_31
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 466
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f1098daef0f4e130800000000000000
+      internalID: 3595263379172295158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Acne_cheeks_0: -8221397542549586617
+      Acne_cheeks_1: 2312433988788234482
+      Acne_cheeks_10: -7792415903969359976
+      Acne_cheeks_11: -4940363538249649247
+      Acne_cheeks_12: -1057860320209739109
+      Acne_cheeks_13: 7542098023841004306
+      Acne_cheeks_14: 5108574513263366136
+      Acne_cheeks_15: 2267015390530058552
+      Acne_cheeks_16: 7119649529914761676
+      Acne_cheeks_17: 3503558952804040743
+      Acne_cheeks_18: -3987912886365611315
+      Acne_cheeks_19: 3828038475828636484
+      Acne_cheeks_2: 1385608881825402466
+      Acne_cheeks_20: -6774827766026813363
+      Acne_cheeks_21: 7989898094778959700
+      Acne_cheeks_22: 2650323281559642900
+      Acne_cheeks_23: 727694417223775129
+      Acne_cheeks_24: 5205586441264170777
+      Acne_cheeks_25: -2426258030022958180
+      Acne_cheeks_26: 5238755605663467892
+      Acne_cheeks_27: -2848800880490315637
+      Acne_cheeks_28: 8636189677398110919
+      Acne_cheeks_29: -2609009083012974061
+      Acne_cheeks_3: 378032070700041669
+      Acne_cheeks_30: -1807104966558553414
+      Acne_cheeks_31: 3595263379172295158
+      Acne_cheeks_4: -7380895323881766391
+      Acne_cheeks_5: -8542114580090860928
+      Acne_cheeks_6: -7812549957995043103
+      Acne_cheeks_7: 1640876137501343889
+      Acne_cheeks_8: 884008558451278504
+      Acne_cheeks_9: -458583625433786217
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

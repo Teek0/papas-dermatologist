@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fcb7b7eb8c2715c4aa6a4902da5c94e2
+guid: 47f7c5c894d0aea48b54e28e81b4f55c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8313500430861248689
-    second: mouth 3_0
+      213: 7535905128919867871
+    second: Recepcion_01_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mouth 3_0
+      name: Recepcion_01_01_0
       rect:
         serializedVersion: 2
-        x: 244
-        y: 280
-        width: 169
-        height: 102
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f47557aa76380ac80800000000000000
-      internalID: -8313500430861248689
+      spriteID: fd1205ea9c9e49860800000000000000
+      internalID: 7535905128919867871
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mouth 3_0: -8313500430861248689
+      Recepcion_01_01_0: 7535905128919867871
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

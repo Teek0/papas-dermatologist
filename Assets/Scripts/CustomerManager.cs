@@ -2,15 +2,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using TMPro;
+using System.Collections;
 
 public class CustomerManager : MonoBehaviour
 {
     public GameConstantsSO Constants;
 
     public Sprite[] BodyOptions;
-    public Sprite[] MouthOptions;
+    public Sprite[] HairOptions;
     public Sprite[] EyesOptions;
-    public Sprite[] SkinConditionOptions;
+
+    public Sprite[] SkinConditionOptions_Forehead;
+    public Sprite[] SkinConditionOptions_Cheeks;
+    public Sprite[] SkinConditionOptions_Chin;
 
     // public TextAsset ...
     public GameObject DialogueBox;
@@ -27,14 +31,19 @@ public class CustomerManager : MonoBehaviour
     private float timeToNextPatient;
     private float waitingTime;
 
+    private AsyncOperation asyncOperation;
+
     private void SpawnCustomer()
     {
-        currentCustomer = new Customer(Constants, BodyOptions, MouthOptions, EyesOptions);
+        Sprite[][] skinConditions = { SkinConditionOptions_Forehead, SkinConditionOptions_Cheeks, SkinConditionOptions_Chin };
+        currentCustomer = new Customer(Constants, BodyOptions, HairOptions, EyesOptions, skinConditions);
 
         // Get SpriteRenderers for customer parts
         SpriteRenderer bodyRenderer = (SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer));
-        SpriteRenderer mouthRenderer = (SpriteRenderer)transform.Find("Mouth").GetComponent(typeof(SpriteRenderer));
+        SpriteRenderer mouthRenderer = (SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer));
         SpriteRenderer eyesRenderer = (SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer));
+
+        // ToDo: Loop thorugh currentCustomer's Treatment's skinConditions to render. Check the afflictedArea and change the corresponding sprite
 
         // Sprite color modifier
         customerAlpha = 0f;
@@ -46,9 +55,9 @@ public class CustomerManager : MonoBehaviour
         eyesRenderer.color = opacityColor;
 
         // Assigns randomized sprites
-        bodyRenderer.sprite = currentCustomer.GetBody();
-        mouthRenderer.sprite = currentCustomer.GetMouth();
-        eyesRenderer.sprite = currentCustomer.GetEyes();
+        bodyRenderer.sprite = currentCustomer.Body;
+        mouthRenderer.sprite = currentCustomer.Hair;
+        eyesRenderer.sprite = currentCustomer.Eyes;
 
         // Assing randomized (TBD) text
         // SetText("Hola, ¿me atiende?");
@@ -60,7 +69,7 @@ public class CustomerManager : MonoBehaviour
         {
             customerAlpha += 0.005f;
             ((SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
-            ((SpriteRenderer)transform.Find("Mouth").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
+            ((SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
             ((SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
         }
         else
@@ -75,7 +84,7 @@ public class CustomerManager : MonoBehaviour
         {
             customerAlpha -= 0.005f;
             ((SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
-            ((SpriteRenderer)transform.Find("Mouth").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
+            ((SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
             ((SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
         } else
         {
@@ -96,11 +105,38 @@ public class CustomerManager : MonoBehaviour
 
     public void acceptCustomer()
     {
-        bool success;
-        PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Prefabs/" + gameObject.name + ".prefab", out success);
-        if (success)
+        // bool success;
+        // PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Prefabs/" + gameObject.name + ".prefab", out success);
+        // if (success)
+        // {
+            Debug.Log("Activating CamillaScene");
+            asyncOperation.allowSceneActivation = true;
+
+            Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
+
+            if (sceneToLoad.IsValid())
+            {
+                Debug.Log("Scene is valid");
+                SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
+                Debug.Log("Moved actor to scene");
+                SceneManager.SetActiveScene(sceneToLoad);
+                Debug.Log("Scene activated");
+            }
+        // }
+    }
+
+    // Loads operating table scene
+    IEnumerator loadScene(string _sceneName)
+    {
+        yield return null;
+        asyncOperation = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
+        asyncOperation.allowSceneActivation = false;
+
+        Debug.Log("Scene load progress: " + asyncOperation.progress);
+        while (asyncOperation.progress <= 0.9f)
         {
-            SceneManager.LoadScene("CamillaScene", LoadSceneMode.Single);
+            Debug.Log("Loading scene. Progress: " + asyncOperation.progress * 100 + "%");
+            yield return null;
         }
     }
 
@@ -115,6 +151,7 @@ public class CustomerManager : MonoBehaviour
         timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
         waitingTime = 0;
         DialogueBox.SetActive(false);
+        StartCoroutine(loadScene("CamillaScene"));
     }
 
     // Update is called once per frame
