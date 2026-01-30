@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
         Running,
         Results
     }
+    [Header("Input")]
+    [SerializeField] private BrushInput brushInput;
 
     [Header("Time Settings")]
     [SerializeField] private float roundDuration = 60f;
@@ -20,6 +22,12 @@ public class GameController : MonoBehaviour
 
     private GameState currentState;
 
+    private void Awake()
+    {
+        if (brushInput == null)
+            brushInput = FindFirstObjectByType<BrushInput>();
+    }
+    
     private void Start()
     {
         StartRound();
@@ -64,6 +72,8 @@ public class GameController : MonoBehaviour
     {
         currentState = GameState.Results;
 
+        if (brushInput != null)
+            brushInput.SetPaintingEnabled(false);
         resultsPanel.SetActive(true);
         resultsText.text = "Score: 0"; // placeholder
     }

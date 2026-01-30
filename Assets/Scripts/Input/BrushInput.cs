@@ -40,22 +40,25 @@ public class BrushInput : MonoBehaviour
     {
         uv = Vector2.zero;
 
-        // ¿El mouse está dentro del rect de la cara?
         if (!RectTransformUtility.RectangleContainsScreenPoint(faceRectTransform, screenPos))
             return false;
 
-        // Convertir de pantalla a local dentro del rect
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 faceRectTransform, screenPos, null, out Vector2 localPoint))
             return false;
 
-        // LocalPoint va desde -width/2..width/2 y -height/2..height/2
         Rect r = faceRectTransform.rect;
         float u = Mathf.InverseLerp(r.xMin, r.xMax, localPoint.x);
         float v = Mathf.InverseLerp(r.yMin, r.yMax, localPoint.y);
 
         uv = new Vector2(u, v);
         return true;
+    }
+
+    public void SetPaintingEnabled(bool enabled)
+    {
+        this.enabled = enabled;
+        if (!enabled) isPainting = false;
     }
 }
 
