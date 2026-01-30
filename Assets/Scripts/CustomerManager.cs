@@ -1,14 +1,31 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEditor;
+using TMPro;
 
 public class CustomerManager : MonoBehaviour
 {
+    public GameConstantsSO Constants;
+
     public Sprite[] BodyOptions;
     public Sprite[] MouthOptions;
     public Sprite[] EyesOptions;
     public Sprite[] SkinConditionOptions;
-    public GameConstantsSO Constants;
+
+    // public TextAsset ...
+    public GameObject DialogueBox;
 
     protected Customer currentCustomer;
+
+    private float customerAlpha;
+
+    private bool attending;
+    private bool onHold;
+    private bool customerSpawned;
+    private bool dialogueVisible;
+
+    private float timeToNextPatient;
+    private float waitingTime;
 
     private void SpawnCustomer()
     {
@@ -33,10 +50,11 @@ public class CustomerManager : MonoBehaviour
         mouthRenderer.sprite = currentCustomer.GetMouth();
         eyesRenderer.sprite = currentCustomer.GetEyes();
 
-        // ToDo: Save as Prefab to export to second Scene
+        // Assing randomized (TBD) text
+        // SetText("Hola, ¿me atiende?");
     }
 
-    private void FadeIn()
+    private void CustomerFadeIn()
     {
         if (customerAlpha < 1f)
         {
@@ -51,7 +69,7 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    private void FadeOut()
+    private void CustomerFadeOut()
     {
         if (customerAlpha > 0f)
         {
@@ -65,28 +83,47 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    private float customerAlpha;
+    private void SetText(string _message)
+    {
+        ((TMP_Text)DialogueBox.transform.Find("Text Box").transform.Find("NPC Text").GetComponent(typeof(TMP_Text))).text = _message;
+    }
 
-    private bool attending;
-    private bool customerSpawned;
+    public void rejectCustomer()
+    {
+        customerSpawned = false;
+        onHold = false;
+    }
 
-    private float timeToNextPatient;
-    private float waitingTime;
-
+    public void acceptCustomer()
+    {
+        bool success;
+        PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Prefabs/" + gameObject.name + ".prefab", out success);
+        if (success)
+        {
+            SceneManager.LoadScene("CamillaScene", LoadSceneMode.Single);
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         attending = false;
         customerSpawned = false;
+        dialogueVisible = false;
+        onHold = false;
         customerAlpha = 0f;
         timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
         waitingTime = 0;
+        DialogueBox.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (onHold)
+        {
+            return;
+        }
         if(!attending)
         {
             // Not attending a customer
@@ -108,26 +145,24 @@ public class CustomerManager : MonoBehaviour
             } else
             {
                 // Customer fade-in
-                FadeIn();
+                CustomerFadeIn();
             }
         } else
         {
             // Attending a customer
 
-            // This is placeholder to test fade-in/fade-out and customer randomization
             if(customerSpawned)
             {
-                waitingTime += Time.deltaTime;
-                Debug.Log("Waiting Time: " + waitingTime + "; Max Time to Wait: " + timeToNextPatient);
-                Debug.Log("alpha = " + customerAlpha);
-                if (waitingTime >= timeToNextPatient)
+                if(!dialogueVisible)
                 {
-                    customerSpawned = false;
-                    waitingTime = 0;
+                    DialogueBox.SetActive(true);
+                    SetText("Hola, ¿me atiende?");
+                    onHold = true;
                 }
             } else
             {
-                FadeOut();
+                DialogueBox.SetActive(false);
+                CustomerFadeOut();
             }
         }
     }
