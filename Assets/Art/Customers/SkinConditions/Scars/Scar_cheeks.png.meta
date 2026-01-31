@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 682df991e70defc47ad8c38e55550cae
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7977922915223999111
+    second: Scar_cheeks_0
+  - first:
+      213: -3638741765487267746
+    second: Scar_cheeks_1
+  - first:
+      213: -8291448828085809038
+    second: Scar_cheeks_2
+  - first:
+      213: -6813338508815005435
+    second: Scar_cheeks_3
+  - first:
+      213: -632202274409831046
+    second: Scar_cheeks_4
+  - first:
+      213: 6009531350020050659
+    second: Scar_cheeks_5
+  - first:
+      213: -8296395168668159174
+    second: Scar_cheeks_6
+  - first:
+      213: -3650394559671316067
+    second: Scar_cheeks_7
+  - first:
+      213: 4360047939758219360
+    second: Scar_cheeks_8
+  - first:
+      213: -4736874192033897209
+    second: Scar_cheeks_9
+  - first:
+      213: 1432650030436204910
+    second: Scar_cheeks_10
+  - first:
+      213: -3080934934398805338
+    second: Scar_cheeks_11
+  - first:
+      213: 7448409423175730610
+    second: Scar_cheeks_12
+  - first:
+      213: -4595991269930657450
+    second: Scar_cheeks_13
+  - first:
+      213: -3707347821630551900
+    second: Scar_cheeks_14
+  - first:
+      213: -8465593815043721553
+    second: Scar_cheeks_15
+  - first:
+      213: 3841203300894359845
+    second: Scar_cheeks_16
+  - first:
+      213: -1591490200570398820
+    second: Scar_cheeks_17
+  - first:
+      213: -5549730462468906085
+    second: Scar_cheeks_18
+  - first:
+      213: -369421285615719867
+    second: Scar_cheeks_19
+  - first:
+      213: -9072362159731860704
+    second: Scar_cheeks_20
+  - first:
+      213: -492168829569634921
+    second: Scar_cheeks_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Scar_cheeks_0
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 730
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 782106f5f9647be60800000000000000
+      internalID: 7977922915223999111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_1
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 699
+        width: 88
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e50f0c6a4a7908dc0800000000000000
+      internalID: -3638741765487267746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_2
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 694
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270dd98883bdeec80800000000000000
+      internalID: -8291448828085809038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_3
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 691
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 509879f89b82271a0800000000000000
+      internalID: -6813338508815005435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_4
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 676
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75ab978167f937f0800000000000000
+      internalID: -632202274409831046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_5
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 610
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eec4884ce4266350800000000000000
+      internalID: 6009531350020050659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_6
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 612
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a33744fdc884ddc80800000000000000
+      internalID: -8296395168668159174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_7
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 594
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d91d5c41d71375dc0800000000000000
+      internalID: -3650394559671316067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_8
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 581
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06066fc2080028c30800000000000000
+      internalID: 4360047939758219360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_9
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 473
+        width: 95
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 705aa16f40e334eb0800000000000000
+      internalID: -4736874192033897209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_10
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 596
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e614a97bc9bc1e310800000000000000
+      internalID: 1432650030436204910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_11
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 545
+        width: 27
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aa511b20025e35d0800000000000000
+      internalID: -3080934934398805338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_12
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 498
+        width: 96
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b5cf0238e01e5760800000000000000
+      internalID: 7448409423175730610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_13
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 577
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6599cf46a42c730c0800000000000000
+      internalID: -4595991269930657450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_14
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 555
+        width: 69
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a884e07ccadc8cc0800000000000000
+      internalID: -3707347821630551900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_15
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 564
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa63391274b248a80800000000000000
+      internalID: -8465593815043721553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_16
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 558
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 521cdd3fc02be4530800000000000000
+      internalID: 3841203300894359845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_17
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 546
+        width: 63
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c977c7b3814e9e9e0800000000000000
+      internalID: -1591490200570398820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_18
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 556
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9360615c856bf2b0800000000000000
+      internalID: -5549730462468906085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_19
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 538
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a286a4c4d8fdaf0800000000000000
+      internalID: -369421285615719867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_20
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 479
+        width: 55
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b9c73eeae781280800000000000000
+      internalID: -9072362159731860704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scar_cheeks_21
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 452
+        width: 39
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d6bff9e077b29f0800000000000000
+      internalID: -492168829569634921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Scar_cheeks_0: 7977922915223999111
+      Scar_cheeks_1: -3638741765487267746
+      Scar_cheeks_10: 1432650030436204910
+      Scar_cheeks_11: -3080934934398805338
+      Scar_cheeks_12: 7448409423175730610
+      Scar_cheeks_13: -4595991269930657450
+      Scar_cheeks_14: -3707347821630551900
+      Scar_cheeks_15: -8465593815043721553
+      Scar_cheeks_16: 3841203300894359845
+      Scar_cheeks_17: -1591490200570398820
+      Scar_cheeks_18: -5549730462468906085
+      Scar_cheeks_19: -369421285615719867
+      Scar_cheeks_2: -8291448828085809038
+      Scar_cheeks_20: -9072362159731860704
+      Scar_cheeks_21: -492168829569634921
+      Scar_cheeks_3: -6813338508815005435
+      Scar_cheeks_4: -632202274409831046
+      Scar_cheeks_5: 6009531350020050659
+      Scar_cheeks_6: -8296395168668159174
+      Scar_cheeks_7: -3650394559671316067
+      Scar_cheeks_8: 4360047939758219360
+      Scar_cheeks_9: -4736874192033897209
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
