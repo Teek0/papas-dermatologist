@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu_UI.unity
     guid: 167f786a85cc0a5479467eee34de8050
   - enabled: 1
+    path: Assets/Scenes/ReceptionScene.unity
+    guid: 98150c188966c674fafa62ff330236e4
+  - enabled: 1
     path: Assets/Scenes/CamillaScene.unity
     guid: b9b0c0de1bf3bc747a12e33cad502fb9
   m_configObjects:

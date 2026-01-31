@@ -8,8 +8,9 @@ public class GameController : MonoBehaviour
         Running,
         Results
     }
+
     [Header("Input")]
-    [SerializeField] private BrushInput brushInput;
+    [SerializeField] private BrushInputWorld brushInput;
 
     [Header("Time Settings")]
     [SerializeField] private float roundDuration = 60f;
@@ -22,14 +23,20 @@ public class GameController : MonoBehaviour
 
     private GameState currentState;
 
+    public bool CanPaint => currentState == GameState.Running;
+
     private void Awake()
     {
         if (brushInput == null)
-            brushInput = FindFirstObjectByType<BrushInput>();
+            brushInput = FindFirstObjectByType<BrushInputWorld>();
     }
-    
+
     private void Start()
     {
+        var customer = GameSession.I != null ? GameSession.I.CurrentCustomer : null;
+        if (customer != null)
+            roundDuration = customer.Treatment.TimeLimit;
+
         StartRound();
     }
 
@@ -46,7 +53,12 @@ public class GameController : MonoBehaviour
         remainingTime = roundDuration;
         currentState = GameState.Running;
 
-        resultsPanel.SetActive(false);
+        if (resultsPanel != null)
+            resultsPanel.SetActive(false);
+
+        if (brushInput != null)
+            brushInput.SetPaintingEnabled(true);
+
         UpdateTimerText();
     }
 
@@ -65,7 +77,8 @@ public class GameController : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        timerText.text = $"Time: {Mathf.CeilToInt(remainingTime)}";
+        if (timerText != null)
+            timerText.text = $"Time: {Mathf.CeilToInt(remainingTime)}";
     }
 
     public void EndRound()
@@ -74,7 +87,15 @@ public class GameController : MonoBehaviour
 
         if (brushInput != null)
             brushInput.SetPaintingEnabled(false);
-        resultsPanel.SetActive(true);
-        resultsText.text = "Score: 0"; // placeholder
+
+        var customer = GameSession.I != null ? GameSession.I.CurrentCustomer : null;
+        if (customer != null && GameSession.I != null)
+            GameSession.I.AddMoney(customer.Treatment.Payment);
+
+        if (resultsPanel != null)
+            resultsPanel.SetActive(true);
+
+        if (resultsText != null)
+            resultsText.text = $"Pago: {(customer != null ? customer.Treatment.Payment : 0)} | Dinero: {(GameSession.I != null ? GameSession.I.Money : 0)}";
     }
 }

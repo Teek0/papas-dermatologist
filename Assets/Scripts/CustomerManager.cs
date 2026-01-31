@@ -19,7 +19,7 @@ public class CustomerManager : MonoBehaviour
     // public TextAsset ...
     public GameObject DialogueBox;
 
-    protected Customer currentCustomer;
+    public Customer currentCustomer;
 
     SpriteRenderer bodyRenderer;
     SpriteRenderer hairRenderer;
@@ -39,7 +39,10 @@ public class CustomerManager : MonoBehaviour
     private float timeToNextPatient;
     private float waitingTime;
 
+    private bool isLoadingCamilla = false;
     private AsyncOperation asyncOperation;
+
+    private string receptionSceneName;
 
     private void SpawnCustomer()
     {
@@ -88,7 +91,7 @@ public class CustomerManager : MonoBehaviour
         }
 
         // Assing randomized (TBD) text
-        // SetText("Hola, �me atiende?");
+        // SetText("Hola, ¿me atiende?");
     }
 
     private void CustomerFadeIn()
@@ -152,43 +155,56 @@ public class CustomerManager : MonoBehaviour
 
     public void acceptCustomer()
     {
-        StartCoroutine(closeReception());
+
+        if (GameSession.I != null)
+            GameSession.I.SetCustomer(currentCustomer);
+        else
+            Debug.LogWarning("No existe GameSession en la escena. No se pudo guardar el customer.");
+
+        if (DialogueBox != null)
+            DialogueBox.SetActive(false);
+
+        if (isLoadingCamilla)
+            return;
+
+        if (asyncOperation == null)
+        {
+            Debug.LogWarning("CamillaScene aún no terminó de cargar. Intentando cargar ahora.");
+            isLoadingCamilla = true;
+            StartCoroutine(LoadCamillaAndSwitch());
+            return;
+        }
+
+        isLoadingCamilla = true;
+        StartCoroutine(SwitchToCamillaAndUnloadReception());
     }
 
-    IEnumerator closeReception()
+    private IEnumerator LoadCamillaAndSwitch()
     {
+        asyncOperation = SceneManager.LoadSceneAsync("CamillaScene", LoadSceneMode.Additive);
+        asyncOperation.allowSceneActivation = false;
 
-        Debug.Log("Activating CamillaScene");
+        while (asyncOperation.progress < 0.9f)
+            yield return null;
+
+        yield return SwitchToCamillaAndUnloadReception();
+    }
+
+    private IEnumerator SwitchToCamillaAndUnloadReception()
+    {
         asyncOperation.allowSceneActivation = true;
 
         while (!asyncOperation.isDone)
-        {
             yield return null;
-        }
 
-        Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
+        Scene camilla = SceneManager.GetSceneByName("CamillaScene");
+        if (camilla.IsValid())
+            SceneManager.SetActiveScene(camilla);
 
-        if (sceneToLoad.IsValid())
-        {
-            Debug.Log("Scene is valid");
-            SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
-            Debug.Log("Moved actor to scene");
-        }
+        if (!string.IsNullOrEmpty(receptionSceneName))
+            SceneManager.UnloadSceneAsync(receptionSceneName);
 
-        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync("ReceptionScene");
-
-        while (!asyncUnload.isDone)
-        {
-            if (asyncUnload.progress <= 0.9f)
-            {
-                Debug.Log("Unloading Reception. Progress: " + asyncUnload.progress * 100 + "%");
-                break;
-            }
-            yield return null;
-        }
-
-        SceneManager.SetActiveScene(sceneToLoad);
-        Debug.Log("Scene activated");
+        isLoadingCamilla = false;
     }
 
     // Loads operating table scene
@@ -217,6 +233,7 @@ public class CustomerManager : MonoBehaviour
         timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
         waitingTime = 0;
         DialogueBox.SetActive(false);
+        receptionSceneName = SceneManager.GetActiveScene().name;
         StartCoroutine(loadScene("CamillaScene"));
     }
 
@@ -237,13 +254,13 @@ public class CustomerManager : MonoBehaviour
                 if (waitingTime >= timeToNextPatient)
                 {
                     SpawnCustomer();
+                    timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
                     customerSpawned = true;
                     waitingTime = 0;
                 }
                 else
                 {
                     waitingTime += Time.deltaTime;
-                    timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
                 }
             } else
             {
@@ -259,7 +276,7 @@ public class CustomerManager : MonoBehaviour
                 if(!dialogueVisible)
                 {
                     DialogueBox.SetActive(true);
-                    SetText("Hola, �me atiende?");
+                    SetText("Hola, ¿me atiende?");
                     onHold = true;
                 }
             } else

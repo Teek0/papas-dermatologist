@@ -17,10 +17,10 @@ public class Treatment
 
             difficultyLevel = _difficultyLevel;
             payment = _constants.BasePayment * difficultyLevel;
-            timeLimit = _constants.BasePayment / difficultyLevel;
+            timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit / (float)difficultyLevel);
 
             List<string> skinConditionTypes = new();
-            skinConditionTypes.Add("acné");
+            skinConditionTypes.Add("acnÃ©");
             skinConditionTypes.Add("arrugas");
             skinConditionTypes.Add("cicatrices");
 

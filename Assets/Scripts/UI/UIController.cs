@@ -11,15 +11,41 @@ public class UIController : MonoBehaviour
     public mainMenu_Music musicController;
 
     [Header("Game start settings")]
-    public string gameSceneName = "CamillaScene";
+    public string gameSceneName = "ReceptionScene";
     public AudioClip btnStartAudio;
     [Range(0f, 1f)] public float startButtonVolume = 0.3f;
+    public CanvasGroup blackScreenCanvas;
+    public float fadeInDuration = 1.5f;
     public float fadeOutDuration = 1.8f;
 
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         closeSettings();
+        Time.timeScale = 1f;
+
+
+        blackScreenCanvas.alpha = 1f;
+        blackScreenCanvas.blocksRaycasts = true;
+
+        StartCoroutine(actionFadeIn(blackScreenCanvas));
+    }
+
+
+    IEnumerator actionFadeIn(CanvasGroup canvas)
+    {
+        Debug.Log("Start triggered");
+        float elapsed = 0;
+
+        while (elapsed < fadeInDuration)
+        {
+            elapsed += Time.deltaTime;
+            canvas.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeInDuration);
+            yield return null;
+        }
+
+        canvas.alpha = 0f;
+        canvas.blocksRaycasts = false;
     }
 
     public void openSettings()
