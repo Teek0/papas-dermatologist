@@ -39,6 +39,7 @@ public class CustomerManager : MonoBehaviour
     private float timeToNextPatient;
     private float waitingTime;
 
+    private bool isLoadingCamilla = false;
     private AsyncOperation asyncOperation;
 
     private void SpawnCustomer()
@@ -88,7 +89,7 @@ public class CustomerManager : MonoBehaviour
         }
 
         // Assing randomized (TBD) text
-        // SetText("Hola, ¿me atiende?");
+        // SetText("Hola, ï¿½me atiende?");
     }
 
     private void CustomerFadeIn()
@@ -150,19 +151,41 @@ public class CustomerManager : MonoBehaviour
 
     public void acceptCustomer()
     {
+        if (isLoadingCamilla)
+            return;
+
+        if (GameSession.I != null)
+            GameSession.I.SetCustomer(currentCustomer);
+        else
+            Debug.LogWarning("No existe GameSession en la escena. No se pudo guardar el customer.");
+
+        if (asyncOperation == null)
+        {
+            Debug.LogWarning("CamillaScene aÃºn no terminÃ³ de cargar. Intentando cargar ahora.");
+            StartCoroutine(LoadCamillaAndActivate());
+            return;
+        }
+
         Debug.Log("Activating CamillaScene");
         asyncOperation.allowSceneActivation = true;
 
         Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
-
         if (sceneToLoad.IsValid())
         {
-            Debug.Log("Scene is valid");
-            SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
-            Debug.Log("Moved actor to scene");
             SceneManager.SetActiveScene(sceneToLoad);
-            Debug.Log("Scene activated");
         }
+    }
+
+    private IEnumerator LoadCamillaAndActivate()
+    {
+        asyncOperation = SceneManager.LoadSceneAsync("CamillaScene", LoadSceneMode.Additive);
+        asyncOperation.allowSceneActivation = false;
+
+        while (asyncOperation.progress < 0.9f)
+            yield return null;
+
+        asyncOperation.allowSceneActivation = true;
+        isLoadingCamilla = false;
     }
 
     // Loads operating table scene
@@ -211,13 +234,13 @@ public class CustomerManager : MonoBehaviour
                 if (waitingTime >= timeToNextPatient)
                 {
                     SpawnCustomer();
+                    timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
                     customerSpawned = true;
                     waitingTime = 0;
                 }
                 else
                 {
                     waitingTime += Time.deltaTime;
-                    timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
                 }
             } else
             {
@@ -233,7 +256,7 @@ public class CustomerManager : MonoBehaviour
                 if(!dialogueVisible)
                 {
                     DialogueBox.SetActive(true);
-                    SetText("Hola, ¿me atiende?");
+                    SetText("Hola, ï¿½me atiende?");
                     onHold = true;
                 }
             } else

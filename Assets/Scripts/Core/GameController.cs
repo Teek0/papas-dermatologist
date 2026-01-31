@@ -33,6 +33,10 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        var customer = GameSession.I != null ? GameSession.I.CurrentCustomer : null;
+        if (customer != null)
+            roundDuration = customer.Treatment.TimeLimit;
+
         StartRound();
     }
 
@@ -84,10 +88,14 @@ public class GameController : MonoBehaviour
         if (brushInput != null)
             brushInput.SetPaintingEnabled(false);
 
+        var customer = GameSession.I != null ? GameSession.I.CurrentCustomer : null;
+        if (customer != null && GameSession.I != null)
+            GameSession.I.AddMoney(customer.Treatment.Payment);
+
         if (resultsPanel != null)
             resultsPanel.SetActive(true);
 
         if (resultsText != null)
-            resultsText.text = "Score: 0"; // placeholder
+            resultsText.text = $"Pago: {(customer != null ? customer.Treatment.Payment : 0)} | Dinero: {(GameSession.I != null ? GameSession.I.Money : 0)}";
     }
 }
