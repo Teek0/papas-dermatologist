@@ -20,7 +20,7 @@ public class Treatment
             timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit / (float)difficultyLevel);
 
             List<string> skinConditionTypes = new();
-            skinConditionTypes.Add("acn�");
+            skinConditionTypes.Add("acné");
             skinConditionTypes.Add("arrugas");
             skinConditionTypes.Add("cicatrices");
 

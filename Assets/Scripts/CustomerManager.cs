@@ -89,7 +89,7 @@ public class CustomerManager : MonoBehaviour
         }
 
         // Assing randomized (TBD) text
-        // SetText("Hola, �me atiende?");
+        // SetText("Hola, ¿me atiende?");
     }
 
     private void CustomerFadeIn()
@@ -256,7 +256,7 @@ public class CustomerManager : MonoBehaviour
                 if(!dialogueVisible)
                 {
                     DialogueBox.SetActive(true);
-                    SetText("Hola, �me atiende?");
+                    SetText("Hola, ¿me atiende?");
                     onHold = true;
                 }
             } else
