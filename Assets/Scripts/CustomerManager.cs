@@ -150,24 +150,43 @@ public class CustomerManager : MonoBehaviour
 
     public void acceptCustomer()
     {
-        // bool success;
-        // PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Prefabs/" + gameObject.name + ".prefab", out success);
-        // if (success)
-        // {
-            Debug.Log("Activating CamillaScene");
-            asyncOperation.allowSceneActivation = true;
+        StartCoroutine(closeReception());
+    }
 
-            Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
+    IEnumerator closeReception()
+    {
 
-            if (sceneToLoad.IsValid())
+        Debug.Log("Activating CamillaScene");
+        asyncOperation.allowSceneActivation = true;
+
+        while (!asyncOperation.isDone)
+        {
+            yield return null;
+        }
+
+        Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
+
+        if (sceneToLoad.IsValid())
+        {
+            Debug.Log("Scene is valid");
+            SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
+            Debug.Log("Moved actor to scene");
+        }
+
+        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync("ReceptionScene");
+
+        while (!asyncUnload.isDone)
+        {
+            if (asyncUnload.progress <= 0.9f)
             {
-                Debug.Log("Scene is valid");
-                SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
-                Debug.Log("Moved actor to scene");
-                SceneManager.SetActiveScene(sceneToLoad);
-                Debug.Log("Scene activated");
+                Debug.Log("Unloading Reception. Progress: " + asyncUnload.progress * 100 + "%");
+                break;
             }
-        // }
+            yield return null;
+        }
+
+        SceneManager.SetActiveScene(sceneToLoad);
+        Debug.Log("Scene activated");
     }
 
     // Loads operating table scene
