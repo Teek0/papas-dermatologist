@@ -26,7 +26,7 @@ public class Treatment
 
             string currentType;
             int typeIndex;
-            int areaIndex = UnityEngine.Random.Range(0, 2); // 0 -> forehead; 1 -> cheeks; 2 -> chin
+            int areaIndex; // 0 -> forehead; 1 -> cheeks; 2 -> chin
             int numberOfAreas;
             List<int> usedAreas = new();
 
@@ -39,23 +39,29 @@ public class Treatment
                 if (currentType == "arrugas")
                 {
                     numberOfAreas = UnityEngine.Random.Range(1, 3);
+                    areaIndex = UnityEngine.Random.Range(0, 2);
                     for (int j = 0; j < numberOfAreas; j++)
                     {
+                        Debug.Log("usedAreas = " + usedAreas + "; areaIndex = " + areaIndex);
+                        Debug.Log("usedAreas.Contain(areaIndex) = " + usedAreas.Contains(areaIndex));
                         while (usedAreas.Contains(areaIndex))
                         {
-                            areaIndex = UnityEngine.Random.Range(0, 1);
+                            Debug.Log("Area was already used. Generating new area");
+                            areaIndex = UnityEngine.Random.Range(0, 2);
                         }
                         usedAreas.Add(areaIndex);
+                        Debug.Log("New area generated. Proceeding with the rest of the code");
                         skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][typeIndex]));
                     }
                 } else
                 {
                     numberOfAreas = UnityEngine.Random.Range(1, 4);
+                    areaIndex = UnityEngine.Random.Range(0, 3);
                     for (int j = 0; j < numberOfAreas; j++)
                     {
                         while (usedAreas.Contains(areaIndex))
                         {
-                            areaIndex = UnityEngine.Random.Range(0, 2);
+                            areaIndex = UnityEngine.Random.Range(0, 3);
                         }
                         usedAreas.Add(areaIndex);
                         skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][typeIndex]));

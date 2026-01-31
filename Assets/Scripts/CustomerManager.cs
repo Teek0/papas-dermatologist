@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -20,6 +20,14 @@ public class CustomerManager : MonoBehaviour
     public GameObject DialogueBox;
 
     protected Customer currentCustomer;
+
+    SpriteRenderer bodyRenderer;
+    SpriteRenderer hairRenderer;
+    SpriteRenderer eyesRenderer;
+    SpriteRenderer foreheadRenderer;
+    SpriteRenderer cheeksRenderer;
+    SpriteRenderer chinRenderer;
+
 
     private float customerAlpha;
 
@@ -39,11 +47,14 @@ public class CustomerManager : MonoBehaviour
         currentCustomer = new Customer(Constants, BodyOptions, HairOptions, EyesOptions, skinConditions);
 
         // Get SpriteRenderers for customer parts
-        SpriteRenderer bodyRenderer = (SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer));
-        SpriteRenderer mouthRenderer = (SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer));
-        SpriteRenderer eyesRenderer = (SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer));
-
-        // ToDo: Loop thorugh currentCustomer's Treatment's skinConditions to render. Check the afflictedArea and change the corresponding sprite
+        bodyRenderer = (SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer));
+        hairRenderer = (SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer));
+        eyesRenderer = (SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer));
+        
+        Transform skinConditionsTransform = transform.Find("SkinConditions");
+        foreheadRenderer = (SpriteRenderer)skinConditionsTransform.Find("Forehead").GetComponent(typeof(SpriteRenderer));
+        cheeksRenderer = (SpriteRenderer)skinConditionsTransform.Find("Cheeks").GetComponent(typeof(SpriteRenderer));
+        chinRenderer = (SpriteRenderer)skinConditionsTransform.Find("Chin").GetComponent(typeof(SpriteRenderer));
 
         // Sprite color modifier
         customerAlpha = 0f;
@@ -51,13 +62,30 @@ public class CustomerManager : MonoBehaviour
 
         // Make invisible before spawining
         bodyRenderer.color = opacityColor;
-        mouthRenderer.color = opacityColor;
+        hairRenderer.color = opacityColor;
         eyesRenderer.color = opacityColor;
+        foreheadRenderer.color = opacityColor;
+        cheeksRenderer.color = opacityColor;
+        chinRenderer.color = opacityColor;
 
         // Assigns randomized sprites
         bodyRenderer.sprite = currentCustomer.Body;
-        mouthRenderer.sprite = currentCustomer.Hair;
+        hairRenderer.sprite = currentCustomer.Hair;
         eyesRenderer.sprite = currentCustomer.Eyes;
+
+        for (int i = 0; i < currentCustomer.Treatment.SkinConditions.Count; i++)
+        {
+            if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "frente")
+            {
+                foreheadRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
+            } else if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "cara")
+            {
+                cheeksRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
+            } else if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "barbilla")
+            {
+                chinRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
+            }
+        }
 
         // Assing randomized (TBD) text
         // SetText("Hola, ¿me atiende?");
@@ -68,9 +96,12 @@ public class CustomerManager : MonoBehaviour
         if (customerAlpha < 1f)
         {
             customerAlpha += 0.005f;
-            ((SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
-            ((SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
-            ((SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
+            bodyRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            hairRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            eyesRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            foreheadRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            cheeksRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            chinRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
         }
         else
         {
@@ -83,12 +114,26 @@ public class CustomerManager : MonoBehaviour
         if (customerAlpha > 0f)
         {
             customerAlpha -= 0.005f;
-            ((SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
-            ((SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
-            ((SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer))).color = new Color(1f, 1f, 1f, customerAlpha);
+            bodyRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            hairRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            eyesRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            foreheadRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            cheeksRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            chinRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
         } else
         {
             attending = false;
+        }
+    }
+
+    public List<SkinCondition> GetSkinConditions()
+    {
+        if (attending)
+        {
+            return currentCustomer.Treatment.SkinConditions;
+        } else
+        {
+            throw new System.Exception("Not attending a customer");
         }
     }
 

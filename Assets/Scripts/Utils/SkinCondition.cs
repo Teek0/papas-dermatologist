@@ -12,10 +12,10 @@ public class SkinCondition
         if (_skinConditionSprite.name.Contains("Acne"))
         {
             type = "acné";
-        } else if (_skinConditionSprite.name.Contains("Wrinkles"))
+        } else if (_skinConditionSprite.name.Contains("Arrugas"))
         {
             type = "arrugas";
-        } else if (_skinConditionSprite.name.Contains("Scar"))
+        } else if (_skinConditionSprite.name.Contains("Cicatriz"))
         {
             type = "cicatrices";
         } else
@@ -23,15 +23,15 @@ public class SkinCondition
             throw new Exception("Invalid skin condition sprite name");
         }
 
-        if (_skinConditionSprite.name.Contains("forehead"))
+        if (_skinConditionSprite.name.Contains("Frente"))
         {
             afflictedArea = "frente";
-        } else if (_skinConditionSprite.name.Contains("cheeks"))
+        } else if (_skinConditionSprite.name.Contains("Mejillas"))
         {
             afflictedArea = "cara";
-        } else if (_skinConditionSprite.name.Contains("chin"))
+        } else if (_skinConditionSprite.name.Contains("Barbilla"))
         {
-            afflictedArea = "mentón";
+            afflictedArea = "barbilla";
         }
 
         appearance = _skinConditionSprite;
