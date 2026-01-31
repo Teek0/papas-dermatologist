@@ -1,41 +1,32 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-[RequireComponent(typeof(RawImage))]
-public class FacePaintSurface : MonoBehaviour
+[RequireComponent(typeof(SpriteRenderer))]
+public class FacePaintSurfaceWorld : MonoBehaviour
 {
-    [Header("Paint Texture (Runtime Canvas)")]
-    [Tooltip("Resolución de la textura pintable (lienzo). Más alto = más detalle, más costo.")]
+    [Header("Startup")]
+    [Tooltip("Si está activo, el overlay se oculta y solo se muestra al primer trazo.")]
+    [SerializeField] private bool hideRendererUntilFirstPaint = true;
+
+    [Header("Paint Texture (Runtime)")]
     [SerializeField] private int textureSize = 256;
 
     [Header("Paint Area Mask (Where painting is allowed)")]
-    [Tooltip("Máscara que define dónde se puede pintar. Alpha > Threshold = permitido. Debe tener Read/Write Enabled.")]
     [SerializeField] private Texture2D paintMask;
-
-    [Tooltip("Umbral de alpha para permitir pintar en la máscara.")]
     [SerializeField, Range(0f, 1f)] private float maskThreshold = 0.1f;
-
-    [Tooltip("Invierte el eje V al samplear la máscara (útil si la máscara está al revés).")]
     [SerializeField] private bool invertMaskV = false;
+    [SerializeField] private SpriteRenderer referenceHeadRenderer;
 
     [Header("Mask Look (Visual Appearance)")]
-    [Tooltip("Textura de patrón (ruido/grano) para que la mascarilla no sea un color plano. Read/Write Enabled recomendado.")]
     [SerializeField] private Texture2D maskLookTexture;
-
-    [Tooltip("Cuántas veces se repite el patrón visual sobre la cara. 1 = se estira una vez, 4 = se repite 4 veces.")]
     [SerializeField, Min(0.1f)] private float lookTiling = 4f;
-
-    [Tooltip("Color base de la mascarilla. Se multiplica por el patrón visual.")]
     [SerializeField] private Color maskTint = new Color(1f, 0.47f, 0.7f, 1f);
 
     [Header("Brush Settings")]
-    [Tooltip("Radio del pincel en píxeles (en la textura pintable).")]
     [SerializeField, Min(1)] private int brushRadius = 10;
-
-    [Tooltip("Qué tan rápido se acumula la cobertura al pintar. 1 = cobertura completa inmediata.")]
     [SerializeField, Range(0.01f, 1f)] private float brushStrength = 0.25f;
 
-    private RawImage rawImage;
+    private SpriteRenderer sr;
+
     private Texture2D paintTexture;
     private Color32[] paintPixels;
 
@@ -45,12 +36,32 @@ public class FacePaintSurface : MonoBehaviour
     private Color32[] lookPixels;
     private int lookW, lookH;
 
+    private int currentTextureSize;
+    private bool dirty;
+    private bool hasPainted;
+
     private void Awake()
     {
-        rawImage = GetComponent<RawImage>();
-        CreatePaintTexture();
+        sr = GetComponent<SpriteRenderer>();
+
+        RecreatePaintTextureAndSprite();
         CacheMaskPixels();
         CacheLookPixels();
+
+        ClearTexture(apply: true);
+
+        if (hideRendererUntilFirstPaint)
+            sr.enabled = false;
+    }
+
+    private void LateUpdate()
+    {
+        if (dirty)
+        {
+            paintTexture.SetPixels32(paintPixels);
+            paintTexture.Apply(false);
+            dirty = false;
+        }
     }
 
     private void OnValidate()
@@ -59,32 +70,60 @@ public class FacePaintSurface : MonoBehaviour
         brushRadius = Mathf.Max(1, brushRadius);
         lookTiling = Mathf.Max(0.1f, lookTiling);
 
-        if (Application.isPlaying)
+        if (!Application.isPlaying) return;
+
+        if (paintTexture != null && textureSize != currentTextureSize)
+        {
+            RecreatePaintTextureAndSprite();
+            CacheMaskPixels();
+            CacheLookPixels();
+            ClearTexture(apply: true);
+        }
+        else
         {
             CacheMaskPixels();
             CacheLookPixels();
         }
     }
 
-    private void CreatePaintTexture()
+    private void RecreatePaintTextureAndSprite()
     {
+        currentTextureSize = textureSize;
+
         paintTexture = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false);
         paintTexture.filterMode = FilterMode.Point;
         paintTexture.wrapMode = TextureWrapMode.Clamp;
 
         paintPixels = new Color32[textureSize * textureSize];
-        ClearTexture();
 
-        rawImage.texture = paintTexture;
+        float ppu = 100f;
+        var sprite = Sprite.Create(
+            paintTexture,
+            new Rect(0, 0, textureSize, textureSize),
+            new Vector2(0.5f, 0.5f),
+            ppu
+        );
+
+        sr.sprite = sprite;
+
+        
+
+        dirty = true;
     }
 
-    public void ClearTexture()
+    public void ClearTexture(bool apply = true)
     {
         var clear = new Color32(0, 0, 0, 0);
         for (int i = 0; i < paintPixels.Length; i++)
             paintPixels[i] = clear;
 
-        ApplyPixels();
+        hasPainted = false;
+
+        if (hideRendererUntilFirstPaint)
+            sr.enabled = false;
+
+        if (apply)
+            dirty = true;
     }
 
     private void CacheMaskPixels()
@@ -92,21 +131,17 @@ public class FacePaintSurface : MonoBehaviour
         maskPixels = null;
         maskW = maskH = 0;
 
-        if (paintMask == null)
-            return;
+        if (paintMask == null) return;
 
-        // Requiere Read/Write enabled. Si no, maskPixels quedará null y solo no bloqueará.
-        try
+        if (!paintMask.isReadable)
         {
-            maskPixels = paintMask.GetPixels32();
-            maskW = paintMask.width;
-            maskH = paintMask.height;
+            Debug.LogWarning($"[FacePaintSurfaceWorld] paintMask '{paintMask.name}' no es legible. Activa Read/Write en Import Settings, o la máscara será ignorada.");
+            return;
         }
-        catch
-        {
-            maskPixels = null;
-            maskW = maskH = 0;
-        }
+
+        maskPixels = paintMask.GetPixels32();
+        maskW = paintMask.width;
+        maskH = paintMask.height;
     }
 
     private void CacheLookPixels()
@@ -114,24 +149,29 @@ public class FacePaintSurface : MonoBehaviour
         lookPixels = null;
         lookW = lookH = 0;
 
-        if (maskLookTexture == null)
-            return;
+        if (maskLookTexture == null) return;
 
-        try
+        if (!maskLookTexture.isReadable)
         {
-            lookPixels = maskLookTexture.GetPixels32();
-            lookW = maskLookTexture.width;
-            lookH = maskLookTexture.height;
+            Debug.LogWarning($"[FacePaintSurfaceWorld] maskLookTexture '{maskLookTexture.name}' no es legible. Activa Read/Write si quieres usar esta textura de look.");
+            return;
         }
-        catch
-        {
-            lookPixels = null;
-            lookW = lookH = 0;
-        }
+
+        lookPixels = maskLookTexture.GetPixels32();
+        lookW = maskLookTexture.width;
+        lookH = maskLookTexture.height;
     }
 
     public void PaintAtUV(Vector2 uv)
     {
+        if (paintTexture == null || paintPixels == null || paintPixels.Length != textureSize * textureSize)
+            RecreatePaintTextureAndSprite();
+
+        if (hideRendererUntilFirstPaint && !hasPainted)
+            sr.enabled = true;
+
+        hasPainted = true;
+
         int cx = Mathf.RoundToInt(Mathf.Clamp01(uv.x) * (textureSize - 1));
         int cy = Mathf.RoundToInt(Mathf.Clamp01(uv.y) * (textureSize - 1));
 
@@ -167,7 +207,7 @@ public class FacePaintSurface : MonoBehaviour
             }
         }
 
-        ApplyPixels();
+        dirty = true;
     }
 
     private bool IsAllowedAtUV(float u, float v)
@@ -207,11 +247,5 @@ public class FacePaintSurface : MonoBehaviour
 
         Color mixed = new Color(maskTint.r * look.r, maskTint.g * look.g, maskTint.b * look.b, 1f);
         return (Color32)mixed;
-    }
-
-    private void ApplyPixels()
-    {
-        paintTexture.SetPixels32(paintPixels);
-        paintTexture.Apply(false);
     }
 }

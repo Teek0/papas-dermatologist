@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: e91e980691b67474cac88fab0bf16def
+guid: 9e2fb5ac301ef2e48928d691fc7fa2ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 862288608502525391
-    second: Chin_0
+      213: -1280227364101613209
+    second: Pelo_01_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -54,10 +54,10 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 2
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chin_0
+      name: Pelo_01_01_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 612
-        height: 408
+        x: 670
+        y: 417
+        width: 532
+        height: 542
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcda8abbbe677fb00800000000000000
-      internalID: 862288608502525391
+      spriteID: 7691dfacef7bb3ee0800000000000000
+      internalID: -1280227364101613209
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Chin_0: 862288608502525391
+      Pelo_01_01_0: -1280227364101613209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

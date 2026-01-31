@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 9133a42acc3a2a943b8148d785f9de43
+guid: 7b8a369cda52eb64492e7bee0fedd370
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2415491717316066674
-    second: facePlaceholder_0
+      213: 3029304408896339112
+    second: Ojos_01_01_0
+  - first:
+      213: -7597837479075580820
+    second: Ojos_01_01_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -139,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: facePlaceholder_0
+      name: Ojos_01_01_0
       rect:
         serializedVersion: 2
-        x: 174
-        y: 31
-        width: 263
-        height: 346
+        x: 776
+        y: 571
+        width: 108
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +157,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e824a77b4137a7ed0800000000000000
-      internalID: -2415491717316066674
+      spriteID: 8ac7ac85f404a0a20800000000000000
+      internalID: 3029304408896339112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ojos_01_01_1
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 571
+        width: 108
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64fc8e511f0f8690800000000000000
+      internalID: -7597837479075580820
       vertices: []
       indices: 
       edges: []
@@ -164,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      facePlaceholder_0: -2415491717316066674
+      Ojos_01_01_0: 3029304408896339112
+      Ojos_01_01_1: -7597837479075580820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

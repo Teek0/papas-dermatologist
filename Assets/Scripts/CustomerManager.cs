@@ -19,7 +19,7 @@ public class CustomerManager : MonoBehaviour
     // public TextAsset ...
     public GameObject DialogueBox;
 
-    protected Customer currentCustomer;
+    public Customer currentCustomer;
 
     SpriteRenderer bodyRenderer;
     SpriteRenderer hairRenderer;
@@ -150,24 +150,19 @@ public class CustomerManager : MonoBehaviour
 
     public void acceptCustomer()
     {
-        // bool success;
-        // PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Prefabs/" + gameObject.name + ".prefab", out success);
-        // if (success)
-        // {
-            Debug.Log("Activating CamillaScene");
-            asyncOperation.allowSceneActivation = true;
+        Debug.Log("Activating CamillaScene");
+        asyncOperation.allowSceneActivation = true;
 
-            Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
+        Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
 
-            if (sceneToLoad.IsValid())
-            {
-                Debug.Log("Scene is valid");
-                SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
-                Debug.Log("Moved actor to scene");
-                SceneManager.SetActiveScene(sceneToLoad);
-                Debug.Log("Scene activated");
-            }
-        // }
+        if (sceneToLoad.IsValid())
+        {
+            Debug.Log("Scene is valid");
+            SceneManager.MoveGameObjectToScene(gameObject, sceneToLoad);
+            Debug.Log("Moved actor to scene");
+            SceneManager.SetActiveScene(sceneToLoad);
+            Debug.Log("Scene activated");
+        }
     }
 
     // Loads operating table scene
