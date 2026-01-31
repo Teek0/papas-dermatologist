@@ -4819,7 +4819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   musicController: {fileID: 1489002262}
-  gameSceneName: CamillaScene
+  gameSceneName: ReceptionScene
   btnStartAudio: {fileID: 8300000, guid: 97b23f6b528dff14b81af98d4a3d7f5d, type: 3}
   startButtonVolume: 0.3
   blackScreenCanvas: {fileID: 1277489163}

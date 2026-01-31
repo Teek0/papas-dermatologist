@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     public mainMenu_Music musicController;
 
     [Header("Game start settings")]
-    public string gameSceneName = "CamillaScene";
+    public string gameSceneName = "ReceptionScene";
     public AudioClip btnStartAudio;
     [Range(0f, 1f)] public float startButtonVolume = 0.3f;
     public CanvasGroup blackScreenCanvas;

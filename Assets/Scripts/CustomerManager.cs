@@ -42,6 +42,8 @@ public class CustomerManager : MonoBehaviour
     private bool isLoadingCamilla = false;
     private AsyncOperation asyncOperation;
 
+    private string receptionSceneName;
+
     private void SpawnCustomer()
     {
         Sprite[][] skinConditions = { SkinConditionOptions_Forehead, SkinConditionOptions_Cheeks, SkinConditionOptions_Chin };
@@ -151,32 +153,31 @@ public class CustomerManager : MonoBehaviour
 
     public void acceptCustomer()
     {
-        if (isLoadingCamilla)
-            return;
 
         if (GameSession.I != null)
             GameSession.I.SetCustomer(currentCustomer);
         else
             Debug.LogWarning("No existe GameSession en la escena. No se pudo guardar el customer.");
 
+        if (DialogueBox != null)
+            DialogueBox.SetActive(false);
+
+        if (isLoadingCamilla)
+            return;
+
         if (asyncOperation == null)
         {
             Debug.LogWarning("CamillaScene aún no terminó de cargar. Intentando cargar ahora.");
-            StartCoroutine(LoadCamillaAndActivate());
+            isLoadingCamilla = true;
+            StartCoroutine(LoadCamillaAndSwitch());
             return;
         }
 
-        Debug.Log("Activating CamillaScene");
-        asyncOperation.allowSceneActivation = true;
-
-        Scene sceneToLoad = SceneManager.GetSceneByName("CamillaScene");
-        if (sceneToLoad.IsValid())
-        {
-            SceneManager.SetActiveScene(sceneToLoad);
-        }
+        isLoadingCamilla = true;
+        StartCoroutine(SwitchToCamillaAndUnloadReception());
     }
 
-    private IEnumerator LoadCamillaAndActivate()
+    private IEnumerator LoadCamillaAndSwitch()
     {
         asyncOperation = SceneManager.LoadSceneAsync("CamillaScene", LoadSceneMode.Additive);
         asyncOperation.allowSceneActivation = false;
@@ -184,7 +185,23 @@ public class CustomerManager : MonoBehaviour
         while (asyncOperation.progress < 0.9f)
             yield return null;
 
+        yield return SwitchToCamillaAndUnloadReception();
+    }
+
+    private IEnumerator SwitchToCamillaAndUnloadReception()
+    {
         asyncOperation.allowSceneActivation = true;
+
+        while (!asyncOperation.isDone)
+            yield return null;
+
+        Scene camilla = SceneManager.GetSceneByName("CamillaScene");
+        if (camilla.IsValid())
+            SceneManager.SetActiveScene(camilla);
+
+        if (!string.IsNullOrEmpty(receptionSceneName))
+            SceneManager.UnloadSceneAsync(receptionSceneName);
+
         isLoadingCamilla = false;
     }
 
@@ -214,6 +231,7 @@ public class CustomerManager : MonoBehaviour
         timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
         waitingTime = 0;
         DialogueBox.SetActive(false);
+        receptionSceneName = SceneManager.GetActiveScene().name;
         StartCoroutine(loadScene("CamillaScene"));
     }
 
