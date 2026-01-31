@@ -197,7 +197,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 635790759
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7781333278967396280, guid: a3a1476ec2717a34b9449f43c1271d11, type: 3}
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 635790759
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b7dc7115ba44f0945a03d549516c90c9, type: 3}
@@ -545,7 +545,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 635790759
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7b8a369cda52eb64492e7bee0fedd370, type: 3}
@@ -991,7 +991,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 635790759
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 6
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5415784676281034268, guid: 05346c4929f78f545b4779bcff2551db, type: 3}
@@ -1082,7 +1082,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 440086151
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5227636330204164699, guid: 30293adfb7a27224aa0ebbc7d82d90c4, type: 3}
@@ -1173,7 +1173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 440086151
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 9179972205824861800, guid: 42cf6ff6e79f8504a8fcd2d790d05eb1, type: 3}
@@ -1264,7 +1264,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 440086151
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6155659347777596752, guid: fe919c6f1ac99204bb0abe55a8b569c0, type: 3}
@@ -1355,7 +1355,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 635790759
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 3a48890241c67bf46b7a95b6c51db0be, type: 3}
@@ -1368,6 +1368,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1430127671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1430127672}
+  m_Layer: 0
+  m_Name: PaintOverlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1430127672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430127671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1990118819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1507328502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1859,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 635790759
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 3c28718d55b963c4599d60bd2ff34e8f, type: 3}
@@ -2000,6 +2031,7 @@ Transform:
   - {fileID: 796227366}
   - {fileID: 620908774}
   - {fileID: 1804353071}
+  - {fileID: 1430127672}
   m_Father: {fileID: 217672158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012106351

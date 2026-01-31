@@ -14,7 +14,6 @@ public class FacePaintSurfaceWorld : MonoBehaviour
     [SerializeField] private Texture2D paintMask;
     [SerializeField, Range(0f, 1f)] private float maskThreshold = 0.1f;
     [SerializeField] private bool invertMaskV = false;
-    [SerializeField] private SpriteRenderer referenceHeadRenderer;
 
     [Header("Mask Look (Visual Appearance)")]
     [SerializeField] private Texture2D maskLookTexture;
@@ -105,9 +104,6 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         );
 
         sr.sprite = sprite;
-
-        
-
         dirty = true;
     }
 
