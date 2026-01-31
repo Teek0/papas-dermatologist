@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: abdaa8c6d47bd414d8dacd15e77553a6
+guid: fe919c6f1ac99204bb0abe55a8b569c0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6247947128335799691
-    second: Cheeks_0
+      213: -6155659347777596752
+    second: Silla_01_03_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -54,10 +54,10 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 2
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cheeks_0
+      name: Silla_01_03_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 286
         y: 0
-        width: 612
-        height: 408
+        width: 1248
+        height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57a6f189035da49a0800000000000000
-      internalID: -6247947128335799691
+      spriteID: 0b25761ff64b29aa0800000000000000
+      internalID: -6155659347777596752
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cheeks_0: -6247947128335799691
+      Silla_01_03_0: -6155659347777596752
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

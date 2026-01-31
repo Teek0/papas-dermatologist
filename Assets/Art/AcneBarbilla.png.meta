@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 34280296de0448145b064f4046e98dec
+guid: b7dc7115ba44f0945a03d549516c90c9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6128478466848882586
-    second: FullFaceMask_0
+      213: 4524398650959608570
+    second: AcneBarbilla_0
+  - first:
+      213: -4703264589003140751
+    second: AcneBarbilla_1
+  - first:
+      213: -6748319380435413640
+    second: AcneBarbilla_2
+  - first:
+      213: 4737180097977024663
+    second: AcneBarbilla_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +33,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -54,7 +63,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 2
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -139,13 +148,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FullFaceMask_0
+      name: AcneBarbilla_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 612
-        height: 408
+        x: 149
+        y: 60
+        width: 11
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +163,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9f782e02babc0550800000000000000
-      internalID: 6128478466848882586
+      spriteID: afa34bc0a94e9ce30800000000000000
+      internalID: 4524398650959608570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcneBarbilla_1
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 65
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1715bc776c5aabeb0800000000000000
+      internalID: -4703264589003140751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcneBarbilla_2
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 49
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 875534217472952a0800000000000000
+      internalID: -6748319380435413640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcneBarbilla_3
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 44
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79088f05338ddb140800000000000000
+      internalID: 4737180097977024663
       vertices: []
       indices: 
       edges: []
@@ -164,7 +239,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +249,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FullFaceMask_0: 6128478466848882586
+      AcneBarbilla_0: 4524398650959608570
+      AcneBarbilla_1: -4703264589003140751
+      AcneBarbilla_2: -6748319380435413640
+      AcneBarbilla_3: 4737180097977024663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
