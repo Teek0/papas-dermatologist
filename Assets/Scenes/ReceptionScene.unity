@@ -1199,6 +1199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffd5ebc45bd8084594eadc65cc09e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSession
+  constants: {fileID: 11400000, guid: 6b5752bc7fe1e154291cf5b00fbc7284, type: 2}
 --- !u!4 &1197420763
 Transform:
   m_ObjectHideFlags: 0
