@@ -137,6 +137,8 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
+    public Customer CurrentCustomer => currentCustomer;
+
     private void SetText(string _message)
     {
         ((TMP_Text)DialogueBox.transform.Find("Text Box").transform.Find("NPC Text").GetComponent(typeof(TMP_Text))).text = _message;
