@@ -4,7 +4,9 @@ using System.Xml.Schema;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static Unity.VisualScripting.Member;
 using RangeAttribute = UnityEngine.RangeAttribute;
 
@@ -15,22 +17,28 @@ public class mainMenu_Music : MonoBehaviour
     public AudioMixerGroup musicGroup;
     public AudioMixerGroup ambGroup;
     public AudioMixerGroup sfxGroup;
-    [SerializeField] private string musicMix = "musicMix";
-    [SerializeField] private string ambMix = "ambientMix";
-    [SerializeField] private string sfxMix = "sfxMix";
-    [SerializeField] private string masterMix = "masterMix";
 
     [Header("Music files")]
     public AudioClip introClip;
     public AudioClip loopClip;
 
     [Header("Music settings")]
-    [Range(0f, 1f)] public float musicVolume = 0.5f;
+    [Range(0f, 1f)] public float musicVolume = 1f;
     [Range(0f, 1f)] public float startButtonVolume = 0.3f;
     public float fadeInDuration = 2f;
     public float fadeOutDuration = 1.8f;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
+
+    [System.Serializable]
+    public struct VolumeData
+    {
+        public string mixerParameter; 
+        public string playerPrefKey;  
+        public Slider slider;         
+    }
+
+    public List<VolumeData> volumeSettings;
 
     private void Awake()
     {
@@ -46,7 +54,7 @@ public class mainMenu_Music : MonoBehaviour
             musicSource.clip = introClip;
             musicSource.outputAudioMixerGroup = musicGroup;
 
-            mainMixer.SetFloat("musicPitch", 2f); //This does NOT WORK????????? t_t
+            mainMixer.SetFloat("musicPitch", 1.06f);
             StartCoroutine(PlayMusic());
 
             IEnumerator PlayMusic()
@@ -68,27 +76,32 @@ public class mainMenu_Music : MonoBehaviour
         }
     }
 
-    public void setMusicVolume(float sliderValue)
+    private void Start()
     {
-        // Sets music volume.
-        // sliderMusicVolume -> musicMix in (Audio Mixer) MainMixer
-        // this line converts porcentage to decibels :)
-        float dB = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20;
-        mainMixer.SetFloat(musicMix, dB);
-    }
-    public void setSFXVolume(float sliderValue)
-    {
-        // Sets SFX volume.
-        // sliderSFXVolume -> sfxMix in (Audio Mixer) MainMixer
-        float dB = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20;
-        mainMixer.SetFloat(sfxMix, dB);
-    }
+        foreach (var data in volumeSettings)
+        {
+            float savedVolume = PlayerPrefs.GetFloat(data.playerPrefKey, 1f);
+            if (data.slider != null)
+            {
+                data.slider.value = savedVolume;
+            }
 
-    public void setGlobalVolume(float sliderValue)
+            data.slider.onValueChanged.AddListener((val) => {
+                UpdateVolume(data.mixerParameter, data.playerPrefKey, val);
+            });
+
+            UpdateVolume(data.mixerParameter, data.playerPrefKey, savedVolume);
+        }
+    }
+    private void SetMixerVolume(string parameter, float linearValue)
     {
-        //Sets Master Volume
-        float dB = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20;
-        mainMixer.SetFloat(masterMix, dB);
+        float dB = Mathf.Log10(Mathf.Clamp(linearValue, 0.0001f, 1f)) * 20f;
+        mainMixer.SetFloat(parameter, dB);
+    }
+    private void UpdateVolume(string mixerParam, string prefKey, float value)
+    {
+        SetMixerVolume(mixerParam, value);
+        PlayerPrefs.SetFloat(prefKey, value);
     }
 
     IEnumerator FadeInVolume(AudioSource source, float from, float to, float duration)
