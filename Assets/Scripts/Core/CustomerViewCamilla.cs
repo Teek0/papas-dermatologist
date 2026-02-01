@@ -31,12 +31,12 @@ public class CustomerViewCamilla : MonoBehaviour
         {
             switch (sc.AfflictedArea)
             {
-                case "frente": forehead.sprite = sc.Sprite; break;
-                case "cara": cheeks.sprite = sc.Sprite; break;
+                case "frente":   forehead.sprite = sc.Sprite; break;
+                case "mejillas": cheeks.sprite = sc.Sprite; break;   // <-- FIX
                 case "barbilla": chin.sprite = sc.Sprite; break;
             }
         }
 
-        Debug.Log($"Customer en camilla. Pago: {customer.Treatment.Payment}, Tiempo: {customer.Treatment.TimeLimit}s");
+        Debug.Log($"Customer en camilla. Pago: {customer.Treatment.Payment}, Tiempo: {customer.Treatment.TimeLimit}s, Afecciones: {customer.Treatment.SkinConditions.Count}");
     }
 }
