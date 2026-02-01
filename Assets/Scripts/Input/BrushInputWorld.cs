@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BrushInputWorld : MonoBehaviour
@@ -16,6 +17,7 @@ public class BrushInputWorld : MonoBehaviour
     [SerializeField] private bool paintWhileHeld = true;
 
     private bool isPainting;
+    public static event Action<bool> OnBrushValidStateChanged;
 
     private void Reset()
     {
@@ -55,10 +57,13 @@ public class BrushInputWorld : MonoBehaviour
 
                 Color col = creamSelection != null ? creamSelection.CurrentColor : Color.white;
                 paintSurface.PaintAtUV(uv, col);
+
+                OnBrushValidStateChanged?.Invoke(isPainting);
             }
             else
             {
                 isPainting = false;
+                OnBrushValidStateChanged?.Invoke(isPainting);
             }
         }
 
