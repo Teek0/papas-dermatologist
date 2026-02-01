@@ -24,7 +24,7 @@ public class Treatment
             skinConditionTypes.Add("arrugas");
             skinConditionTypes.Add("cicatrices");
 
-            string[] skinAreas = { "frente", "cara", "barbilla" };
+            string[] skinAreas = { "frente", "mejillas", "barbilla" };
 
             string currentType;
             int typeIndex;

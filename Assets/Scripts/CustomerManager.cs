@@ -221,7 +221,13 @@ public class CustomerManager : MonoBehaviour
                     }
                 }
 
-                message += "mi " + areas[i];
+                if (areas[i] == "mejillas")
+                {
+                    message += "mis " + areas[i];
+                } else
+                {
+                    message += "mi " + areas[i];
+                }
             }
         }
 
