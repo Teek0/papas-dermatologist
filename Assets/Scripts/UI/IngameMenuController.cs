@@ -97,13 +97,13 @@ public class IngameMenuController : MonoBehaviour
 
     IEnumerator TransitionToMenu()
     {
-        yield return StartCoroutine(FadeOutRoutine(0f, false));
+        yield return StartCoroutine(FadeOutRoutine(sceneCanvasGroup, 0f, false));
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    public IEnumerator FadeOutRoutine(float target, bool state)
+    public IEnumerator FadeOutRoutine(CanvasGroup sceneGroup, float target, bool state)
     {
-        float startAlpha = sceneCanvasGroup.alpha;
+        float startAlpha = sceneGroup.alpha;
         musicController.mainMixer.GetFloat("masterMix", out float startVolume_dB);
         float startLinear = Mathf.Pow(10f, startVolume_dB / 20f);
 
@@ -115,7 +115,7 @@ public class IngameMenuController : MonoBehaviour
 
             // Fade visual
             float percentage = elapsed / fadeOutDuration;
-            sceneCanvasGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
+            sceneGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
 
             //Fade audio
             float currentLinear = Mathf.Lerp(startLinear, 0f, percentage);
@@ -125,8 +125,8 @@ public class IngameMenuController : MonoBehaviour
             yield return null;
         }
 
-        sceneCanvasGroup.alpha = target;
-        sceneCanvasGroup.blocksRaycasts = state;
-        sceneCanvasGroup.interactable = state;
+        sceneGroup.alpha = target;
+        sceneGroup.blocksRaycasts = state;
+        sceneGroup.interactable = state;
     }
 }
