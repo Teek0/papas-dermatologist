@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -23,6 +25,11 @@ public class GameController : MonoBehaviour
 
     [Header("Evaluation")]
     [SerializeField] private TreatmentEvaluator evaluator;
+
+    [Header("Scene Transition")]
+    [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private float fadeOutDuration = 0.5f;
+    [SerializeField] private string receptionSceneName = "ReceptionScene";
 
     private GameState currentState;
 
@@ -144,4 +151,52 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+    // ---------------- Scene transition (Results -> Reception) ----------------
+
+    /// <summary>
+    /// Llamar desde el botón "Volver a la recepción" del panel de resultados.
+    /// </summary>
+    public void ReturnToReception()
+    {
+        // Evita doble click y estados raros.
+        if (currentState != GameState.Results)
+            return;
+
+        Time.timeScale = 1f;
+        StartCoroutine(TransitionToReception());
+    }
+
+    private IEnumerator TransitionToReception()
+    {
+        if (fadeCanvasGroup != null)
+        {
+            yield return StartCoroutine(FadeCanvasGroup(fadeCanvasGroup, 1f, true));
+        }
+
+        SceneManager.LoadScene(receptionSceneName);
+    }
+
+    private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float targetAlpha, bool blockRaycasts)
+    {
+        if (canvasGroup == null)
+            yield break;
+
+        canvasGroup.blocksRaycasts = true;
+
+        float startAlpha = canvasGroup.alpha;
+        float time = 0f;
+
+        while (time < fadeOutDuration)
+        {
+            time += Time.unscaledDeltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeOutDuration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = targetAlpha;
+        canvasGroup.blocksRaycasts = blockRaycasts;
+    }
+
+
 }
