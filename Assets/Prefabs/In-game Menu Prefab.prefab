@@ -872,6 +872,7 @@ RectTransform:
   - {fileID: 4604527564008903471}
   - {fileID: 655039289036884188}
   - {fileID: 5418042752429671883}
+  - {fileID: 6878479044737932034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -954,7 +955,7 @@ GameObject:
   - component: {fileID: 9059026406945406831}
   - component: {fileID: 336725461556777828}
   - component: {fileID: 5650743971795698001}
-  - component: {fileID: 6852335459859924256}
+  - component: {fileID: 8373419495195082530}
   m_Layer: 5
   m_Name: MenuPanel
   m_TagString: Untagged
@@ -975,12 +976,11 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5540962622568689249}
-  - {fileID: 6878479044737932034}
   m_Father: {fileID: 71168959915141847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -360, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 650, y: 950}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &9059026406945406831
@@ -1029,11 +1029,11 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3612163276131738865}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!95 &6852335459859924256
+--- !u!95 &8373419495195082530
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -1043,7 +1043,7 @@ Animator:
   m_GameObject: {fileID: 3612163276131738865}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 22a20b2566554ea498853976e4e50913, type: 2}
+  m_Controller: {fileID: 9100000, guid: 85dd93ac8c3e2594d9065381f66d7369, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1583,18 +1583,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5006718283636462101}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: menu_close
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4594052195236500357
@@ -3378,11 +3366,11 @@ RectTransform:
   m_GameObject: {fileID: 8898989653518182080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.56, y: 0.56, z: 0.56}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8787434096275706531}
-  m_Father: {fileID: 655039289036884188}
+  m_Father: {fileID: 71168959915141847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

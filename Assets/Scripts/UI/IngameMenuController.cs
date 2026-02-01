@@ -51,24 +51,17 @@ public class IngameMenuController : MonoBehaviour
 
         if (panelObject != null)
         {
-            //panelObject.alpha = isOpen ? 1f : 0f;
+            panelObject.alpha = isOpen ? 1f : 0f;
             panelObject.blocksRaycasts = isOpen;
             panelObject.interactable = isOpen;
-
-            if (!isOpen)
-            {
-                ((Animator)panelObject.GetComponent(typeof(Animator))).SetTrigger("menu_open");
-            } else
-            {
-                ((Animator)panelObject.GetComponent(typeof(Animator))).SetTrigger("menu_close");
-            }
         }
     }
 
     public void actionMainMenu()
     {
         Time.timeScale = 1f;
-        StartCoroutine(TransitionToMenu());
+        SceneManager.LoadScene(mainMenuSceneName);
+        // StartCoroutine(TransitionToMenu());
     }
 
     public void actionSettingsMini()
@@ -77,7 +70,7 @@ public class IngameMenuController : MonoBehaviour
         {
             if (settingsPanel != null)
             {
-                //buttonContainer.alpha = 0f;
+                buttonContainer.alpha = 0f;
                 settingsPanel.alpha = 1f;
 
                 settingsPanel.blocksRaycasts = true;
@@ -94,7 +87,7 @@ public class IngameMenuController : MonoBehaviour
     public void actionSettingsBack()
     {
         settingsPanel.alpha = 0f;
-        //buttonContainer.alpha = 1f;
+        buttonContainer.alpha = 1f;
 
         buttonContainer.blocksRaycasts = true;
         buttonContainer.interactable = true;
