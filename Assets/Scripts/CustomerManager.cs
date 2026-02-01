@@ -328,6 +328,8 @@ public class CustomerManager : MonoBehaviour
 
         receptionSceneName = SceneManager.GetActiveScene().name;
         StartCoroutine(loadScene("CamillaScene"));
+
+        SceneManager.LoadScene("Mini Menu Button", LoadSceneMode.Additive);
     }
 
     // Update is called once per frame
