@@ -314,7 +314,7 @@ public class CustomerManager : MonoBehaviour
 
         customerAlpha = 0f;
 
-        timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
+        timeToNextPatient = Random.Range(2, Constants.MaxWaitingTime);
         waitingTime = 0;
 
         DialogueBox.SetActive(false);
