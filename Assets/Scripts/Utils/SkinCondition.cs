@@ -28,7 +28,7 @@ public class SkinCondition
             afflictedArea = "frente";
         } else if (_skinConditionSprite.name.Contains("Mejillas"))
         {
-            afflictedArea = "cara";
+            afflictedArea = "mejillas";
         } else if (_skinConditionSprite.name.Contains("Barbilla"))
         {
             afflictedArea = "barbilla";

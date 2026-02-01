@@ -44,10 +44,10 @@ public class IngameMenuController : MonoBehaviour
             actionSettingsBack();
         }
 
-        if (buttonTransform != null)
-        {
-            buttonTransform.Rotate(0, 0, -90f);
-        }
+        //if (buttonTransform != null)
+        //{
+        //    buttonTransform.Rotate(0, 0, -90f);
+        //}
 
         if (panelObject != null)
         {

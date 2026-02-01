@@ -9,21 +9,23 @@ using Random = UnityEngine.Random;
 public class CustomerManager : MonoBehaviour
 {
     public GameConstantsSO Constants;
+    public Customer currentCustomer;
 
+    [Header("Character Generation Options")]
     public Sprite[] BodyOptions;
     public Sprite[] HairOptions;
     public Sprite[] EyesOptions;
 
+    [Header("Skin Condition Options")]
     public Sprite[] SkinConditionOptions_Forehead;
     public Sprite[] SkinConditionOptions_Cheeks;
     public Sprite[] SkinConditionOptions_Chin;
 
+    [Header("Dialogue GameObjects")]
     public GameObject DialogueBox;
     public TextAsset dialogueOptions;
     private NPCDialogues dialogue;
     public static event Action<string> OnDialogueUpdate;
-
-    public Customer currentCustomer;
 
     SpriteRenderer bodyRenderer;
     SpriteRenderer hairRenderer;
@@ -225,7 +227,13 @@ public class CustomerManager : MonoBehaviour
                     }
                 }
 
-                message += "mi " + areas[i];
+                if (areas[i] == "mejillas")
+                {
+                    message += "mis " + areas[i];
+                } else
+                {
+                    message += "mi " + areas[i];
+                }
             }
         }
 
@@ -326,6 +334,12 @@ public class CustomerManager : MonoBehaviour
 
         receptionSceneName = SceneManager.GetActiveScene().name;
         StartCoroutine(loadScene("CamillaScene"));
+
+        if (!SceneManager.GetSceneByName("SideMenu").isLoaded)
+        {
+            SceneManager.LoadScene("SideMenu", LoadSceneMode.Additive);
+
+        }
     }
 
     // Update is called once per frame
