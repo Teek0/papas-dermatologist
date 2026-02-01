@@ -301,10 +301,11 @@ public class TreatmentEvaluator : MonoBehaviour
 
         return cream switch
         {
-            CreamType.Acne => new Color(0.2f, 0.6f, 1f),
-            CreamType.Wrinkles => new Color(0.2f, 1f, 0.4f),
-            _ => new Color(1f, 0.35f, 0.75f)
+            CreamType.Acne => new Color(1f, 0.35f, 0.75f),        // rosa
+            CreamType.Wrinkles => new Color(0.35f, 0.22f, 0.12f), // café
+            _ => new Color(0.2f, 1f, 0.4f)                        // verde
         };
+
     }
 
     private static bool HasAlphaVariation(Color32[] pixels)

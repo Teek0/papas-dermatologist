@@ -28,12 +28,28 @@ public class CustomerViewCamilla : MonoBehaviour
         chin.sprite = null;
 
         foreach (var sc in customer.Treatment.SkinConditions)
+            Debug.Log($"SC: type={sc.Type} area='{sc.AfflictedArea}' sprite='{sc.Sprite.name}'");
+
+        foreach (var sc in customer.Treatment.SkinConditions)
         {
             switch (sc.AfflictedArea)
             {
-                case "frente": forehead.sprite = sc.Sprite; break;
-                case "cara": cheeks.sprite = sc.Sprite; break;
-                case "barbilla": chin.sprite = sc.Sprite; break;
+                case "frente":
+                    forehead.sprite = sc.Sprite;
+                    break;
+
+                case "mejillas":
+                case "mejilla":
+                case "cara":
+                case "cachetes":
+                    cheeks.sprite = sc.Sprite;
+                    break;
+
+                case "barbilla":
+                case "menton":
+                case "mentón":
+                    chin.sprite = sc.Sprite;
+                    break;
             }
         }
 

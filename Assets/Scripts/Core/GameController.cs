@@ -141,7 +141,6 @@ public class GameController : MonoBehaviour
                 resultsText.text =
                     $"Correcto: {Mathf.RoundToInt(correctPct)}%\n" +
                     $"Color incorrecto: {Mathf.RoundToInt(wrongPct)}%\n" +
-                    $"Ensuciado: {Mathf.RoundToInt(dirtyPct)}%\n\n" +
                     $"Pago: {finalPay}\n" +
                     $"Dinero: {money}";
             }

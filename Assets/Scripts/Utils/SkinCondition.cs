@@ -34,11 +34,11 @@ public class SkinCondition
             throw new Exception($"Invalid skin condition sprite name (type not found): '{rawName}'");
         }
 
-        if (name.Contains("frente"))
+        if (name.Contains("frente") || name.Contains("tzone") || name.Contains("zona t") || name.Contains("zonat"))
         {
             afflictedArea = "frente";
         }
-        else if (name.Contains("mejilla") || name.Contains("mejillas"))
+        else if (name.Contains("mejilla") || name.Contains("mejillas") || name.Contains("cara") || name.Contains("cachete") || name.Contains("cachetes"))
         {
             afflictedArea = "mejillas";
         }
@@ -49,7 +49,7 @@ public class SkinCondition
         else
         {
             afflictedArea = string.Empty;
-            Debug.LogError($"SkinCondition: sprite '{rawName}' has no recognized area (Frente/Mejillas/Barbilla/Mentón).");
+            Debug.LogError($"SkinCondition: sprite '{rawName}' has no recognized area (Frente/Tzone/Mejillas/Barbilla).");
         }
 
         appearance = _skinConditionSprite;
