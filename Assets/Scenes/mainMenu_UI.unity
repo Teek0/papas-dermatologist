@@ -1364,7 +1364,7 @@ MonoBehaviour:
   gameSceneName: CamillaScene
   btnStartAudio: {fileID: 0}
   startButtonVolume: 0.3
-  blackScreenCanvas: {fileID: 0}
+  blackScreenCanvas: {fileID: 625071518}
   fadeInDuration: 1.5
   fadeOutDuration: 1.8
 --- !u!1 &796396337

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Treatment
 {
-    private int difficultyLevel; // Not readonly 'cause we might want to reduce difficulty along the way for reasons
+    private int difficultyLevel;
     private readonly List<SkinCondition> skinConditions;
     private readonly int payment;
-    private readonly int timeLimit; // in seconds
+    private readonly int timeLimit;
+
     private static int GetTypeSpriteIndex(string type)
     {
         return type switch
@@ -19,11 +20,13 @@ public class Treatment
         };
     }
 
-    private static bool ValidateSkinCondition(Sprite[][] _appearanceOptions, int _areaIndex, int _typeIndex)
+    private static bool ValidateSkinCondition(Sprite[][] appearanceOptions, int areaIndex, int typeIndex)
     {
-        if (_appearanceOptions.Length <= _areaIndex) return false;
-        if (_appearanceOptions[_areaIndex].Length <= _typeIndex) return false;
-        return true;
+        if (appearanceOptions == null) return false;
+        if (areaIndex < 0 || areaIndex >= appearanceOptions.Length) return false;
+        if (appearanceOptions[areaIndex] == null) return false;
+        if (typeIndex < 0 || typeIndex >= appearanceOptions[areaIndex].Length) return false;
+        return appearanceOptions[areaIndex][typeIndex] != null;
     }
 
     public Treatment(int _difficultyLevel, GameConstantsSO _constants, Sprite[][] _appearanceOptions)
@@ -32,7 +35,7 @@ public class Treatment
 
         try
         {
-            difficultyLevel = _difficultyLevel;
+            difficultyLevel = Mathf.Clamp(_difficultyLevel, 1, 3);
 
             payment = _constants.BasePayment * difficultyLevel;
             timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit / (float)difficultyLevel);
@@ -44,53 +47,51 @@ public class Treatment
                 "cicatrices"
             };
 
-            string currentType;
-            int pickIndexInList;
-            int areaIndex; // 0 -> forehead; 1 -> cheeks; 2 -> chin
-            int numberOfAreas;
-            int[] maxAreasPerCondition = { 3, 2, 1 };
-            int[] usedAreasPerCondition = { 0, 0, 0 };
+            int totalAreas = (_appearanceOptions != null) ? _appearanceOptions.Length : 0;
+            if (totalAreas <= 0)
+            {
+                Debug.LogError("Treatment: _appearanceOptions is null or empty. Cannot generate treatment.");
+                return;
+            }
+
             List<int> usedAreas = new();
-            
+
             for (int i = 0; i < difficultyLevel; i++)
             {
-                pickIndexInList = UnityEngine.Random.Range(0, skinConditionTypes.Count);
-                currentType = skinConditionTypes[pickIndexInList];
+                if (skinConditionTypes.Count == 0) break;
+
+                int pickIndexInList = UnityEngine.Random.Range(0, skinConditionTypes.Count);
+                string currentType = skinConditionTypes[pickIndexInList];
                 skinConditionTypes.RemoveAt(pickIndexInList);
 
                 int spriteTypeIndex = GetTypeSpriteIndex(currentType);
 
+                int allowedAreasCount = currentType == "arrugas"
+                    ? Mathf.Min(2, totalAreas)
+                    : totalAreas;
 
-                if (currentType == "arrugas")
+                List<int> candidates = new();
+                for (int a = 0; a < allowedAreasCount; a++)
                 {
-                    numberOfAreas = UnityEngine.Random.Range(1, 3);
-                    areaIndex = UnityEngine.Random.Range(0, numberOfAreas);
-
-                    for (int j = 0; j < numberOfAreas; j++)
-                    {
-                        if (usedAreasPerCondition[spriteTypeIndex] == maxAreasPerCondition[difficultyLevel - 1]) break;
-                        while (usedAreas.Contains(areaIndex))
-                            areaIndex = UnityEngine.Random.Range(0, numberOfAreas);
-                    }
+                    if (!usedAreas.Contains(a))
+                        candidates.Add(a);
                 }
-                else
+                if (candidates.Count == 0)
                 {
-                    numberOfAreas = UnityEngine.Random.Range(1, 4);
-                    areaIndex = UnityEngine.Random.Range(0, numberOfAreas);     
-
-                    for (int j = 0; j < numberOfAreas; j++)
-                    {
-                        if (usedAreasPerCondition[spriteTypeIndex] == maxAreasPerCondition[difficultyLevel - 1]) break;
-                        while (usedAreas.Contains(areaIndex))
-                            areaIndex = UnityEngine.Random.Range(0, numberOfAreas);
-                    }
+                    for (int a = 0; a < allowedAreasCount; a++)
+                        candidates.Add(a);
                 }
 
-                if (!ValidateSkinCondition(_appearanceOptions, areaIndex, spriteTypeIndex)) continue;
+                int areaIndex = candidates[UnityEngine.Random.Range(0, candidates.Count)];
+
+                if (!ValidateSkinCondition(_appearanceOptions, areaIndex, spriteTypeIndex))
+                {
+                    continue;
+                }
+
                 skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][spriteTypeIndex]));
-
-                usedAreas.Add(areaIndex);
-                usedAreasPerCondition[spriteTypeIndex]++;
+                if (!usedAreas.Contains(areaIndex))
+                    usedAreas.Add(areaIndex);
             }
 
             if (skinConditions.Count == 0)

@@ -243,28 +243,4 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         float a = maskPixels[midx].a / 255f;
         return a > maskThreshold;
     }
-
-    private Color32 SampleLookTinted(float u, float v)
-    {
-        Color look = Color.white;
-
-        if (lookPixels != null && lookW > 0 && lookH > 0)
-        {
-            float tu = u * lookTiling;
-            float tv = v * lookTiling;
-
-            tu = tu - Mathf.Floor(tu);
-            tv = tv - Mathf.Floor(tv);
-
-            int tx = Mathf.Clamp(Mathf.RoundToInt(tu * (lookW - 1)), 0, lookW - 1);
-            int ty = Mathf.Clamp(Mathf.RoundToInt(tv * (lookH - 1)), 0, lookH - 1);
-
-            int tidx = ty * lookW + tx;
-            Color32 lp = lookPixels[tidx];
-            look = new Color(lp.r / 255f, lp.g / 255f, lp.b / 255f, lp.a / 255f);
-        }
-
-        Color mixed = new Color(maskTint.r * look.r, maskTint.g * look.g, maskTint.b * look.b, 1f);
-        return (Color32)mixed;
-    }
 }

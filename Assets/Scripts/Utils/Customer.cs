@@ -2,28 +2,48 @@ using UnityEngine;
 
 public class Customer
 {
-    // Attributes related to appearance
     private readonly Sprite body;
     private readonly Sprite hair;
     private readonly Sprite eyes;
 
-    // Attributes related to treatment
-    private Treatment treatment; // Not readonly, 'cause we might want to reduce severity
+    private Treatment treatment;
 
-    public Customer(GameConstantsSO _constants, Sprite[] _bodyOptions, Sprite[] _hairOptions, Sprite[] _eyesOptions, Sprite[][] _skinConditionOptions)
+    public Customer(
+        GameConstantsSO _constants,
+        Sprite[] _bodyOptions,
+        Sprite[] _hairOptions,
+        Sprite[] _eyesOptions,
+        Sprite[][] _skinConditionOptions
+    )
     {
-        body = _bodyOptions[Random.Range(0, _bodyOptions.Length)];
-        hair = _hairOptions[Random.Range(0, _hairOptions.Length)];
-        eyes = _eyesOptions[Random.Range(0, _eyesOptions.Length)];
+        body = PickOrNull(_bodyOptions, "BodyOptions");
+        hair = PickOrNull(_hairOptions, "HairOptions");
+        eyes = PickOrNull(_eyesOptions, "EyesOptions");
+
+        if (_constants == null)
+        {
+            Debug.LogError("Customer: GameConstantsSO es null. Treatment no se puede generar.");
+            treatment = null;
+            return;
+        }
 
         treatment = new Treatment(Random.Range(1, 4), _constants, _skinConditionOptions);
     }
 
+    private static Sprite PickOrNull(Sprite[] options, string label)
+    {
+        if (options == null || options.Length == 0)
+        {
+            Debug.LogError($"Customer: '{label}' está vacío o null en el inspector. Se usará sprite null.");
+            return null;
+        }
+
+        return options[Random.Range(0, options.Length)];
+    }
+
     public Sprite Body => body;
-
     public Sprite Hair => hair;
-
     public Sprite Eyes => eyes;
-
     public Treatment Treatment => treatment;
 }
+

@@ -94,10 +94,10 @@ public class TreatmentEvaluator : MonoBehaviour
         int requestedCount = 0;
 
         int paintedInRequestedCount = 0;
-        int paintedOutsideCount = 0;     
+        int paintedOutsideCount = 0;
 
-        int correctCount = 0;           
-        int wrongColorCount = 0;         
+        int correctCount = 0;
+        int wrongColorCount = 0;
 
         for (int i = 0; i < paint.Length; i++)
         {
@@ -122,8 +122,13 @@ public class TreatmentEvaluator : MonoBehaviour
 
         if (requestedCount == 0)
         {
-            Debug.LogWarning("[TreatmentEvaluator] No se encontraron pixeles solicitados. Revisa mascaras, Read/Write y transform.");
-            requestedCount = 1;
+            Debug.LogWarning("[TreatmentEvaluator] requestedCount == 0. No hay objetivo marcado. Revisa: mascaras (contenido), Read/Write, threshold y MaskTransform.");
+            result.correctCoverage = 0f;
+            result.wrongColorRate = 0f;
+            result.dirtyRate = (paintedOutsideCount > 0) ? 1f : 0f;
+            result.finalScore = 0f;
+            result.finalPayment = Mathf.RoundToInt(basePay * 0.2f);
+            return result;
         }
 
         result.correctCoverage = correctCount / (float)requestedCount;
@@ -163,19 +168,21 @@ public class TreatmentEvaluator : MonoBehaviour
 
         string key = NormalizeKey(area);
 
-        if (key == "frente")
+        if (key == "frente" || key == "tzone" || key == "zonat" || key == "zona t")
         {
             mask = tzoneMask;
             tr = tzoneTransform;
             return true;
         }
-        if (key == "cara")
+
+        if (key == "mejillas" || key == "mejilla" || key == "cara" || key == "cachetes")
         {
             mask = cheeksMask;
             tr = cheeksTransform;
             return true;
         }
-        if (key == "barbilla")
+
+        if (key == "barbilla" || key == "menton" || key == "mentón")
         {
             mask = chinMask;
             tr = chinTransform;

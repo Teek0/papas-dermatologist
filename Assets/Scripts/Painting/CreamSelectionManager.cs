@@ -46,16 +46,23 @@ public class CreamSelectionManager : MonoBehaviour
     {
         string key = NormalizeKey(type);
 
-        if (key == "acne") return CreamType.Acne;
-        if (key == "arrugas" || key == "wrinkles") return CreamType.Wrinkles;
-        if (key == "cicatrices" || key == "scars") return CreamType.Scars;
+        if (key == "acne" || key.StartsWith("acn") || key.Contains("espinilla") || key.Contains("pimple"))
+            return CreamType.Acne;
+        if (key == "arrugas" || key == "arruga" || key.Contains("wrinkle"))
+            return CreamType.Wrinkles;
 
+        if (key == "cicatrices" || key == "cicatriz" || key.Contains("scar"))
+            return CreamType.Scars;
+
+        Debug.LogWarning($"CreamForConditionType: tipo desconocido '{type}' (key normalizada '{key}'). Usando Acne por defecto.");
         return CreamType.Acne;
     }
 
     private static string NormalizeKey(string s)
     {
         if (string.IsNullOrWhiteSpace(s)) return "";
+
+        s = s.Replace('\uFFFD', ' ');
 
         s = s.Trim().ToLowerInvariant();
 
@@ -69,6 +76,6 @@ public class CreamSelectionManager : MonoBehaviour
                 sb.Append(ch);
         }
 
-        return sb.ToString().Normalize(NormalizationForm.FormC);
+        return sb.ToString().Normalize(NormalizationForm.FormC).Trim();
     }
 }

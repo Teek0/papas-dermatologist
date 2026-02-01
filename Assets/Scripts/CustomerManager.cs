@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Reflection;
 using Random = UnityEngine.Random;
 
 public class CustomerManager : MonoBehaviour
@@ -34,7 +35,6 @@ public class CustomerManager : MonoBehaviour
     private SpriteRenderer cheeksRenderer;
     private SpriteRenderer chinRenderer;
 
-
     private float customerAlpha;
 
     private bool attending;
@@ -55,21 +55,22 @@ public class CustomerManager : MonoBehaviour
         Sprite[][] skinConditions = { SkinConditionOptions_Forehead, SkinConditionOptions_Cheeks, SkinConditionOptions_Chin };
         currentCustomer = new Customer(Constants, BodyOptions, HairOptions, EyesOptions, skinConditions);
 
-        // Get SpriteRenderers for customer parts
         bodyRenderer = (SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer));
         hairRenderer = (SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer));
         eyesRenderer = (SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer));
-        
+
         Transform skinConditionsTransform = transform.Find("SkinConditions");
         foreheadRenderer = (SpriteRenderer)skinConditionsTransform.Find("Forehead").GetComponent(typeof(SpriteRenderer));
         cheeksRenderer = (SpriteRenderer)skinConditionsTransform.Find("Cheeks").GetComponent(typeof(SpriteRenderer));
         chinRenderer = (SpriteRenderer)skinConditionsTransform.Find("Chin").GetComponent(typeof(SpriteRenderer));
 
-        // Sprite color modifier
+        foreheadRenderer.sprite = null;
+        cheeksRenderer.sprite = null;
+        chinRenderer.sprite = null;
+
         customerAlpha = 0f;
         Color opacityColor = new(1f, 1f, 1f, customerAlpha);
 
-        // Make invisible before spawining
         bodyRenderer.color = opacityColor;
         hairRenderer.color = opacityColor;
         eyesRenderer.color = opacityColor;
@@ -77,24 +78,28 @@ public class CustomerManager : MonoBehaviour
         cheeksRenderer.color = opacityColor;
         chinRenderer.color = opacityColor;
 
-        // Assigns randomized sprites
         bodyRenderer.sprite = currentCustomer.Body;
         hairRenderer.sprite = currentCustomer.Hair;
         eyesRenderer.sprite = currentCustomer.Eyes;
 
-        for (int i = 0; i < currentCustomer.Treatment.SkinConditions.Count; i++)
+        if (currentCustomer?.Treatment?.SkinConditions != null)
         {
-            if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "frente")
+            for (int i = 0; i < currentCustomer.Treatment.SkinConditions.Count; i++)
             {
-                foreheadRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
-            } else if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "mejillas")
-            {
-                cheeksRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
-            } else if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "barbilla")
-            {
-                chinRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
+                var sc = currentCustomer.Treatment.SkinConditions[i];
+                if (sc == null) continue;
+
+                if (sc.AfflictedArea == "frente")
+                    foreheadRenderer.sprite = sc.Sprite;
+                else if (sc.AfflictedArea == "mejillas")
+                    cheeksRenderer.sprite = sc.Sprite;
+                else if (sc.AfflictedArea == "barbilla")
+                    chinRenderer.sprite = sc.Sprite;
             }
         }
+
+        dialogueVisible = false;
+        if (DialogueBox != null) DialogueBox.SetActive(false);
     }
 
     private void CustomerFadeIn()
@@ -126,93 +131,136 @@ public class CustomerManager : MonoBehaviour
             foreheadRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
             cheeksRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
             chinRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-        } else
+        }
+        else
         {
             attending = false;
             foreheadRenderer.sprite = null;
             cheeksRenderer.sprite = null;
             chinRenderer.sprite = null;
+
+            dialogueVisible = false;
+            if (DialogueBox != null) DialogueBox.SetActive(false);
         }
     }
 
     public List<SkinCondition> GetSkinConditions()
     {
-        if (attending)
-        {
-            return currentCustomer.Treatment.SkinConditions;
-        } else
-        {
-            throw new System.Exception("Not attending a customer");
-        }
+        if (attending) return currentCustomer.Treatment.SkinConditions;
+        throw new Exception("Not attending a customer");
     }
 
     public Customer CurrentCustomer => currentCustomer;
 
     private void SetText(string _message)
     {
-        ((TMP_Text)DialogueBox.transform.Find("Text Box").transform.Find("NPC Text").GetComponent(typeof(TMP_Text))).text = _message;
+        if (DialogueBox == null)
+        {
+            Debug.LogWarning("DialogueBox is null. Cannot set NPC dialogue text.");
+            return;
+        }
+
+        var textTf = DialogueBox.transform.Find("Text Box")?.Find("NPC Text");
+        if (textTf == null)
+        {
+            Debug.LogWarning("NPC Text path not found: DialogueBox/Text Box/NPC Text");
+            return;
+        }
+
+        var tmp = textTf.GetComponent<TMP_Text>();
+        if (tmp == null)
+        {
+            Debug.LogWarning("TMP_Text missing on NPC Text.");
+            return;
+        }
+
+        tmp.text = _message;
         OnDialogueUpdate?.Invoke(_message);
+    }
+
+
+    private static string ExtractLine(object item)
+    {
+        if (item == null) return null;
+
+        if (item is string s) return s;
+
+        Type t = item.GetType();
+
+        PropertyInfo p = t.GetProperty("line", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+        if (p != null && p.PropertyType == typeof(string))
+            return (string)p.GetValue(item);
+
+        FieldInfo f = t.GetField("line", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+        if (f != null && f.FieldType == typeof(string))
+            return (string)f.GetValue(item);
+
+        return null;
+    }
+
+    private string PickLineOrFallback(IList list, string fallback)
+    {
+        if (list == null || list.Count == 0) return fallback;
+
+        int idx = Random.Range(0, list.Count);
+        string line = ExtractLine(list[idx]);
+
+        if (string.IsNullOrWhiteSpace(line)) return fallback;
+        return line;
     }
 
     private void SetRandomText()
     {
-        string message, greeting, preamble, request, article, at, closing;
+        string greeting = "Hola. ";
+        string preamble = "";
+        string request = "¿Me puede ayudar con esto? ";
+        string at = " Me molesta en ";
+        string closing = ".";
 
-        greeting = dialogue.greetings[Random.Range(0, dialogue.greetings.Count)].line;
-        preamble = dialogue.preambles[Random.Range(0, dialogue.preambles.Count)].line;
-        request = dialogue.treatmentRequest[Random.Range(0, dialogue.treatmentRequest.Count)].line;
-        at = dialogue.pointingAt[Random.Range(0, dialogue.pointingAt.Count)].line;
-        closing = dialogue.closing[Random.Range(0, dialogue.closing.Count)].line;
+        if (dialogue != null)
+        {
+            greeting = PickLineOrFallback(dialogue.greetings as IList, greeting);
+            preamble = PickLineOrFallback(dialogue.preambles as IList, preamble);
+            request = PickLineOrFallback(dialogue.treatmentRequest as IList, request);
+            at = PickLineOrFallback(dialogue.pointingAt as IList, at);
+            closing = PickLineOrFallback(dialogue.closing as IList, closing);
+        }
 
-        message = greeting + preamble + request;
+        string message = greeting + preamble + request;
 
         List<string> afflictions = new();
         List<string> areas = new();
 
-        SkinCondition current;
-
-        for (int i = 0; i < currentCustomer.Treatment.SkinConditions.Count; i++)
+        if (currentCustomer?.Treatment?.SkinConditions != null)
         {
-            current = currentCustomer.Treatment.SkinConditions[i];
-            if(!afflictions.Contains(current.Type))
+            for (int i = 0; i < currentCustomer.Treatment.SkinConditions.Count; i++)
             {
-                afflictions.Add(current.Type);
-            }
-            
-            if(!areas.Contains(current.AfflictedArea))
-            {
-                areas.Add(current.AfflictedArea);
+                var current = currentCustomer.Treatment.SkinConditions[i];
+                if (current == null) continue;
+
+                if (!string.IsNullOrEmpty(current.Type) && !afflictions.Contains(current.Type))
+                    afflictions.Add(current.Type);
+
+                if (!string.IsNullOrEmpty(current.AfflictedArea) && !areas.Contains(current.AfflictedArea))
+                    areas.Add(current.AfflictedArea);
             }
         }
 
         for (int i = 0; i < afflictions.Count; i++)
-        { 
+        {
             if (i > 0)
             {
-                if (i == afflictions.Count - 1)
-                {
-                    message += " y ";
-                }
-                else
-                {
-                    message += ", ";
-                }
+                if (i == afflictions.Count - 1) message += " y ";
+                else message += ", ";
             }
 
-            if (afflictions[i] == "acné")
-            {
-                article = "el ";
-            } else
-            {
-                article = "las ";
-            }
-
+            string article = (afflictions[i] == "acné") ? "el " : "las ";
             message += article + afflictions[i];
         }
 
         bool statingTheObvious = !(Random.Range(0, 3) == 1);
 
-        if (statingTheObvious)
+        if (statingTheObvious && areas.Count > 0)
         {
             message += at;
 
@@ -220,23 +268,12 @@ public class CustomerManager : MonoBehaviour
             {
                 if (i > 0)
                 {
-                    if (i == areas.Count - 1)
-                    {
-                        message += " y ";
-                    }
-                    else
-                    {
-                        message += ", ";
-                    }
+                    if (i == areas.Count - 1) message += " y ";
+                    else message += ", ";
                 }
 
-                if (areas[i] == "mejillas")
-                {
-                    message += "mis " + areas[i];
-                } else
-                {
-                    message += "mi " + areas[i];
-                }
+                if (areas[i] == "mejillas") message += "mis " + areas[i];
+                else message += "mi " + areas[i];
             }
         }
 
@@ -248,18 +285,20 @@ public class CustomerManager : MonoBehaviour
     {
         customerSpawned = false;
         onHold = false;
+
+        dialogueVisible = false;
+        if (DialogueBox != null) DialogueBox.SetActive(false);
     }
 
     public void acceptCustomer()
     {
-
         if (GameSession.I != null)
             GameSession.I.SetCustomer(currentCustomer);
         else
             Debug.LogWarning("No existe GameSession en la escena. No se pudo guardar el customer.");
 
-        if (DialogueBox != null)
-            DialogueBox.SetActive(false);
+        dialogueVisible = false;
+        if (DialogueBox != null) DialogueBox.SetActive(false);
 
         if (isLoadingCamilla)
             return;
@@ -304,22 +343,16 @@ public class CustomerManager : MonoBehaviour
         isLoadingCamilla = false;
     }
 
-    // Loads operating table scene
     IEnumerator loadScene(string _sceneName)
     {
         yield return null;
         asyncOperation = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
         asyncOperation.allowSceneActivation = false;
 
-        // Debug.Log("Scene load progress: " + asyncOperation.progress);
         while (asyncOperation.progress <= 0.9f)
-        {
-            // Debug.Log("Loading scene. Progress: " + asyncOperation.progress * 100 + "%");
             yield return null;
-        }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         attending = false;
@@ -332,33 +365,31 @@ public class CustomerManager : MonoBehaviour
         timeToNextPatient = Random.Range(2, Constants.MaxWaitingTime);
         waitingTime = 0;
 
-        DialogueBox.SetActive(false);
-        dialogue = NPCDialogues.CreateFromJSON(dialogueOptions.text);
+        if (DialogueBox != null) DialogueBox.SetActive(false);
+
+        if (dialogueOptions != null && !string.IsNullOrEmpty(dialogueOptions.text))
+            dialogue = NPCDialogues.CreateFromJSON(dialogueOptions.text);
+        else
+        {
+            Debug.LogWarning("dialogueOptions is null/empty. Dialogue will use fallbacks.");
+            dialogue = null;
+        }
 
         receptionSceneName = SceneManager.GetActiveScene().name;
         StartCoroutine(loadScene("CamillaScene"));
 
         if (!SceneManager.GetSceneByName("SideMenu").isLoaded)
-        {
             SceneManager.LoadScene("SideMenu", LoadSceneMode.Additive);
-
-        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (onHold)
-        {
-            return;
-        }
-        if(!attending)
-        {
-            // Not attending a customer
+        if (onHold) return;
 
-            if(!customerSpawned)
+        if (!attending)
+        {
+            if (!customerSpawned)
             {
-                // Waits for the next customer to arrive
                 if (waitingTime >= timeToNextPatient)
                 {
                     SpawnCustomer();
@@ -370,27 +401,29 @@ public class CustomerManager : MonoBehaviour
                 {
                     waitingTime += Time.deltaTime;
                 }
-            } else
+            }
+            else
             {
-                // Customer fade-in
                 CustomerFadeIn();
             }
-        } else
+        }
+        else
         {
-            // Attending a customer
-
-            if(customerSpawned)
+            if (customerSpawned)
             {
-                if(!dialogueVisible)
+                if (!dialogueVisible)
                 {
-                    DialogueBox.SetActive(true);
-                    // SetText("Hola, ¿me atiende?");
+                    if (DialogueBox != null) DialogueBox.SetActive(true);
                     SetRandomText();
+
+                    dialogueVisible = true;
                     onHold = true;
                 }
-            } else
+            }
+            else
             {
-                DialogueBox.SetActive(false);
+                if (DialogueBox != null) DialogueBox.SetActive(false);
+                dialogueVisible = false;
                 CustomerFadeOut();
             }
         }
