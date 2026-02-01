@@ -4,7 +4,6 @@ public class CustomerViewCamilla : MonoBehaviour
 {
     [Header("Renderers")]
     [SerializeField] private SpriteRenderer body;
-    [SerializeField] private SpriteRenderer hair;
     [SerializeField] private SpriteRenderer eyes;
 
     [Header("Skin Conditions")]
@@ -22,7 +21,6 @@ public class CustomerViewCamilla : MonoBehaviour
         }
 
         body.sprite = customer.Body;
-        hair.sprite = customer.Hair;
         eyes.sprite = customer.Eyes;
 
         forehead.sprite = null;

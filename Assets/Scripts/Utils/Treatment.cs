@@ -8,74 +8,92 @@ public class Treatment
     private readonly List<SkinCondition> skinConditions;
     private readonly int payment;
     private readonly int timeLimit; // in seconds
+    private static int GetTypeSpriteIndex(string type)
+    {
+        return type switch
+        {
+            "acné" => 0,
+            "arrugas" => 1,
+            "cicatrices" => 2,
+            _ => throw new Exception("Unknown skin condition type: " + type)
+        };
+    }
 
     public Treatment(int _difficultyLevel, GameConstantsSO _constants, Sprite[][] _appearanceOptions)
     {
+        skinConditions = new();
+
         try
         {
-            skinConditions = new();
-
             difficultyLevel = _difficultyLevel;
+
             payment = _constants.BasePayment * difficultyLevel;
             timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit / (float)difficultyLevel);
 
-            List<string> skinConditionTypes = new();
-            skinConditionTypes.Add("acné");
-            skinConditionTypes.Add("arrugas");
-            skinConditionTypes.Add("cicatrices");
-
-            string[] skinAreas = { "frente", "mejillas", "barbilla" };
+            List<string> skinConditionTypes = new()
+            {
+                "acné",
+                "arrugas",
+                "cicatrices"
+            };
 
             string currentType;
-            int typeIndex;
+            int pickIndexInList;
             int areaIndex; // 0 -> forehead; 1 -> cheeks; 2 -> chin
             int numberOfAreas;
             List<int> usedAreas = new();
 
             for (int i = 0; i < difficultyLevel; i++)
             {
-                typeIndex = UnityEngine.Random.Range(0, skinConditionTypes.Count);
-                currentType = skinConditionTypes[typeIndex];
-                skinConditionTypes.RemoveAt(typeIndex);
+                pickIndexInList = UnityEngine.Random.Range(0, skinConditionTypes.Count);
+                currentType = skinConditionTypes[pickIndexInList];
+                skinConditionTypes.RemoveAt(pickIndexInList);
+
+                int spriteTypeIndex = GetTypeSpriteIndex(currentType);
 
                 if (currentType == "arrugas")
                 {
-                    numberOfAreas = UnityEngine.Random.Range(1, 3);
-                    areaIndex = UnityEngine.Random.Range(0, 2);
+                    numberOfAreas = UnityEngine.Random.Range(1, 3); 
+                    areaIndex = UnityEngine.Random.Range(0, 2);     
+
                     for (int j = 0; j < numberOfAreas; j++)
                     {
                         while (usedAreas.Contains(areaIndex))
-                        {
                             areaIndex = UnityEngine.Random.Range(0, 2);
-                        }
+
                         usedAreas.Add(areaIndex);
-                        skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][typeIndex]));
+
+                        skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][spriteTypeIndex]));
                     }
-                } else
+                }
+                else
                 {
                     numberOfAreas = UnityEngine.Random.Range(1, 4);
-                    areaIndex = UnityEngine.Random.Range(0, 3);
+                    areaIndex = UnityEngine.Random.Range(0, 3);     
+
                     for (int j = 0; j < numberOfAreas; j++)
                     {
                         while (usedAreas.Contains(areaIndex))
-                        {
                             areaIndex = UnityEngine.Random.Range(0, 3);
-                        }
+
                         usedAreas.Add(areaIndex);
-                        skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][typeIndex]));
+
+                        skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][spriteTypeIndex]));
                     }
                 }
 
                 usedAreas.Clear();
             }
 
-
-
-        } catch (Exception ex)
+            if (skinConditions.Count == 0)
+            {
+                Debug.LogError("Treatment generated with ZERO skin conditions. Check _appearanceOptions and sprite naming.");
+            }
+        }
+        catch (Exception ex)
         {
             Debug.LogException(ex);
         }
-
     }
 
     public int Payment => payment;

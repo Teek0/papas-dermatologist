@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 76603d266427c68438265a60eabe3408
+guid: 1898adee249b23647bc79a4e42c50fea
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 862288608502525391
-    second: Chin_0
+      213: 9107901479982822245
+    second: Pelo_00_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chin_0
+      name: Pelo_00_01_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 656
+        y: 411
+        width: 546
+        height: 515
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcda8abbbe677fb00800000000000000
-      internalID: 862288608502525391
+      spriteID: 56371abe324c56e70800000000000000
+      internalID: 9107901479982822245
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Chin_0: 862288608502525391
+      Pelo_00_01_0: 9107901479982822245
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

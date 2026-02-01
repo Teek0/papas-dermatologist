@@ -119,6 +119,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28156262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28156264}
+  - component: {fileID: 28156263}
+  m_Layer: 0
+  m_Name: TreatmentEvaluator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &28156263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28156262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f929376da2f5ff74cba4b3592ee98df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreatmentEvaluator
+  showDebugMask: 1
+  debugOverlayRenderer: {fileID: 0}
+  paintSurface: {fileID: 1430127674}
+  creamSelection: {fileID: 1529310678}
+  tzoneMask: {fileID: 2800000, guid: d509125d100e05b41a22d959c7b1dc64, type: 3}
+  tzoneTransform:
+    scale: {x: 1.8, y: 1.74}
+    offset: {x: 0.035, y: -0.04}
+    clamp: 1
+  cheeksMask: {fileID: 2800000, guid: 3a33752599f91ec439b1c3f8e82587c6, type: 3}
+  cheeksTransform:
+    scale: {x: 1.8, y: 1.74}
+    offset: {x: 0.035, y: -0.04}
+    clamp: 1
+  chinMask: {fileID: 2800000, guid: fd2ce06a3a4cb4e4982608b1027ff698, type: 3}
+  chinTransform:
+    scale: {x: 1.8, y: 1.74}
+    offset: {x: 0.035, y: -0.04}
+    clamp: 1
+  maskThreshold: 0.1
+  paintedAlphaThreshold: 20
+  colorTolerance: 40
+  dirtyPenaltyWeight: 0.8
+  wrongColorPenaltyWeight: 0.9
+  timeBonusWeight: 0.2
+--- !u!4 &28156264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28156262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1299, y: 2.02249, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &117791834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -454,7 +523,7 @@ GameObject:
   - component: {fileID: 335311017}
   - component: {fileID: 335311016}
   m_Layer: 0
-  m_Name: GreenCream
+  m_Name: BrownCream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,9 +538,9 @@ Transform:
   m_GameObject: {fileID: 335311014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.58, y: 1.85, z: 0}
-  m_LocalScale: {x: 0.5039, y: 0.5039, z: 0.5039}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 7.61, y: 1.85, z: 0}
+  m_LocalScale: {x: 0.91999996, y: 0.91999996, z: 0.91999996}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 410805604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -574,7 +643,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2768748812832687573, guid: 2b74e2f30f29bfc408060508dac40ced, type: 3}
+  m_Sprite: {fileID: 5345003734712625316, guid: 975d8ea08caff6a4285cc73274ededa2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -699,7 +768,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 354ab92c3275e8b4cb83ffa635b8c42d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -707,7 +776,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!1 &422387047
 GameObject:
@@ -739,7 +808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerViewCamilla
   body: {fileID: 147796269}
-  hair: {fileID: 796227367}
   eyes: {fileID: 620908775}
   forehead: {fileID: 1667124880}
   cheeks: {fileID: 1200180247}
@@ -965,7 +1033,7 @@ Transform:
   m_GameObject: {fileID: 620908773}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.36, y: -0.56, z: 0}
+  m_LocalPosition: {x: 0.37, y: -0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1270,7 +1338,7 @@ MonoBehaviour:
   circleImage: {fileID: 1306498022}
   selectionManager: {fileID: 1529310678}
   gameController: {fileID: 2107000830}
-  baseSize: 48
+  baseSize: 15
 --- !u!114 &770279538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time: 60'
+  m_text: 'Time: 00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1635,7 +1703,7 @@ Transform:
   m_GameObject: {fileID: 796227365}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37, y: -0.52, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0.79, z: 0}
   m_LocalScale: {x: 0.99, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1690,7 +1758,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 2f862b2f3e36d77469e00103c666d031, type: 3}
+  m_Sprite: {fileID: 9107901479982822245, guid: 1898adee249b23647bc79a4e42c50fea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1913,8 +1981,8 @@ Transform:
   m_GameObject: {fileID: 1164228003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.78, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.16, y: -0.78, z: 0}
+  m_LocalScale: {x: 1.18, y: 1.18, z: 1.18}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 788434939}
@@ -2059,7 +2127,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ae8f29dc7b21998498317a41ce0272eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2067,7 +2135,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!1 &1306498019
 GameObject:
@@ -2173,8 +2241,8 @@ Transform:
   m_GameObject: {fileID: 1430127671}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.03, z: 0}
-  m_LocalScale: {x: 1.15, y: 1.39, z: 1}
+  m_LocalPosition: {x: 0.035, y: -0.04, z: 0}
+  m_LocalScale: {x: 1.8, y: 1.74, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1990118819}
@@ -2195,7 +2263,7 @@ MonoBehaviour:
   paintCollider: {fileID: 1430127676}
   targetSpriteRenderer: {fileID: 1430127675}
   paintSurface: {fileID: 1430127674}
-  creamSelection: {fileID: 0}
+  creamSelection: {fileID: 1529310678}
   gameController: {fileID: 2107000830}
   paintWhileHeld: 1
 --- !u!114 &1430127674
@@ -2213,13 +2281,13 @@ MonoBehaviour:
   hideRendererUntilFirstPaint: 1
   textureSize: 256
   pixelsPerUnit: 100
-  paintMask: {fileID: 2800000, guid: c707aa5e13e7955469e7ae819ead8433, type: 3}
+  paintMask: {fileID: 2800000, guid: d3962c89432a58344b088b753103d2c0, type: 3}
   maskThreshold: 0.1
   invertMaskV: 0
   maskLookTexture: {fileID: 2800000, guid: bc9b68c77d847e9449939a7c5f116833, type: 3}
   lookTiling: 4
   maskTint: {r: 1, g: 0.47, b: 0.7, a: 1}
-  brushRadius: 20
+  brushRadius: 15
   brushStrength: 0.25
 --- !u!212 &1430127675
 SpriteRenderer:
@@ -2402,9 +2470,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreamSelectionManager
   defaultCream: 0
-  acneColor: {r: 0.43137258, g: 0.7843138, b: 0.9803922, a: 1}
-  wrinklesColor: {r: 0.5764706, g: 0.8078432, b: 0.47450984, a: 1}
-  scarsColor: {r: 0.89019614, g: 0.5137255, b: 0.6784314, a: 1}
+  acneColor: {r: 1, g: 0.9058824, b: 0.8980393, a: 1}
+  wrinklesColor: {r: 0.41960788, g: 0.3137255, b: 0.20784315, a: 1}
+  scarsColor: {r: 0.54901963, g: 0.81568635, b: 0.65882355, a: 1}
 --- !u!4 &1529310679
 Transform:
   m_ObjectHideFlags: 0
@@ -2707,7 +2775,7 @@ GameObject:
   - component: {fileID: 1581662820}
   - component: {fileID: 1581662819}
   m_Layer: 0
-  m_Name: PinkCream
+  m_Name: GreenCream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2722,9 +2790,9 @@ Transform:
   m_GameObject: {fileID: 1581662817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.58, y: -0.11, z: 0}
-  m_LocalScale: {x: 0.5039, y: 0.5039, z: 0.5039}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 7.61, y: -0.11, z: 0}
+  m_LocalScale: {x: 0.91999996, y: 0.91999996, z: 0.91999996}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 410805604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2827,7 +2895,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2857805905662610064, guid: 56e3795952d319c42bf3292316b2c1f8, type: 3}
+  m_Sprite: {fileID: -4416568815349327724, guid: d86df3f28abf3c7418c383fb6db7da9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2994,7 +3062,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: eaa6192ff19f6e5419814199c37df649, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3002,7 +3070,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!1 &1763901141
 GameObject:
@@ -3155,8 +3223,8 @@ Transform:
   m_GameObject: {fileID: 1990118818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalPosition: {x: -1.23, y: 0.29, z: 0}
+  m_LocalScale: {x: 1.9100001, y: 1.9100001, z: 1.9100001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 147796268}
@@ -3449,7 +3517,7 @@ GameObject:
   - component: {fileID: 2018895484}
   - component: {fileID: 2018895483}
   m_Layer: 0
-  m_Name: BlueCream
+  m_Name: PinkCream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3464,9 +3532,9 @@ Transform:
   m_GameObject: {fileID: 2018895481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.58, y: 3.82, z: 0}
-  m_LocalScale: {x: 0.5039, y: 0.5039, z: 0.5039}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 7.61, y: 3.82, z: 0}
+  m_LocalScale: {x: 0.91999996, y: 0.91999996, z: 0.91999996}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 410805604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3569,7 +3637,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8303012122850473310, guid: c485b5f2341f1b8498f9d2b1cad12e44, type: 3}
+  m_Sprite: {fileID: 691623595514481080, guid: 26b4f26fd5994e141ad4c86aa808f9ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3590,7 +3658,7 @@ GameObject:
   - component: {fileID: 2107000831}
   - component: {fileID: 2107000830}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3613,6 +3681,7 @@ MonoBehaviour:
   timerText: {fileID: 787931372}
   resultsPanel: {fileID: 1614043847}
   resultsText: {fileID: 1537053182}
+  evaluator: {fileID: 28156263}
 --- !u!4 &2107000831
 Transform:
   m_ObjectHideFlags: 0
@@ -3640,3 +3709,4 @@ SceneRoots:
   - {fileID: 2107000831}
   - {fileID: 422387049}
   - {fileID: 1529310679}
+  - {fileID: 28156264}

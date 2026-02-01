@@ -26,6 +26,11 @@ public class CreamSelectionManager : MonoBehaviour
         CurrentCream == CreamType.Wrinkles ? wrinklesColor :
         scarsColor;
 
+    public Color ColorForCream(CreamType cream) =>
+        cream == CreamType.Acne ? acneColor :
+        cream == CreamType.Wrinkles ? wrinklesColor :
+        scarsColor;
+
     private void Awake()
     {
         CurrentCream = defaultCream;

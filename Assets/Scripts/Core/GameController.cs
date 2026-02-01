@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject resultsPanel;
     [SerializeField] private TextMeshProUGUI resultsText;
 
+    [Header("Evaluation")]
+    [SerializeField] private TreatmentEvaluator evaluator;
+
     private GameState currentState;
 
     public bool CanPaint => currentState == GameState.Running;
@@ -29,6 +32,9 @@ public class GameController : MonoBehaviour
     {
         if (brushInput == null)
             brushInput = FindFirstObjectByType<BrushInputWorld>();
+
+        if (evaluator == null)
+            evaluator = FindFirstObjectByType<TreatmentEvaluator>();
     }
 
     private void Start()
@@ -70,6 +76,7 @@ public class GameController : MonoBehaviour
         {
             remainingTime = 0f;
             EndRound();
+            return;
         }
 
         UpdateTimerText();
@@ -89,13 +96,52 @@ public class GameController : MonoBehaviour
             brushInput.SetPaintingEnabled(false);
 
         var customer = GameSession.I != null ? GameSession.I.CurrentCustomer : null;
-        if (customer != null && GameSession.I != null)
-            GameSession.I.AddMoney(customer.Treatment.Payment);
+
+        int finalPay = 0;
+        float correctPct = 0f;
+        float wrongPct = 0f;
+        float dirtyPct = 0f;
+
+        if (customer != null && evaluator != null)
+        {
+            var conditions = customer.Treatment.SkinConditions;
+            int basePay = customer.Treatment.Payment;
+
+            var eval = evaluator.Evaluate(conditions, basePay, remainingTime, roundDuration);
+
+            finalPay = eval.finalPayment;
+            correctPct = eval.correctCoverage * 100f;
+            wrongPct = eval.wrongColorRate * 100f;
+            dirtyPct = eval.dirtyRate * 100f;
+        }
+        else if (customer != null)
+        {
+            finalPay = customer.Treatment.Payment;
+        }
+
+        if (GameSession.I != null)
+            GameSession.I.AddMoney(finalPay);
 
         if (resultsPanel != null)
             resultsPanel.SetActive(true);
 
         if (resultsText != null)
-            resultsText.text = $"Pago: {(customer != null ? customer.Treatment.Payment : 0)} | Dinero: {(GameSession.I != null ? GameSession.I.Money : 0)}";
+        {
+            int money = (GameSession.I != null) ? GameSession.I.Money : 0;
+
+            if (customer != null && evaluator != null)
+            {
+                resultsText.text =
+                    $"Correcto: {Mathf.RoundToInt(correctPct)}%\n" +
+                    $"Color incorrecto: {Mathf.RoundToInt(wrongPct)}%\n" +
+                    $"Ensuciado: {Mathf.RoundToInt(dirtyPct)}%\n\n" +
+                    $"Pago: {finalPay}\n" +
+                    $"Dinero: {money}";
+            }
+            else
+            {
+                resultsText.text = $"Pago: {finalPay}\nDinero: {money}";
+            }
+        }
     }
 }

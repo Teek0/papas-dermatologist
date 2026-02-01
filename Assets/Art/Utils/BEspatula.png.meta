@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4e72249c5d988834287e095d4bf5cc4c
+guid: 43729ecffc0f26948b51d69fa2961c34
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1307842732638469295
-    second: Tzone_0
+      213: 1565463196003609614
+    second: BEspatula_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tzone_0
+      name: BEspatula_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 123
+        y: 73
+        width: 195
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: facfdfc3904662210800000000000000
-      internalID: 1307842732638469295
+      spriteID: e0c2eba8b74a9b510800000000000000
+      internalID: 1565463196003609614
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tzone_0: 1307842732638469295
+      BEspatula_0: 1565463196003609614
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

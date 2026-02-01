@@ -4,8 +4,8 @@ using UnityEngine;
 public class GameConstantsSO : ScriptableObject
 {
     public const int basePayment = 50;
-    public const int baseTimeLimit = 60;
-    public const float maxWaitingTime = 2.5f;
+    public int baseTimeLimit = 60;
+    public const float maxWaitingTime = 5;
     public int StartingMoney = 100;
 
     public int BasePayment => basePayment;
