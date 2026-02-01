@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4289458372430989287, guid: 87180414f63efa24b8f6a09276ff9d13, type: 3}
       propertyPath: mainMenuSceneName
-      value: SideMenu
+      value: mainMenu_UI
       objectReference: {fileID: 0}
     - target: {fileID: 4354804858797951145, guid: 87180414f63efa24b8f6a09276ff9d13, type: 3}
       propertyPath: m_Sprite
