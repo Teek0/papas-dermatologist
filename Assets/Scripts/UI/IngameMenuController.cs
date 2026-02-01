@@ -60,8 +60,7 @@ public class IngameMenuController : MonoBehaviour
     public void actionMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(mainMenuSceneName);
-        // StartCoroutine(TransitionToMenu());
+        StartCoroutine(TransitionToMenu());
     }
 
     public void actionSettingsMini()
