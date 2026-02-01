@@ -7,6 +7,7 @@ public class BrushInputWorld : MonoBehaviour
     [SerializeField] private Collider2D paintCollider;
     [SerializeField] private SpriteRenderer targetSpriteRenderer;
     [SerializeField] private FacePaintSurfaceWorld paintSurface;
+    [SerializeField] private CreamSelectionManager creamSelection;
 
     [Header("Game State")]
     [SerializeField] private GameController gameController;
@@ -28,6 +29,9 @@ public class BrushInputWorld : MonoBehaviour
 
         if (cam == null)
             cam = Camera.main;
+
+        if (creamSelection == null)
+            creamSelection = FindFirstObjectByType<CreamSelectionManager>();
     }
 
     private void Update()
@@ -43,50 +47,54 @@ public class BrushInputWorld : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (TryGetUV(out var uv))
+            Vector2 worldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+            if (paintCollider.OverlapPoint(worldPos) && TryGetUV(worldPos, out Vector2 uv))
             {
                 isPainting = true;
-                paintSurface.PaintAtUV(uv);
+
+                Color col = creamSelection != null ? creamSelection.CurrentColor : Color.white;
+                paintSurface.PaintAtUV(uv, col);
+            }
+            else
+            {
+                isPainting = false;
             }
         }
-        else if (paintWhileHeld && isPainting && Input.GetMouseButton(0))
+
+        if (paintWhileHeld && isPainting && Input.GetMouseButton(0))
         {
-            if (TryGetUV(out var uv))
-                paintSurface.PaintAtUV(uv);
+            Vector2 worldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+            if (paintCollider.OverlapPoint(worldPos) && TryGetUV(worldPos, out Vector2 uv))
+            {
+                Color col = creamSelection != null ? creamSelection.CurrentColor : Color.white;
+                paintSurface.PaintAtUV(uv, col);
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
             isPainting = false;
     }
 
-    private bool TryGetUV(out Vector2 uv)
+    private bool TryGetUV(Vector2 worldPos, out Vector2 uv)
     {
-        uv = Vector2.zero;
+        uv = default;
 
-        float depth = cam.WorldToScreenPoint(targetSpriteRenderer.transform.position).z;
-
-        Vector3 mouse = Input.mousePosition;
-        Vector3 world = cam.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, depth));
-        Vector2 world2 = new Vector2(world.x, world.y);
-
-        if (!paintCollider.OverlapPoint(world2))
+        if (targetSpriteRenderer == null || targetSpriteRenderer.sprite == null)
             return false;
 
-        var sprite = targetSpriteRenderer.sprite;
-        if (sprite == null)
+        Vector2 local = targetSpriteRenderer.transform.InverseTransformPoint(worldPos);
+
+        var b = targetSpriteRenderer.sprite.bounds;
+        if (!b.Contains(local))
             return false;
 
-        Vector3 local = targetSpriteRenderer.transform.InverseTransformPoint(world2);
-        Bounds b = sprite.bounds;
+        float nx = Mathf.InverseLerp(b.min.x, b.max.x, local.x);
+        float ny = Mathf.InverseLerp(b.min.y, b.max.y, local.y);
 
-        float u = Mathf.InverseLerp(b.min.x, b.max.x, local.x);
-        float v = Mathf.InverseLerp(b.min.y, b.max.y, local.y);
-
-        if (targetSpriteRenderer.flipX) u = 1f - u;
-        if (targetSpriteRenderer.flipY) v = 1f - v;
-
-        uv = new Vector2(u, v);
-        return (u >= 0f && u <= 1f && v >= 0f && v <= 1f);
+        uv = new Vector2(nx, ny);
+        return true;
     }
 
     public void SetPaintingEnabled(bool enabled)
