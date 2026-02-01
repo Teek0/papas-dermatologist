@@ -9,6 +9,7 @@ public class FacePaintSurfaceWorld : MonoBehaviour
 
     [Header("Paint Texture (Runtime)")]
     [SerializeField] private int textureSize = 256;
+    [SerializeField] private float pixelsPerUnit = 100f;
 
     [Header("Paint Area Mask (Where painting is allowed)")]
     [SerializeField] private Texture2D paintMask;
@@ -39,6 +40,8 @@ public class FacePaintSurfaceWorld : MonoBehaviour
     private bool dirty;
     private bool hasPainted;
 
+    public Texture2D PaintTexture => paintTexture;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -68,6 +71,7 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         textureSize = Mathf.Max(16, textureSize);
         brushRadius = Mathf.Max(1, brushRadius);
         lookTiling = Mathf.Max(0.1f, lookTiling);
+        pixelsPerUnit = Mathf.Max(1f, pixelsPerUnit);
 
         if (!Application.isPlaying) return;
 
@@ -87,6 +91,17 @@ public class FacePaintSurfaceWorld : MonoBehaviour
 
     private void RecreatePaintTextureAndSprite()
     {
+        if (paintTexture != null)
+        {
+            Destroy(paintTexture);
+            paintTexture = null;
+        }
+
+        if (sr != null && sr.sprite != null)
+        {
+            Destroy(sr.sprite);
+        }
+
         currentTextureSize = textureSize;
 
         paintTexture = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false);
@@ -95,15 +110,14 @@ public class FacePaintSurfaceWorld : MonoBehaviour
 
         paintPixels = new Color32[textureSize * textureSize];
 
-        float ppu = 100f;
-        var sprite = Sprite.Create(
+        var newSprite = Sprite.Create(
             paintTexture,
             new Rect(0, 0, textureSize, textureSize),
             new Vector2(0.5f, 0.5f),
-            ppu
+            pixelsPerUnit
         );
 
-        sr.sprite = sprite;
+        sr.sprite = newSprite;
         dirty = true;
     }
 
@@ -158,7 +172,7 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         lookH = maskLookTexture.height;
     }
 
-    public void PaintAtUV(Vector2 uv)
+    public void PaintAtUV(Vector2 uv, Color color)
     {
         if (paintTexture == null || paintPixels == null || paintPixels.Length != textureSize * textureSize)
             RecreatePaintTextureAndSprite();
@@ -173,6 +187,8 @@ public class FacePaintSurfaceWorld : MonoBehaviour
 
         int r = brushRadius;
         int r2 = r * r;
+
+        Color32 target = (Color32)color;
 
         for (int dy = -r; dy <= r; dy++)
         {
@@ -198,8 +214,14 @@ public class FacePaintSurfaceWorld : MonoBehaviour
                 int addA = Mathf.RoundToInt(255f * brushStrength);
                 byte newA = (byte)Mathf.Clamp(currentA + addA, 0, 255);
 
-                Color32 col = SampleLookTinted(u, v);
-                paintPixels[idx] = new Color32(col.r, col.g, col.b, newA);
+                Color32 prev = paintPixels[idx];
+                float t = (addA / 255f);
+
+                byte rCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.r, target.r, t));
+                byte gCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.g, target.g, t));
+                byte bCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.b, target.b, t));
+
+                paintPixels[idx] = new Color32(rCol, gCol, bCol, newA);
             }
         }
 
@@ -217,6 +239,7 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         int my = Mathf.Clamp(Mathf.RoundToInt(vv * (maskH - 1)), 0, maskH - 1);
 
         int midx = my * maskW + mx;
+
         float a = maskPixels[midx].a / 255f;
         return a > maskThreshold;
     }
