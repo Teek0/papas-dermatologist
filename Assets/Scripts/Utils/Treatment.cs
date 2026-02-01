@@ -19,6 +19,13 @@ public class Treatment
         };
     }
 
+    private static bool ValidateSkinCondition(Sprite[][] _appearanceOptions, int _areaIndex, int _typeIndex)
+    {
+        if (_appearanceOptions.Length <= _areaIndex) return false;
+        if (_appearanceOptions[_areaIndex].Length <= _typeIndex) return false;
+        return true;
+    }
+
     public Treatment(int _difficultyLevel, GameConstantsSO _constants, Sprite[][] _appearanceOptions)
     {
         skinConditions = new();
@@ -41,8 +48,10 @@ public class Treatment
             int pickIndexInList;
             int areaIndex; // 0 -> forehead; 1 -> cheeks; 2 -> chin
             int numberOfAreas;
+            int[] maxAreasPerCondition = { 3, 2, 1 };
+            int[] usedAreasPerCondition = { 0, 0, 0 };
             List<int> usedAreas = new();
-
+            
             for (int i = 0; i < difficultyLevel; i++)
             {
                 pickIndexInList = UnityEngine.Random.Range(0, skinConditionTypes.Count);
@@ -51,38 +60,37 @@ public class Treatment
 
                 int spriteTypeIndex = GetTypeSpriteIndex(currentType);
 
+
                 if (currentType == "arrugas")
                 {
-                    numberOfAreas = UnityEngine.Random.Range(1, 3); 
-                    areaIndex = UnityEngine.Random.Range(0, 2);     
+                    numberOfAreas = UnityEngine.Random.Range(1, 3);
+                    areaIndex = UnityEngine.Random.Range(0, numberOfAreas);
 
                     for (int j = 0; j < numberOfAreas; j++)
                     {
+                        if (usedAreasPerCondition[spriteTypeIndex] == maxAreasPerCondition[difficultyLevel - 1]) break;
                         while (usedAreas.Contains(areaIndex))
-                            areaIndex = UnityEngine.Random.Range(0, 2);
-
-                        usedAreas.Add(areaIndex);
-
-                        skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][spriteTypeIndex]));
+                            areaIndex = UnityEngine.Random.Range(0, numberOfAreas);
                     }
                 }
                 else
                 {
                     numberOfAreas = UnityEngine.Random.Range(1, 4);
-                    areaIndex = UnityEngine.Random.Range(0, 3);     
+                    areaIndex = UnityEngine.Random.Range(0, numberOfAreas);     
 
                     for (int j = 0; j < numberOfAreas; j++)
                     {
+                        if (usedAreasPerCondition[spriteTypeIndex] == maxAreasPerCondition[difficultyLevel - 1]) break;
                         while (usedAreas.Contains(areaIndex))
-                            areaIndex = UnityEngine.Random.Range(0, 3);
-
-                        usedAreas.Add(areaIndex);
-
-                        skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][spriteTypeIndex]));
+                            areaIndex = UnityEngine.Random.Range(0, numberOfAreas);
                     }
                 }
 
-                usedAreas.Clear();
+                if (!ValidateSkinCondition(_appearanceOptions, areaIndex, spriteTypeIndex)) continue;
+                skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][spriteTypeIndex]));
+
+                usedAreas.Add(areaIndex);
+                usedAreasPerCondition[spriteTypeIndex]++;
             }
 
             if (skinConditions.Count == 0)

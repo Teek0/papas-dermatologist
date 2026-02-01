@@ -27,12 +27,12 @@ public class CustomerManager : MonoBehaviour
     private NPCDialogues dialogue;
     public static event Action<string> OnDialogueUpdate;
 
-    SpriteRenderer bodyRenderer;
-    SpriteRenderer hairRenderer;
-    SpriteRenderer eyesRenderer;
-    SpriteRenderer foreheadRenderer;
-    SpriteRenderer cheeksRenderer;
-    SpriteRenderer chinRenderer;
+    private SpriteRenderer bodyRenderer;
+    private SpriteRenderer hairRenderer;
+    private SpriteRenderer eyesRenderer;
+    private SpriteRenderer foreheadRenderer;
+    private SpriteRenderer cheeksRenderer;
+    private SpriteRenderer chinRenderer;
 
 
     private float customerAlpha;
@@ -87,7 +87,7 @@ public class CustomerManager : MonoBehaviour
             if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "frente")
             {
                 foreheadRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
-            } else if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "cara")
+            } else if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "mejillas")
             {
                 cheeksRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
             } else if (currentCustomer.Treatment.SkinConditions[i].AfflictedArea == "barbilla")
@@ -129,6 +129,9 @@ public class CustomerManager : MonoBehaviour
         } else
         {
             attending = false;
+            foreheadRenderer.sprite = null;
+            cheeksRenderer.sprite = null;
+            chinRenderer.sprite = null;
         }
     }
 

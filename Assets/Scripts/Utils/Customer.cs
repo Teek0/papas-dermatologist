@@ -19,14 +19,6 @@ public class Customer
         treatment = new Treatment(Random.Range(1, 4), _constants, _skinConditionOptions);
     }
 
-    // For testing
-    public Customer(GameConstantsSO _constants, Sprite[] _bodyOptions, Sprite[] _hairOptions, Sprite[] _eyesOptions)
-    {
-        body = _bodyOptions[Random.Range(0, _bodyOptions.Length)];
-        hair = _hairOptions[Random.Range(0, _hairOptions.Length)];
-        eyes = _eyesOptions[Random.Range(0, _eyesOptions.Length)];
-    }
-
     public Sprite Body => body;
 
     public Sprite Hair => hair;
