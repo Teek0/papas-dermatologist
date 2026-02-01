@@ -1634,6 +1634,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 59e0cd6b0c14e6b45a94b338fbe64356, type: 3}
   - {fileID: 21300000, guid: 354ab92c3275e8b4cb83ffa635b8c42d, type: 3}
   DialogueBox: {fileID: 193764308}
+  dialogueOptions: {fileID: 4900000, guid: fa587c9ffaa8f8648b8989a5f1c377a0, type: 3}
 --- !u!4 &1566266266
 Transform:
   m_ObjectHideFlags: 0
