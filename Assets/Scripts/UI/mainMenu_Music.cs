@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
 using NUnit.Framework;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -54,7 +55,12 @@ public class mainMenu_Music : MonoBehaviour
             musicSource.clip = introClip;
             musicSource.outputAudioMixerGroup = musicGroup;
 
-            mainMixer.SetFloat("musicPitch", 1.06f);
+            if (SceneManager.GetActiveScene().name == "mainMenu_UI")
+            {
+                mainMixer.SetFloat("musicPitch", 1.06f);
+            }
+            else mainMixer.SetFloat("musicPitch", 1f);
+
             StartCoroutine(PlayMusic());
 
             IEnumerator PlayMusic()
