@@ -16,8 +16,9 @@ public class CustomerManager : MonoBehaviour
     public Sprite[] SkinConditionOptions_Cheeks;
     public Sprite[] SkinConditionOptions_Chin;
 
-    // public TextAsset ...
     public GameObject DialogueBox;
+    public TextAsset dialogueOptions;
+    private NPCDialogues dialogue;
 
     public Customer currentCustomer;
 
@@ -61,7 +62,7 @@ public class CustomerManager : MonoBehaviour
 
         // Sprite color modifier
         customerAlpha = 0f;
-        Color opacityColor = new Color(1f, 1f, 1f, customerAlpha);
+        Color opacityColor = new(1f, 1f, 1f, customerAlpha);
 
         // Make invisible before spawining
         bodyRenderer.color = opacityColor;
@@ -89,9 +90,6 @@ public class CustomerManager : MonoBehaviour
                 chinRenderer.sprite = currentCustomer.Treatment.SkinConditions[i].Sprite;
             }
         }
-
-        // Assing randomized (TBD) text
-        // SetText("Hola, ¿me atiende?");
     }
 
     private void CustomerFadeIn()
@@ -145,6 +143,90 @@ public class CustomerManager : MonoBehaviour
     private void SetText(string _message)
     {
         ((TMP_Text)DialogueBox.transform.Find("Text Box").transform.Find("NPC Text").GetComponent(typeof(TMP_Text))).text = _message;
+    }
+
+    private void SetRandomText()
+    {
+        string message, greeting, preamble, request, article, at, closing;
+
+        greeting = dialogue.greetings[Random.Range(0, dialogue.greetings.Count)].line;
+        preamble = dialogue.preambles[Random.Range(0, dialogue.preambles.Count)].line;
+        request = dialogue.treatmentRequest[Random.Range(0, dialogue.treatmentRequest.Count)].line;
+        at = dialogue.pointingAt[Random.Range(0, dialogue.pointingAt.Count)].line;
+        closing = dialogue.closing[Random.Range(0, dialogue.closing.Count)].line;
+
+        message = greeting + preamble + request;
+
+        List<string> afflictions = new();
+        List<string> areas = new();
+
+        SkinCondition current;
+
+        for (int i = 0; i < currentCustomer.Treatment.SkinConditions.Count; i++)
+        {
+            current = currentCustomer.Treatment.SkinConditions[i];
+            if(!afflictions.Contains(current.Type))
+            {
+                afflictions.Add(current.Type);
+            }
+            
+            if(!areas.Contains(current.AfflictedArea))
+            {
+                areas.Add(current.AfflictedArea);
+            }
+        }
+
+        for (int i = 0; i < afflictions.Count; i++)
+        { 
+            if (i > 0)
+            {
+                if (i == afflictions.Count - 1)
+                {
+                    message += " y ";
+                }
+                else
+                {
+                    message += ", ";
+                }
+            }
+
+            if (afflictions[i] == "acné")
+            {
+                article = "el ";
+            } else
+            {
+                article = "las ";
+            }
+
+            message += article + afflictions[i];
+        }
+
+        bool statingTheObvious = !(Random.Range(0, 3) == 1);
+
+        if (statingTheObvious)
+        {
+            message += at;
+
+            for (int i = 0; i < areas.Count; i++)
+            {
+                if (i > 0)
+                {
+                    if (i == areas.Count - 1)
+                    {
+                        message += " y ";
+                    }
+                    else
+                    {
+                        message += ", ";
+                    }
+                }
+
+                message += "mi " + areas[i];
+            }
+        }
+
+        message += closing;
+        SetText(message);
     }
 
     public void rejectCustomer()
@@ -214,10 +296,10 @@ public class CustomerManager : MonoBehaviour
         asyncOperation = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
         asyncOperation.allowSceneActivation = false;
 
-        Debug.Log("Scene load progress: " + asyncOperation.progress);
+        // Debug.Log("Scene load progress: " + asyncOperation.progress);
         while (asyncOperation.progress <= 0.9f)
         {
-            Debug.Log("Loading scene. Progress: " + asyncOperation.progress * 100 + "%");
+            // Debug.Log("Loading scene. Progress: " + asyncOperation.progress * 100 + "%");
             yield return null;
         }
     }
@@ -229,10 +311,15 @@ public class CustomerManager : MonoBehaviour
         customerSpawned = false;
         dialogueVisible = false;
         onHold = false;
+
         customerAlpha = 0f;
+
         timeToNextPatient = Random.Range(3, Constants.MaxWaitingTime);
         waitingTime = 0;
+
         DialogueBox.SetActive(false);
+        dialogue = NPCDialogues.CreateFromJSON(dialogueOptions.text);
+
         receptionSceneName = SceneManager.GetActiveScene().name;
         StartCoroutine(loadScene("CamillaScene"));
     }
@@ -276,7 +363,8 @@ public class CustomerManager : MonoBehaviour
                 if(!dialogueVisible)
                 {
                     DialogueBox.SetActive(true);
-                    SetText("Hola, ¿me atiende?");
+                    // SetText("Hola, ¿me atiende?");
+                    SetRandomText();
                     onHold = true;
                 }
             } else

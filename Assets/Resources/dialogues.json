@@ -1,0 +1,41 @@
+{
+  "language" : "ES",
+  "greetings" : [
+    { "line" : "Hola, buenas tardes." },
+    { "line" : "Disculpe, ¿me podría ayudar?" },
+    { "line" : "Buenas tardes." },
+    { "line" : "Ya era hora que alguien me atendiera." },
+    { "line" : "Holi, saludines." }
+  ],
+  "preambles" : [
+    { "line" : " Vi que habían abierto y" },
+    { "line" : " Tengo una cita agendada con ustedes y" },
+    { "line" : " Estaba paseando, vi este local y" },
+    { "line" : " Había escuchado de este local y" }
+  ],
+  "treatmentRequest" : [
+    { "line" : " hace un tiempo que quiero hacer algo con " },
+    { "line" : " me pregunto si quizás me podrían quitar " },
+    { "line" : " llevo un tiempo queriendo tratar " },
+    { "line" : " quiero que me quiten " }
+  ],
+  "pointingAt" : [
+    { "line" : " que tengo en " },
+    { "line" : " en " },
+    { "line" : " que están en " }
+  ],
+  "closing" : [
+    { "line" : ". ¿Será posible?" },
+    { "line" : ". Hazlo rápido que tengo cosas que hacer." },
+    { "line" : ". Muchas gracias." },
+    { "line" : ". ¿Me va a doler?" },
+    { "line" : ". No espero milagros, pero haga lo que pueda." }
+  ],
+  "leaving" : [
+    { "line" : "Muchas, muchas gracias." },
+    { "line" : "¿Aceptan tarjetas?" },
+    { "line" : "¿Te puedo pagar con cupones?" },
+    { "line" : "Los pepinos no se comen, ¿cierto?" },
+    { "line" : "Nos vemos para la siguiente cita." }
+  ]
+}

@@ -24,6 +24,8 @@ public class Treatment
             skinConditionTypes.Add("arrugas");
             skinConditionTypes.Add("cicatrices");
 
+            string[] skinAreas = { "frente", "cara", "barbilla" };
+
             string currentType;
             int typeIndex;
             int areaIndex; // 0 -> forehead; 1 -> cheeks; 2 -> chin
@@ -42,15 +44,11 @@ public class Treatment
                     areaIndex = UnityEngine.Random.Range(0, 2);
                     for (int j = 0; j < numberOfAreas; j++)
                     {
-                        Debug.Log("usedAreas = " + usedAreas + "; areaIndex = " + areaIndex);
-                        Debug.Log("usedAreas.Contain(areaIndex) = " + usedAreas.Contains(areaIndex));
                         while (usedAreas.Contains(areaIndex))
                         {
-                            Debug.Log("Area was already used. Generating new area");
                             areaIndex = UnityEngine.Random.Range(0, 2);
                         }
                         usedAreas.Add(areaIndex);
-                        Debug.Log("New area generated. Proceeding with the rest of the code");
                         skinConditions.Add(new SkinCondition(_appearanceOptions[areaIndex][typeIndex]));
                     }
                 } else
