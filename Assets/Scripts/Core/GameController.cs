@@ -196,6 +196,4 @@ public class GameController : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
         canvasGroup.blocksRaycasts = blockRaycasts;
     }
-
-
 }

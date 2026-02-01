@@ -53,6 +53,6 @@ public class CustomerViewCamilla : MonoBehaviour
             }
         }
 
-        Debug.Log($"Customer en camilla. Pago: {customer.Treatment.Payment}, Tiempo: {customer.Treatment.TimeLimit}s");
+        Debug.Log($"Customer en camilla. Pago: {customer.Treatment.Payment}, Tiempo: {customer.Treatment.TimeLimit}s, Afecciones: {customer.Treatment.SkinConditions.Count}");
     }
 }
