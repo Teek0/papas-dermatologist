@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityEngine.Audio;
 
 public class AnimaleseSpeaker : MonoBehaviour
 {
     [Header("Voice Profile")]
-    public float pitchShift = -4.0f; //in semitones.
+    public float pitchShift = 0.0f; //in semitones.
     [Tooltip("How much the pitch bounces randomly. (0.0 to 1.0 recommended)")]
     public float pitchVariation = 0.5f;
     [Tooltip("Volume multiplier.")]
     public float volume = 1.0f;
+    public AudioMixerGroup sfxGroup;
 
     private Dictionary<string, AudioClip> clipLibrary = new Dictionary<string, AudioClip>();
     private AudioSource[] audioSources;
@@ -49,6 +51,7 @@ public class AnimaleseSpeaker : MonoBehaviour
             audioSources[i] = gameObject.AddComponent<AudioSource>();
             audioSources[i].playOnAwake = false;
             audioSources[i].spatialBlend = 0f;
+            audioSources[i].outputAudioMixerGroup = sfxGroup;
         }
 
         LoadClipsFromResources();
