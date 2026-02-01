@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using Random = UnityEngine.Random;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class CustomerManager : MonoBehaviour
     public GameObject DialogueBox;
     public TextAsset dialogueOptions;
     private NPCDialogues dialogue;
+    public static event Action<string> OnDialogueUpdate;
 
     SpriteRenderer bodyRenderer;
     SpriteRenderer hairRenderer;
@@ -145,6 +148,7 @@ public class CustomerManager : MonoBehaviour
     private void SetText(string _message)
     {
         ((TMP_Text)DialogueBox.transform.Find("Text Box").transform.Find("NPC Text").GetComponent(typeof(TMP_Text))).text = _message;
+        OnDialogueUpdate?.Invoke(_message);
     }
 
     private void SetRandomText()
