@@ -36,6 +36,7 @@
     { "line" : "¿Aceptan tarjetas?" },
     { "line" : "¿Te puedo pagar con cupones?" },
     { "line" : "Los pepinos no se comen, ¿cierto?" },
-    { "line" : "Nos vemos para la siguiente cita." }
+    { "line" : "Nos vemos para la siguiente cita." },
+    { "line" : "No me gustó. 0/10. Pésimo servicio. Volveré por más" }
   ]
 }
