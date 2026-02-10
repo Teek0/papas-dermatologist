@@ -62,100 +62,82 @@ public class Treatment
 
         requestedDifficulty = Mathf.Clamp(_difficultyLevel, 1, 3);
 
-        if (_constants == null)
+        if (_constants == null || _appearanceOptions == null || _appearanceOptions.Length == 0)
         {
-            Debug.LogError("Treatment: GameConstantsSO es null. No se puede calcular pago/tiempo ni generar condiciones.");
+            Debug.LogError("Treatment: datos insuficientes para generar tratamiento.");
             difficultyLevel = 1;
             payment = 0;
             timeLimit = 0;
             LogFinalSummary();
             return;
         }
+//----- Sistema de pares
+        List<(string type, int area)> candidates = new();
 
-        if (_appearanceOptions == null || _appearanceOptions.Length == 0)
-        {
-            Debug.LogError("Treatment: _appearanceOptions es null o vacío. No se pueden generar SkinConditions.");
-            difficultyLevel = 1;
-            payment = _constants.BasePayment * difficultyLevel;
-            timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit / (float)difficultyLevel);
-            LogFinalSummary();
-            return;
-        }
-
-        List<string> remainingTypes = new()
-        {
-            "acné",
-            "arrugas",
-            "cicatrices"
-        };
-
-        HashSet<int> usedAreas = new();
-        int attempts = 0;
-        int maxAttempts = 40;
-
+        string[] allTypes = { "acné", "arrugas", "cicatrices" };
         int totalAreas = _appearanceOptions.Length;
 
-        while (skinConditions.Count < requestedDifficulty &&
-               remainingTypes.Count > 0 &&
-               attempts < maxAttempts)
+        foreach (string type in allTypes)
         {
-            attempts++;
-
-            int typePick = UnityEngine.Random.Range(0, remainingTypes.Count);
-            string type = remainingTypes[typePick];
             int typeIndex = GetTypeSpriteIndex(type);
 
             int allowedAreas = type == "arrugas"
                 ? Mathf.Min(2, totalAreas)
                 : totalAreas;
 
-            List<int> validAreas = new();
-            for (int a = 0; a < allowedAreas; a++)
+            for (int area = 0; area < allowedAreas; area++)
             {
-                if (ValidateSkinCondition(_appearanceOptions, a, typeIndex))
-                    validAreas.Add(a);
+                if (ValidateSkinCondition(_appearanceOptions, area, typeIndex))
+                {
+                    candidates.Add((type, area));
+                }
             }
+        }
 
-            if (validAreas.Count == 0)
-            {
-                remainingTypes.RemoveAt(typePick);
+        for (int i = 0; i < candidates.Count; i++)
+        {
+            int j = UnityEngine.Random.Range(i, candidates.Count);
+            (candidates[i], candidates[j]) = (candidates[j], candidates[i]);
+        }
+
+        HashSet<int> usedAreas = new();
+        HashSet<string> usedTypes = new();
+
+        foreach (var pair in candidates)
+        {
+            if (skinConditions.Count >= requestedDifficulty)
+                break;
+
+            if (usedAreas.Contains(pair.area))
                 continue;
-            }
 
-            List<int> preferred = new();
-            foreach (int a in validAreas)
-                if (!usedAreas.Contains(a))
-                    preferred.Add(a);
+            if (usedTypes.Contains(pair.type))
+                continue;
 
-            int area = (preferred.Count > 0)
-                ? preferred[UnityEngine.Random.Range(0, preferred.Count)]
-                : validAreas[UnityEngine.Random.Range(0, validAreas.Count)];
-
-            Sprite sprite = _appearanceOptions[area][typeIndex];
+            int typeIndex = GetTypeSpriteIndex(pair.type);
+            Sprite sprite = _appearanceOptions[pair.area][typeIndex];
             if (sprite == null)
-            {
                 continue;
-            }
 
             SkinCondition sc = new SkinCondition(sprite);
 
             skinConditions.Add(sc);
-            conditionByArea[area] = sc;
-            usedAreas.Add(area);
-
-            remainingTypes.RemoveAt(typePick);
+            conditionByArea[pair.area] = sc;
+            usedAreas.Add(pair.area);
+            usedTypes.Add(pair.type);
         }
 
-        difficultyLevel = Mathf.Clamp(skinConditions.Count, 1, 3);
+        difficultyLevel = Mathf.Clamp(conditionByArea.Count, 1, 3);
         payment = _constants.BasePayment * difficultyLevel;
         timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit / (float)difficultyLevel);
 
         if (difficultyLevel != requestedDifficulty)
         {
-            Debug.LogWarning($"Treatment: requestedDifficulty={requestedDifficulty} pero effectiveDifficulty={difficultyLevel} (faltan zonas/tipos/sprites).");
+            Debug.LogWarning(
+                $"Treatment: requestedDifficulty={requestedDifficulty} pero effectiveDifficulty={difficultyLevel} (combinaciones insuficientes)."
+            );
         }
 
-// ---------- LOG RESUMEN FINAL ----------
         LogFinalSummary();
     }
 
@@ -176,9 +158,9 @@ public class Treatment
                 lines.Add($"{AreaName(area)} - {type}");
             }
         }
+
         Debug.Log("[Treatment Summary]\n" + string.Join("\n", lines));
     }
-// ---------- LOG RESUMEN FINAL ----------
 
     public int Payment => payment;
     public int TimeLimit => timeLimit;
