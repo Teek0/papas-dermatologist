@@ -380,6 +380,8 @@ public class CustomerManager : MonoBehaviour
 
         if (!SceneManager.GetSceneByName("SideMenu").isLoaded)
             SceneManager.LoadScene("SideMenu", LoadSceneMode.Additive);
+
+        ValidateSkinConditionIndexContract();
     }
 
     void Update()
@@ -428,4 +430,80 @@ public class CustomerManager : MonoBehaviour
             }
         }
     }
+
+    private void ValidateSkinConditionIndexContract()
+{
+    Sprite[][] opts = { SkinConditionOptions_Forehead, SkinConditionOptions_Cheeks, SkinConditionOptions_Chin };
+    string[] areaName = { "frente", "mejillas", "mentón" };
+    string[] expectedByIndex = { "acné", "arrugas", "cicatrices" };
+
+    for (int a = 0; a < opts.Length; a++)
+    {
+        var row = opts[a];
+        if (row == null)
+        {
+            Debug.LogError($"[IndexContract] {areaName[a]}: lista null");
+            continue;
+        }
+
+        if (row.Length < expectedByIndex.Length)
+        {
+            Debug.LogWarning($"[IndexContract] {areaName[a]}: length={row.Length}. " +
+                             $"Contrato incompleto (se esperan 3 índices: 0..2).");
+        }
+
+        int max = Mathf.Min(row.Length, expectedByIndex.Length);
+        for (int i = 0; i < max; i++)
+        {
+            var sp = row[i];
+            string expected = expectedByIndex[i];
+
+            if (sp == null)
+            {
+                Debug.LogWarning($"[IndexContract] {areaName[a]} idx={i} (esperado {expected}): sprite null");
+                continue;
+            }
+
+            string inferred = InferConditionTypeFromSpriteName(sp.name);
+
+            // Si no se puede inferir, no acusamos mismatch, solo avisamos.
+            if (inferred == "desconocido")
+            {
+                Debug.LogWarning($"[IndexContract] {areaName[a]} idx={i} (esperado {expected}): " +
+                                 $"no se pudo inferir tipo desde sprite='{sp.name}'.");
+                continue;
+            }
+
+            if (inferred != expected)
+            {
+                Debug.LogError($"[IndexContract] MISMATCH en {areaName[a]} idx={i}. " +
+                               $"Se esperaba '{expected}' pero sprite='{sp.name}' parece '{inferred}'. " +
+                               $"(Probable arrastre/orden incorrecto en Inspector).");
+            }
+        }
+    }
+}
+
+private string InferConditionTypeFromSpriteName(string spriteName)
+{
+    if (string.IsNullOrWhiteSpace(spriteName))
+        return "desconocido";
+
+    string n = spriteName.ToLowerInvariant();
+
+    // acné
+    if (n.Contains("acne") || n.Contains("espinilla") || n.Contains("espinillas"))
+        return "acné";
+
+    // arrugas
+    if (n.Contains("arruga") || n.Contains("arrugas") || n.Contains("wrinkle"))
+        return "arrugas";
+
+    // cicatrices
+    if (n.Contains("cicatriz") || n.Contains("cicatrices") || n.Contains("scar"))
+        return "cicatrices";
+
+    return "desconocido";
+}
+
 }
