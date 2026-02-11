@@ -785,8 +785,8 @@ RectTransform:
   m_GameObject: {fileID: 625071513}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.03, y: 1.03, z: 1.03}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1277489162}
   m_Father: {fileID: 1743450732}
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   musicController: {fileID: 0}
-  gameSceneName: CamillaScene
+  gameSceneName: mainMenu_UI
   btnStartAudio: {fileID: 0}
   startButtonVolume: 0.3
   blackScreenCanvas: {fileID: 625071518}
@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   musicController: {fileID: 1489002262}
-  gameSceneName: ReceptionScene
+  gameSceneName: mainMenu_UI
   btnStartAudio: {fileID: 8300000, guid: 97b23f6b528dff14b81af98d4a3d7f5d, type: 3}
   startButtonVolume: 0.3
   blackScreenCanvas: {fileID: 625071518}
