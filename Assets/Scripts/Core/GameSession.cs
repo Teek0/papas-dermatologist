@@ -12,6 +12,12 @@ public class GameSession : MonoBehaviour
         if (I != null && I != this) { Destroy(gameObject); return; }
         I = this;
         DontDestroyOnLoad(gameObject);
+        if(constants==null)
+        { 
+            Debug.LogError("GameConstantsSO no está asignado."); 
+            Money=0; 
+            return; 
+        }
     }
 
     public void SetCustomer(Customer customer)

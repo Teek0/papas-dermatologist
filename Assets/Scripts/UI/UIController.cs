@@ -21,7 +21,8 @@ public class UIController : MonoBehaviour
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        closeSettings();
+        if(canvasGroup!=null) closeSettings();
+        else Debug.LogError("UIController: CanvasGroup null.");
         Time.timeScale = 1f;
     }
 

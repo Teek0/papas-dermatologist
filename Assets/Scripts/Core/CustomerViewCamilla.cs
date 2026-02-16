@@ -20,8 +20,10 @@ public class CustomerViewCamilla : MonoBehaviour
             return;
         }
 
-        body.sprite = customer.Body;
-        eyes.sprite = customer.Eyes;
+        if (customer.Body != null) body.sprite = customer.Body;
+        else Debug.LogError("Error al obtener 'body' desde customer.");
+        if (customer.Body != null) eyes.sprite = customer.Eyes;
+        else Debug.LogError("Error al obtener 'eyes' desde customer.");
 
         forehead.sprite = null;
         cheeks.sprite = null;

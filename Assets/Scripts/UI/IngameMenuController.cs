@@ -77,22 +77,28 @@ public class IngameMenuController : MonoBehaviour
 
                 buttonContainer.blocksRaycasts = false;
                 buttonContainer.interactable = false;
-
             }
         }
-        
+        else Debug.LogError("IngameMenuController: buttonContainer or settingsPanel are null.");
     }
 
     public void actionSettingsBack()
     {
-        settingsPanel.alpha = 0f;
-        buttonContainer.alpha = 1f;
+        if (buttonContainer != null)
+        {
+            if (settingsPanel != null)
+            {
+                settingsPanel.alpha = 0f;
+                buttonContainer.alpha = 1f;
 
-        buttonContainer.blocksRaycasts = true;
-        buttonContainer.interactable = true;
+                buttonContainer.blocksRaycasts = true;
+                buttonContainer.interactable = true;
 
-        settingsPanel.blocksRaycasts = false;
-        settingsPanel.interactable = false;
+                settingsPanel.blocksRaycasts = false;
+                settingsPanel.interactable = false;
+            }
+        }
+        else Debug.LogError("IngameMenuController: buttonContainer or settingsPanel are null.");
     }
 
     IEnumerator TransitionToMenu()
