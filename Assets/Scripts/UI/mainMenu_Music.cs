@@ -68,8 +68,7 @@ public class mainMenu_Music : MonoBehaviour
                 // Fade-in
                 yield return StartCoroutine(FadeInVolume(musicSource, 0f, musicVolume, fadeInDuration));
 
-                yield return new WaitUntil(() =>
-                !musicSource.isPlaying && musicSource.timeSamples == 0);
+                yield return new WaitUntil(() => !musicSource.isPlaying);
 
                 musicSource.clip = loopClip;
                 musicSource.loop = true;
