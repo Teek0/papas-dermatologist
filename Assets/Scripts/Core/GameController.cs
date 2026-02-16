@@ -153,12 +153,8 @@ public class GameController : MonoBehaviour
 
     // ---------------- Scene transition (Results -> Reception) ----------------
 
-    /// <summary>
-    /// Llamar desde el botón "Volver a la recepción" del panel de resultados.
-    /// </summary>
     public void ReturnToReception()
     {
-        // Evita doble click y estados raros.
         if (currentState != GameState.Results)
             return;
 

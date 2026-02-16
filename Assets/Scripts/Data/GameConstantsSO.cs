@@ -3,10 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConstantsSO", menuName = "Scriptable Objects/GameConstantsSO")]
 public class GameConstantsSO : ScriptableObject
 {
-    public const int basePayment = 50;
-    public int baseTimeLimit = 60;
+    public int basePayment = 10;
+    public int baseTimeLimit = 10;
     public const float maxWaitingTime = 5;
-    public int StartingMoney = 100;
+    public int StartingMoney = 0;
 
     public int BasePayment => basePayment;
     public int BaseTimeLimit => baseTimeLimit;

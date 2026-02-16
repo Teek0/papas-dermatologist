@@ -742,22 +742,13 @@ GameObject:
   m_Component:
   - component: {fileID: 642592174}
   - component: {fileID: 642592173}
-  - component: {fileID: 642592172}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &642592172
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642592171}
-  m_Enabled: 1
 --- !u!20 &642592173
 Camera:
   m_ObjectHideFlags: 0
@@ -1631,6 +1622,8 @@ MonoBehaviour:
   gameSceneName: CamillaScene
   btnStartAudio: {fileID: 0}
   startButtonVolume: 0.3
+  blackScreenCanvas: {fileID: 0}
+  fadeInDuration: 2.5
   fadeOutDuration: 1.8
 --- !u!114 &1364746570
 MonoBehaviour:

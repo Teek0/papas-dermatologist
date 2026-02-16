@@ -128,8 +128,8 @@ public class Treatment
         }
 
         difficultyLevel = Mathf.Clamp(conditionByArea.Count, 1, 3);
-        payment = _constants.BasePayment * difficultyLevel;
-        timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit / (float)difficultyLevel);
+        payment = _constants.BasePayment + 5 * difficultyLevel;
+        timeLimit = Mathf.CeilToInt(_constants.BaseTimeLimit + (float)difficultyLevel * 3);
 
         if (difficultyLevel != requestedDifficulty)
         {
