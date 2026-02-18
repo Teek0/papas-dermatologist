@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c3e311d01b17c41b760bf33c466271, type: 3}
   m_Name: GameConstantsSO
   m_EditorClassIdentifier: Assembly-CSharp::GameConstantsSO
-  baseTimeLimit: 30
-  StartingMoney: 100
+  basePayment: 10
+  baseTimeLimit: 10
+  StartingMoney: 0
