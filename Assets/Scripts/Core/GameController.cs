@@ -151,8 +151,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // ---------------- Scene transition (Results -> Reception) ----------------
-
     public void ReturnToReception()
     {
         if (currentState != GameState.Results)

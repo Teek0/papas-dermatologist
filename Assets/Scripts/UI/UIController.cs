@@ -54,7 +54,6 @@ public class UIController : MonoBehaviour
         canvas.blocksRaycasts = false;
     }
     
-    // This is a copy of FadeOutRoutine() method found in IngameMenuController.cs
     public IEnumerator FadeOutRoutine(CanvasGroup sceneGroup, float target, bool state)
     {
         float startAlpha = sceneGroup.alpha;
@@ -65,7 +64,6 @@ public class UIController : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
 
-            // Fade visual
             float percentage = elapsed / fadeOutDuration;
             sceneGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
 
@@ -77,7 +75,6 @@ public class UIController : MonoBehaviour
         sceneGroup.interactable = state;
     }
 
-    // ---- Button actions ----
     public void actionExit()
     {
         Debug.Log("Quitting game...");
@@ -93,7 +90,6 @@ public class UIController : MonoBehaviour
         if (musicController != null)
         {
             musicController.playStartSound(btnStartAudio);
-            // Begin fade out and change to next scene.
             StartCoroutine(FadeOutRoutine(blackScreenCanvas, 1f, false));
             StartCoroutine(musicController.FadeOutRoutine(gameSceneName));
         }

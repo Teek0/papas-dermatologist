@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum CreamType
 {
-    Acne,       // rosa
-    Wrinkles,   // café
-    Scars       // verde
+    Acne,
+    Wrinkles,
+    Scars
 }
 
 public class CreamSelectionManager : MonoBehaviour
@@ -15,9 +15,9 @@ public class CreamSelectionManager : MonoBehaviour
     [SerializeField] private CreamType defaultCream = CreamType.Acne;
 
     [Header("Cream Colors")]
-    [SerializeField] private Color acneColor = new Color(1f, 0.35f, 0.75f, 1f);     // rosa
-    [SerializeField] private Color wrinklesColor = new Color(0.35f, 0.22f, 0.12f, 1f); // café
-    [SerializeField] private Color scarsColor = new Color(0.2f, 1f, 0.4f, 1f);      // verde
+    [SerializeField] private Color acneColor = new Color(1f, 0.35f, 0.75f, 1f);
+    [SerializeField] private Color wrinklesColor = new Color(0.35f, 0.22f, 0.12f, 1f);
+    [SerializeField] private Color scarsColor = new Color(0.2f, 1f, 0.4f, 1f);
 
     public CreamType CurrentCream { get; private set; }
 

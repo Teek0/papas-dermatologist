@@ -71,7 +71,7 @@ public class Treatment
             LogFinalSummary();
             return;
         }
-//----- Sistema de pares
+
         List<(string type, int area)> candidates = new();
 
         string[] allTypes = { "acné", "arrugas", "cicatrices" };

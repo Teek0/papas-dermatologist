@@ -466,7 +466,6 @@ public class CustomerManager : MonoBehaviour
 
             string inferred = InferConditionTypeFromSpriteName(sp.name);
 
-            // Si no se puede inferir, no acusamos mismatch, solo avisamos.
             if (inferred == "desconocido")
             {
                 Debug.LogWarning($"[IndexContract] {areaName[a]} idx={i} (esperado {expected}): " +
@@ -491,15 +490,12 @@ private string InferConditionTypeFromSpriteName(string spriteName)
 
     string n = spriteName.ToLowerInvariant();
 
-    // acné
     if (n.Contains("acne") || n.Contains("espinilla") || n.Contains("espinillas"))
         return "acné";
 
-    // arrugas
     if (n.Contains("arruga") || n.Contains("arrugas") || n.Contains("wrinkle"))
         return "arrugas";
 
-    // cicatrices
     if (n.Contains("cicatriz") || n.Contains("cicatrices") || n.Contains("scar"))
         return "cicatrices";
 

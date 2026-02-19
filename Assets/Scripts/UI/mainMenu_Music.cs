@@ -42,7 +42,6 @@ public class mainMenu_Music : MonoBehaviour
         if (loopClip ==  null)
         {
             Debug.LogWarning("You have not assigned a music loop.");
-            // return;
         }
 
         if (introClip != null)
@@ -65,7 +64,6 @@ public class mainMenu_Music : MonoBehaviour
                 musicSource.loop = false;
                 musicSource.Play();
 
-                // Fade-in
                 yield return StartCoroutine(FadeInVolume(musicSource, 0f, musicVolume, fadeInDuration));
 
                 yield return new WaitUntil(() => !musicSource.isPlaying);
@@ -135,7 +133,6 @@ public class mainMenu_Music : MonoBehaviour
 
     public void playStartSound(AudioClip btnStartClip)
     {
-        // Play start sound when start button is clicked.
         AudioSource startBtnSource = CreateSource("startBtnSource", false);
         startBtnSource.outputAudioMixerGroup = sfxGroup;
         if (btnStartClip != null)

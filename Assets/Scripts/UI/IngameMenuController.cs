@@ -44,10 +44,10 @@ public class IngameMenuController : MonoBehaviour
             actionSettingsBack();
         }
 
-        //if (buttonTransform != null)
-        //{
-        //    buttonTransform.Rotate(0, 0, -90f);
-        //}
+        /*if (buttonTransform != null)
+        {
+            buttonTransform.Rotate(0, 0, -90f);
+        }*/
 
         if (panelObject != null)
         {
@@ -119,11 +119,9 @@ public class IngameMenuController : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
 
-            // Fade visual
             float percentage = elapsed / fadeOutDuration;
             sceneGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
 
-            //Fade audio
             float currentLinear = Mathf.Lerp(startLinear, 0f, percentage);
             float targetdB = Mathf.Log10(Mathf.Clamp(currentLinear, 0.0001f, 1f)) * 20f;
             musicController.mainMixer.SetFloat("masterMix", targetdB);

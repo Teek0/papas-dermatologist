@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 public class AnimaleseSpeaker : MonoBehaviour
 {
     [Header("Voice Profile")]
-    public float pitchShift = 0.0f; //in semitones.
+    public float pitchShift = 0.0f;
     [Tooltip("How much the pitch bounces randomly. (0.0 to 1.0 recommended)")]
     public float pitchVariation = 0.5f;
     [Tooltip("Volume multiplier.")]
@@ -18,10 +18,9 @@ public class AnimaleseSpeaker : MonoBehaviour
     private Dictionary<string, AudioClip> clipLibrary = new Dictionary<string, AudioClip>();
     private AudioSource[] audioSources;
 
-    public float crossFadeDuration = 0.05f; // in seconds i guess
+    public float crossFadeDuration = 0.05f;
     private int currentSourceIndex = 0;
 
-    // Se asegura de que ya existen 2 AudioSources.
     void Start()
     {
         if (audioSources == null || audioSources.Length < 2)
@@ -30,13 +29,11 @@ public class AnimaleseSpeaker : MonoBehaviour
         }
     }
 
-    /// Loads 'a' through 'z' from Resources/Animalese
     void LoadClipsFromResources()
     {
         string[] chars = "abcdefghijklmnopqrstuvwxyz".ToCharArray().Select(c => c.ToString()).ToArray();
         foreach (string c in chars)
         {
-            // Assumes files are named "a", "b", etc. inside "Assets/Resources/Animalese/"
             AudioClip clip = Resources.Load<AudioClip>("Animalese/" + c);
             if (clip != null) clipLibrary[c] = clip;
         }
@@ -57,7 +54,6 @@ public class AnimaleseSpeaker : MonoBehaviour
         LoadClipsFromResources();
     }
 
-    // Fade-out and stop worker.
     IEnumerator FadeOut(AudioSource source, float duration)
     {
         float startVolume = source.volume;
@@ -66,7 +62,6 @@ public class AnimaleseSpeaker : MonoBehaviour
         while (timer < duration)
         {
             timer += Time.deltaTime;
-            // Fade to 0
             source.volume = Mathf.Lerp(startVolume, 0f, timer / duration);
             yield return null;
         }
@@ -75,15 +70,12 @@ public class AnimaleseSpeaker : MonoBehaviour
         source.volume = startVolume;
     }
 
-    /// Main function.
-
     public void SpeakKey(string character)
     {
         character = character.ToLower();
 
         if (!clipLibrary.ContainsKey(character)) return;
 
-        // Determine the audio path
         AudioClip clipToPlay = clipLibrary[character];
 
         int nextSourceIndex = (currentSourceIndex + 1) % audioSources.Length;
@@ -103,10 +95,8 @@ public class AnimaleseSpeaker : MonoBehaviour
 
         incomingSource.pitch = pitchMultiplier;
         incomingSource.volume = volume;
-        // Sets audio source clip.
         incomingSource.clip = clipToPlay;
 
-        // Play
         incomingSource.Play();
 
         currentSourceIndex = nextSourceIndex;

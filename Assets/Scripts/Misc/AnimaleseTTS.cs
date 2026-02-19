@@ -3,14 +3,6 @@ using TMPro;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 
-// This script shall function as an interface between AnimaleseSpeaker and the text to emulate speech from.
-// Input: dialogueText (this should be changed to receive text from the client at reception.)
-// Which feeds into PlaySentence(string text)
-
-// NO SÉ COMO SERÁ LA INTERFAZ ENTRE ESTO. 
-// ¿PUEDE SER CREAR UN OBJETO QUE CONTENGA EL DIÁLOGO A MOSTRAR EN PANTALLA
-// Y QUE TAMBIEN ENTREGUE ESE TEXTO A ESTA FUNCIÓN?
-
 public class AnimaleseTTS : MonoBehaviour
 {
 
@@ -18,7 +10,7 @@ public class AnimaleseTTS : MonoBehaviour
     public TMP_Text dialogueText;
 
     [Header("Settings")]
-    public float charactersPerSecond = 25f; // Speed of talking
+    public float charactersPerSecond = 25f;
     public int textCap = 25;
 
     private void OnEnable()
@@ -41,18 +33,15 @@ public class AnimaleseTTS : MonoBehaviour
     /*
     public void ReadText()
     {
-        // Stop any current talking before starting new text
         StopAllCoroutines();
         StartCoroutine(PlaySentence(dialogueText.text));
     }
     */
 
-    // Main function.
     IEnumerator PlaySentence(string sentence)
     {
         foreach (char letter in sentence)
         {
-            // If letter is a space, still take time as if sound is being played.
             if (letter == ' ')
             {
                 yield return new WaitForSeconds(1f / charactersPerSecond);

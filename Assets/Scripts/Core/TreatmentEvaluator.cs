@@ -44,16 +44,16 @@ public class TreatmentEvaluator : MonoBehaviour
     [System.Serializable]
     public struct MaskTransform
     {
-        public Vector2 scale;   // (1,1) = sin escala
-        public Vector2 offset;  // (0,0) = sin desplazamiento (en UV)
-        public bool clamp;      // true recomendado
+        public Vector2 scale;
+        public Vector2 offset;
+        public bool clamp;
     }
 
     public struct EvalResult
     {
-        public float correctCoverage;   // Correcto dentro del target / total target
-        public float wrongColorRate;    // Incorrecto de color dentro del target / pintado dentro del target
-        public float dirtyRate;         // Pintado fuera / total pintado (si penalizePaintOutsideRequested está ON)
+        public float correctCoverage;
+        public float wrongColorRate;
+        public float dirtyRate;
         public float finalScore;
         public int finalPayment;
     }
@@ -198,8 +198,6 @@ public class TreatmentEvaluator : MonoBehaviour
         return result;
     }
 
-    // ---------------- helpers ----------------
-
     private bool TryGetMaskForArea(string area, out Texture2D mask, out MaskTransform tr, out bool invertV)
     {
         mask = null;
@@ -311,9 +309,9 @@ public class TreatmentEvaluator : MonoBehaviour
 
         return cream switch
         {
-            CreamType.Acne => new Color(1f, 0.35f, 0.75f),        // rosa
-            CreamType.Wrinkles => new Color(0.35f, 0.22f, 0.12f), // café
-            _ => new Color(0.2f, 1f, 0.4f)                        // verde
+            CreamType.Acne => new Color(1f, 0.35f, 0.75f),
+            CreamType.Wrinkles => new Color(0.35f, 0.22f, 0.12f),
+            _ => new Color(0.2f, 1f, 0.4f)
         };
 
     }
@@ -360,8 +358,6 @@ public class TreatmentEvaluator : MonoBehaviour
 
         return sb.ToString().Normalize(NormalizationForm.FormC);
     }
-
-    // ---------------- Debug preview ----------------
 
     [ContextMenu("DEBUG/Preview Zone Masks (Tzone=Red, Cheeks=Green, Chin=Blue)")]
     private void DebugPreviewZoneMasks()
