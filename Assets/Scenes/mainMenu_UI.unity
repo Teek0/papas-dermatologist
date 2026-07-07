@@ -1993,7 +1993,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2090396606}
-        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: closeSettings
         m_Mode: 1
         m_Arguments:
@@ -3368,7 +3368,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf1894ee6b26197458cc596be6567b01, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsController
+  m_EditorClassIdentifier: Assembly-CSharp::UIController
   musicController: {fileID: 0}
   gameSceneName: CamillaScene
   btnStartAudio: {fileID: 0}
@@ -3942,7 +3942,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1538508257}
-        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: closeSettings
         m_Mode: 1
         m_Arguments:
@@ -4707,7 +4707,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf1894ee6b26197458cc596be6567b01, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsController
+  m_EditorClassIdentifier: Assembly-CSharp::UIController
   musicController: {fileID: 0}
   gameSceneName: CamillaScene
   btnStartAudio: {fileID: 0}

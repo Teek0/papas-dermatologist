@@ -82,11 +82,14 @@ public class mainMenu_Music : MonoBehaviour
         foreach (var data in volumeSettings)
         {
             float savedVolume = PlayerPrefs.GetFloat(data.playerPrefKey, 1f);
-            if (data.slider != null)
+            if (data.slider == null)
             {
-                data.slider.value = savedVolume;
+                Debug.LogWarning($"mainMenu_Music: slider for '{data.playerPrefKey}' is null. Skipping UI binding.");
+                UpdateVolume(data.mixerParameter, data.playerPrefKey, savedVolume);
+                continue;
             }
 
+            data.slider.value = savedVolume;
             data.slider.onValueChanged.AddListener((val) => {
                 UpdateVolume(data.mixerParameter, data.playerPrefKey, val);
             });

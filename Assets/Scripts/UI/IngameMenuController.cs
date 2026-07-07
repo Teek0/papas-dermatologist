@@ -109,9 +109,20 @@ public class IngameMenuController : MonoBehaviour
 
     public IEnumerator FadeOutRoutine(CanvasGroup sceneGroup, float target, bool state)
     {
-        float startAlpha = sceneGroup.alpha;
-        musicController.mainMixer.GetFloat("masterMix", out float startVolume_dB);
-        float startLinear = Mathf.Pow(10f, startVolume_dB / 20f);
+        bool hasSceneGroup = sceneGroup != null;
+        bool hasMixer = musicController != null && musicController.mainMixer != null;
+
+        if (!hasSceneGroup)
+            Debug.LogWarning("IngameMenuController: sceneCanvasGroup is null. Skipping visual fade.");
+
+        if (!hasMixer)
+            Debug.LogWarning("IngameMenuController: musicController or mainMixer is null. Skipping audio fade.");
+
+        float startAlpha = hasSceneGroup ? sceneGroup.alpha : 0f;
+        float startLinear = 1f;
+
+        if (hasMixer && musicController.mainMixer.GetFloat("masterMix", out float startVolume_dB))
+            startLinear = Mathf.Pow(10f, startVolume_dB / 20f);
 
         float elapsed = 0;
 
@@ -121,15 +132,22 @@ public class IngameMenuController : MonoBehaviour
 
             // Fade visual
             float percentage = elapsed / fadeOutDuration;
-            sceneGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
+            if (hasSceneGroup)
+                sceneGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
 
             //Fade audio
-            float currentLinear = Mathf.Lerp(startLinear, 0f, percentage);
-            float targetdB = Mathf.Log10(Mathf.Clamp(currentLinear, 0.0001f, 1f)) * 20f;
-            musicController.mainMixer.SetFloat("masterMix", targetdB);
+            if (hasMixer)
+            {
+                float currentLinear = Mathf.Lerp(startLinear, 0f, percentage);
+                float targetdB = Mathf.Log10(Mathf.Clamp(currentLinear, 0.0001f, 1f)) * 20f;
+                musicController.mainMixer.SetFloat("masterMix", targetdB);
+            }
 
             yield return null;
         }
+
+        if (!hasSceneGroup)
+            yield break;
 
         sceneGroup.alpha = target;
         sceneGroup.blocksRaycasts = state;

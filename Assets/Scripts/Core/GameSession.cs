@@ -27,6 +27,12 @@ public class GameSession : MonoBehaviour
 
     private void Start()
     {
+        if (constants == null)
+        {
+            Money = 0;
+            return;
+        }
+
         Money = constants.StartingMoney;
     }
 
