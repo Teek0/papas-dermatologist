@@ -81,11 +81,7 @@ public class Treatment
         {
             int typeIndex = GetTypeSpriteIndex(type);
 
-            int allowedAreas = type == "arrugas"
-                ? Mathf.Min(2, totalAreas)
-                : totalAreas;
-
-            for (int area = 0; area < allowedAreas; area++)
+            for (int area = 0; area < totalAreas; area++)
             {
                 if (ValidateSkinCondition(_appearanceOptions, area, typeIndex))
                 {
