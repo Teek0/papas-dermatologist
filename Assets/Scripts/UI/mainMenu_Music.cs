@@ -27,10 +27,6 @@ public class mainMenu_Music : MonoBehaviour
     private Coroutine musicRoutine;
     private bool musicStarted;
 
-    [Header("Audio settings UI")]
-    public AudioSettingsController audioSettingsController;
-    public List<AudioSettingsController.VolumeData> volumeSettings;
-
     private void Awake()
     {
         if (loopClip ==  null)
@@ -118,13 +114,6 @@ public class mainMenu_Music : MonoBehaviour
         musicStarted = false;
     }
 
-    private void Start()
-    {
-        EnsureAudioSettingsController();
-        audioSettingsController.Configure(mainMixer, volumeSettings);
-        audioSettingsController.Initialize();
-    }
-
     IEnumerator FadeInVolume(AudioSource source, float from, float to, float duration)
     {
         float t = 0f;
@@ -165,24 +154,6 @@ public class mainMenu_Music : MonoBehaviour
         
     }
 
-    public void setMusicVolume(float value)
-    {
-        EnsureAudioSettingsController();
-        audioSettingsController.SetMusicVolume(value);
-    }
-
-    public void setSFXVolume(float value)
-    {
-        EnsureAudioSettingsController();
-        audioSettingsController.SetSfxVolume(value);
-    }
-
-    public void OnSliderChanged(float value)
-    {
-        EnsureAudioSettingsController();
-        audioSettingsController.SetGlobalVolume(value);
-    }
-
     public IEnumerator FadeOutRoutine(string sceneIndex)
     {
         float timer = 0;
@@ -205,16 +176,5 @@ public class mainMenu_Music : MonoBehaviour
 
         SceneManager.LoadScene(sceneIndex);
 
-    }
-
-    private void EnsureAudioSettingsController()
-    {
-        if (audioSettingsController != null)
-            return;
-
-        audioSettingsController = GetComponent<AudioSettingsController>();
-
-        if (audioSettingsController == null)
-            audioSettingsController = gameObject.AddComponent<AudioSettingsController>();
     }
 }

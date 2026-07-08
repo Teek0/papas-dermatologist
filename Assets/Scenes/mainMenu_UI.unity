@@ -595,9 +595,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489002262}
-        m_TargetAssemblyTypeName: mainMenu_Music, Assembly-CSharp
-        m_MethodName: setSFXVolume
+      - m_Target: {fileID: 300020001}
+        m_TargetAssemblyTypeName: AudioSettingsController, Assembly-CSharp
+        m_MethodName: SetSfxVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1739,9 +1739,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489002262}
-        m_TargetAssemblyTypeName: mainMenu_Music, Assembly-CSharp
-        m_MethodName: OnSliderChanged
+      - m_Target: {fileID: 300020001}
+        m_TargetAssemblyTypeName: AudioSettingsController, Assembly-CSharp
+        m_MethodName: SetGlobalVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3257,6 +3257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1489002261}
   - component: {fileID: 1489002262}
+  - component: {fileID: 300020001}
   m_Layer: 5
   m_Name: MusicManager
   m_TagString: Untagged
@@ -3305,6 +3306,19 @@ MonoBehaviour:
   startButtonVolume: 0.3
   fadeInDuration: 2
   fadeOutDuration: 1.8
+--- !u!114 &300020001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489002260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4f7e8c4edb4d00a5e9a93909a1d929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioSettingsController
+  mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   volumeSettings:
   - mixerParameter: masterMix
     playerPrefKey: globalVolume
@@ -4606,9 +4620,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489002262}
-        m_TargetAssemblyTypeName: mainMenu_Music, Assembly-CSharp
-        m_MethodName: setMusicVolume
+      - m_Target: {fileID: 300020001}
+        m_TargetAssemblyTypeName: AudioSettingsController, Assembly-CSharp
+        m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

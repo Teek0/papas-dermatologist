@@ -88,21 +88,6 @@ public class AudioSettingsController : MonoBehaviour
         ApplyVolume(SfxMixerParameter, SfxVolumeKey, value);
     }
 
-    public void OnSliderChanged(float value)
-    {
-        SetGlobalVolume(value);
-    }
-
-    public void setMusicVolume(float value)
-    {
-        SetMusicVolume(value);
-    }
-
-    public void setSFXVolume(float value)
-    {
-        SetSfxVolume(value);
-    }
-
     private void ApplyVolume(string mixerParameter, string playerPrefKey, float linearValue)
     {
         if (mainMixer == null || string.IsNullOrEmpty(mixerParameter))
