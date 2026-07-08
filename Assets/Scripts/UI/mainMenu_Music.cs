@@ -72,13 +72,7 @@ public class mainMenu_Music : MonoBehaviour
     {
         string ownerSceneName = gameObject.scene.name;
 
-        if (ownerSceneName == SceneNames.Camilla)
-            return false;
-
-        if (ownerSceneName == SceneNames.SideMenu)
-            return false;
-
-        return ownerSceneName == activeSceneName;
+        return ownerSceneName == SceneNames.MainMenu && activeSceneName == SceneNames.MainMenu;
     }
 
     private void StartMusic()

@@ -4,8 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class IngameMenuController : MonoBehaviour
 {
+    private const string MasterMixerParameter = "masterMix";
+
     [Header("Scene configuration")]
     public string mainMenuSceneName = SceneNames.MainMenu;
+    public string receptionSceneName = SceneNames.Reception;
     public float fadeOutDuration = 1.5f;
     public CanvasGroup sceneCanvasGroup;
 
@@ -59,7 +62,13 @@ public class IngameMenuController : MonoBehaviour
     public void actionMainMenu()
     {
         Time.timeScale = 1f;
-        StartCoroutine(TransitionToMenu());
+        StartCoroutine(TransitionToScene(mainMenuSceneName));
+    }
+
+    public void actionReception()
+    {
+        Time.timeScale = 1f;
+        StartCoroutine(TransitionToScene(receptionSceneName));
     }
 
     public void actionSettingsMini()
@@ -100,10 +109,11 @@ public class IngameMenuController : MonoBehaviour
         else Debug.LogError("IngameMenuController: buttonContainer or settingsPanel are null.");
     }
 
-    IEnumerator TransitionToMenu()
+    IEnumerator TransitionToScene(string sceneName)
     {
         yield return StartCoroutine(FadeOutRoutine(sceneCanvasGroup, 0f, false));
-        SceneManager.LoadScene(mainMenuSceneName);
+        ResetMasterMixerVolume();
+        SceneManager.LoadScene(sceneName);
     }
 
     public IEnumerator FadeOutRoutine(CanvasGroup sceneGroup, float target, bool state)
@@ -111,16 +121,10 @@ public class IngameMenuController : MonoBehaviour
         bool hasSceneGroup = sceneGroup != null;
         bool hasMixer = musicController != null && musicController.mainMixer != null;
 
-        if (!hasSceneGroup)
-            Debug.LogWarning("IngameMenuController: sceneCanvasGroup is null. Skipping visual fade.");
-
-        if (!hasMixer)
-            Debug.LogWarning("IngameMenuController: musicController or mainMixer is null. Skipping audio fade.");
-
         float startAlpha = hasSceneGroup ? sceneGroup.alpha : 0f;
         float startLinear = 1f;
 
-        if (hasMixer && musicController.mainMixer.GetFloat("masterMix", out float startVolume_dB))
+        if (hasMixer && musicController.mainMixer.GetFloat(MasterMixerParameter, out float startVolume_dB))
             startLinear = Mathf.Pow(10f, startVolume_dB / 20f);
 
         float elapsed = 0;
@@ -139,7 +143,7 @@ public class IngameMenuController : MonoBehaviour
             {
                 float currentLinear = Mathf.Lerp(startLinear, 0f, percentage);
                 float targetdB = Mathf.Log10(Mathf.Clamp(currentLinear, 0.0001f, 1f)) * 20f;
-                musicController.mainMixer.SetFloat("masterMix", targetdB);
+                musicController.mainMixer.SetFloat(MasterMixerParameter, targetdB);
             }
 
             yield return null;
@@ -151,5 +155,11 @@ public class IngameMenuController : MonoBehaviour
         sceneGroup.alpha = target;
         sceneGroup.blocksRaycasts = state;
         sceneGroup.interactable = state;
+    }
+
+    private void ResetMasterMixerVolume()
+    {
+        if (musicController != null && musicController.mainMixer != null)
+            musicController.mainMixer.SetFloat(MasterMixerParameter, 0f);
     }
 }

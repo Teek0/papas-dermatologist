@@ -50,11 +50,6 @@ public class CustomerManager : MonoBehaviour
     private float timeToNextPatient;
     private float waitingTime;
 
-    private bool isLoadingCamilla = false;
-    private AsyncOperation asyncOperation;
-
-    private string receptionSceneName;
-
     private void SpawnCustomer()
     {
         Sprite[][] skinConditions = { SkinConditionOptions_Forehead, SkinConditionOptions_Cheeks, SkinConditionOptions_Chin };
@@ -332,59 +327,9 @@ public class CustomerManager : MonoBehaviour
         dialogueVisible = false;
         if (DialogueBox != null) DialogueBox.SetActive(false);
 
-        if (isLoadingCamilla)
-            return;
-
-        if (asyncOperation == null)
-        {
-            Debug.LogWarning("CamillaScene aún no terminó de cargar. Intentando cargar ahora.");
-            isLoadingCamilla = true;
-            StartCoroutine(LoadCamillaAndSwitch());
-            return;
-        }
-
-        isLoadingCamilla = true;
-        StartCoroutine(SwitchToCamillaAndUnloadReception());
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneNames.Camilla);
     }
-
-    private IEnumerator LoadCamillaAndSwitch()
-    {
-        asyncOperation = SceneManager.LoadSceneAsync(SceneNames.Camilla, LoadSceneMode.Additive);
-        asyncOperation.allowSceneActivation = false;
-
-        while (asyncOperation.progress < 0.9f)
-            yield return null;
-
-        yield return SwitchToCamillaAndUnloadReception();
-    }
-
-    private IEnumerator SwitchToCamillaAndUnloadReception()
-    {
-        asyncOperation.allowSceneActivation = true;
-
-        while (!asyncOperation.isDone)
-            yield return null;
-
-        Scene camilla = SceneManager.GetSceneByName(SceneNames.Camilla);
-        if (camilla.IsValid())
-            SceneManager.SetActiveScene(camilla);
-
-        if (!string.IsNullOrEmpty(receptionSceneName))
-            SceneManager.UnloadSceneAsync(receptionSceneName);
-
-        isLoadingCamilla = false;
-    }
-
-    IEnumerator loadScene(string _sceneName)
-    {
-        yield return null;
-        asyncOperation = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
-        asyncOperation.allowSceneActivation = false;
-
-        while (asyncOperation.progress <= 0.9f)
-            yield return null;
-    }
-
     void Start()
     {
         if (Constants == null)
@@ -414,11 +359,6 @@ public class CustomerManager : MonoBehaviour
             dialogue = null;
         }
 
-        receptionSceneName = SceneManager.GetActiveScene().name;
-        StartCoroutine(loadScene(SceneNames.Camilla));
-
-        if (!SceneManager.GetSceneByName(SceneNames.SideMenu).isLoaded)
-            SceneManager.LoadScene(SceneNames.SideMenu, LoadSceneMode.Additive);
 
         if (validateSkinConditionIndexContract)
             ValidateSkinConditionIndexContract();
@@ -547,3 +487,4 @@ private string InferConditionTypeFromSpriteName(string spriteName)
 }
 
 }
+
