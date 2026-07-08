@@ -9,8 +9,20 @@ public class CreamAudioManager : MonoBehaviour
 
     private Coroutine fadeCoroutine;
 
+    private void Awake()
+    {
+        if (creamAudioSource == null)
+            creamAudioSource = GetComponent<AudioSource>();
+    }
+
     private void OnEnable()
     {
+        if (creamAudioSource == null)
+        {
+            Debug.LogWarning("CreamAudioManager: creamAudioSource is null. Brush audio will be disabled.");
+            return;
+        }
+
         BrushInputWorld.OnBrushValidStateChanged += HandleBrushAudio;
     }
 
@@ -20,6 +32,9 @@ public class CreamAudioManager : MonoBehaviour
     }
     private void HandleBrushAudio(bool isBrushing)
     {
+        if (creamAudioSource == null)
+            return;
+
         float target = isBrushing ? 1f : 0f;
 
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);

@@ -40,7 +40,7 @@ public class BrushInputWorld : MonoBehaviour
     {
         if (gameController != null && !gameController.CanPaint)
         {
-            isPainting = false;
+            SetPaintingState(false);
             return;
         }
 
@@ -53,17 +53,14 @@ public class BrushInputWorld : MonoBehaviour
 
             if (paintCollider.OverlapPoint(worldPos) && TryGetUV(worldPos, out Vector2 uv))
             {
-                isPainting = true;
+                SetPaintingState(true);
 
                 Color col = creamSelection != null ? creamSelection.CurrentColor : Color.white;
                 paintSurface.PaintAtUV(uv, col);
-
-                OnBrushValidStateChanged?.Invoke(isPainting);
             }
             else
             {
-                isPainting = false;
-                OnBrushValidStateChanged?.Invoke(isPainting);
+                SetPaintingState(false);
             }
         }
 
@@ -79,7 +76,16 @@ public class BrushInputWorld : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0))
-            isPainting = false;
+            SetPaintingState(false);
+    }
+
+    private void SetPaintingState(bool value)
+    {
+        if (isPainting == value)
+            return;
+
+        isPainting = value;
+        OnBrushValidStateChanged?.Invoke(isPainting);
     }
 
     private bool TryGetUV(Vector2 worldPos, out Vector2 uv)
@@ -105,6 +111,6 @@ public class BrushInputWorld : MonoBehaviour
     public void SetPaintingEnabled(bool enabled)
     {
         this.enabled = enabled;
-        if (!enabled) isPainting = false;
+        if (!enabled) SetPaintingState(false);
     }
 }

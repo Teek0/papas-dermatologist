@@ -142,16 +142,6 @@ public class TreatmentEvaluator : MonoBehaviour
                 wrongColorCount++;
         }
 
-        if (paintedInRequestedCount == 0)
-        {
-            result.correctCoverage = 0f;
-            result.wrongColorRate = 0f;
-            result.dirtyRate = 0f;
-            result.finalScore = 0f;
-            result.finalPayment = 0;
-            return result;
-        }
-
         if (requestedCount == 0)
         {
             Debug.LogWarning("[TreatmentEvaluator] requestedCount == 0. No hay objetivo marcado. Revisa: masks, Read/Write, maskThreshold, transforms e invertV.");
@@ -160,6 +150,16 @@ public class TreatmentEvaluator : MonoBehaviour
             result.dirtyRate = 0f;
             result.finalScore = 0f;
             result.finalPayment = Mathf.RoundToInt(basePay * 0.2f);
+            return result;
+        }
+
+        if (paintedInRequestedCount == 0)
+        {
+            result.correctCoverage = 0f;
+            result.wrongColorRate = 0f;
+            result.dirtyRate = 0f;
+            result.finalScore = 0f;
+            result.finalPayment = 0;
             return result;
         }
 

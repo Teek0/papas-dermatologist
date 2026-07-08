@@ -57,6 +57,12 @@ public class UIController : MonoBehaviour
     // This is a copy of FadeOutRoutine() method found in IngameMenuController.cs
     public IEnumerator FadeOutRoutine(CanvasGroup sceneGroup, float target, bool state)
     {
+        if (sceneGroup == null)
+        {
+            Debug.LogWarning("UIController: sceneGroup is null. Skipping visual fade.");
+            yield break;
+        }
+
         float startAlpha = sceneGroup.alpha;
 
         float elapsed = 0;
@@ -94,7 +100,11 @@ public class UIController : MonoBehaviour
         {
             musicController.playStartSound(btnStartAudio);
             // Begin fade out and change to next scene.
-            StartCoroutine(FadeOutRoutine(blackScreenCanvas, 1f, false));
+            if (blackScreenCanvas != null)
+                StartCoroutine(FadeOutRoutine(blackScreenCanvas, 1f, false));
+            else
+                Debug.LogWarning("UIController: blackScreenCanvas is null. Starting game without visual fade.");
+
             StartCoroutine(musicController.FadeOutRoutine(gameSceneName));
         }
         else SceneManager.LoadScene(gameSceneName);
