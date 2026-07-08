@@ -1,11 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class IngameMenuController : MonoBehaviour
 {
-    private const string MasterMixerParameter = "masterMix";
-
     [Header("Scene configuration")]
     public string mainMenuSceneName = SceneNames.MainMenu;
     public string receptionSceneName = SceneNames.Reception;
@@ -111,55 +108,10 @@ public class IngameMenuController : MonoBehaviour
 
     IEnumerator TransitionToScene(string sceneName)
     {
-        yield return StartCoroutine(FadeOutRoutine(sceneCanvasGroup, 0f, false));
-        ResetMasterMixerVolume();
-        SceneManager.LoadScene(sceneName);
-    }
-
-    public IEnumerator FadeOutRoutine(CanvasGroup sceneGroup, float target, bool state)
-    {
-        bool hasSceneGroup = sceneGroup != null;
-        bool hasMixer = musicController != null && musicController.mainMixer != null;
-
-        float startAlpha = hasSceneGroup ? sceneGroup.alpha : 0f;
-        float startLinear = 1f;
-
-        if (hasMixer && musicController.mainMixer.GetFloat(MasterMixerParameter, out float startVolume_dB))
-            startLinear = Mathf.Pow(10f, startVolume_dB / 20f);
-
-        float elapsed = 0;
-
-        while (elapsed < fadeOutDuration)
-        {
-            elapsed += Time.unscaledDeltaTime;
-
-            // Fade visual
-            float percentage = elapsed / fadeOutDuration;
-            if (hasSceneGroup)
-                sceneGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
-
-            //Fade audio
-            if (hasMixer)
-            {
-                float currentLinear = Mathf.Lerp(startLinear, 0f, percentage);
-                float targetdB = Mathf.Log10(Mathf.Clamp(currentLinear, 0.0001f, 1f)) * 20f;
-                musicController.mainMixer.SetFloat(MasterMixerParameter, targetdB);
-            }
-
-            yield return null;
-        }
-
-        if (!hasSceneGroup)
-            yield break;
-
-        sceneGroup.alpha = target;
-        sceneGroup.blocksRaycasts = state;
-        sceneGroup.interactable = state;
-    }
-
-    private void ResetMasterMixerVolume()
-    {
-        if (musicController != null && musicController.mainMixer != null)
-            musicController.mainMixer.SetFloat(MasterMixerParameter, 0f);
+        yield return StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
+            sceneName,
+            sceneCanvasGroup,
+            musicController != null ? musicController.mainMixer : null,
+            fadeOutDuration));
     }
 }

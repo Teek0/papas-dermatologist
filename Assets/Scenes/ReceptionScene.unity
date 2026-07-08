@@ -2872,6 +2872,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2512785594839615222, guid: cd288a03db1b1ec41917055c2e8292bf, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512785594839615222, guid: cd288a03db1b1ec41917055c2e8292bf, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3388550109066450219, guid: cd288a03db1b1ec41917055c2e8292bf, type: 3}
       propertyPath: m_Name
       value: Canvas Menu

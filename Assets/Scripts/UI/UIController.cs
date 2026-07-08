@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -51,36 +50,6 @@ public class UIController : MonoBehaviour
         canvas.alpha = 0f;
         canvas.blocksRaycasts = false;
     }
-    
-    // This is a copy of FadeOutRoutine() method found in IngameMenuController.cs
-    public IEnumerator FadeOutRoutine(CanvasGroup sceneGroup, float target, bool state)
-    {
-        if (sceneGroup == null)
-        {
-            Debug.LogWarning("UIController: sceneGroup is null. Skipping visual fade.");
-            yield break;
-        }
-
-        float startAlpha = sceneGroup.alpha;
-
-        float elapsed = 0;
-
-        while (elapsed < fadeOutDuration)
-        {
-            elapsed += Time.unscaledDeltaTime;
-
-            // Fade visual
-            float percentage = elapsed / fadeOutDuration;
-            sceneGroup.alpha = Mathf.Lerp(startAlpha, target, percentage);
-
-            yield return null;
-        }
-
-        sceneGroup.alpha = target;
-        sceneGroup.blocksRaycasts = state;
-        sceneGroup.interactable = state;
-    }
-
     // ---- Button actions ----
     public void actionExit()
     {
@@ -95,17 +64,13 @@ public class UIController : MonoBehaviour
     public void actionStartGame()
     {
         if (musicController != null)
-        {
             musicController.playStartSound(btnStartAudio);
-            // Begin fade out and change to next scene.
-            if (blackScreenCanvas != null)
-                StartCoroutine(FadeOutRoutine(blackScreenCanvas, 1f, false));
-            else
-                Debug.LogWarning("UIController: blackScreenCanvas is null. Starting game without visual fade.");
 
-            StartCoroutine(musicController.FadeOutRoutine(gameSceneName));
-        }
-        else SceneManager.LoadScene(gameSceneName);
+        StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
+            gameSceneName,
+            blackScreenCanvas,
+            musicController != null ? musicController.mainMixer : null,
+            fadeOutDuration));
     }
     public void openSettings()
     {
