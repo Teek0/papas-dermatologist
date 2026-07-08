@@ -5,7 +5,6 @@ public static class SceneNames
     public const string MainMenu = "mainMenu_UI";
     public const string Reception = "ReceptionScene";
     public const string Camilla = "CamillaScene";
-    public const string SideMenu = "SideMenu";
 }
 
 public class GameSession : MonoBehaviour
