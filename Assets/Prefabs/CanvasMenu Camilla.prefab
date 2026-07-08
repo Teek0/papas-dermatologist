@@ -123,7 +123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 656028792095759406}
         m_TargetAssemblyTypeName: IngameMenuController, Assembly-CSharp
-        m_MethodName: actionReception
+        m_MethodName: GoToReception
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -22,7 +22,7 @@ public class IngameMenuController : MonoBehaviour
     public AudioClip menuOnSound;
     public AudioClip menuOffSound;
 
-    private bool isOpen = false;
+    private bool isOpen;
 
     public void ToggleMenu()
     {
@@ -41,70 +41,60 @@ public class IngameMenuController : MonoBehaviour
 
         if (isOpen)
         {
-            actionSettingsBack();
+            CloseSettingsPanel();
         }
 
-        //if (buttonTransform != null)
-        //{
-        //    buttonTransform.Rotate(0, 0, -90f);
-        //}
-
-        if (panelObject != null)
-        {
-            panelObject.alpha = isOpen ? 1f : 0f;
-            panelObject.blocksRaycasts = isOpen;
-            panelObject.interactable = isOpen;
-        }
+        SetCanvasGroupState(panelObject, isOpen);
     }
 
-    public void actionMainMenu()
+    public void GoToMainMenu()
+    {
+        GoToScene(mainMenuSceneName);
+    }
+
+    public void GoToReception()
+    {
+        GoToScene(receptionSceneName);
+    }
+
+    public void OpenSettingsPanel()
+    {
+        if (buttonContainer == null || settingsPanel == null)
+        {
+            Debug.LogError("IngameMenuController: buttonContainer or settingsPanel are null.");
+            return;
+        }
+
+        SetCanvasGroupState(buttonContainer, false);
+        SetCanvasGroupState(settingsPanel, true);
+    }
+
+    public void CloseSettingsPanel()
+    {
+        if (buttonContainer == null || settingsPanel == null)
+        {
+            Debug.LogError("IngameMenuController: buttonContainer or settingsPanel are null.");
+            return;
+        }
+
+        SetCanvasGroupState(settingsPanel, false);
+        SetCanvasGroupState(buttonContainer, true);
+    }
+
+    private void GoToScene(string sceneName)
     {
         Time.timeScale = 1f;
-        StartCoroutine(TransitionToScene(mainMenuSceneName));
+        StartCoroutine(TransitionToScene(sceneName));
     }
 
-    public void actionReception()
+    private void SetCanvasGroupState(CanvasGroup canvasGroup, bool isVisible)
     {
-        Time.timeScale = 1f;
-        StartCoroutine(TransitionToScene(receptionSceneName));
-    }
+        if (canvasGroup == null)
+            return;
 
-    public void actionSettingsMini()
-    {
-        if (buttonContainer != null)
-        {
-            if (settingsPanel != null)
-            {
-                buttonContainer.alpha = 0f;
-                settingsPanel.alpha = 1f;
-
-                settingsPanel.blocksRaycasts = true;
-                settingsPanel.interactable = true;
-
-                buttonContainer.blocksRaycasts = false;
-                buttonContainer.interactable = false;
-            }
-        }
-        else Debug.LogError("IngameMenuController: buttonContainer or settingsPanel are null.");
-    }
-
-    public void actionSettingsBack()
-    {
-        if (buttonContainer != null)
-        {
-            if (settingsPanel != null)
-            {
-                settingsPanel.alpha = 0f;
-                buttonContainer.alpha = 1f;
-
-                buttonContainer.blocksRaycasts = true;
-                buttonContainer.interactable = true;
-
-                settingsPanel.blocksRaycasts = false;
-                settingsPanel.interactable = false;
-            }
-        }
-        else Debug.LogError("IngameMenuController: buttonContainer or settingsPanel are null.");
+        canvasGroup.alpha = isVisible ? 1f : 0f;
+        canvasGroup.blocksRaycasts = isVisible;
+        canvasGroup.interactable = isVisible;
     }
 
     IEnumerator TransitionToScene(string sceneName)

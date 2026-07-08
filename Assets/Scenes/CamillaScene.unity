@@ -4085,7 +4085,7 @@ PrefabInstance:
       objectReference: {fileID: 1023854132}
     - target: {fileID: 8494858089830184354, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: actionReception
+      value: GoToReception
       objectReference: {fileID: 0}
     - target: {fileID: 8494858089830184354, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

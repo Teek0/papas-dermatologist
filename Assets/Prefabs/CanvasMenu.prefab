@@ -1827,7 +1827,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2681714859887643064}
         m_TargetAssemblyTypeName: IngameMenuController, Assembly-CSharp
-        m_MethodName: actionSettingsMini
+        m_MethodName: OpenSettingsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1961,7 +1961,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2681714859887643064}
         m_TargetAssemblyTypeName: IngameMenuController, Assembly-CSharp
-        m_MethodName: actionSettingsBack
+        m_MethodName: CloseSettingsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2489,7 +2489,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2681714859887643064}
         m_TargetAssemblyTypeName: IngameMenuController, Assembly-CSharp
-        m_MethodName: actionMainMenu
+        m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
