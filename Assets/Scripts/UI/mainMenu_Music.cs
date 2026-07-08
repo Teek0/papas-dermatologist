@@ -25,6 +25,8 @@ public class mainMenu_Music : MonoBehaviour
     public float fadeOutDuration = 1.8f;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
+    private Coroutine musicRoutine;
+    private bool musicStarted;
 
     [System.Serializable]
     public struct VolumeData
@@ -44,36 +46,89 @@ public class mainMenu_Music : MonoBehaviour
             // return;
         }
 
-        if (introClip != null)
+        SceneManager.activeSceneChanged += HandleActiveSceneChanged;
+        RefreshPlaybackForActiveScene(SceneManager.GetActiveScene());
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= HandleActiveSceneChanged;
+    }
+
+    private void HandleActiveSceneChanged(Scene previousScene, Scene newScene)
+    {
+        RefreshPlaybackForActiveScene(newScene);
+    }
+
+    private void RefreshPlaybackForActiveScene(Scene activeScene)
+    {
+        if (ShouldPlayMusicForActiveScene(activeScene.name))
+            StartMusic();
+        else
+            StopMusic();
+    }
+
+    private bool ShouldPlayMusicForActiveScene(string activeSceneName)
+    {
+        string ownerSceneName = gameObject.scene.name;
+
+        if (ownerSceneName == SceneNames.Camilla)
+            return false;
+
+        if (ownerSceneName == SceneNames.SideMenu)
+            return false;
+
+        return ownerSceneName == activeSceneName;
+    }
+
+    private void StartMusic()
+    {
+        if (musicStarted || introClip == null)
+            return;
+
+        musicStarted = true;
+
+        if (SceneManager.GetActiveScene().name == SceneNames.MainMenu)
         {
-            AudioSource musicSource = CreateSource("musicSource", false);
-            musicSource.clip = introClip;
-            musicSource.outputAudioMixerGroup = musicGroup;
-
-            if (SceneManager.GetActiveScene().name == SceneNames.MainMenu)
-            {
-                mainMixer.SetFloat("musicPitch", 1.06f);
-            }
-            else mainMixer.SetFloat("musicPitch", 1f);
-
-            StartCoroutine(PlayMusic());
-
-            IEnumerator PlayMusic()
-            {
-                musicSource.clip = introClip;
-                musicSource.loop = false;
-                musicSource.Play();
-
-                // Fade-in
-                yield return StartCoroutine(FadeInVolume(musicSource, 0f, musicVolume, fadeInDuration));
-
-                yield return new WaitUntil(() => !musicSource.isPlaying);
-
-                musicSource.clip = loopClip;
-                musicSource.loop = true;
-                musicSource.Play();
-            }
+            mainMixer.SetFloat("musicPitch", 1.06f);
         }
+        else mainMixer.SetFloat("musicPitch", 1f);
+
+        musicRoutine = StartCoroutine(PlayMusicRoutine());
+    }
+
+    private IEnumerator PlayMusicRoutine()
+    {
+        AudioSource musicSource = CreateSource("musicSource", false);
+        musicSource.clip = introClip;
+        musicSource.outputAudioMixerGroup = musicGroup;
+        musicSource.loop = false;
+        musicSource.Play();
+
+        yield return StartCoroutine(FadeInVolume(musicSource, 0f, musicVolume, fadeInDuration));
+
+        yield return new WaitUntil(() => !musicSource.isPlaying);
+
+        musicSource.clip = loopClip;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
+
+    private void StopMusic()
+    {
+        if (!musicStarted)
+            return;
+
+        if (musicRoutine != null)
+            StopCoroutine(musicRoutine);
+
+        for (int i = 0; i < audioSources.Count; i++)
+        {
+            if (audioSources[i] != null)
+                audioSources[i].Stop();
+        }
+
+        musicStarted = false;
     }
 
     private void Start()
