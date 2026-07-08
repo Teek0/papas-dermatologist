@@ -998,7 +998,6 @@ GameObject:
   - component: {fileID: 758370627}
   - component: {fileID: 758370626}
   - component: {fileID: 758370625}
-  - component: {fileID: 758370628}
   - component: {fileID: 758370629}
   m_Layer: 5
   m_Name: btnExit
@@ -1132,18 +1131,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758370623}
   m_CullTransparentMesh: 1
---- !u!114 &758370628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 758370623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04622cb0f8f5a74ba8ae38fddfba777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::mainMenu_Buttons
 --- !u!114 &758370629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4365,7 +4352,6 @@ GameObject:
   - component: {fileID: 2041491346}
   - component: {fileID: 2041491345}
   - component: {fileID: 2041491344}
-  - component: {fileID: 2041491348}
   - component: {fileID: 2041491347}
   m_Layer: 5
   m_Name: btnPlay
@@ -4516,18 +4502,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &2041491348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041491342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04622cb0f8f5a74ba8ae38fddfba777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::mainMenu_Buttons
 --- !u!1 &2055579659
 GameObject:
   m_ObjectHideFlags: 0
