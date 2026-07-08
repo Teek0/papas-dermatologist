@@ -1072,7 +1072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &580667820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,13 +1080,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580667819}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f482a043c845d0d4cad4ad9eaefebb38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreamAudioManager
   creamAudioSource: {fileID: 0}
-  fadeDuration: 0
+  creamLoopClip: {fileID: 0}
+  fadeDuration: 0.5
 --- !u!4 &580667821
 Transform:
   m_ObjectHideFlags: 0

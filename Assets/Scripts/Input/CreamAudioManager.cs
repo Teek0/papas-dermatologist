@@ -4,6 +4,7 @@ using UnityEngine;
 public class CreamAudioManager : MonoBehaviour
 {
     public AudioSource creamAudioSource;
+    [SerializeField] private AudioClip creamLoopClip;
     [Header("Fade-in AND Fade-out duration")]
     public float fadeDuration = 0.5f;
 
@@ -13,15 +14,32 @@ public class CreamAudioManager : MonoBehaviour
     {
         if (creamAudioSource == null)
             creamAudioSource = GetComponent<AudioSource>();
+
+        if (creamAudioSource == null)
+            creamAudioSource = gameObject.AddComponent<AudioSource>();
+
+        if (creamLoopClip == null)
+            creamLoopClip = Resources.Load<AudioClip>("One Shots/cream");
+
+        creamAudioSource.playOnAwake = false;
+        creamAudioSource.loop = true;
+        creamAudioSource.spatialBlend = 0f;
+        creamAudioSource.volume = 0f;
+
+        if (creamAudioSource.clip == null)
+            creamAudioSource.clip = creamLoopClip;
     }
 
     private void OnEnable()
     {
-        if (creamAudioSource == null)
+        if (creamAudioSource == null || creamAudioSource.clip == null)
         {
-            Debug.LogWarning("CreamAudioManager: creamAudioSource is null. Brush audio will be disabled.");
+            Debug.LogWarning("CreamAudioManager: missing AudioSource or cream clip. Brush audio will be disabled.");
             return;
         }
+
+        if (!creamAudioSource.isPlaying)
+            creamAudioSource.Play();
 
         BrushInputWorld.OnBrushValidStateChanged += HandleBrushAudio;
     }
