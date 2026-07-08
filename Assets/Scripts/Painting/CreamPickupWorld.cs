@@ -14,6 +14,7 @@ public class CreamPickupWorld : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (Time.timeScale <= 0f) return;
         if (selectionManager == null) return;
         selectionManager.SelectCream(creamType);
     }

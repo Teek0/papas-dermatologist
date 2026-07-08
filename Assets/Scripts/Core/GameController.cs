@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
 
     private GameState currentState;
 
-    public bool CanPaint => currentState == GameState.Running;
+    public bool CanPaint => currentState == GameState.Running && Time.timeScale > 0f;
 
     private void Awake()
     {
