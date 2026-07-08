@@ -14,9 +14,19 @@ public static class SceneTransitionService
         AudioMixer mixer,
         float duration)
     {
-        yield return FadeOut(sceneGroup, 0f, false, mixer, duration);
-        ResetMasterMixerVolume(mixer);
-        SceneManager.LoadScene(sceneName);
+        yield return FadeOutAndLoadScene(sceneName, sceneGroup, 0f, false, mixer, duration);
+    }
+
+    public static IEnumerator FadeOutAndLoadScene(
+        string sceneName,
+        CanvasGroup sceneGroup,
+        float targetAlpha,
+        bool interactable,
+        AudioMixer mixer,
+        float duration)
+    {
+        yield return FadeOut(sceneGroup, targetAlpha, interactable, mixer, duration);
+        LoadSceneAndResetMixer(sceneName, mixer);
     }
 
     public static IEnumerator FadeOut(
@@ -72,6 +82,22 @@ public static class SceneTransitionService
     {
         if (mixer != null)
             mixer.SetFloat(MasterMixerParameter, 0f);
+    }
+
+    private static void LoadSceneAndResetMixer(string sceneName, AudioMixer mixer)
+    {
+        if (mixer != null)
+        {
+            void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+            {
+                SceneManager.sceneLoaded -= HandleSceneLoaded;
+                ResetMasterMixerVolume(mixer);
+            }
+
+            SceneManager.sceneLoaded += HandleSceneLoaded;
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     private static void ApplySceneGroupState(CanvasGroup sceneGroup, float alpha, bool interactable)

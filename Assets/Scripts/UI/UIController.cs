@@ -69,6 +69,8 @@ public class UIController : MonoBehaviour
         StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
             gameSceneName,
             blackScreenCanvas,
+            1f,
+            false,
             musicController != null ? musicController.mainMixer : null,
             fadeOutDuration));
     }
