@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using RangeAttribute = UnityEngine.RangeAttribute;
 
 public class mainMenu_Music : MonoBehaviour
@@ -28,15 +27,9 @@ public class mainMenu_Music : MonoBehaviour
     private Coroutine musicRoutine;
     private bool musicStarted;
 
-    [System.Serializable]
-    public struct VolumeData
-    {
-        public string mixerParameter; 
-        public string playerPrefKey;  
-        public Slider slider;         
-    }
-
-    public List<VolumeData> volumeSettings;
+    [Header("Audio settings UI")]
+    public AudioSettingsController audioSettingsController;
+    public List<AudioSettingsController.VolumeData> volumeSettings;
 
     private void Awake()
     {
@@ -127,33 +120,9 @@ public class mainMenu_Music : MonoBehaviour
 
     private void Start()
     {
-        foreach (var data in volumeSettings)
-        {
-            float savedVolume = PlayerPrefs.GetFloat(data.playerPrefKey, 1f);
-            if (data.slider == null)
-            {
-                Debug.LogWarning($"mainMenu_Music: slider for '{data.playerPrefKey}' is null. Skipping UI binding.");
-                UpdateVolume(data.mixerParameter, data.playerPrefKey, savedVolume);
-                continue;
-            }
-
-            data.slider.value = savedVolume;
-            data.slider.onValueChanged.AddListener((val) => {
-                UpdateVolume(data.mixerParameter, data.playerPrefKey, val);
-            });
-
-            UpdateVolume(data.mixerParameter, data.playerPrefKey, savedVolume);
-        }
-    }
-    private void SetMixerVolume(string parameter, float linearValue)
-    {
-        float dB = Mathf.Log10(Mathf.Clamp(linearValue, 0.0001f, 1f)) * 20f;
-        mainMixer.SetFloat(parameter, dB);
-    }
-    private void UpdateVolume(string mixerParam, string prefKey, float value)
-    {
-        SetMixerVolume(mixerParam, value);
-        PlayerPrefs.SetFloat(prefKey, value);
+        EnsureAudioSettingsController();
+        audioSettingsController.Configure(mainMixer, volumeSettings);
+        audioSettingsController.Initialize();
     }
 
     IEnumerator FadeInVolume(AudioSource source, float from, float to, float duration)
@@ -196,6 +165,24 @@ public class mainMenu_Music : MonoBehaviour
         
     }
 
+    public void setMusicVolume(float value)
+    {
+        EnsureAudioSettingsController();
+        audioSettingsController.SetMusicVolume(value);
+    }
+
+    public void setSFXVolume(float value)
+    {
+        EnsureAudioSettingsController();
+        audioSettingsController.SetSfxVolume(value);
+    }
+
+    public void OnSliderChanged(float value)
+    {
+        EnsureAudioSettingsController();
+        audioSettingsController.SetGlobalVolume(value);
+    }
+
     public IEnumerator FadeOutRoutine(string sceneIndex)
     {
         float timer = 0;
@@ -218,5 +205,16 @@ public class mainMenu_Music : MonoBehaviour
 
         SceneManager.LoadScene(sceneIndex);
 
+    }
+
+    private void EnsureAudioSettingsController()
+    {
+        if (audioSettingsController != null)
+            return;
+
+        audioSettingsController = GetComponent<AudioSettingsController>();
+
+        if (audioSettingsController == null)
+            audioSettingsController = gameObject.AddComponent<AudioSettingsController>();
     }
 }

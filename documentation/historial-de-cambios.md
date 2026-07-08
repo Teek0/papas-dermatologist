@@ -75,3 +75,11 @@ Este archivo resume cambios importantes y, sobre todo, por que se hicieron. La i
 **Cambio:** `SceneTransitionService` ahora restaura el mixer cuando la nueva escena ya termino de cargar. Ademas, `UIController` vuelve a hacer fade visual hacia negro al iniciar el juego.
 
 **Justificacion:** la transicion debe bajar el audio sin volver a subirlo mientras la escena anterior sigue sonando.
+
+### Se creo AudioSettingsController
+
+**Problema:** `mainMenu_Music` mezclaba musica, sonido de inicio y configuracion de volumen.
+
+**Cambio:** se agrego `AudioSettingsController` para concentrar la lectura/escritura de `PlayerPrefs`, sliders y parametros del mixer. Por compatibilidad, `mainMenu_Music` todavia conserva referencias serializadas y delega los metodos antiguos hacia el nuevo controlador.
+
+**Justificacion:** este es un paso intermedio seguro. Permite separar la responsabilidad de volumen sin romper sliders ya conectados en escenas o prefabs.

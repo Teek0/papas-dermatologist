@@ -5,8 +5,13 @@ Lista viva de tareas tecnicas y decisiones de diseno pendientes. La idea es actu
 ## Arquitectura
 
 - Separar mejor `IngameMenuController`: dejarlo solo con abrir/cerrar menu, pausa y botones.
-- Evaluar un controlador propio para settings/volumen, separado del menu lateral.
 - Renombrar `mainMenu_Music` a un nombre mas claro, por ejemplo `MainMenuMusicPlayer`.
+
+## Settings y volumen
+
+- Migrar las referencias serializadas de volumen desde `mainMenu_Music` hacia `AudioSettingsController` en escenas y prefabs.
+- Quitar los metodos legacy `setMusicVolume`, `setSFXVolume` y `OnSliderChanged` de `mainMenu_Music` cuando los sliders apunten al controlador nuevo.
+- Decidir si el sonido del boton Start queda en `mainMenu_Music` o pasa a un controlador de SFX/UI.
 
 ## Escenas
 
