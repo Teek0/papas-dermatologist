@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
     [Header("Scene Transition")]
     [SerializeField] private CanvasGroup fadeCanvasGroup;
     [SerializeField] private float fadeOutDuration = 0.5f;
-    [SerializeField] private string receptionSceneName = "ReceptionScene";
+    [SerializeField] private string receptionSceneName = SceneNames.Reception;
 
     private GameState currentState;
 

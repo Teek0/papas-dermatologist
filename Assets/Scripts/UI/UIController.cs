@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +10,7 @@ public class UIController : MonoBehaviour
     public mainMenu_Music musicController;
 
     [Header("Game start settings")]
-    public string gameSceneName = "ReceptionScene";
+    public string gameSceneName = SceneNames.Reception;
     public AudioClip btnStartAudio;
     [Range(0f, 1f)] public float startButtonVolume = 0.3f;
     public CanvasGroup blackScreenCanvas;
@@ -40,7 +39,6 @@ public class UIController : MonoBehaviour
 
     private IEnumerator actionFadeIn(CanvasGroup canvas)
     {
-        Debug.Log("Start triggered");
         float elapsed = 0;
 
         while (elapsed < fadeInDuration)

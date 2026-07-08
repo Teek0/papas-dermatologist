@@ -22,18 +22,23 @@ public class CustomerManager : MonoBehaviour
     public Sprite[] SkinConditionOptions_Cheeks;
     public Sprite[] SkinConditionOptions_Chin;
 
+    [Header("Character Renderers")]
+    [SerializeField] private SpriteRenderer bodyRenderer;
+    [SerializeField] private SpriteRenderer hairRenderer;
+    [SerializeField] private SpriteRenderer eyesRenderer;
+    [SerializeField] private SpriteRenderer foreheadRenderer;
+    [SerializeField] private SpriteRenderer cheeksRenderer;
+    [SerializeField] private SpriteRenderer chinRenderer;
+
     [Header("Dialogue GameObjects")]
     public GameObject DialogueBox;
+    [SerializeField] private TMP_Text npcText;
     public TextAsset dialogueOptions;
     private NPCDialogues dialogue;
     public static event Action<string> OnDialogueUpdate;
 
-    private SpriteRenderer bodyRenderer;
-    private SpriteRenderer hairRenderer;
-    private SpriteRenderer eyesRenderer;
-    private SpriteRenderer foreheadRenderer;
-    private SpriteRenderer cheeksRenderer;
-    private SpriteRenderer chinRenderer;
+    [Header("Debug")]
+    [SerializeField] private bool validateSkinConditionIndexContract = true;
 
     private float customerAlpha;
 
@@ -55,14 +60,12 @@ public class CustomerManager : MonoBehaviour
         Sprite[][] skinConditions = { SkinConditionOptions_Forehead, SkinConditionOptions_Cheeks, SkinConditionOptions_Chin };
         currentCustomer = new Customer(Constants, BodyOptions, HairOptions, EyesOptions, skinConditions);
 
-        bodyRenderer = (SpriteRenderer)transform.Find("Body").GetComponent(typeof(SpriteRenderer));
-        hairRenderer = (SpriteRenderer)transform.Find("Hair").GetComponent(typeof(SpriteRenderer));
-        eyesRenderer = (SpriteRenderer)transform.Find("Eyes").GetComponent(typeof(SpriteRenderer));
-
-        Transform skinConditionsTransform = transform.Find("SkinConditions");
-        foreheadRenderer = (SpriteRenderer)skinConditionsTransform.Find("Forehead").GetComponent(typeof(SpriteRenderer));
-        cheeksRenderer = (SpriteRenderer)skinConditionsTransform.Find("Cheeks").GetComponent(typeof(SpriteRenderer));
-        chinRenderer = (SpriteRenderer)skinConditionsTransform.Find("Chin").GetComponent(typeof(SpriteRenderer));
+        if (!ResolveCustomerRenderers())
+        {
+            Debug.LogError("CustomerManager: faltan renderers del cliente. No se puede mostrar el paciente.");
+            currentCustomer = null;
+            return;
+        }
 
         foreheadRenderer.sprite = null;
         cheeksRenderer.sprite = null;
@@ -71,12 +74,7 @@ public class CustomerManager : MonoBehaviour
         customerAlpha = 0f;
         Color opacityColor = new(1f, 1f, 1f, customerAlpha);
 
-        bodyRenderer.color = opacityColor;
-        hairRenderer.color = opacityColor;
-        eyesRenderer.color = opacityColor;
-        foreheadRenderer.color = opacityColor;
-        cheeksRenderer.color = opacityColor;
-        chinRenderer.color = opacityColor;
+        SetCustomerRenderersColor(opacityColor);
 
         bodyRenderer.sprite = currentCustomer.Body;
         hairRenderer.sprite = currentCustomer.Hair;
@@ -102,17 +100,54 @@ public class CustomerManager : MonoBehaviour
         if (DialogueBox != null) DialogueBox.SetActive(false);
     }
 
+    private bool ResolveCustomerRenderers()
+    {
+        bodyRenderer = ResolveRenderer(bodyRenderer, "Body");
+        hairRenderer = ResolveRenderer(hairRenderer, "Hair");
+        eyesRenderer = ResolveRenderer(eyesRenderer, "Eyes");
+        foreheadRenderer = ResolveRenderer(foreheadRenderer, "SkinConditions/Forehead");
+        cheeksRenderer = ResolveRenderer(cheeksRenderer, "SkinConditions/Cheeks");
+        chinRenderer = ResolveRenderer(chinRenderer, "SkinConditions/Chin");
+
+        return bodyRenderer != null &&
+               hairRenderer != null &&
+               eyesRenderer != null &&
+               foreheadRenderer != null &&
+               cheeksRenderer != null &&
+               chinRenderer != null;
+    }
+
+    private SpriteRenderer ResolveRenderer(SpriteRenderer current, string childPath)
+    {
+        if (current != null)
+            return current;
+
+        Transform child = transform.Find(childPath);
+        return child != null ? child.GetComponent<SpriteRenderer>() : null;
+    }
+
+    private void SetCustomerRenderersColor(Color color)
+    {
+        if (!ResolveCustomerRenderers())
+            return;
+
+        bodyRenderer.color = color;
+        hairRenderer.color = color;
+        eyesRenderer.color = color;
+        foreheadRenderer.color = color;
+        cheeksRenderer.color = color;
+        chinRenderer.color = color;
+    }
+
     private void CustomerFadeIn()
     {
+        if (!ResolveCustomerRenderers())
+            return;
+
         if (customerAlpha < 1f)
         {
             customerAlpha += 0.005f;
-            bodyRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            hairRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            eyesRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            foreheadRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            cheeksRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            chinRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
         }
         else
         {
@@ -122,15 +157,13 @@ public class CustomerManager : MonoBehaviour
 
     private void CustomerFadeOut()
     {
+        if (!ResolveCustomerRenderers())
+            return;
+
         if (customerAlpha > 0f)
         {
             customerAlpha -= 0.005f;
-            bodyRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            hairRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            eyesRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            foreheadRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            cheeksRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
-            chinRenderer.color = new Color(1f, 1f, 1f, customerAlpha);
+            SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
         }
         else
         {
@@ -160,21 +193,20 @@ public class CustomerManager : MonoBehaviour
             return;
         }
 
-        var textTf = DialogueBox.transform.Find("Text Box")?.Find("NPC Text");
-        if (textTf == null)
+        if (npcText == null)
         {
-            Debug.LogWarning("NPC Text path not found: DialogueBox/Text Box/NPC Text");
+            var textTf = DialogueBox.transform.Find("Text Box")?.Find("NPC Text");
+            if (textTf != null)
+                npcText = textTf.GetComponent<TMP_Text>();
+        }
+
+        if (npcText == null)
+        {
+            Debug.LogWarning("NPC Text missing. Assign npcText or keep DialogueBox/Text Box/NPC Text.");
             return;
         }
 
-        var tmp = textTf.GetComponent<TMP_Text>();
-        if (tmp == null)
-        {
-            Debug.LogWarning("TMP_Text missing on NPC Text.");
-            return;
-        }
-
-        tmp.text = _message;
+        npcText.text = _message;
         OnDialogueUpdate?.Invoke(_message);
     }
 
@@ -317,7 +349,7 @@ public class CustomerManager : MonoBehaviour
 
     private IEnumerator LoadCamillaAndSwitch()
     {
-        asyncOperation = SceneManager.LoadSceneAsync("CamillaScene", LoadSceneMode.Additive);
+        asyncOperation = SceneManager.LoadSceneAsync(SceneNames.Camilla, LoadSceneMode.Additive);
         asyncOperation.allowSceneActivation = false;
 
         while (asyncOperation.progress < 0.9f)
@@ -333,7 +365,7 @@ public class CustomerManager : MonoBehaviour
         while (!asyncOperation.isDone)
             yield return null;
 
-        Scene camilla = SceneManager.GetSceneByName("CamillaScene");
+        Scene camilla = SceneManager.GetSceneByName(SceneNames.Camilla);
         if (camilla.IsValid())
             SceneManager.SetActiveScene(camilla);
 
@@ -355,6 +387,13 @@ public class CustomerManager : MonoBehaviour
 
     void Start()
     {
+        if (Constants == null)
+        {
+            Debug.LogError("CustomerManager: Constants no esta asignado.");
+            enabled = false;
+            return;
+        }
+
         attending = false;
         customerSpawned = false;
         dialogueVisible = false;
@@ -376,12 +415,13 @@ public class CustomerManager : MonoBehaviour
         }
 
         receptionSceneName = SceneManager.GetActiveScene().name;
-        StartCoroutine(loadScene("CamillaScene"));
+        StartCoroutine(loadScene(SceneNames.Camilla));
 
-        if (!SceneManager.GetSceneByName("SideMenu").isLoaded)
-            SceneManager.LoadScene("SideMenu", LoadSceneMode.Additive);
+        if (!SceneManager.GetSceneByName(SceneNames.SideMenu).isLoaded)
+            SceneManager.LoadScene(SceneNames.SideMenu, LoadSceneMode.Additive);
 
-        ValidateSkinConditionIndexContract();
+        if (validateSkinConditionIndexContract)
+            ValidateSkinConditionIndexContract();
     }
 
     void Update()

@@ -1,12 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class IngameMenuController : MonoBehaviour
 {
     [Header("Scene configuration")]
-    public string mainMenuSceneName = "mainMenu_UI";
+    public string mainMenuSceneName = SceneNames.MainMenu;
     public float fadeOutDuration = 1.5f;
     public CanvasGroup sceneCanvasGroup;
 
