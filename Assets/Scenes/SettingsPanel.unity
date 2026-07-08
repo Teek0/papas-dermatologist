@@ -1524,7 +1524,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1364746569}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: closeSettings
+        m_MethodName: CloseSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -16,11 +16,14 @@ public class UIController : MonoBehaviour
     public float fadeInDuration = 2.5f;
     public float fadeOutDuration = 1.8f;
 
-    void Awake()
+    private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        if(canvasGroup!=null) closeSettings();
-        else Debug.LogError("UIController: CanvasGroup null.");
+        if (canvasGroup != null)
+            CloseSettings();
+        else
+            Debug.LogError("UIController: CanvasGroup null.");
+
         Time.timeScale = 1f;
     }
 
@@ -28,15 +31,12 @@ public class UIController : MonoBehaviour
     {
         if (blackScreenCanvas != null)
         {
-            blackScreenCanvas.alpha = 1f;
-            blackScreenCanvas.blocksRaycasts = true;
-
-            StartCoroutine(actionFadeIn(blackScreenCanvas));
+            SetCanvasGroupState(blackScreenCanvas, true);
+            StartCoroutine(FadeInRoutine(blackScreenCanvas));
         }
     }
 
-
-    private IEnumerator actionFadeIn(CanvasGroup canvas)
+    private IEnumerator FadeInRoutine(CanvasGroup canvas)
     {
         float elapsed = 0;
 
@@ -47,11 +47,11 @@ public class UIController : MonoBehaviour
             yield return null;
         }
 
-        canvas.alpha = 0f;
-        canvas.blocksRaycasts = false;
+        SetCanvasGroupState(canvas, false);
     }
+
     // ---- Button actions ----
-    public void actionExit()
+    public void ExitGame()
     {
         Debug.Log("Quitting game...");
         Application.Quit();
@@ -61,7 +61,7 @@ public class UIController : MonoBehaviour
         #endif
     }
 
-    public void actionStartGame()
+    public void StartGame()
     {
         if (musicController != null)
             musicController.PlayStartSound(btnStartAudio);
@@ -74,20 +74,34 @@ public class UIController : MonoBehaviour
             musicController != null ? musicController.mainMixer : null,
             fadeOutDuration));
     }
-    public void openSettings()
+
+    public void OpenSettings()
+    {
+        if (EnsureCanvasGroup())
+            SetCanvasGroupState(canvasGroup, true);
+    }
+
+    public void CloseSettings()
+    {
+        if (EnsureCanvasGroup())
+            SetCanvasGroupState(canvasGroup, false);
+    }
+
+    private bool EnsureCanvasGroup()
     {
         if (canvasGroup == null)
             canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.interactable = true;
 
+        return canvasGroup != null;
     }
-    public void closeSettings()
-    {
-        canvasGroup.alpha = 0f;
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.interactable = false;
 
+    private void SetCanvasGroupState(CanvasGroup targetCanvasGroup, bool isVisible)
+    {
+        if (targetCanvasGroup == null)
+            return;
+
+        targetCanvasGroup.alpha = isVisible ? 1f : 0f;
+        targetCanvasGroup.blocksRaycasts = isVisible;
+        targetCanvasGroup.interactable = isVisible;
     }
 }

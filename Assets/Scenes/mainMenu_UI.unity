@@ -1072,7 +1072,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2093669776}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: actionExit
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1258,7 +1258,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1538508257}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: openSettings
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1994,7 +1994,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2090396606}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: closeSettings
+        m_MethodName: CloseSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2242,7 +2242,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2090396606}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: openSettings
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3956,7 +3956,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1538508257}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: closeSettings
+        m_MethodName: CloseSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4439,7 +4439,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2093669776}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: actionStartGame
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
