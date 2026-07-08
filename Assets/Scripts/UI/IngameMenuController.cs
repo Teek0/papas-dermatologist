@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class IngameMenuController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class IngameMenuController : MonoBehaviour
     public CanvasGroup buttonContainer;
 
     [Header("Audio settings")]
-    public mainMenu_Music musicController;
+    public AudioMixer mainMixer;
     public AudioSource menuSoundSource;
     public AudioClip menuOnSound;
     public AudioClip menuOffSound;
@@ -111,7 +112,7 @@ public class IngameMenuController : MonoBehaviour
         yield return StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
             sceneName,
             sceneCanvasGroup,
-            musicController != null ? musicController.mainMixer : null,
+            mainMixer,
             fadeOutDuration));
     }
 }

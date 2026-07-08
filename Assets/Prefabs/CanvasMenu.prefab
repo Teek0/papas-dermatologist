@@ -900,7 +900,7 @@ MonoBehaviour:
   panelObject: {fileID: 5826271885574164238}
   settingsPanel: {fileID: 3813549922931754927}
   buttonContainer: {fileID: 4202039563786761249}
-  musicController: {fileID: 7003430248780773294}
+  mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   menuSoundSource: {fileID: 6323942860340195121}
   menuOnSound: {fileID: 8300000, guid: e7baf89f0b5110741bfd386b57374b31, type: 3}
   menuOffSound: {fileID: 8300000, guid: bcf80079a114c2a468670a64841e35d0, type: 3}
@@ -1122,7 +1122,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2402384190366588272}
-  - component: {fileID: 7003430248780773294}
   - component: {fileID: 900100001}
   m_Layer: 5
   m_Name: MusicManager
@@ -1150,28 +1149,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1148, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7003430248780773294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3249233154656582008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8eaf8b55899244c82623c9941f390b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::mainMenu_Music
-  mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
-  musicGroup: {fileID: -6977085882004652891, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
-  ambGroup: {fileID: 2627464595306118743, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
-  sfxGroup: {fileID: 6479677624399784943, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
-  introClip: {fileID: 8300000, guid: 2a9c32399058d4246845d75da02dae22, type: 3}
-  loopClip: {fileID: 8300000, guid: e94d9efd8a04e52408fae6e95704384f, type: 3}
-  musicVolume: 1
-  startButtonVolume: 0.3
-  fadeInDuration: 2
-  fadeOutDuration: 1.8
 --- !u!114 &900100001
 MonoBehaviour:
   m_ObjectHideFlags: 0
