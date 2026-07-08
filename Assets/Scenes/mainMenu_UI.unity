@@ -3295,7 +3295,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad8eaf8b55899244c82623c9941f390b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::mainMenu_Music
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuMusicPlayer
   mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   musicGroup: {fileID: -6977085882004652891, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   ambGroup: {fileID: 2627464595306118743, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
@@ -3305,7 +3305,6 @@ MonoBehaviour:
   musicVolume: 1
   startButtonVolume: 0.3
   fadeInDuration: 2
-  fadeOutDuration: 1.8
 --- !u!114 &300020001
 MonoBehaviour:
   m_ObjectHideFlags: 0

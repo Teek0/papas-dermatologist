@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using RangeAttribute = UnityEngine.RangeAttribute;
 
-public class mainMenu_Music : MonoBehaviour
+public class MainMenuMusicPlayer : MonoBehaviour
 {
     [Header("Audio Mixer setup")]
     public AudioMixer mainMixer;
@@ -21,7 +21,6 @@ public class mainMenu_Music : MonoBehaviour
     [Range(0f, 1f)] public float musicVolume = 1f;
     [Range(0f, 1f)] public float startButtonVolume = 0.3f;
     public float fadeInDuration = 2f;
-    public float fadeOutDuration = 1.8f;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
     private Coroutine musicRoutine;
@@ -71,11 +70,13 @@ public class mainMenu_Music : MonoBehaviour
 
         musicStarted = true;
 
-        if (SceneManager.GetActiveScene().name == SceneNames.MainMenu)
+        if (mainMixer != null)
         {
-            mainMixer.SetFloat("musicPitch", 1.06f);
+            if (SceneManager.GetActiveScene().name == SceneNames.MainMenu)
+                mainMixer.SetFloat("musicPitch", 1.06f);
+            else
+                mainMixer.SetFloat("musicPitch", 1f);
         }
-        else mainMixer.SetFloat("musicPitch", 1f);
 
         musicRoutine = StartCoroutine(PlayMusicRoutine());
     }
@@ -142,7 +143,7 @@ public class mainMenu_Music : MonoBehaviour
         return source;
     }
 
-    public void playStartSound(AudioClip btnStartClip)
+    public void PlayStartSound(AudioClip btnStartClip)
     {
         // Play start sound when start button is clicked.
         AudioSource startBtnSource = CreateSource("startBtnSource", false);
@@ -151,30 +152,5 @@ public class mainMenu_Music : MonoBehaviour
         {
             startBtnSource.PlayOneShot(btnStartClip, startButtonVolume);
         }
-        
-    }
-
-    public IEnumerator FadeOutRoutine(string sceneIndex)
-    {
-        float timer = 0;
-        float startVolume = musicVolume;
-
-        if (fadeOutDuration > 0)
-        {
-            while (timer < fadeOutDuration)
-            {
-                timer += Time.deltaTime;
-                float progress = timer / fadeOutDuration;
-                foreach (var source in audioSources)
-                {
-                    source.volume = Mathf.Lerp(startVolume, 0f, progress);
-                }
-                yield return null;
-            }
-        }
-        else yield return null;
-
-        SceneManager.LoadScene(sceneIndex);
-
     }
 }

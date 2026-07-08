@@ -6,7 +6,7 @@ public class UIController : MonoBehaviour
     private CanvasGroup canvasGroup;
 
     [Header("Configuration")]
-    public mainMenu_Music musicController;
+    public MainMenuMusicPlayer musicController;
 
     [Header("Game start settings")]
     public string gameSceneName = SceneNames.Reception;
@@ -64,7 +64,7 @@ public class UIController : MonoBehaviour
     public void actionStartGame()
     {
         if (musicController != null)
-            musicController.playStartSound(btnStartAudio);
+            musicController.PlayStartSound(btnStartAudio);
 
         StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
             gameSceneName,
