@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +36,12 @@ public class CustomerManager : MonoBehaviour
     public TextAsset dialogueOptions;
     private NPCDialogues dialogue;
     public static event Action<string> OnDialogueUpdate;
+
+    [Header("Scene Transition")]
+    [SerializeField] private string camillaSceneName = SceneNames.Camilla;
+    [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private AudioMixer mainMixer;
+    [SerializeField] private float fadeOutDuration = 0.5f;
 
     [Header("Debug")]
     [SerializeField] private bool validateSkinConditionIndexContract = true;
@@ -328,8 +334,20 @@ public class CustomerManager : MonoBehaviour
         if (DialogueBox != null) DialogueBox.SetActive(false);
 
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneNames.Camilla);
+        StartCoroutine(TransitionToCamilla());
     }
+
+    private IEnumerator TransitionToCamilla()
+    {
+        yield return StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
+            camillaSceneName,
+            fadeCanvasGroup,
+            1f,
+            true,
+            mainMixer,
+            fadeOutDuration));
+    }
+
     void Start()
     {
         if (Constants == null)

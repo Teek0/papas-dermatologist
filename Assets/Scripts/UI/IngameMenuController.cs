@@ -54,6 +54,9 @@ public class IngameMenuController : MonoBehaviour
 
     public void GoToReception()
     {
+        if (GameSession.I != null)
+            GameSession.I.ClearCustomer();
+
         GoToScene(receptionSceneName);
     }
 

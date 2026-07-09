@@ -1901,6 +1901,10 @@ MonoBehaviour:
   DialogueBox: {fileID: 193764308}
   npcText: {fileID: 0}
   dialogueOptions: {fileID: 4900000, guid: fa587c9ffaa8f8648b8989a5f1c377a0, type: 3}
+  camillaSceneName: CamillaScene
+  fadeCanvasGroup: {fileID: 0}
+  mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
+  fadeOutDuration: 0.5
   validateSkinConditionIndexContract: 1
 --- !u!4 &1566266266
 Transform:

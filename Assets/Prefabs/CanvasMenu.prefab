@@ -2550,7 +2550,6 @@ GameObject:
   - component: {fileID: 4694427781950658916}
   - component: {fileID: 5628111693776416474}
   - component: {fileID: 8143709710858093013}
-  - component: {fileID: 810214945717809421}
   - component: {fileID: 3813549922931754927}
   - component: {fileID: 8773828876458642929}
   m_Layer: 5
@@ -2632,25 +2631,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.AspectRatioFitter
   m_AspectMode: 3
   m_AspectRatio: 1
---- !u!114 &810214945717809421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7336334302906263711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf1894ee6b26197458cc596be6567b01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIController
-  musicController: {fileID: 0}
-  gameSceneName: CamillaScene
-  btnStartAudio: {fileID: 0}
-  startButtonVolume: 0.3
-  blackScreenCanvas: {fileID: 0}
-  fadeInDuration: 1.5
-  fadeOutDuration: 1.8
 --- !u!225 &3813549922931754927
 CanvasGroup:
   m_ObjectHideFlags: 0

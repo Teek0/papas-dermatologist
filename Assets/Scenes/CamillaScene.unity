@@ -3741,6 +3741,7 @@ MonoBehaviour:
   resultsText: {fileID: 1537053182}
   evaluator: {fileID: 28156263}
   fadeCanvasGroup: {fileID: 444414368}
+  mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   fadeOutDuration: 0.5
   receptionSceneName: ReceptionScene
 --- !u!4 &2107000831

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameController : MonoBehaviour
 {
@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
 
     [Header("Scene Transition")]
     [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private float fadeOutDuration = 0.5f;
     [SerializeField] private string receptionSceneName = SceneNames.Reception;
 
@@ -164,32 +165,15 @@ public class GameController : MonoBehaviour
 
     private IEnumerator TransitionToReception()
     {
-        if (fadeCanvasGroup != null)
-        {
-            yield return StartCoroutine(FadeCanvasGroup(fadeCanvasGroup, 1f, true));
-        }
+        if (GameSession.I != null)
+            GameSession.I.ClearCustomer();
 
-        SceneManager.LoadScene(receptionSceneName);
-    }
-
-    private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float targetAlpha, bool blockRaycasts)
-    {
-        if (canvasGroup == null)
-            yield break;
-
-        canvasGroup.blocksRaycasts = true;
-
-        float startAlpha = canvasGroup.alpha;
-        float time = 0f;
-
-        while (time < fadeOutDuration)
-        {
-            time += Time.unscaledDeltaTime;
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeOutDuration);
-            yield return null;
-        }
-
-        canvasGroup.alpha = targetAlpha;
-        canvasGroup.blocksRaycasts = blockRaycasts;
+        yield return StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
+            receptionSceneName,
+            fadeCanvasGroup,
+            1f,
+            true,
+            mainMixer,
+            fadeOutDuration));
     }
 }
