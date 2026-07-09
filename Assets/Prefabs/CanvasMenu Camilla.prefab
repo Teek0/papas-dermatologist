@@ -374,6 +374,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3164135787881667207, guid: 887acc61e6a038b44abc2e83566d4c1c, type: 3}
+    - target: {fileID: 2681714859887643064, guid: cd288a03db1b1ec41917055c2e8292bf, type: 3}
+      propertyPath: fadeOutDuration
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3388550109066450219, guid: cd288a03db1b1ec41917055c2e8292bf, type: 3}
       propertyPath: m_Name
       value: CanvasMenu Camilla
