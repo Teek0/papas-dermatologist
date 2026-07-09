@@ -47,9 +47,9 @@ public class BrushInputWorld : MonoBehaviour
         if (paintSurface == null || cam == null || paintCollider == null || targetSpriteRenderer == null)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (GameplayPointerInput.WasPressedThisFrame())
         {
-            Vector2 worldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 worldPos = cam.ScreenToWorldPoint(GameplayPointerInput.ScreenPosition);
 
             if (paintCollider.OverlapPoint(worldPos) && TryGetUV(worldPos, out Vector2 uv))
             {
@@ -64,9 +64,9 @@ public class BrushInputWorld : MonoBehaviour
             }
         }
 
-        if (paintWhileHeld && isPainting && Input.GetMouseButton(0))
+        if (paintWhileHeld && isPainting && GameplayPointerInput.IsPressed())
         {
-            Vector2 worldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 worldPos = cam.ScreenToWorldPoint(GameplayPointerInput.ScreenPosition);
 
             if (paintCollider.OverlapPoint(worldPos) && TryGetUV(worldPos, out Vector2 uv))
             {
@@ -75,7 +75,7 @@ public class BrushInputWorld : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (GameplayPointerInput.WasReleasedThisFrame())
             SetPaintingState(false);
     }
 

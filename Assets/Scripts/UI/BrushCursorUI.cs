@@ -64,7 +64,7 @@ public class BrushCursorUI : MonoBehaviour
 
         bool ok = RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
-            Input.mousePosition,
+            GameplayPointerInput.ScreenPosition,
             uiCamera,
             out var localPos
         );
