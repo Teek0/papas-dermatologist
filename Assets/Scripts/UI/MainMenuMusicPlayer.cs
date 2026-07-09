@@ -10,8 +10,6 @@ public class MainMenuMusicPlayer : MonoBehaviour
     [Header("Audio Mixer setup")]
     public AudioMixer mainMixer;
     public AudioMixerGroup musicGroup;
-    public AudioMixerGroup ambGroup;
-    public AudioMixerGroup sfxGroup;
 
     [Header("Music files")]
     public AudioClip introClip;
@@ -19,7 +17,6 @@ public class MainMenuMusicPlayer : MonoBehaviour
 
     [Header("Music settings")]
     [Range(0f, 1f)] public float musicVolume = 1f;
-    [Range(0f, 1f)] public float startButtonVolume = 0.3f;
     public float fadeInDuration = 2f;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
@@ -143,14 +140,4 @@ public class MainMenuMusicPlayer : MonoBehaviour
         return source;
     }
 
-    public void PlayStartSound(AudioClip btnStartClip)
-    {
-        // Play start sound when start button is clicked.
-        AudioSource startBtnSource = CreateSource("startBtnSource", false);
-        startBtnSource.outputAudioMixerGroup = sfxGroup;
-        if (btnStartClip != null)
-        {
-            startBtnSource.PlayOneShot(btnStartClip, startButtonVolume);
-        }
-    }
 }

@@ -1,17 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class UIController : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
 
     [Header("Configuration")]
-    public MainMenuMusicPlayer musicController;
+    public AudioMixer mainMixer;
+    public UISoundPlayer uiSoundPlayer;
 
     [Header("Game start settings")]
     public string gameSceneName = SceneNames.Reception;
     public AudioClip btnStartAudio;
-    [Range(0f, 1f)] public float startButtonVolume = 0.3f;
     public CanvasGroup blackScreenCanvas;
     public float fadeInDuration = 2.5f;
     public float fadeOutDuration = 1.8f;
@@ -63,15 +64,15 @@ public class UIController : MonoBehaviour
 
     public void StartGame()
     {
-        if (musicController != null)
-            musicController.PlayStartSound(btnStartAudio);
+        if (uiSoundPlayer != null)
+            uiSoundPlayer.PlayOneShot(btnStartAudio);
 
         StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
             gameSceneName,
             blackScreenCanvas,
             1f,
             false,
-            musicController != null ? musicController.mainMixer : null,
+            mainMixer,
             fadeOutDuration));
     }
 
