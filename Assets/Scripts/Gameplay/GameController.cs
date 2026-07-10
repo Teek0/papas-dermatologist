@@ -32,7 +32,12 @@ public class GameController : MonoBehaviour
     [SerializeField] private float fadeOutDuration = 0.5f;
     [SerializeField] private string receptionSceneName = SceneNames.Reception;
 
+    [Header("Round End Audio")]
+    [SerializeField] private AudioMixerGroup roundEndOutputGroup;
+    [SerializeField] private AudioClip timeUpClip;
+
     private GameState currentState;
+    private AudioSource roundEndAudioSource;
 
     public bool CanPaint => currentState == GameState.Running && Time.timeScale > 0f;
 
@@ -43,6 +48,9 @@ public class GameController : MonoBehaviour
 
         if (evaluator == null)
             evaluator = FindFirstObjectByType<TreatmentEvaluator>();
+
+        if (timeUpClip == null)
+            timeUpClip = Resources.Load<AudioClip>("One Shots/finishround2");
     }
 
     private void Start()
@@ -83,6 +91,8 @@ public class GameController : MonoBehaviour
         if (remainingTime <= 0f)
         {
             remainingTime = 0f;
+            UpdateTimerText();
+            PlayTimeUpSound();
             EndRound();
             return;
         }
@@ -98,6 +108,9 @@ public class GameController : MonoBehaviour
 
     public void EndRound()
     {
+        if (currentState == GameState.Results)
+            return;
+
         currentState = GameState.Results;
 
         if (brushInput != null)
@@ -150,6 +163,22 @@ public class GameController : MonoBehaviour
                 resultsText.text = $"Pago: {finalPay}\nDinero: {money}";
             }
         }
+    }
+
+    private void PlayTimeUpSound()
+    {
+        if (timeUpClip == null)
+            return;
+
+        if (roundEndAudioSource == null)
+        {
+            roundEndAudioSource = gameObject.AddComponent<AudioSource>();
+            roundEndAudioSource.playOnAwake = false;
+            roundEndAudioSource.spatialBlend = 0f;
+        }
+
+        roundEndAudioSource.outputAudioMixerGroup = roundEndOutputGroup;
+        roundEndAudioSource.PlayOneShot(timeUpClip);
     }
 
     // ---------------- Scene transition (Results -> Reception) ----------------
