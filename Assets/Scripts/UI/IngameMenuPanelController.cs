@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class IngameMenuPanelController : MonoBehaviour
 {
@@ -13,6 +14,16 @@ public class IngameMenuPanelController : MonoBehaviour
     [SerializeField] private AudioClip menuOffSound;
 
     private bool isOpen;
+
+    private void Update()
+    {
+        Keyboard keyboard = Keyboard.current;
+        if (keyboard == null)
+            return;
+
+        if (keyboard.pKey.wasPressedThisFrame || keyboard.mKey.wasPressedThisFrame)
+            ToggleMenu();
+    }
 
     public void ToggleMenu()
     {
