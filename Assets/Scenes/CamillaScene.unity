@@ -415,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreamPickupWorld
   creamType: 1
   selectionManager: {fileID: 1529310678}
+  cam: {fileID: 0}
 --- !u!58 &335311017
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2437,7 +2438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreamSelectionManager
   defaultCream: 0
   acneColor: {r: 1, g: 0.9058824, b: 0.8980393, a: 1}
-  wrinklesColor: {r: 0.41960788, g: 0.3137255, b: 0.20784315, a: 1}
+  wrinklesColor: {r: 0.82745105, g: 0.58431375, b: 0, a: 1}
   scarsColor: {r: 0.54901963, g: 0.81568635, b: 0.65882355, a: 1}
 --- !u!4 &1529310679
 Transform:
@@ -2776,6 +2777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreamPickupWorld
   creamType: 2
   selectionManager: {fileID: 1529310678}
+  cam: {fileID: 0}
 --- !u!58 &1581662820
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3610,6 +3612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreamPickupWorld
   creamType: 0
   selectionManager: {fileID: 1529310678}
+  cam: {fileID: 0}
 --- !u!58 &2018895484
 CircleCollider2D:
   m_ObjectHideFlags: 0

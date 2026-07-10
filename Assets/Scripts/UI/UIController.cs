@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     [Header("Configuration")]
     public AudioMixer mainMixer;
     public UISoundPlayer uiSoundPlayer;
+    [SerializeField] private CanvasGroup settingsPanel;
 
     [Header("Game start settings")]
     public string gameSceneName = SceneNames.Reception;
@@ -19,11 +20,12 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup = ResolveSettingsPanel();
+
         if (canvasGroup != null)
             CloseSettings();
         else
-            Debug.LogError("UIController: CanvasGroup null.");
+            Debug.LogWarning("UIController: settingsPanel and local CanvasGroup are null. Settings panel will not be controlled.");
 
         Time.timeScale = 1f;
     }
@@ -64,6 +66,8 @@ public class UIController : MonoBehaviour
 
     public void StartGame()
     {
+        CloseSettings();
+
         if (uiSoundPlayer != null)
             uiSoundPlayer.PlayOneShot(btnStartAudio);
 
@@ -82,6 +86,12 @@ public class UIController : MonoBehaviour
             SetCanvasGroupState(canvasGroup, true);
     }
 
+    public void ToggleSettings()
+    {
+        if (EnsureCanvasGroup())
+            SetCanvasGroupState(canvasGroup, !IsCanvasGroupVisible(canvasGroup));
+    }
+
     public void CloseSettings()
     {
         if (EnsureCanvasGroup())
@@ -90,10 +100,47 @@ public class UIController : MonoBehaviour
 
     private bool EnsureCanvasGroup()
     {
-        if (canvasGroup == null)
-            canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null || !canvasGroup.gameObject.scene.IsValid())
+            canvasGroup = ResolveSettingsPanel();
 
         return canvasGroup != null;
+    }
+
+    private CanvasGroup ResolveSettingsPanel()
+    {
+        if (settingsPanel != null && settingsPanel.gameObject.scene.IsValid())
+            return settingsPanel;
+
+        if (settingsPanel != null)
+        {
+            CanvasGroup sceneSettingsPanel = FindSceneSettingsPanel();
+            if (sceneSettingsPanel != null)
+                return sceneSettingsPanel;
+        }
+
+        CanvasGroup localCanvasGroup = GetComponent<CanvasGroup>();
+        if (localCanvasGroup != null)
+            return localCanvasGroup;
+
+        return FindSceneSettingsPanel();
+    }
+
+    private CanvasGroup FindSceneSettingsPanel()
+    {
+        CanvasGroup[] canvasGroups = FindObjectsByType<CanvasGroup>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (CanvasGroup candidate in canvasGroups)
+        {
+            if (candidate.gameObject.scene == gameObject.scene && candidate.gameObject.name == "Settings_Panel")
+                return candidate;
+        }
+
+        return null;
+    }
+
+    private bool IsCanvasGroupVisible(CanvasGroup targetCanvasGroup)
+    {
+        return targetCanvasGroup != null && targetCanvasGroup.alpha > 0.5f;
     }
 
     private void SetCanvasGroupState(CanvasGroup targetCanvasGroup, bool isVisible)
