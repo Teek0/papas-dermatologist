@@ -5,23 +5,39 @@ using UnityEngine;
 public enum CreamType
 {
     Acne,       // rosa
-    Wrinkles,   // café
+    Wrinkles,   // cafe
     Scars       // verde
 }
 
 public class CreamSelectionManager : MonoBehaviour
 {
+    public enum PaintTool
+    {
+        Cream,
+        Eraser
+    }
+
     [Header("Default")]
     [SerializeField] private CreamType defaultCream = CreamType.Acne;
 
     [Header("Cream Colors")]
     [SerializeField] private Color acneColor = new Color(1f, 0.35f, 0.75f, 1f);     // rosa
-    [SerializeField] private Color wrinklesColor = new Color(0.35f, 0.22f, 0.12f, 1f); // café
+    [SerializeField] private Color wrinklesColor = new Color(0.35f, 0.22f, 0.12f, 1f); // cafe
     [SerializeField] private Color scarsColor = new Color(0.2f, 1f, 0.4f, 1f);      // verde
 
+    [Header("Eraser")]
+    [SerializeField] private FacePaintSurfaceWorld paintSurface;
+    [SerializeField] private Color eraserCursorColor = Color.white;
+    [SerializeField, Min(0.05f)] private float clearAllDoubleClickWindow = 0.35f;
+
+    private float lastEraserClickTime = -999f;
+
     public CreamType CurrentCream { get; private set; }
+    public PaintTool CurrentTool { get; private set; }
+    public bool IsEraserSelected => CurrentTool == PaintTool.Eraser;
 
     public Color CurrentColor =>
+        IsEraserSelected ? eraserCursorColor :
         CurrentCream == CreamType.Acne ? acneColor :
         CurrentCream == CreamType.Wrinkles ? wrinklesColor :
         scarsColor;
@@ -33,13 +49,51 @@ public class CreamSelectionManager : MonoBehaviour
 
     private void Awake()
     {
+        if (paintSurface == null)
+            paintSurface = FindFirstObjectByType<FacePaintSurfaceWorld>();
+
         CurrentCream = defaultCream;
+        CurrentTool = PaintTool.Cream;
     }
 
     public void SelectCream(CreamType cream)
     {
         CurrentCream = cream;
+        CurrentTool = PaintTool.Cream;
         Debug.Log($"Crema seleccionada: {cream}");
+    }
+
+    public void SelectEraserOrClearAll()
+    {
+        float now = Time.unscaledTime;
+
+        if (now - lastEraserClickTime <= clearAllDoubleClickWindow)
+        {
+            ClearAllPaint();
+            lastEraserClickTime = -999f;
+            return;
+        }
+
+        SelectEraser();
+        lastEraserClickTime = now;
+    }
+
+    public void SelectEraser()
+    {
+        CurrentTool = PaintTool.Eraser;
+        Debug.Log("Borrador seleccionado");
+    }
+
+    private void ClearAllPaint()
+    {
+        if (paintSurface == null)
+            paintSurface = FindFirstObjectByType<FacePaintSurfaceWorld>();
+
+        if (paintSurface == null)
+            return;
+
+        paintSurface.ClearTexture();
+        Debug.Log("Tratamiento borrado por completo");
     }
 
     public static CreamType CreamForConditionType(string type)

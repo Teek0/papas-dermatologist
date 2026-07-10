@@ -1092,12 +1092,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 540}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1248,7 +1248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &770279536
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1293,14 +1293,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770279535}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1356,11 +1356,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 633959264}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 732.65, y: -9.299988}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -89.74, y: -5.100006}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &787931372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2133,7 +2133,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306498022
 MonoBehaviour:
@@ -2148,8 +2148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2251,6 +2251,7 @@ MonoBehaviour:
   maskTint: {r: 1, g: 0.47, b: 0.7, a: 1}
   brushRadius: 15
   brushStrength: 0.25
+  eraserStrength: 0.75
 --- !u!212 &1430127675
 SpriteRenderer:
   serializedVersion: 2
@@ -2437,9 +2438,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreamSelectionManager
   defaultCream: 0
-  acneColor: {r: 1, g: 0.9058824, b: 0.8980393, a: 1}
-  wrinklesColor: {r: 0.82745105, g: 0.58431375, b: 0, a: 1}
-  scarsColor: {r: 0.54901963, g: 0.81568635, b: 0.65882355, a: 1}
+  acneColor: {r: 1, g: 0.9058824, b: 0.8980393, a: 0.60784316}
+  wrinklesColor: {r: 0.82745105, g: 0.58431375, b: 0, a: 0.60784316}
+  scarsColor: {r: 0.54901963, g: 0.81568635, b: 0.65882355, a: 0.60784316}
+  paintSurface: {fileID: 1430127674}
+  eraserCursorColor: {r: 1, g: 1, b: 1, a: 1}
+  clearAllDoubleClickWindow: 0.35
 --- !u!4 &1529310679
 Transform:
   m_ObjectHideFlags: 0
@@ -3465,11 +3469,11 @@ RectTransform:
   - {fileID: 1551924978}
   m_Father: {fileID: 633959264}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.94, y: 0.88}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.5999756, y: -16.3}
-  m_SizeDelta: {x: 67.00001, y: 8.490002}
-  m_Pivot: {x: 1.1, y: 1}
+  m_AnchoredPosition: {x: -17, y: -16.3}
+  m_SizeDelta: {x: 125, y: 73}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &2015044248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3514,10 +3518,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1430127674}
-        m_TargetAssemblyTypeName: FacePaintSurfaceWorld, Assembly-CSharp
-        m_MethodName: ClearTexture
-        m_Mode: 6
+      - m_Target: {fileID: 1529310678}
+        m_TargetAssemblyTypeName: CreamSelectionManager, Assembly-CSharp
+        m_MethodName: SelectEraserOrClearAll
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3909,6 +3913,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMenu Camilla
       objectReference: {fileID: 0}
+    - target: {fileID: 1189024844545012571, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189024844545012571, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2822870110029322642, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3918,6 +3930,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2822870110029322642, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063065979092301607, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063065979092301607, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063065979092301607, guid: 31b1d38f662d020449aa06af0a177af0, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}

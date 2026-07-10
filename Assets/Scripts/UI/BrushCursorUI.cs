@@ -29,6 +29,7 @@ public class BrushCursorUI : MonoBehaviour
         if (selectionManager == null) selectionManager = FindFirstObjectByType<CreamSelectionManager>();
         if (gameController == null) gameController = FindFirstObjectByType<GameController>();
 
+        ConfigureAsVisualOnlyCursor();
         ResolveUICamera();
         lastGoodPos = rt.anchoredPosition;
         lastSize = rt.sizeDelta;
@@ -38,7 +39,19 @@ public class BrushCursorUI : MonoBehaviour
 
     private void OnEnable()
     {
+        ConfigureAsVisualOnlyCursor();
         ResolveUICamera();
+    }
+
+    private void ConfigureAsVisualOnlyCursor()
+    {
+        var graphics = GetComponentsInChildren<Graphic>(true);
+        foreach (var graphic in graphics)
+            graphic.raycastTarget = false;
+
+        var rootImage = GetComponent<Image>();
+        if (rootImage != null && rootImage != circleImage)
+            rootImage.enabled = false;
     }
 
     private void ResolveUICamera()

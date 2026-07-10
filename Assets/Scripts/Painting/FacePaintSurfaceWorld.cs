@@ -24,6 +24,7 @@ public class FacePaintSurfaceWorld : MonoBehaviour
     [Header("Brush Settings")]
     [SerializeField, Min(1)] private int brushRadius = 10;
     [SerializeField, Range(0.01f, 1f)] private float brushStrength = 0.25f;
+    [SerializeField, Range(0.01f, 1f)] private float eraserStrength = 0.75f;
 
     private SpriteRenderer sr;
 
@@ -226,6 +227,70 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         }
 
         dirty = true;
+    }
+
+    public void EraseAtUV(Vector2 uv)
+    {
+        if (!hasPainted)
+            return;
+
+        if (paintTexture == null || paintPixels == null || paintPixels.Length != textureSize * textureSize)
+            RecreatePaintTextureAndSprite();
+
+        int cx = Mathf.RoundToInt(Mathf.Clamp01(uv.x) * (textureSize - 1));
+        int cy = Mathf.RoundToInt(Mathf.Clamp01(uv.y) * (textureSize - 1));
+
+        int r = brushRadius;
+        int r2 = r * r;
+        int subtractA = Mathf.RoundToInt(255f * eraserStrength);
+
+        for (int dy = -r; dy <= r; dy++)
+        {
+            int py = cy + dy;
+            if (py < 0 || py >= textureSize) continue;
+
+            for (int dx = -r; dx <= r; dx++)
+            {
+                int px = cx + dx;
+                if (px < 0 || px >= textureSize) continue;
+
+                if (dx * dx + dy * dy > r2) continue;
+
+                float u = (float)px / (textureSize - 1);
+                float v = (float)py / (textureSize - 1);
+
+                if (!IsAllowedAtUV(u, v))
+                    continue;
+
+                int idx = py * textureSize + px;
+                Color32 prev = paintPixels[idx];
+                int newA = Mathf.Max(0, prev.a - subtractA);
+
+                paintPixels[idx] = newA == 0
+                    ? new Color32(0, 0, 0, 0)
+                    : new Color32(prev.r, prev.g, prev.b, (byte)newA);
+            }
+        }
+
+        hasPainted = HasVisiblePaint();
+        if (hideRendererUntilFirstPaint && !hasPainted)
+            sr.enabled = false;
+
+        dirty = true;
+    }
+
+    private bool HasVisiblePaint()
+    {
+        if (paintPixels == null)
+            return false;
+
+        for (int i = 0; i < paintPixels.Length; i++)
+        {
+            if (paintPixels[i].a > 0)
+                return true;
+        }
+
+        return false;
     }
 
     private bool IsAllowedAtUV(float u, float v)

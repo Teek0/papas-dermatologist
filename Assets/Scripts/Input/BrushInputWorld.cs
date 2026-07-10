@@ -54,9 +54,7 @@ public class BrushInputWorld : MonoBehaviour
             if (paintCollider.OverlapPoint(worldPos) && TryGetUV(worldPos, out Vector2 uv))
             {
                 SetPaintingState(true);
-
-                Color col = creamSelection != null ? creamSelection.CurrentColor : Color.white;
-                paintSurface.PaintAtUV(uv, col);
+                ApplySelectedToolAtUV(uv);
             }
             else
             {
@@ -70,8 +68,7 @@ public class BrushInputWorld : MonoBehaviour
 
             if (paintCollider.OverlapPoint(worldPos) && TryGetUV(worldPos, out Vector2 uv))
             {
-                Color col = creamSelection != null ? creamSelection.CurrentColor : Color.white;
-                paintSurface.PaintAtUV(uv, col);
+                ApplySelectedToolAtUV(uv);
             }
         }
 
@@ -86,6 +83,18 @@ public class BrushInputWorld : MonoBehaviour
 
         isPainting = value;
         OnBrushValidStateChanged?.Invoke(isPainting);
+    }
+
+    private void ApplySelectedToolAtUV(Vector2 uv)
+    {
+        if (creamSelection != null && creamSelection.IsEraserSelected)
+        {
+            paintSurface.EraseAtUV(uv);
+            return;
+        }
+
+        Color col = creamSelection != null ? creamSelection.CurrentColor : Color.white;
+        paintSurface.PaintAtUV(uv, col);
     }
 
     private bool TryGetUV(Vector2 worldPos, out Vector2 uv)
