@@ -9,9 +9,11 @@ public class AudioSettingsController : MonoBehaviour
     private const string GlobalVolumeKey = "globalVolume";
     private const string MusicVolumeKey = "musicVolume";
     private const string SfxVolumeKey = "sfxVolume";
+    private const string AmbientVolumeKey = "ambientVolume";
     private const string GlobalMixerParameter = "masterMix";
     private const string MusicMixerParameter = "musicMix";
     private const string SfxMixerParameter = "sfxMix";
+    private const string AmbientMixerParameter = "ambientMix";
 
     [System.Serializable]
     public struct VolumeData
@@ -56,7 +58,7 @@ public class AudioSettingsController : MonoBehaviour
 
         foreach (VolumeData data in volumeSettings)
         {
-            float savedVolume = PlayerPrefs.GetFloat(data.playerPrefKey, 1f);
+            float savedVolume = PlayerPrefs.GetFloat(data.playerPrefKey, GetDefaultVolume(data.playerPrefKey));
             ApplyVolume(data.mixerParameter, data.playerPrefKey, savedVolume);
 
             if (data.slider == null)
@@ -64,12 +66,9 @@ public class AudioSettingsController : MonoBehaviour
 
             data.slider.SetValueWithoutNotify(savedVolume);
 
-            if (data.slider.onValueChanged.GetPersistentEventCount() == 0)
-            {
-                string mixerParameter = data.mixerParameter;
-                string playerPrefKey = data.playerPrefKey;
-                data.slider.onValueChanged.AddListener(value => ApplyVolume(mixerParameter, playerPrefKey, value));
-            }
+            string mixerParameter = data.mixerParameter;
+            string playerPrefKey = data.playerPrefKey;
+            data.slider.onValueChanged.AddListener(value => ApplyVolume(mixerParameter, playerPrefKey, value));
         }
     }
 
@@ -86,6 +85,21 @@ public class AudioSettingsController : MonoBehaviour
     public void SetSfxVolume(float value)
     {
         ApplyVolume(SfxMixerParameter, SfxVolumeKey, value);
+    }
+
+    public void SetAmbientVolume(float value)
+    {
+        ApplyVolume(AmbientMixerParameter, AmbientVolumeKey, value);
+    }
+
+    private float GetDefaultVolume(string playerPrefKey)
+    {
+        return playerPrefKey switch
+        {
+            MusicVolumeKey => 0.55f,
+            AmbientVolumeKey => 0.75f,
+            _ => 1f
+        };
     }
 
     private void ApplyVolume(string mixerParameter, string playerPrefKey, float linearValue)
