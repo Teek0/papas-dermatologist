@@ -7,6 +7,7 @@ public class IngameMenuPanelController : MonoBehaviour
     [SerializeField] private CanvasGroup panelObject;
     [SerializeField] private CanvasGroup settingsPanel;
     [SerializeField] private CanvasGroup buttonContainer;
+    [SerializeField] private CanvasGroup pauseOverlay;
 
     [Header("Audio settings")]
     [SerializeField] private AudioSource menuSoundSource;
@@ -34,6 +35,7 @@ public class IngameMenuPanelController : MonoBehaviour
 
         if (isOpen)
         {
+            SetPauseOverlayState(true);
             SetCanvasGroupState(panelObject, true);
             ResetSettingsView();
             return;
@@ -41,6 +43,7 @@ public class IngameMenuPanelController : MonoBehaviour
 
         ResetSettingsView();
         SetCanvasGroupState(panelObject, false);
+        SetPauseOverlayState(false);
     }
 
     public void OpenSettingsPanel()
@@ -93,5 +96,15 @@ public class IngameMenuPanelController : MonoBehaviour
         canvasGroup.alpha = isVisible ? 1f : 0f;
         canvasGroup.blocksRaycasts = isVisible;
         canvasGroup.interactable = isVisible;
+    }
+
+    private void SetPauseOverlayState(bool isVisible)
+    {
+        if (pauseOverlay == null)
+            return;
+
+        pauseOverlay.alpha = isVisible ? 1f : 0f;
+        pauseOverlay.blocksRaycasts = false;
+        pauseOverlay.interactable = false;
     }
 }
