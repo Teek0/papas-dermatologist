@@ -22,9 +22,14 @@ public class IngameMenuPanelController : MonoBehaviour
         PlayToggleSound();
 
         if (isOpen)
-            CloseSettingsPanel();
+        {
+            SetCanvasGroupState(panelObject, true);
+            ResetSettingsView();
+            return;
+        }
 
-        SetCanvasGroupState(panelObject, isOpen);
+        ResetSettingsView();
+        SetCanvasGroupState(panelObject, false);
     }
 
     public void OpenSettingsPanel()
@@ -38,11 +43,7 @@ public class IngameMenuPanelController : MonoBehaviour
 
     public void CloseSettingsPanel()
     {
-        if (!HasSettingsReferences())
-            return;
-
-        SetCanvasGroupState(settingsPanel, false);
-        SetCanvasGroupState(buttonContainer, true);
+        ResetSettingsView();
     }
 
     private void PlayToggleSound()
@@ -62,6 +63,15 @@ public class IngameMenuPanelController : MonoBehaviour
 
         Debug.LogError("IngameMenuPanelController: buttonContainer or settingsPanel are null.");
         return false;
+    }
+
+    private void ResetSettingsView()
+    {
+        if (!HasSettingsReferences())
+            return;
+
+        SetCanvasGroupState(settingsPanel, false);
+        SetCanvasGroupState(buttonContainer, true);
     }
 
     private void SetCanvasGroupState(CanvasGroup canvasGroup, bool isVisible)
