@@ -60,6 +60,7 @@ public class BrushCursorUI : MonoBehaviour
             circleImage = GetComponentInChildren<Image>(true);
 
         if (canvas == null) canvas = GetComponentInParent<Canvas>(true);
+        EnsureToolLayerRendersAboveCircle();
         if (toolImage != null) toolRt = toolImage.rectTransform;
         if (circleImage != null) circleRt = circleImage.rectTransform;
 
@@ -81,8 +82,41 @@ public class BrushCursorUI : MonoBehaviour
 
     private void OnEnable()
     {
+        EnsureToolLayerRendersAboveCircle();
         ConfigureAsVisualOnlyCursor();
         ResolveUICamera();
+    }
+
+    private void EnsureToolLayerRendersAboveCircle()
+    {
+        if (toolImage == null || toolImage.transform != transform)
+            return;
+
+        Image rootImage = toolImage;
+        GameObject toolLayer = new GameObject("ToolLayer", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        toolLayer.transform.SetParent(transform, false);
+
+        var layerRt = toolLayer.GetComponent<RectTransform>();
+        layerRt.anchorMin = Vector2.one * 0.5f;
+        layerRt.anchorMax = Vector2.one * 0.5f;
+        layerRt.pivot = Vector2.one * 0.5f;
+        layerRt.anchoredPosition = Vector2.zero;
+        layerRt.sizeDelta = rt != null ? rt.sizeDelta : Vector2.zero;
+
+        var layerImage = toolLayer.GetComponent<Image>();
+        layerImage.sprite = rootImage.sprite;
+        layerImage.color = rootImage.color;
+        layerImage.material = rootImage.material;
+        layerImage.type = rootImage.type;
+        layerImage.preserveAspect = rootImage.preserveAspect;
+        layerImage.raycastTarget = false;
+
+        rootImage.enabled = false;
+        rootImage.raycastTarget = false;
+
+        toolImage = layerImage;
+        toolRt = layerRt;
+        toolLayer.transform.SetAsLastSibling();
     }
 
     private void ConfigureAsVisualOnlyCursor()

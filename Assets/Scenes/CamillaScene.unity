@@ -1291,10 +1291,10 @@ MonoBehaviour:
   wrinklesCursorSprite: {fileID: -1302511399783605184, guid: 23519fdd4100feb498f71715716f1692, type: 3}
   scarsCursorSprite: {fileID: 5732269835462129587, guid: aa363828cac02554483138e47daa4b38, type: 3}
   eraserCursorSprite: {fileID: -7226256066784501622, guid: 702c3314eb10ce34c8ee4518d002c3e5, type: 3}
-  creamCursorSize: {x: 70, y: 39}
-  creamCursorHotspot: {x: 0.08, y: 0.65}
-  eraserCursorSize: {x: 32, y: 74}
-  eraserCursorHotspot: {x: 0.25, y: 0.16}
+  creamCursorSize: {x: 80, y: 49}
+  creamCursorHotspot: {x: 0, y: 0.8}
+  eraserCursorSize: {x: 42, y: 84}
+  eraserCursorHotspot: {x: 0.4, y: 1}
   tintCreamCursorWithCreamColor: 0
   eraserCursorTint: {r: 1, g: 1, b: 1, a: 1}
   showPrecisionCircle: 1
@@ -2264,9 +2264,9 @@ MonoBehaviour:
   maskLookTexture: {fileID: 2800000, guid: bc9b68c77d847e9449939a7c5f116833, type: 3}
   lookTiling: 4
   maskTint: {r: 1, g: 0.47, b: 0.7, a: 1}
-  brushRadius: 15
-  brushStrength: 0.25
-  eraserStrength: 0.75
+  brushRadius: 10
+  brushStrength: 0.15
+  eraserStrength: 0.35
 --- !u!212 &1430127675
 SpriteRenderer:
   serializedVersion: 2
