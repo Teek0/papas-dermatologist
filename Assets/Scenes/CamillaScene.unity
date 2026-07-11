@@ -1283,9 +1283,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BrushCursorUI
   canvas: {fileID: 633959263}
   circleImage: {fileID: 1306498022}
+  toolImage: {fileID: 770279538}
   selectionManager: {fileID: 1529310678}
   gameController: {fileID: 2107000830}
   baseSize: 15
+  acneCursorSprite: {fileID: -6424699559208069660, guid: 0c53ae024b65b1848b5e06c97fec9510, type: 3}
+  wrinklesCursorSprite: {fileID: -1302511399783605184, guid: 23519fdd4100feb498f71715716f1692, type: 3}
+  scarsCursorSprite: {fileID: 5732269835462129587, guid: aa363828cac02554483138e47daa4b38, type: 3}
+  eraserCursorSprite: {fileID: -7226256066784501622, guid: 702c3314eb10ce34c8ee4518d002c3e5, type: 3}
+  creamCursorSize: {x: 70, y: 39}
+  creamCursorHotspot: {x: 0.08, y: 0.65}
+  eraserCursorSize: {x: 32, y: 74}
+  eraserCursorHotspot: {x: 0.25, y: 0.16}
+  tintCreamCursorWithCreamColor: 0
+  eraserCursorTint: {r: 1, g: 1, b: 1, a: 1}
+  showPrecisionCircle: 1
+  precisionCircleSize: {x: 20, y: 20}
+  creamPrecisionCircleAlpha: 0.45
+  eraserPrecisionCircleColor: {r: 1, g: 1, b: 1, a: 0.45}
 --- !u!114 &770279538
 MonoBehaviour:
   m_ObjectHideFlags: 0
