@@ -14,6 +14,9 @@ public class GameSession : MonoBehaviour
     public static GameSession I { get; private set; }
     public Customer CurrentCustomer { get; private set; }
     public int Money { get; private set; }
+    public int DailyQuota => constants != null ? constants.DailyQuota : 2500;
+    public bool HasReachedDailyQuota => Money >= DailyQuota;
+    public float DailyQuotaProgress => DailyQuota <= 0 ? 1f : Mathf.Clamp01((float)Money / DailyQuota);
 
     private void Awake()
     {
@@ -46,9 +49,11 @@ public class GameSession : MonoBehaviour
         Money = amount;
     }
 
-    public void AddMoney(int delta)
+    public bool AddMoney(int delta)
     {
+        bool hadReachedQuota = HasReachedDailyQuota;
         Money += delta;
+        return !hadReachedQuota && HasReachedDailyQuota;
     }
 
     public void ClearCustomer()

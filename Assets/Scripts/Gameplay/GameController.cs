@@ -122,6 +122,7 @@ public class GameController : MonoBehaviour
         float correctPct = 0f;
         float wrongPct = 0f;
         float dirtyPct = 0f;
+        bool reachedDailyQuota = false;
 
         if (customer != null && evaluator != null)
         {
@@ -141,7 +142,7 @@ public class GameController : MonoBehaviour
         }
 
         if (GameSession.I != null)
-            GameSession.I.AddMoney(finalPay);
+            reachedDailyQuota = GameSession.I.AddMoney(finalPay);
 
         if (resultsPanel != null)
             resultsPanel.SetActive(true);
@@ -156,13 +157,23 @@ public class GameController : MonoBehaviour
                     $"Correcto: {Mathf.RoundToInt(correctPct)}%\n" +
                     $"Color incorrecto: {Mathf.RoundToInt(wrongPct)}%\n" +
                     $"Pago: {finalPay}\n" +
-                    $"Dinero: {money}";
+                    $"Dinero: {money}" +
+                    GetDailyQuotaMessage(reachedDailyQuota);
             }
             else
             {
-                resultsText.text = $"Pago: {finalPay}\nDinero: {money}";
+                resultsText.text = $"Pago: {finalPay}\nDinero: {money}" +
+                    GetDailyQuotaMessage(reachedDailyQuota);
             }
         }
+    }
+
+    private string GetDailyQuotaMessage(bool reachedDailyQuota)
+    {
+        if (!reachedDailyQuota || GameSession.I == null)
+            return "";
+
+        return $"\n\nHas conseguido la cuota del dia (${GameSession.I.DailyQuota}). Gracias por jugar!";
     }
 
     private void PlayTimeUpSound()
