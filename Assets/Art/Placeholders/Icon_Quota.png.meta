@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 27fd980d76b1ba946bd7e998941410bb
+guid: c86d85f8ac263614d8c3a1d56695d136
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6774963244265981401
-    second: Inicio_01_01 1_0
+      213: -4261266399612584984
+    second: Icon_Quota_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inicio_01_01 1_0
+      name: Icon_Quota_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 0
-        width: 1920
-        height: 1080
+        width: 254
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d54dc4ec21850e50800000000000000
-      internalID: 6774963244265981401
+      spriteID: 8ebb8c569c0fcd4c0800000000000000
+      internalID: -4261266399612584984
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Inicio_01_01 1_0: 6774963244265981401
+      Icon_Quota_0: -4261266399612584984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

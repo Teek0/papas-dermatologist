@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2456588970bf7a24aac3ae4869877f9f
+guid: db6176031f17339418de8596d26a20cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5273242887607921660
-    second: SettingsBG_0
+      213: 4976007707055734290
+    second: Tutorial_Button_Close_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SettingsBG_0
+      name: Tutorial_Button_Close_0_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 9
-        width: 803
-        height: 1423
+        x: 0
+        y: 0
+        width: 220
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40456c5588da1d6b0800000000000000
-      internalID: -5273242887607921660
+      spriteID: 21eb9a245a45e0540800000000000000
+      internalID: 4976007707055734290
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SettingsBG_0: -5273242887607921660
+      Tutorial_Button_Close_0_0: 4976007707055734290
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

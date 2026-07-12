@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: abd7bc2af30cc314787ffabd5db08b6b
+guid: 9c3660eb12626a04fba782d750287931
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8358193933568247426
-    second: MenuBQuit_0
+      213: 4936296139033593735
+    second: Icon_Clock_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MenuBQuit_0
+      name: Icon_Clock_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 16
-        width: 431
-        height: 118
+        x: 17
+        y: 1
+        width: 218
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 286092659154ef370800000000000000
-      internalID: 8358193933568247426
+      spriteID: 787ca315f2f318440800000000000000
+      internalID: 4936296139033593735
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MenuBQuit_0: 8358193933568247426
+      Icon_Clock_0: 4936296139033593735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

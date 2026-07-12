@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8079a5a8c7aa604469a05ad87948f45c
+guid: df56ea4d710bf254bb1a2aebfced8685
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2959741888400437325
-    second: MenuBBoton_0
+      213: -7798104839241083813
+    second: Recepcion_night_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MenuBBoton_0
+      name: Recepcion_night_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 130
-        height: 130
+        width: 1920
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3bf4c031f62ece6d0800000000000000
-      internalID: -2959741888400437325
+      spriteID: b54d7cff6f097c390800000000000000
+      internalID: -7798104839241083813
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5209889c3c7bea949ba6725213ffb057
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MenuBBoton_0: -2959741888400437325
+      Recepcion_night_0: -7798104839241083813
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
