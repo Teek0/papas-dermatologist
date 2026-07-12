@@ -4,12 +4,14 @@ using UnityEngine.Audio;
 
 public class UIController : MonoBehaviour
 {
-    private CanvasGroup canvasGroup;
+    private CanvasGroup settingsCanvasGroup;
+    private CanvasGroup creditsCanvasGroup;
 
     [Header("Configuration")]
     public AudioMixer mainMixer;
     public UISoundPlayer uiSoundPlayer;
     [SerializeField] private CanvasGroup settingsPanel;
+    [SerializeField] private CanvasGroup creditsPanel;
 
     [Header("Game start settings")]
     public string gameSceneName = SceneNames.Reception;
@@ -20,12 +22,16 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        canvasGroup = ResolveSettingsPanel();
+        settingsCanvasGroup = ResolvePanel(settingsPanel, "Settings_Panel");
+        creditsCanvasGroup = ResolvePanel(creditsPanel, "Credits_Panel");
 
-        if (canvasGroup != null)
+        if (settingsCanvasGroup != null)
             CloseSettings();
         else
             Debug.LogWarning("UIController: settingsPanel and local CanvasGroup are null. Settings panel will not be controlled.");
+
+        if (creditsCanvasGroup != null)
+            CloseCredits();
 
         Time.timeScale = 1f;
     }
@@ -67,6 +73,7 @@ public class UIController : MonoBehaviour
     public void StartGame()
     {
         CloseSettings();
+        CloseCredits();
 
         if (uiSoundPlayer != null)
             uiSoundPlayer.PlayOneShot(btnStartAudio);
@@ -82,56 +89,124 @@ public class UIController : MonoBehaviour
 
     public void OpenSettings()
     {
-        if (EnsureCanvasGroup())
-            SetCanvasGroupState(canvasGroup, true);
+        if (IsCreditsPanelController())
+        {
+            OpenCredits();
+            return;
+        }
+
+        if (EnsureSettingsCanvasGroup())
+        {
+            CloseCredits();
+            SetCanvasGroupState(settingsCanvasGroup, true);
+        }
     }
 
     public void ToggleSettings()
     {
-        if (EnsureCanvasGroup())
-            SetCanvasGroupState(canvasGroup, !IsCanvasGroupVisible(canvasGroup));
+        if (IsCreditsPanelController())
+        {
+            ToggleCredits();
+            return;
+        }
+
+        if (EnsureSettingsCanvasGroup())
+        {
+            bool shouldShow = !IsCanvasGroupVisible(settingsCanvasGroup);
+            CloseCredits();
+            SetCanvasGroupState(settingsCanvasGroup, shouldShow);
+        }
     }
 
     public void CloseSettings()
     {
-        if (EnsureCanvasGroup())
-            SetCanvasGroupState(canvasGroup, false);
-    }
-
-    private bool EnsureCanvasGroup()
-    {
-        if (canvasGroup == null || !canvasGroup.gameObject.scene.IsValid())
-            canvasGroup = ResolveSettingsPanel();
-
-        return canvasGroup != null;
-    }
-
-    private CanvasGroup ResolveSettingsPanel()
-    {
-        if (settingsPanel != null && settingsPanel.gameObject.scene.IsValid())
-            return settingsPanel;
-
-        if (settingsPanel != null)
+        if (IsCreditsPanelController())
         {
-            CanvasGroup sceneSettingsPanel = FindSceneSettingsPanel();
-            if (sceneSettingsPanel != null)
-                return sceneSettingsPanel;
+            CloseCredits();
+            return;
+        }
+
+        if (EnsureSettingsCanvasGroup())
+            SetCanvasGroupState(settingsCanvasGroup, false);
+    }
+
+    public void OpenCredits()
+    {
+        if (EnsureCreditsCanvasGroup())
+        {
+            CloseSettings();
+            SetCanvasGroupState(creditsCanvasGroup, true);
+        }
+    }
+
+    public void ToggleCredits()
+    {
+        if (EnsureCreditsCanvasGroup())
+        {
+            if (IsCanvasGroupVisible(creditsCanvasGroup))
+            {
+                SetCanvasGroupState(creditsCanvasGroup, false);
+                return;
+            }
+
+            CloseSettings();
+            SetCanvasGroupState(creditsCanvasGroup, true);
+        }
+    }
+
+    public void CloseCredits()
+    {
+        if (EnsureCreditsCanvasGroup())
+            SetCanvasGroupState(creditsCanvasGroup, false);
+    }
+
+    private bool EnsureSettingsCanvasGroup()
+    {
+        if (settingsCanvasGroup == null || !settingsCanvasGroup.gameObject.scene.IsValid())
+            settingsCanvasGroup = ResolvePanel(settingsPanel, "Settings_Panel");
+
+        return settingsCanvasGroup != null;
+    }
+
+    private bool EnsureCreditsCanvasGroup()
+    {
+        if (creditsCanvasGroup == null || !creditsCanvasGroup.gameObject.scene.IsValid())
+            creditsCanvasGroup = ResolvePanel(creditsPanel, "Credits_Panel");
+
+        return creditsCanvasGroup != null;
+    }
+
+    private bool IsCreditsPanelController()
+    {
+        return gameObject.name == "Credits_Panel";
+    }
+
+    private CanvasGroup ResolvePanel(CanvasGroup serializedPanel, string fallbackName)
+    {
+        if (serializedPanel != null && serializedPanel.gameObject.scene.IsValid())
+            return serializedPanel;
+
+        if (serializedPanel != null)
+        {
+            CanvasGroup scenePanel = FindScenePanel(fallbackName);
+            if (scenePanel != null)
+                return scenePanel;
         }
 
         CanvasGroup localCanvasGroup = GetComponent<CanvasGroup>();
-        if (localCanvasGroup != null)
+        if (localCanvasGroup != null && gameObject.name == fallbackName)
             return localCanvasGroup;
 
-        return FindSceneSettingsPanel();
+        return FindScenePanel(fallbackName);
     }
 
-    private CanvasGroup FindSceneSettingsPanel()
+    private CanvasGroup FindScenePanel(string panelName)
     {
         CanvasGroup[] canvasGroups = FindObjectsByType<CanvasGroup>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         foreach (CanvasGroup candidate in canvasGroups)
         {
-            if (candidate.gameObject.scene == gameObject.scene && candidate.gameObject.name == "Settings_Panel")
+            if (candidate.gameObject.scene == gameObject.scene && candidate.gameObject.name == panelName)
                 return candidate;
         }
 

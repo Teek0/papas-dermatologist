@@ -256,7 +256,7 @@ public class IngameMenuPanelController : MonoBehaviour
             return;
 
         pauseOverlay.alpha = isVisible ? 1f : 0f;
-        pauseOverlay.blocksRaycasts = false;
+        pauseOverlay.blocksRaycasts = isVisible;
         pauseOverlay.interactable = false;
     }
 }

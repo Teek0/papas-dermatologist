@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &151472503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1277,9 +1277,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2090396606}
+      - m_Target: {fileID: 2093669776}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: CloseSettings
+        m_MethodName: CloseCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1489,9 +1489,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2090396606}
+      - m_Target: {fileID: 2093669776}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: OpenSettings
+        m_MethodName: ToggleCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1712,7 +1712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Aqui ir\xE1n los creditos wiiii"
+  m_text: texto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090396604}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf1894ee6b26197458cc596be6567b01, type: 3}
   m_Name: 
@@ -2660,6 +2660,7 @@ MonoBehaviour:
   mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   uiSoundPlayer: {fileID: 300030001}
   settingsPanel: {fileID: 0}
+  creditsPanel: {fileID: 0}
   gameSceneName: CamillaScene
   btnStartAudio: {fileID: 0}
   blackScreenCanvas: {fileID: 625071518}
@@ -2737,7 +2738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -996115601472494200, guid: b7feda30d48603f46aeacd3cc2f3a52e, type: 3}
+  m_Sprite: {fileID: -876543210123456789, guid: 4b418151d3c14afda0e17a9bb37ee301, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2788,6 +2789,7 @@ MonoBehaviour:
   mainMixer: {fileID: 24100000, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   uiSoundPlayer: {fileID: 300030001}
   settingsPanel: {fileID: 3984919929184277462, guid: 3e0a7a8a16f3d234589c0ae6be7e34cb, type: 3}
+  creditsPanel: {fileID: 2090396608}
   gameSceneName: ReceptionScene
   btnStartAudio: {fileID: 8300000, guid: 97b23f6b528dff14b81af98d4a3d7f5d, type: 3}
   blackScreenCanvas: {fileID: 625071518}
