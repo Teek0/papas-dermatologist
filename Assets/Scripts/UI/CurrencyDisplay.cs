@@ -4,9 +4,10 @@ using UnityEngine;
 public class CurrencyDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text currencyText;
+    [SerializeField] private TMP_Text dailyQuotaText;
     [SerializeField] private bool showDailyQuota = true;
     [SerializeField] private string moneyOnlyFormat = "$ {0}";
-    [SerializeField] private string moneyWithQuotaFormat = "$ {0} / Meta $ {1}";
+    [SerializeField] private string dailyQuotaFormat = "Meta $ {0}";
 
     private int lastMoney = int.MinValue;
     private int lastDailyQuota = int.MinValue;
@@ -38,9 +39,10 @@ public class CurrencyDisplay : MonoBehaviour
         if (!force && money == lastMoney && dailyQuota == lastDailyQuota)
             return;
 
-        currencyText.text = showDailyQuota
-            ? string.Format(moneyWithQuotaFormat, money, dailyQuota)
-            : string.Format(moneyOnlyFormat, money);
+        currencyText.text = string.Format(moneyOnlyFormat, money);
+
+        if (dailyQuotaText != null)
+            dailyQuotaText.text = showDailyQuota ? string.Format(dailyQuotaFormat, dailyQuota) : "";
 
         lastMoney = money;
         lastDailyQuota = dailyQuota;
