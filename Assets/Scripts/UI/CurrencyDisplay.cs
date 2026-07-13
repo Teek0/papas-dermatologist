@@ -7,7 +7,7 @@ public class CurrencyDisplay : MonoBehaviour
     [SerializeField] private TMP_Text dailyQuotaText;
     [SerializeField] private bool showDailyQuota = true;
     [SerializeField] private string moneyOnlyFormat = "$ {0}";
-    [SerializeField] private string dailyQuotaFormat = "Meta $ {0}";
+    [SerializeField] private string dailyQuotaFormat = "$ {0}";
 
     private int lastMoney = int.MinValue;
     private int lastDailyQuota = int.MinValue;

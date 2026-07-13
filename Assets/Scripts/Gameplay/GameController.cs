@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject resultsPanel;
     [SerializeField] private TextMeshProUGUI resultsText;
+    private CanvasGroup resultsPanelCanvasGroup;
 
     [Header("Evaluation")]
     [SerializeField] private TreatmentEvaluator evaluator;
@@ -51,6 +52,9 @@ public class GameController : MonoBehaviour
 
         if (timeUpClip == null)
             timeUpClip = Resources.Load<AudioClip>("One Shots/finishround2");
+
+        if (resultsPanel != null)
+            resultsPanelCanvasGroup = resultsPanel.GetComponent<CanvasGroup>();
     }
 
     private void Start()
@@ -75,8 +79,7 @@ public class GameController : MonoBehaviour
         remainingTime = roundDuration;
         currentState = GameState.Running;
 
-        if (resultsPanel != null)
-            resultsPanel.SetActive(false);
+        SetResultsPanelVisible(false);
 
         if (brushInput != null)
             brushInput.SetPaintingEnabled(true);
@@ -144,8 +147,7 @@ public class GameController : MonoBehaviour
         if (GameSession.I != null)
             reachedDailyQuota = GameSession.I.AddMoney(finalPay);
 
-        if (resultsPanel != null)
-            resultsPanel.SetActive(true);
+        SetResultsPanelVisible(true);
 
         if (resultsText != null)
         {
@@ -174,6 +176,24 @@ public class GameController : MonoBehaviour
             return "";
 
         return $"\n\nHas conseguido la cuota del dia (${GameSession.I.DailyQuota}). Gracias por jugar!";
+    }
+
+    private void SetResultsPanelVisible(bool isVisible)
+    {
+        if (resultsPanel == null)
+            return;
+
+        resultsPanel.SetActive(isVisible);
+
+        if (resultsPanelCanvasGroup == null)
+            resultsPanelCanvasGroup = resultsPanel.GetComponent<CanvasGroup>();
+
+        if (resultsPanelCanvasGroup == null)
+            return;
+
+        resultsPanelCanvasGroup.alpha = isVisible ? 1f : 0f;
+        resultsPanelCanvasGroup.interactable = isVisible;
+        resultsPanelCanvasGroup.blocksRaycasts = isVisible;
     }
 
     private void PlayTimeUpSound()
