@@ -1689,8 +1689,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00001955, y: 40}
-  m_SizeDelta: {x: 452.0403, y: 318.8429}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 516.23, y: 397.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280395544
 MonoBehaviour:
@@ -1712,12 +1712,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Equipo:\n   - Tico\n   - Le\xF1a\n   - Venriik\n   - Shipi\n\nAgradecimientos:\n\nGracias
+  m_text: "Equipo:\n   - Tico\n   - Le\xF1a\n   - Venriik\n   - Shipi\n\nAgradecimientos:\nGracias
     a la Global Game Jam 2026, a la AEVG y a todas las personas que hicieron posible
     este evento. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
+  m_sharedMaterial: {fileID: 849725430161218100, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2329,8 +2329,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
+  m_sharedMaterial: {fileID: 849725430161218100, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2600,10 +2600,10 @@ RectTransform:
   - {fileID: 2090396605}
   m_Father: {fileID: 1075188194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.28922912, y: 0.223}
-  m_AnchorMax: {x: 0.70533323, y: 0.7744445}
-  m_AnchoredPosition: {x: 4.5, y: 1.5}
-  m_SizeDelta: {x: -1, y: 5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 763.2, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2090396604
 GameObject:

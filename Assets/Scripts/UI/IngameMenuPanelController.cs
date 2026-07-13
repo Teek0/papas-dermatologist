@@ -1,8 +1,9 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class IngameMenuPanelController : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class IngameMenuPanelController : MonoBehaviour
     private Selectable hoveredSelectable;
     private readonly List<RaycastResult> raycastResults = new List<RaycastResult>();
 
+    public event Action<bool> MenuVisibilityChanged;
+
     private void Awake()
     {
         CloseMenuSilently();
@@ -50,22 +53,34 @@ public class IngameMenuPanelController : MonoBehaviour
 
     public void ToggleMenu()
     {
-        isOpen = !isOpen;
-
-        Time.timeScale = isOpen ? 0f : 1f;
-        PlayToggleSound();
-
         if (isOpen)
         {
-            SetPauseOverlayState(true);
-            SetCanvasGroupState(panelObject, true);
-            ResetSettingsView();
+            CloseMenu();
             return;
         }
 
+        isOpen = true;
+        Time.timeScale = 0f;
+        PlayToggleSound();
+        SetPauseOverlayState(true);
+        SetCanvasGroupState(panelObject, true);
+        ResetSettingsView();
+        MenuVisibilityChanged?.Invoke(true);
+    }
+
+    public void CloseMenu()
+    {
+        if (!isOpen)
+            return;
+
+        isOpen = false;
+        hoveredSelectable = null;
+        Time.timeScale = 1f;
+        PlayToggleSound();
         ResetSettingsView();
         SetCanvasGroupState(panelObject, false);
         SetPauseOverlayState(false);
+        MenuVisibilityChanged?.Invoke(false);
     }
 
     public void OpenSettingsPanel()

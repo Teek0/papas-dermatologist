@@ -18,17 +18,26 @@ public class IngameMenuController : MonoBehaviour
 
     [Header("Return confirmation")]
     [SerializeField] private GameObject returnToReceptionDialog;
-    [SerializeField] private string returnToReceptionMessage = "Volver a recepcion cancelara el tratamiento y no recibiras pago por este paciente.";
-    [SerializeField] private string confirmReturnLabel = "Cancelar tratamiento";
-    [SerializeField] private string cancelReturnLabel = "Seguir atendiendo";
+    [SerializeField] private Button confirmReturnButton;
+    [SerializeField] private Button cancelReturnButton;
+    [SerializeField] private UIDragHandle returnDialogDragHandle;
 
+    private IngameMenuPanelController menuPanelController;
     private bool isReturnDialogConfigured;
     private bool isReturningToReceptionConfirmed;
 
     private void Awake()
     {
+        ResolveReturnToReceptionDialog();
         ConfigureReturnToReceptionDialog();
+        SubscribeToMenuPanel();
         SetReturnToReceptionDialogVisible(false);
+    }
+
+    private void OnDestroy()
+    {
+        if (menuPanelController != null)
+            menuPanelController.MenuVisibilityChanged -= HandleMenuVisibilityChanged;
     }
 
     public void GoToMainMenu()
@@ -69,22 +78,17 @@ public class IngameMenuController : MonoBehaviour
 
     private bool ShouldConfirmReturnToReception()
     {
-        return SceneManager.GetActiveScene().name == SceneNames.Camilla
-            && GameSession.I != null
-            && GameSession.I.CurrentCustomer != null;
+        return SceneManager.GetActiveScene().name == SceneNames.Camilla;
     }
 
     private void ShowReturnToReceptionDialog()
     {
+        ResolveReturnToReceptionDialog();
+
         if (returnToReceptionDialog == null)
         {
-            returnToReceptionDialog = CreateReturnToReceptionDialog();
-
-            if (returnToReceptionDialog == null)
-            {
-                ConfirmReturnToReception();
-                return;
-            }
+            Debug.LogWarning("IngameMenuController: returnToReceptionDialog is null. Cannot show confirmation dialog.");
+            return;
         }
         else
         {
@@ -97,7 +101,26 @@ public class IngameMenuController : MonoBehaviour
 
     private void CancelReturnToReception()
     {
+        CloseReturnToReceptionDialog(false);
+    }
+
+    private void ContinueTreatment()
+    {
+        CloseReturnToReceptionDialog(true);
+    }
+
+    private void CloseReturnToReceptionDialog(bool closeMenu)
+    {
         SetReturnToReceptionDialogVisible(false);
+
+        if (closeMenu)
+            menuPanelController?.CloseMenu();
+    }
+
+    private void HandleMenuVisibilityChanged(bool isMenuOpen)
+    {
+        if (!isMenuOpen)
+            CancelReturnToReception();
     }
 
     private void ConfirmReturnToReception()
@@ -112,33 +135,65 @@ public class IngameMenuController : MonoBehaviour
         if (returnToReceptionDialog == null || isReturnDialogConfigured)
             return;
 
-        TextMeshProUGUI messageText = GetOrAddText(returnToReceptionDialog.transform, "MessageText");
-        if (messageText != null)
+        DisableTextRaycastsInDialog();
+        ConfigureReturnDialogDragHandle();
+
+        if (confirmReturnButton == null)
+            confirmReturnButton = FindOrAddButtonInDialog("ConfirmButton");
+
+        if (confirmReturnButton != null)
         {
-            messageText.text = returnToReceptionMessage;
-            messageText.fontSize = 24f;
-            messageText.color = Color.black;
-            messageText.alignment = TextAlignmentOptions.Center;
-            messageText.textWrappingMode = TextWrappingModes.Normal;
+            confirmReturnButton.onClick.RemoveListener(ConfirmReturnToReception);
+            confirmReturnButton.onClick.AddListener(ConfirmReturnToReception);
         }
 
-        Button confirmButton = GetOrAddButton(returnToReceptionDialog.transform, "ConfirmButton");
-        if (confirmButton != null)
-        {
-            confirmButton.onClick.RemoveListener(ConfirmReturnToReception);
-            confirmButton.onClick.AddListener(ConfirmReturnToReception);
-            SetButtonLabel(confirmButton.transform, confirmReturnLabel);
-        }
+        if (cancelReturnButton == null)
+            cancelReturnButton = FindOrAddButtonInDialog("CancelButton");
 
-        Button cancelButton = GetOrAddButton(returnToReceptionDialog.transform, "CancelButton");
-        if (cancelButton != null)
+        if (cancelReturnButton != null)
         {
-            cancelButton.onClick.RemoveListener(CancelReturnToReception);
-            cancelButton.onClick.AddListener(CancelReturnToReception);
-            SetButtonLabel(cancelButton.transform, cancelReturnLabel);
+            cancelReturnButton.onClick.RemoveListener(CancelReturnToReception);
+            cancelReturnButton.onClick.RemoveListener(ContinueTreatment);
+            cancelReturnButton.onClick.AddListener(ContinueTreatment);
         }
 
         isReturnDialogConfigured = true;
+    }
+
+    private void ResolveReturnToReceptionDialog()
+    {
+        if (returnToReceptionDialog != null)
+            return;
+
+        Transform[] children = GetComponentsInChildren<Transform>(true);
+
+        foreach (Transform child in children)
+        {
+            if (child.name == "ConfirmReturnDialog")
+            {
+                returnToReceptionDialog = child.gameObject;
+                return;
+            }
+        }
+    }
+
+    private void SubscribeToMenuPanel()
+    {
+        if (menuPanelController != null)
+            return;
+
+        menuPanelController = GetComponent<IngameMenuPanelController>();
+
+        if (menuPanelController == null)
+            menuPanelController = GetComponentInParent<IngameMenuPanelController>();
+
+        if (menuPanelController == null)
+            menuPanelController = GetComponentInChildren<IngameMenuPanelController>(true);
+
+        if (menuPanelController == null)
+            return;
+
+        menuPanelController.MenuVisibilityChanged += HandleMenuVisibilityChanged;
     }
 
     private void SetReturnToReceptionDialogVisible(bool isVisible)
@@ -147,88 +202,68 @@ public class IngameMenuController : MonoBehaviour
             returnToReceptionDialog.SetActive(isVisible);
     }
 
-    private TextMeshProUGUI GetOrAddText(Transform parent, string childName)
+    private void ConfigureReturnDialogDragHandle()
     {
-        Transform child = parent.Find(childName);
-        if (child == null)
-            return null;
+        if (returnDialogDragHandle == null)
+            returnDialogDragHandle = FindOrAddDragHandleInDialog("selectArea");
 
-        TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-        if (text == null)
-            text = child.gameObject.AddComponent<TextMeshProUGUI>();
+        if (returnDialogDragHandle == null)
+            return;
 
-        return text;
+        RectTransform dialogRect = returnToReceptionDialog.GetComponent<RectTransform>();
+        if (dialogRect != null)
+            returnDialogDragHandle.Configure(dialogRect);
+
+        returnDialogDragHandle.transform.SetAsLastSibling();
     }
 
-    private Button GetOrAddButton(Transform parent, string childName)
+    private void DisableTextRaycastsInDialog()
     {
-        Transform child = parent.Find(childName);
-        if (child == null)
-            return null;
+        TextMeshProUGUI[] texts = returnToReceptionDialog.GetComponentsInChildren<TextMeshProUGUI>(true);
 
-        Button button = child.GetComponent<Button>();
-        if (button == null)
-            button = child.gameObject.AddComponent<Button>();
-
-        Image image = child.GetComponent<Image>();
-        if (image != null)
-            button.targetGraphic = image;
-
-        return button;
+        foreach (TextMeshProUGUI text in texts)
+            text.raycastTarget = false;
     }
 
-    private void SetButtonLabel(Transform buttonTransform, string label)
+    private Button FindOrAddButtonInDialog(string name)
     {
-        Transform labelTransform = buttonTransform.Find("Label");
-        TextMeshProUGUI labelText;
+        Transform[] children = returnToReceptionDialog.GetComponentsInChildren<Transform>(true);
 
-        if (labelTransform == null)
+        foreach (Transform child in children)
         {
-            GameObject labelObject = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
-            labelObject.transform.SetParent(buttonTransform, false);
+            if (child.name != name)
+                continue;
 
-            RectTransform labelRect = labelObject.GetComponent<RectTransform>();
-            labelRect.anchorMin = Vector2.zero;
-            labelRect.anchorMax = Vector2.one;
-            labelRect.offsetMin = Vector2.zero;
-            labelRect.offsetMax = Vector2.zero;
+            Button button = child.GetComponent<Button>();
+            if (button == null)
+                button = child.gameObject.AddComponent<Button>();
 
-            labelText = labelObject.GetComponent<TextMeshProUGUI>();
-        }
-        else
-        {
-            labelText = labelTransform.GetComponent<TextMeshProUGUI>();
-            if (labelText == null)
-                labelText = labelTransform.gameObject.AddComponent<TextMeshProUGUI>();
+            Image image = child.GetComponent<Image>();
+            if (image != null)
+                button.targetGraphic = image;
+
+            return button;
         }
 
-        labelText.text = label;
-        labelText.fontSize = 18f;
-        labelText.color = Color.white;
-        labelText.alignment = TextAlignmentOptions.Center;
-        labelText.textWrappingMode = TextWrappingModes.Normal;
+        return null;
     }
 
-    private GameObject CreateReturnToReceptionDialog()
+    private UIDragHandle FindOrAddDragHandleInDialog(string name)
     {
-        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        Transform[] children = returnToReceptionDialog.GetComponentsInChildren<Transform>(true);
 
-        if (parentCanvas == null)
-            parentCanvas = FindFirstObjectByType<Canvas>();
-
-        if (parentCanvas == null)
+        foreach (Transform child in children)
         {
-            Debug.LogWarning("IngameMenuController: no Canvas found for return confirmation dialog.");
-            return null;
+            if (!string.Equals(child.name, name, System.StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            UIDragHandle dragHandle = child.GetComponent<UIDragHandle>();
+            if (dragHandle == null)
+                dragHandle = child.gameObject.AddComponent<UIDragHandle>();
+
+            return dragHandle;
         }
 
-        return RuntimeConfirmationDialog.Create(
-            parentCanvas.transform,
-            "ReturnToReceptionConfirmation",
-            "Volver a recepcion cancelara el tratamiento y no recibiras pago por este paciente.",
-            "Cancelar tratamiento",
-            "Seguir atendiendo",
-            ConfirmReturnToReception,
-            CancelReturnToReception);
+        return null;
     }
 }
