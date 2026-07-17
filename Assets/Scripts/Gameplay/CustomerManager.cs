@@ -293,17 +293,15 @@ public class CustomerManager : MonoBehaviour
             }
         }
 
+        List<string> afflictionLabels = new();
+
         for (int i = 0; i < afflictions.Count; i++)
         {
-            if (i > 0)
-            {
-                if (i == afflictions.Count - 1) message += " y ";
-                else message += ", ";
-            }
-
             string article = (afflictions[i] == "acné") ? "el " : "las ";
-            message += article + afflictions[i];
+            afflictionLabels.Add(article + afflictions[i]);
         }
+
+        message += JoinSpanishList(afflictionLabels);
 
         bool statingTheObvious = !(Random.Range(0, 3) == 1);
 
@@ -311,21 +309,45 @@ public class CustomerManager : MonoBehaviour
         {
             message += at;
 
+            List<string> areaLabels = new();
+
             for (int i = 0; i < areas.Count; i++)
             {
-                if (i > 0)
-                {
-                    if (i == areas.Count - 1) message += " y ";
-                    else message += ", ";
-                }
-
-                if (areas[i] == "mejillas") message += "mis " + areas[i];
-                else message += "mi " + areas[i];
+                if (areas[i] == "mejillas") areaLabels.Add("mis " + areas[i]);
+                else areaLabels.Add("mi " + areas[i]);
             }
+
+            message += JoinSpanishList(areaLabels);
         }
 
         message += closing;
         SetText(message);
+    }
+
+    private string JoinSpanishList(IList<string> items)
+    {
+        if (items == null || items.Count == 0)
+            return "";
+
+        if (items.Count == 1)
+            return items[0];
+
+        if (items.Count == 2)
+            return items[0] + " y " + items[1];
+
+        string result = "";
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (i == 0)
+                result += items[i];
+            else if (i == items.Count - 1)
+                result += " y " + items[i];
+            else
+                result += ", " + items[i];
+        }
+
+        return result;
     }
 
     private bool TryShowPendingFarewell()

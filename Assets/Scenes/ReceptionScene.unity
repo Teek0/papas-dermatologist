@@ -1417,6 +1417,63 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &771414486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771414487}
+  - component: {fileID: 771414488}
+  m_Layer: 5
+  m_Name: receptionScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &771414487
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771414486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 936723660}
+  - {fileID: 1820301001}
+  m_Father: {fileID: 1957714881}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -831.3501, y: -466.87292}
+  m_SizeDelta: {x: 260.7, y: 159.80002}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &771414488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771414486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b6f4a3c6014f54bbec7a1fc25b4250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CurrencyDisplay
+  currencyText: {fileID: 1986393379}
+  dailyQuotaText: {fileID: 1820302002}
+  currencyFont: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
+  dailyQuotaFont: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
+  showDailyQuota: 1
+  moneyOnlyFormat: $ {0}
+  dailyQuotaFormat: $ {0}
 --- !u!224 &923701794 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2183327828352230536, guid: cd288a03db1b1ec41917055c2e8292bf, type: 3}
@@ -1433,7 +1490,6 @@ GameObject:
   - component: {fileID: 936723660}
   - component: {fileID: 936723662}
   - component: {fileID: 936723661}
-  - component: {fileID: 936723663}
   m_Layer: 5
   m_Name: CurrencyBox
   m_TagString: Untagged
@@ -1448,18 +1504,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936723659}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1986393378}
   - {fileID: 317281711}
-  m_Father: {fileID: 1957714881}
+  m_Father: {fileID: 771414487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 129, y: 113.1}
+  m_AnchoredPosition: {x: 130.7, y: 119.80001}
   m_SizeDelta: {x: 260, y: 80}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &936723661
@@ -1475,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.2901961, b: 0.49803925, a: 0.53333336}
+  m_Color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1500,23 +1556,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936723659}
   m_CullTransparentMesh: 1
---- !u!114 &936723663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936723659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b6f4a3c6014f54bbec7a1fc25b4250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CurrencyDisplay
-  currencyText: {fileID: 1986393379}
-  dailyQuotaText: {fileID: 1820302002}
-  showDailyQuota: 1
-  moneyOnlyFormat: $ {0}
-  dailyQuotaFormat: $ {0}
 --- !u!1 &1177607055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,18 +2249,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820301000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1820302001}
   - {fileID: 1860498443}
-  m_Father: {fileID: 1957714881}
+  m_Father: {fileID: 771414487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 128.3, y: 33.3}
+  m_AnchoredPosition: {x: 130, y: 40.00001}
   m_SizeDelta: {x: 260, y: 80}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1820301002
@@ -2237,7 +2276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.2901961, b: 0.49803925, a: 0.53333336}
+  m_Color: {r: 0.49803925, g: 0.2901961, b: 0.49803925, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2321,8 +2360,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: $ {0}
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
+  m_sharedMaterial: {fileID: 849725430161218100, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2639,8 +2678,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 936723660}
-  - {fileID: 1820301001}
+  - {fileID: 771414487}
   - {fileID: 193764309}
   - {fileID: 923701794}
   m_Father: {fileID: 0}
@@ -2846,8 +2884,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: $ {0}
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
+  m_sharedMaterial: {fileID: 849725430161218100, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

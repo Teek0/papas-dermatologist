@@ -5,6 +5,11 @@ public class CurrencyDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text currencyText;
     [SerializeField] private TMP_Text dailyQuotaText;
+
+    [Header("Typography")]
+    [SerializeField] private TMP_FontAsset currencyFont;
+    [SerializeField] private TMP_FontAsset dailyQuotaFont;
+
     [SerializeField] private bool showDailyQuota = true;
     [SerializeField] private string moneyOnlyFormat = "$ {0}";
     [SerializeField] private string dailyQuotaFormat = "$ {0}";
@@ -16,6 +21,13 @@ public class CurrencyDisplay : MonoBehaviour
     {
         if (currencyText == null)
             currencyText = GetComponentInChildren<TMP_Text>(true);
+
+        ApplyTypography();
+    }
+
+    private void OnValidate()
+    {
+        ApplyTypography();
     }
 
     private void OnEnable()
@@ -46,5 +58,19 @@ public class CurrencyDisplay : MonoBehaviour
 
         lastMoney = money;
         lastDailyQuota = dailyQuota;
+    }
+
+    private void ApplyTypography()
+    {
+        if (currencyText != null && currencyFont != null)
+            currencyText.font = currencyFont;
+
+        if (dailyQuotaText != null)
+        {
+            TMP_FontAsset font = dailyQuotaFont != null ? dailyQuotaFont : currencyFont;
+
+            if (font != null)
+                dailyQuotaText.font = font;
+        }
     }
 }
