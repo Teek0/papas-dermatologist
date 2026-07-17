@@ -642,14 +642,6 @@ RectTransform:
   m_AnchoredPosition: {x: -84, y: 0}
   m_SizeDelta: {x: 44, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &317281713
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317281710}
-  m_CullTransparentMesh: 1
 --- !u!114 &317281712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +672,14 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!222 &317281713
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317281710}
+  m_CullTransparentMesh: 1
 --- !u!1 &434005548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,9 +2071,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eaa6192ff19f6e5419814199c37df649, type: 3}
   - {fileID: 21300000, guid: a4f94e03309bd62449dba9ad3ccf9a0b, type: 3}
   SkinConditionOptions_Cheeks:
-  - {fileID: 21300000, guid: ae8f29dc7b21998498317a41ce0272eb, type: 3}
-  - {fileID: 21300000, guid: 9e21077d7509af445b162007690d9119, type: 3}
-  - {fileID: 21300000, guid: 05a68772a5e1c9e49ae9ce3779edbdad, type: 3}
+  - {fileID: 216321225880538967, guid: ae8f29dc7b21998498317a41ce0272eb, type: 3}
+  - {fileID: 3216528767909545813, guid: 9e21077d7509af445b162007690d9119, type: 3}
+  - {fileID: -1227780950248760140, guid: 05a68772a5e1c9e49ae9ce3779edbdad, type: 3}
   SkinConditionOptions_Chin:
   - {fileID: 21300000, guid: 59e0cd6b0c14e6b45a94b338fbe64356, type: 3}
   - {fileID: 21300000, guid: fabf8390419902f4f921fde85063d089, type: 3}
@@ -2471,14 +2471,6 @@ RectTransform:
   m_AnchoredPosition: {x: -80, y: 3}
   m_SizeDelta: {x: 44, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1860498445
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860498442}
-  m_CullTransparentMesh: 1
 --- !u!114 &1860498444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2509,6 +2501,14 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1860498445
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860498442}
+  m_CullTransparentMesh: 1
 --- !u!1 &1952492472
 GameObject:
   m_ObjectHideFlags: 0

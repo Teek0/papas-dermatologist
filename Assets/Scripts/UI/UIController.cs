@@ -6,6 +6,7 @@ public class UIController : MonoBehaviour
 {
     private CanvasGroup settingsCanvasGroup;
     private CanvasGroup creditsCanvasGroup;
+    [SerializeField] private TutorialController tutorialController;
 
     [Header("Configuration")]
     public AudioMixer mainMixer;
@@ -75,16 +76,13 @@ public class UIController : MonoBehaviour
         CloseSettings();
         CloseCredits();
 
-        if (uiSoundPlayer != null)
-            uiSoundPlayer.PlayOneShot(btnStartAudio);
+        if (tutorialController != null && tutorialController.ShouldShowBeforeStart())
+        {
+            tutorialController.OpenForStart();
+            return;
+        }
 
-        StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
-            gameSceneName,
-            blackScreenCanvas,
-            1f,
-            false,
-            mainMixer,
-            fadeOutDuration));
+        StartGameDirect();
     }
 
     public void OpenSettings()
@@ -226,5 +224,31 @@ public class UIController : MonoBehaviour
         targetCanvasGroup.alpha = isVisible ? 1f : 0f;
         targetCanvasGroup.blocksRaycasts = isVisible;
         targetCanvasGroup.interactable = isVisible;
+    }
+
+    public void StartGameDirect()
+    {
+        CloseSettings();
+        CloseCredits();
+
+        if (uiSoundPlayer != null)
+            uiSoundPlayer.PlayOneShot(btnStartAudio);
+
+        StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
+            gameSceneName,
+            blackScreenCanvas,
+            1f,
+            false,
+            mainMixer,
+            fadeOutDuration));
+    }
+
+    public void OpenTutorial()
+    {
+        CloseSettings();
+        CloseCredits();
+
+        if (tutorialController != null)
+            tutorialController.OpenManual();
     }
 }

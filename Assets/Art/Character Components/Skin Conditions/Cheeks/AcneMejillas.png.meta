@@ -103,7 +103,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -199,10 +199,10 @@ TextureImporter:
       name: AcneMejillas_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 164
-        width: 7
-        height: 7
+        x: 236
+        y: 107
+        width: 88
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,10 +221,10 @@ TextureImporter:
       name: AcneMejillas_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 168
-        width: 7
-        height: 7
+        x: 0
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,402 +235,6 @@ TextureImporter:
       bones: []
       spriteID: 75f8cf14207800300800000000000000
       internalID: 216321225880538967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_2
-      rect:
-        serializedVersion: 2
-        x: 121
-        y: 168
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 829b46194315c1400800000000000000
-      internalID: 296200961719056680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_3
-      rect:
-        serializedVersion: 2
-        x: 245
-        y: 167
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1b56a48362fc71080800000000000000
-      internalID: -9216670349330324047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 167
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 382114a8ac782b020800000000000000
-      internalID: 2356094859040854659
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_5
-      rect:
-        serializedVersion: 2
-        x: 275
-        y: 163
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 52b5b5774a099e310800000000000000
-      internalID: 1434836992345725733
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_6
-      rect:
-        serializedVersion: 2
-        x: 301
-        y: 160
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b797cbece2b33fa0800000000000000
-      internalID: -5822113162622167113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_7
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 155
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ecebd6f07c841e950800000000000000
-      internalID: 6476537758930026190
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_8
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 140
-        width: 20
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f466d02dc62a93640800000000000000
-      internalID: 5060254244591724111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_9
-      rect:
-        serializedVersion: 2
-        x: 135
-        y: 150
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bd43f683ff2703810800000000000000
-      internalID: 1743019496281421019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_10
-      rect:
-        serializedVersion: 2
-        x: 242
-        y: 148
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 210954c668a2cac10800000000000000
-      internalID: 2066073085886697490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_11
-      rect:
-        serializedVersion: 2
-        x: 258
-        y: 150
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d1b18c4a233d42000800000000000000
-      internalID: 10365313627986717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_12
-      rect:
-        serializedVersion: 2
-        x: 301
-        y: 153
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 32d8a6aee2f534bf0800000000000000
-      internalID: -341324491644039901
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_13
-      rect:
-        serializedVersion: 2
-        x: 267
-        y: 126
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4903c1248a121aa60800000000000000
-      internalID: 7683459445818142868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_14
-      rect:
-        serializedVersion: 2
-        x: 293
-        y: 142
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14a5f13c7a512a8d0800000000000000
-      internalID: -2836681005012657599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_15
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 130
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a3441000faccad1c0800000000000000
-      internalID: -4478041827475110854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_16
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 133
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9465b1d4430e68f70800000000000000
-      internalID: 9189278604932634185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_17
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 110
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fbaa2fdf00addd380800000000000000
-      internalID: -8944753587092542785
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_18
-      rect:
-        serializedVersion: 2
-        x: 258
-        y: 115
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31a9ab23fd4e66360800000000000000
-      internalID: 7162663904659282451
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AcneMejillas_19
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 111
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e760021c97fedc690800000000000000
-      internalID: -7580139291584493954
       vertices: []
       indices: 
       edges: []
@@ -647,7 +251,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       AcneMejillas_0: -5522516840122077940
       AcneMejillas_1: 216321225880538967
@@ -662,6 +268,7 @@ TextureImporter:
       AcneMejillas_18: 7162663904659282451
       AcneMejillas_19: -7580139291584493954
       AcneMejillas_2: 296200961719056680
+      AcneMejillas_20: 409966754
       AcneMejillas_3: -9216670349330324047
       AcneMejillas_4: 2356094859040854659
       AcneMejillas_5: 1434836992345725733

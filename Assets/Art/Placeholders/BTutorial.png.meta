@@ -1,24 +1,15 @@
 fileFormatVersion: 2
-guid: 05a68772a5e1c9e49ae9ce3779edbdad
+guid: 6732b261b83a9e4499611b2d6d2c1377
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1255094635531666288
-    second: CicatrizMejillas_0
-  - first:
-      213: -1227780950248760140
-    second: CicatrizMejillas_1
-  - first:
-      213: -7930482633319492789
-    second: CicatrizMejillas_2
-  - first:
-      213: -1411026598897672385
-    second: CicatrizMejillas_3
+      213: 3830939859871732971
+    second: BTutorial_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,7 +28,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
+  ignoreMipmapLimit: 1
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -105,56 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CicatrizMejillas_0
+      name: BTutorial_0
       rect:
         serializedVersion: 2
-        x: 80
-        y: 97
-        width: 51
-        height: 82
+        x: 10
+        y: 16
+        width: 429
+        height: 117
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0730d56dbedfa6110800000000000000
-      internalID: 1255094635531666288
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CicatrizMejillas_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 400
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4bc5e661bbb06fee0800000000000000
-      internalID: -1227780950248760140
+      spriteID: be41a8f518b3a2530800000000000000
+      internalID: 3830939859871732971
       vertices: []
       indices: 
       edges: []
@@ -195,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -205,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CicatrizMejillas_0: 1255094635531666288
-      CicatrizMejillas_1: -1227780950248760140
-      CicatrizMejillas_2: -7930482633319492789
-      CicatrizMejillas_3: -1411026598897672385
-      CicatrizMejillas_4: 1128642995
+      BTutorial_0: 3830939859871732971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
