@@ -4469,6 +4469,9 @@ MonoBehaviour:
   receptionSceneName: ReceptionScene
   roundEndOutputGroup: {fileID: 6479677624399784943, guid: d973a4d74b2694446bcb1070b5bb2382, type: 2}
   timeUpClip: {fileID: 8300000, guid: a653a25273dbc444e986c7a0581b3e5a, type: 3}
+  timerWarningClip: {fileID: 8300000, guid: 29605e6f57be1e54eaa66d3876804388, type: 3}
+  timerWarningThreshold: 5
+  timerWarningVolume: 2
 --- !u!4 &2107000831
 Transform:
   m_ObjectHideFlags: 0

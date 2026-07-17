@@ -37,9 +37,14 @@ public class GameController : MonoBehaviour
     [Header("Round End Audio")]
     [SerializeField] private AudioMixerGroup roundEndOutputGroup;
     [SerializeField] private AudioClip timeUpClip;
+    [SerializeField] private AudioClip timerWarningClip;
+    [SerializeField] private float timerWarningThreshold = 5f;
+    [SerializeField, Range(0f, 2f)] private float timerWarningVolume = 1f;
 
     private GameState currentState;
     private AudioSource roundEndAudioSource;
+    private AudioSource timerWarningAudioSource;
+    private bool timerWarningPlayed;
 
     public bool CanPaint => currentState == GameState.Running && Time.timeScale > 0f;
 
@@ -53,6 +58,9 @@ public class GameController : MonoBehaviour
 
         if (timeUpClip == null)
             timeUpClip = Resources.Load<AudioClip>("One Shots/finishround2");
+
+        if (timerWarningClip == null)
+            timerWarningClip = Resources.Load<AudioClip>("One Shots/doubletime loop");
 
         if (resultsPanel != null)
             resultsPanelCanvasGroup = resultsPanel.GetComponent<CanvasGroup>();
@@ -79,6 +87,7 @@ public class GameController : MonoBehaviour
     {
         remainingTime = roundDuration;
         currentState = GameState.Running;
+        timerWarningPlayed = false;
 
         SetResultsPanelVisible(false);
 
@@ -92,10 +101,17 @@ public class GameController : MonoBehaviour
     {
         remainingTime -= Time.deltaTime;
 
+        if (!timerWarningPlayed && remainingTime > 0f && remainingTime <= timerWarningThreshold)
+        {
+            timerWarningPlayed = true;
+            PlayTimerWarningSound();
+        }
+
         if (remainingTime <= 0f)
         {
             remainingTime = 0f;
             UpdateTimerText();
+            StopTimerWarningSound();
             PlayTimeUpSound();
             EndRound();
             return;
@@ -116,6 +132,7 @@ public class GameController : MonoBehaviour
             return;
 
         currentState = GameState.Results;
+        StopTimerWarningSound();
 
         if (brushInput != null)
             brushInput.SetPaintingEnabled(false);
@@ -222,6 +239,34 @@ public class GameController : MonoBehaviour
 
         roundEndAudioSource.outputAudioMixerGroup = roundEndOutputGroup;
         roundEndAudioSource.PlayOneShot(timeUpClip);
+    }
+
+    private void PlayTimerWarningSound()
+    {
+        if (timerWarningClip == null)
+            return;
+
+        if (timerWarningAudioSource == null)
+        {
+            timerWarningAudioSource = gameObject.AddComponent<AudioSource>();
+            timerWarningAudioSource.playOnAwake = false;
+            timerWarningAudioSource.spatialBlend = 0f;
+            timerWarningAudioSource.loop = true;
+        }
+
+        timerWarningAudioSource.outputAudioMixerGroup = roundEndOutputGroup;
+        timerWarningAudioSource.clip = timerWarningClip;
+        timerWarningAudioSource.volume = timerWarningVolume;
+        timerWarningAudioSource.Play();
+    }
+
+    private void StopTimerWarningSound()
+    {
+        if (timerWarningAudioSource == null || !timerWarningAudioSource.isPlaying)
+            return;
+
+        timerWarningAudioSource.Stop();
+        timerWarningAudioSource.clip = null;
     }
 
     // ---------------- Scene transition (Results -> Reception) ----------------
