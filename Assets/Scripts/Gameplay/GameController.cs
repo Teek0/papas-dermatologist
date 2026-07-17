@@ -125,6 +125,7 @@ public class GameController : MonoBehaviour
         float correctPct = 0f;
         float wrongPct = 0f;
         float dirtyPct = 0f;
+        float finalScore = 0f;
         bool reachedDailyQuota = false;
 
         if (customer != null && evaluator != null)
@@ -138,14 +139,31 @@ public class GameController : MonoBehaviour
             correctPct = eval.correctCoverage * 100f;
             wrongPct = eval.wrongColorRate * 100f;
             dirtyPct = eval.dirtyRate * 100f;
+            finalScore = eval.finalScore;
         }
         else if (customer != null)
         {
             finalPay = customer.Treatment.Payment;
+            finalScore = finalPay > 0 ? 1f : 0f;
         }
 
         if (GameSession.I != null)
+        {
             reachedDailyQuota = GameSession.I.AddMoney(finalPay);
+
+            if (customer != null)
+            {
+                GameSession.I.SetLastTreatmentResult(
+                    customer,
+                    finalPay,
+                    finalScore,
+                    correctPct / 100f,
+                    wrongPct / 100f,
+                    dirtyPct / 100f,
+                    reachedDailyQuota
+                );
+            }
+        }
 
         SetResultsPanelVisible(true);
 
@@ -159,23 +177,13 @@ public class GameController : MonoBehaviour
                     $"Correcto: {Mathf.RoundToInt(correctPct)}%\n" +
                     $"Color incorrecto: {Mathf.RoundToInt(wrongPct)}%\n" +
                     $"Pago: {finalPay}\n" +
-                    $"Dinero: {money}" +
-                    GetDailyQuotaMessage(reachedDailyQuota);
+                    $"Dinero: {money}";
             }
             else
             {
-                resultsText.text = $"Pago: {finalPay}\nDinero: {money}" +
-                    GetDailyQuotaMessage(reachedDailyQuota);
+                resultsText.text = $"Pago: {finalPay}\nDinero: {money}";
             }
         }
-    }
-
-    private string GetDailyQuotaMessage(bool reachedDailyQuota)
-    {
-        if (!reachedDailyQuota || GameSession.I == null)
-            return "";
-
-        return $"\n\nHas conseguido la cuota del dia (${GameSession.I.DailyQuota}). Gracias por jugar!";
     }
 
     private void SetResultsPanelVisible(bool isVisible)
@@ -225,9 +233,6 @@ public class GameController : MonoBehaviour
 
     private IEnumerator TransitionToReception()
     {
-        if (GameSession.I != null)
-            GameSession.I.ClearCustomer();
-
         yield return StartCoroutine(SceneTransitionService.FadeOutAndLoadScene(
             receptionSceneName,
             fadeCanvasGroup,

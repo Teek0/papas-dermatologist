@@ -55,10 +55,39 @@ public class IngameMenuController : MonoBehaviour
 
         isReturningToReceptionConfirmed = false;
 
-        if (GameSession.I != null)
-            GameSession.I.ClearCustomer();
+        RegisterCancelledTreatmentIfNeeded();
 
         GoToScene(receptionSceneName);
+    }
+
+    private void RegisterCancelledTreatmentIfNeeded()
+    {
+        if (GameSession.I == null)
+            return;
+
+        if (SceneManager.GetActiveScene().name != SceneNames.Camilla)
+        {
+            GameSession.I.ClearCustomer();
+            return;
+        }
+
+        Customer customer = GameSession.I.CurrentCustomer;
+
+        if (customer == null)
+        {
+            GameSession.I.ClearCustomer();
+            return;
+        }
+
+        GameSession.I.SetLastTreatmentResult(
+            customer,
+            0,
+            0f,
+            0f,
+            0f,
+            0f,
+            false
+        );
     }
 
     private void GoToScene(string sceneName)

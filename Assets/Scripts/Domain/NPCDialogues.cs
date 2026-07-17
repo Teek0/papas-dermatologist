@@ -19,6 +19,10 @@ public class NPCDialogues
     public List<NPCLine> pointingAt;
     public List<NPCLine> closing;
     public List<NPCLine> leaving;
+    public List<NPCLine> leavingGood;
+    public List<NPCLine> leavingNeutral;
+    public List<NPCLine> leavingBad;
+    public List<NPCLine> leavingNoPay;
 
     public static NPCDialogues CreateFromJSON(string jsonString)
     {

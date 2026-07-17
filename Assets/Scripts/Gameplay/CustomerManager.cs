@@ -33,6 +33,10 @@ public class CustomerManager : MonoBehaviour
     [Header("Dialogue GameObjects")]
     public GameObject DialogueBox;
     [SerializeField] private TMP_Text npcText;
+    [SerializeField] private GameObject acceptButton;
+    [SerializeField] private GameObject rejectButton;
+    [SerializeField] private GameObject byeButton;
+    [SerializeField] private TMP_Text rejectButtonText;
     public TextAsset dialogueOptions;
     private NPCDialogues dialogue;
     public static event Action<string> OnDialogueUpdate;
@@ -52,6 +56,8 @@ public class CustomerManager : MonoBehaviour
     private bool onHold;
     private bool customerSpawned;
     private bool dialogueVisible;
+    private bool showingFarewell;
+    private string defaultRejectButtonText;
 
     private float timeToNextPatient;
     private float waitingTime;
@@ -68,24 +74,31 @@ public class CustomerManager : MonoBehaviour
             return;
         }
 
+        ApplyCustomerVisual(currentCustomer, 0f);
+
+        dialogueVisible = false;
+        SetDialogueButtonsForRequest();
+        if (DialogueBox != null) DialogueBox.SetActive(false);
+    }
+
+    private bool ApplyCustomerVisual(Customer customer, float alpha)
+    {
+        if (customer == null || !ResolveCustomerRenderers())
+            return false;
+
         foreheadRenderer.sprite = null;
         cheeksRenderer.sprite = null;
         chinRenderer.sprite = null;
 
-        customerAlpha = 0f;
-        Color opacityColor = new(1f, 1f, 1f, customerAlpha);
+        bodyRenderer.sprite = customer.Body;
+        hairRenderer.sprite = customer.Hair;
+        eyesRenderer.sprite = customer.Eyes;
 
-        SetCustomerRenderersColor(opacityColor);
-
-        bodyRenderer.sprite = currentCustomer.Body;
-        hairRenderer.sprite = currentCustomer.Hair;
-        eyesRenderer.sprite = currentCustomer.Eyes;
-
-        if (currentCustomer?.Treatment?.SkinConditions != null)
+        if (customer.Treatment?.SkinConditions != null)
         {
-            for (int i = 0; i < currentCustomer.Treatment.SkinConditions.Count; i++)
+            for (int i = 0; i < customer.Treatment.SkinConditions.Count; i++)
             {
-                var sc = currentCustomer.Treatment.SkinConditions[i];
+                var sc = customer.Treatment.SkinConditions[i];
                 if (sc == null) continue;
 
                 if (sc.AfflictedArea == "frente")
@@ -97,8 +110,9 @@ public class CustomerManager : MonoBehaviour
             }
         }
 
-        dialogueVisible = false;
-        if (DialogueBox != null) DialogueBox.SetActive(false);
+        customerAlpha = alpha;
+        SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
+        return true;
     }
 
     private bool ResolveCustomerRenderers()
@@ -314,8 +328,154 @@ public class CustomerManager : MonoBehaviour
         SetText(message);
     }
 
+    private bool TryShowPendingFarewell()
+    {
+        if (GameSession.I == null || !GameSession.I.HasPendingFarewell)
+            return false;
+
+        currentCustomer = GameSession.I.LastTreatedCustomer;
+        if (!ApplyCustomerVisual(currentCustomer, 1f))
+            return false;
+
+        showingFarewell = true;
+        attending = true;
+        customerSpawned = true;
+        dialogueVisible = true;
+        onHold = true;
+
+        SetDialogueButtonsForFarewell();
+
+        if (DialogueBox != null)
+            DialogueBox.SetActive(true);
+
+        SetText(BuildFarewellText(GameSession.I.LastTreatmentResult));
+        return true;
+    }
+
+    private string BuildFarewellText(TreatmentResultSummary result)
+    {
+        if (result == null)
+            return "Gracias por atenderme.";
+
+        IList options = dialogue?.leaving;
+        string fallback = "Gracias por atenderme.";
+
+        switch (result.FeedbackTier)
+        {
+            case TreatmentFeedbackTier.Good:
+                options = dialogue?.leavingGood as IList ?? options;
+                fallback = "¡Quedó mucho mejor! Gracias por la atención.";
+                break;
+            case TreatmentFeedbackTier.Neutral:
+                options = dialogue?.leavingNeutral as IList ?? options;
+                fallback = "Creo que mejoró un poco. Gracias por atenderme.";
+                break;
+            case TreatmentFeedbackTier.Bad:
+                options = dialogue?.leavingBad as IList ?? options;
+                fallback = "No quedó como esperaba, pero gracias por intentarlo.";
+                break;
+            case TreatmentFeedbackTier.NoPay:
+                options = dialogue?.leavingNoPay as IList ?? options;
+                fallback = "Mejor lo dejamos hasta aquí. No puedo pagar por este tratamiento.";
+                break;
+        }
+
+        return PickLineOrFallback(options, fallback);
+    }
+
+    private void ResolveDialogueControls()
+    {
+        if (DialogueBox == null)
+            return;
+
+        Transform buttons = DialogueBox.transform.Find("Buttons");
+
+        if (acceptButton == null)
+            acceptButton = buttons?.Find("AcceptButton")?.gameObject;
+
+        if (rejectButton == null)
+            rejectButton = buttons?.Find("RejectButton")?.gameObject;
+
+        if (byeButton == null)
+            byeButton = FindDialogueButton(buttons, "byeButton", "ByeButton", "BAdios", "AdiosButton");
+
+        if (rejectButtonText == null && rejectButton != null)
+            rejectButtonText = rejectButton.GetComponentInChildren<TMP_Text>(true);
+
+        if (rejectButtonText != null && string.IsNullOrEmpty(defaultRejectButtonText))
+            defaultRejectButtonText = rejectButtonText.text;
+    }
+
+    private void SetDialogueButtonsForRequest()
+    {
+        ResolveDialogueControls();
+
+        if (acceptButton != null)
+            acceptButton.SetActive(true);
+
+        if (rejectButton != null)
+            rejectButton.SetActive(true);
+
+        if (byeButton != null)
+            byeButton.SetActive(false);
+
+        if (rejectButtonText != null && !string.IsNullOrEmpty(defaultRejectButtonText))
+            rejectButtonText.text = defaultRejectButtonText;
+    }
+
+    private void SetDialogueButtonsForFarewell()
+    {
+        ResolveDialogueControls();
+
+        if (acceptButton != null)
+            acceptButton.SetActive(false);
+
+        bool hasByeButton = byeButton != null;
+
+        if (rejectButton != null)
+            rejectButton.SetActive(!hasByeButton);
+
+        if (byeButton != null)
+            byeButton.SetActive(true);
+
+        if (!hasByeButton && rejectButtonText != null)
+            rejectButtonText.text = "Siguiente";
+    }
+
+    private GameObject FindDialogueButton(Transform parent, params string[] names)
+    {
+        if (parent == null)
+            return null;
+
+        for (int i = 0; i < names.Length; i++)
+        {
+            Transform found = parent.Find(names[i]);
+            if (found != null)
+                return found.gameObject;
+        }
+
+        return null;
+    }
+
     public void rejectCustomer()
     {
+        if (showingFarewell)
+        {
+            showingFarewell = false;
+            customerSpawned = false;
+            onHold = false;
+            dialogueVisible = false;
+
+            if (DialogueBox != null)
+                DialogueBox.SetActive(false);
+
+            if (GameSession.I != null)
+                GameSession.I.CompletePendingFarewell();
+
+            SetDialogueButtonsForRequest();
+            return;
+        }
+
         customerSpawned = false;
         onHold = false;
 
@@ -325,6 +485,9 @@ public class CustomerManager : MonoBehaviour
 
     public void acceptCustomer()
     {
+        if (showingFarewell)
+            return;
+
         if (GameSession.I != null)
             GameSession.I.SetCustomer(currentCustomer);
         else
@@ -377,6 +540,11 @@ public class CustomerManager : MonoBehaviour
             dialogue = null;
         }
 
+        ResolveDialogueControls();
+        SetDialogueButtonsForRequest();
+
+        if (TryShowPendingFarewell())
+            return;
 
         if (validateSkinConditionIndexContract)
             ValidateSkinConditionIndexContract();
@@ -414,6 +582,7 @@ public class CustomerManager : MonoBehaviour
                 if (!dialogueVisible)
                 {
                     if (DialogueBox != null) DialogueBox.SetActive(true);
+                    SetDialogueButtonsForRequest();
                     SetRandomText();
 
                     dialogueVisible = true;

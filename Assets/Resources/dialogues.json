@@ -1,42 +1,99 @@
 {
-  "language" : "ES",
-  "greetings" : [
-    { "line" : "Hola, buenas tardes." },
-    { "line" : "Disculpe, ¿me podría ayudar?" },
-    { "line" : "Buenas tardes." },
-    { "line" : "Ya era hora que alguien me atendiera." },
-    { "line" : "Holi, saludines." }
+  "language": "ES",
+  "greetings": [
+    { "line": "Hola, buenas tardes." },
+    { "line": "Disculpe, ¿me podría ayudar?" },
+    { "line": "Buenas tardes." },
+    { "line": "Qué bueno que alcancé a pasar." },
+    { "line": "Holi, saludines." },
+    { "line": "Hola, vengo un poquito nerviosa." },
+    { "line": "Buenas, ¿usted atiende dermatología?" },
+    { "line": "Hola, me recomendaron este lugar." },
+    { "line": "Buenas tardes, espero no llegar muy tarde." },
+    { "line": "Hola, necesito una ayudita urgente." }
   ],
-  "preambles" : [
-    { "line" : " Vi que habían abierto y" },
-    { "line" : " Tengo una cita agendada con ustedes y" },
-    { "line" : " Estaba paseando, vi este local y" },
-    { "line" : " Había escuchado de este local y" }
+  "preambles": [
+    { "line": " Vi que habían abierto y" },
+    { "line": " Tengo una cita agendada con ustedes y" },
+    { "line": " Estaba paseando, vi este local y" },
+    { "line": " Había escuchado de este local y" },
+    { "line": " Me dijeron que aquí atendían rápido y" },
+    { "line": " Vengo saliendo del trabajo y" },
+    { "line": " Me miré al espejo esta mañana y" },
+    { "line": " Tengo un evento más tarde y" },
+    { "line": " Pasé por aquí de casualidad y" },
+    { "line": " Ya probé de todo en casa y" }
   ],
-  "treatmentRequest" : [
-    { "line" : " hace un tiempo que quiero hacer algo con " },
-    { "line" : " me pregunto si quizás me podrían quitar " },
-    { "line" : " llevo un tiempo queriendo tratar " },
-    { "line" : " quiero que me quiten " }
+  "treatmentRequest": [
+    { "line": " hace un tiempo que quiero hacer algo con " },
+    { "line": " me pregunto si quizás me podrían quitar " },
+    { "line": " llevo un tiempo queriendo tratar " },
+    { "line": " quiero que me quiten " },
+    { "line": " necesito que me ayuden con " },
+    { "line": " me gustaría mejorar " },
+    { "line": " me tiene un poco preocupada " },
+    { "line": " no sé qué hacer con " },
+    { "line": " quisiera disimular un poco " },
+    { "line": " vengo por una consulta sobre " }
   ],
-  "pointingAt" : [
-    { "line" : " que tengo en " },
-    { "line" : " en " },
-    { "line" : " que están en " }
+  "pointingAt": [
+    { "line": " que tengo en " },
+    { "line": " en " },
+    { "line": " que están en " },
+    { "line": " que me salieron en " },
+    { "line": " que se notan mucho en " },
+    { "line": " que aparecieron en " }
   ],
-  "closing" : [
-    { "line" : ". ¿Será posible?" },
-    { "line" : ". Hazlo rápido que tengo cosas que hacer." },
-    { "line" : ". Muchas gracias." },
-    { "line" : ". ¿Me va a doler?" },
-    { "line" : ". No espero milagros, pero haga lo que pueda." }
+  "closing": [
+    { "line": ". ¿Será posible?" },
+    { "line": ". Si puede ser rápido, se lo agradecería mucho." },
+    { "line": ". Muchas gracias." },
+    { "line": ". ¿Me va a doler?" },
+    { "line": ". No espero milagros, pero haga lo que pueda." },
+    { "line": ". Confío en sus manos." },
+    { "line": ". Ojalá tenga solución." },
+    { "line": ". Me preocupa que se note demasiado." },
+    { "line": ". Por favor, dígame que tiene arreglo." },
+    { "line": ". Si queda bien, le cuento a mis amigas." }
   ],
-  "leaving" : [
-    { "line" : "Muchas, muchas gracias." },
-    { "line" : "¿Aceptan tarjetas?" },
-    { "line" : "¿Te puedo pagar con cupones?" },
-    { "line" : "Los pepinos no se comen, ¿cierto?" },
-    { "line" : "Nos vemos para la siguiente cita." },
-    { "line" : "No me gustó. 0/10. Pésimo servicio. Volveré por más" }
+  "leaving": [
+    { "line": "Muchas, muchas gracias." },
+    { "line": "¿Aceptan tarjetas?" },
+    { "line": "¿Te puedo pagar con cupones?" },
+    { "line": "Los pepinos no se comen, ¿cierto?" },
+    { "line": "Nos vemos para la siguiente cita." },
+    { "line": "Fue una experiencia intensa. Creo que volveré." },
+    { "line": "Gracias, voy a verme al espejo apenas salga." },
+    { "line": "Espero que esto aguante hasta la noche." },
+    { "line": "Le contaré a mi vecina que atienden rápido." },
+    { "line": "Me voy antes de arrepentirme de preguntar más cosas." }
+  ],
+  "leavingGood": [
+    { "line": "¡Quedó muchísimo mejor! Muchas gracias." },
+    { "line": "Ahora sí puedo salir tranquila. Gracias." },
+    { "line": "Me encantó el resultado, volveré sin pensarlo." },
+    { "line": "No esperaba quedar tan bien. Gracias por la atención." },
+    { "line": "Se nota el cambio altiro. ¡Excelente!" }
+  ],
+  "leavingNeutral": [
+    { "line": "Creo que mejoró un poco. Gracias por atenderme." },
+    { "line": "No quedó perfecto, pero se ve mejor que antes." },
+    { "line": "Me voy más tranquila, aunque quizá vuelva por otra sesión." },
+    { "line": "Sirvió bastante. Gracias por el intento." },
+    { "line": "No está mal, puedo vivir con esto." }
+  ],
+  "leavingBad": [
+    { "line": "No quedó como esperaba, pero gracias por intentarlo." },
+    { "line": "Creo que voy a necesitar otra opinión." },
+    { "line": "Me voy con dudas, pero aprecio la atención." },
+    { "line": "Tal vez hoy no era mi día de suerte." },
+    { "line": "Bueno... al menos fue rápido." }
+  ],
+  "leavingNoPay": [
+    { "line": "Ah... ¿entonces no me va a atender? Bueno, será para otra vez." },
+    { "line": "Entiendo. Me voy sin tratamiento entonces." },
+    { "line": "Qué pena, pensé que alcanzábamos a terminar." },
+    { "line": "Bueno... gracias igual por avisarme." },
+    { "line": "Está bien, volveré cuando tenga más suerte con la agenda." }
   ]
 }
