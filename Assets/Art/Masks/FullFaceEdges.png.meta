@@ -1,0 +1,2951 @@
+fileFormatVersion: 2
+guid: 120bf418134766e4ea96d0950501c66a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2384502042281565295
+    second: FullFaceBorder_0
+  - first:
+      213: 6515958462298358457
+    second: FullFaceBorder_1
+  - first:
+      213: -8376116269593803839
+    second: FullFaceBorder_2
+  - first:
+      213: 1687266111471521513
+    second: FullFaceBorder_3
+  - first:
+      213: -451463444497676505
+    second: FullFaceBorder_4
+  - first:
+      213: 6847011977894700124
+    second: FullFaceBorder_5
+  - first:
+      213: 9185706374518377007
+    second: FullFaceBorder_6
+  - first:
+      213: 6689431072914529038
+    second: FullFaceBorder_7
+  - first:
+      213: 3438810040625398743
+    second: FullFaceBorder_8
+  - first:
+      213: 2538638271779140846
+    second: FullFaceBorder_9
+  - first:
+      213: 1812827859505086156
+    second: FullFaceBorder_10
+  - first:
+      213: -8127853997201196857
+    second: FullFaceBorder_11
+  - first:
+      213: 2762122940317752053
+    second: FullFaceBorder_12
+  - first:
+      213: 8576398740939396211
+    second: FullFaceBorder_13
+  - first:
+      213: -4407993414760570145
+    second: FullFaceBorder_14
+  - first:
+      213: 406052564396650935
+    second: FullFaceBorder_15
+  - first:
+      213: -5958916518331149151
+    second: FullFaceBorder_16
+  - first:
+      213: -986353016515734359
+    second: FullFaceBorder_17
+  - first:
+      213: -4188356451217911232
+    second: FullFaceBorder_18
+  - first:
+      213: -771446728554472007
+    second: FullFaceBorder_19
+  - first:
+      213: -6558009453333761766
+    second: FullFaceBorder_20
+  - first:
+      213: 2612267182334683380
+    second: FullFaceBorder_21
+  - first:
+      213: -2690248870690462495
+    second: FullFaceBorder_22
+  - first:
+      213: -6782069151594913312
+    second: FullFaceBorder_23
+  - first:
+      213: 3188680092325163808
+    second: FullFaceBorder_24
+  - first:
+      213: 1537034795175783171
+    second: FullFaceBorder_25
+  - first:
+      213: -4062993747007074666
+    second: FullFaceBorder_26
+  - first:
+      213: -4340647931284791452
+    second: FullFaceBorder_27
+  - first:
+      213: 1894965293417827210
+    second: FullFaceBorder_28
+  - first:
+      213: -5529186302538014907
+    second: FullFaceBorder_29
+  - first:
+      213: 8094214105437288464
+    second: FullFaceBorder_30
+  - first:
+      213: 6461395146756231240
+    second: FullFaceBorder_31
+  - first:
+      213: -6049791469459998217
+    second: FullFaceBorder_32
+  - first:
+      213: -389302345102616949
+    second: FullFaceBorder_33
+  - first:
+      213: 7364116917325997758
+    second: FullFaceBorder_34
+  - first:
+      213: -7526130517370506365
+    second: FullFaceBorder_35
+  - first:
+      213: 3555003707423639688
+    second: FullFaceBorder_36
+  - first:
+      213: -1576696630162384559
+    second: FullFaceBorder_37
+  - first:
+      213: -7495725123006027910
+    second: FullFaceBorder_38
+  - first:
+      213: 6520871033286055608
+    second: FullFaceBorder_39
+  - first:
+      213: 1620744801549331200
+    second: FullFaceBorder_40
+  - first:
+      213: 4891034967687298868
+    second: FullFaceBorder_41
+  - first:
+      213: -7557679066992828360
+    second: FullFaceBorder_42
+  - first:
+      213: -7294855520916294073
+    second: FullFaceBorder_43
+  - first:
+      213: -1414053294623305182
+    second: FullFaceBorder_44
+  - first:
+      213: 4870155033547992887
+    second: FullFaceBorder_45
+  - first:
+      213: 6334428964626983834
+    second: FullFaceBorder_46
+  - first:
+      213: 5544766749256977172
+    second: FullFaceBorder_47
+  - first:
+      213: 2743907080996429588
+    second: FullFaceBorder_48
+  - first:
+      213: 8186083671086856149
+    second: FullFaceBorder_49
+  - first:
+      213: -9088607117665275830
+    second: FullFaceBorder_50
+  - first:
+      213: 5458966620722366650
+    second: FullFaceBorder_51
+  - first:
+      213: 4115883538569890899
+    second: FullFaceBorder_52
+  - first:
+      213: 6334815656965108348
+    second: FullFaceBorder_53
+  - first:
+      213: -5199394478176460349
+    second: FullFaceBorder_54
+  - first:
+      213: 3051622777516383279
+    second: FullFaceBorder_55
+  - first:
+      213: 6773196614067988208
+    second: FullFaceBorder_56
+  - first:
+      213: 6354032062032390941
+    second: FullFaceBorder_57
+  - first:
+      213: 6444443218838638761
+    second: FullFaceBorder_58
+  - first:
+      213: -5915314188713875601
+    second: FullFaceBorder_59
+  - first:
+      213: -8521559841019205723
+    second: FullFaceBorder_60
+  - first:
+      213: -3114125557920154586
+    second: FullFaceBorder_61
+  - first:
+      213: -4919782368973154709
+    second: FullFaceBorder_62
+  - first:
+      213: 4591561610531369143
+    second: FullFaceBorder_63
+  - first:
+      213: 7599015603474252112
+    second: FullFaceBorder_64
+  - first:
+      213: 7827371925511613420
+    second: FullFaceBorder_65
+  - first:
+      213: 5545980814011387208
+    second: FullFaceBorder_66
+  - first:
+      213: 8886236142120419083
+    second: FullFaceBorder_67
+  - first:
+      213: -7905941946720483427
+    second: FullFaceBorder_68
+  - first:
+      213: -6443983394464123601
+    second: FullFaceBorder_69
+  - first:
+      213: -4988220005618915268
+    second: FullFaceBorder_70
+  - first:
+      213: 3350675252123154405
+    second: FullFaceBorder_71
+  - first:
+      213: 2201173148954131365
+    second: FullFaceBorder_72
+  - first:
+      213: 2004728086800506627
+    second: FullFaceBorder_73
+  - first:
+      213: 7362355102309974829
+    second: FullFaceBorder_74
+  - first:
+      213: 9187858022249650364
+    second: FullFaceBorder_75
+  - first:
+      213: -7804330819602379263
+    second: FullFaceBorder_76
+  - first:
+      213: 7766516135353815055
+    second: FullFaceBorder_77
+  - first:
+      213: -3688235796093349262
+    second: FullFaceBorder_78
+  - first:
+      213: 4223901113624945652
+    second: FullFaceBorder_79
+  - first:
+      213: 7809979538240403149
+    second: FullFaceBorder_80
+  - first:
+      213: 3648862270216704716
+    second: FullFaceBorder_81
+  - first:
+      213: 5265020622182287264
+    second: FullFaceBorder_82
+  - first:
+      213: 8724482627532652500
+    second: FullFaceBorder_83
+  - first:
+      213: 1464981813203828635
+    second: FullFaceBorder_84
+  - first:
+      213: 56059572785073408
+    second: FullFaceBorder_85
+  - first:
+      213: 2027492721655918348
+    second: FullFaceBorder_86
+  - first:
+      213: 2706978202426808034
+    second: FullFaceBorder_87
+  - first:
+      213: 1019695916761968200
+    second: FullFaceBorder_88
+  - first:
+      213: -8366612597196823584
+    second: FullFaceBorder_89
+  - first:
+      213: -32348714693986933
+    second: FullFaceBorder_90
+  - first:
+      213: 527422700529289403
+    second: FullFaceBorder_91
+  - first:
+      213: 5554149531424168114
+    second: FullFaceBorder_92
+  - first:
+      213: 4387602138177713254
+    second: FullFaceBorder_93
+  - first:
+      213: -6692503946305043614
+    second: FullFaceBorder_94
+  - first:
+      213: -5982830889825066212
+    second: FullFaceBorder_95
+  - first:
+      213: -8967049142790647806
+    second: FullFaceBorder_96
+  - first:
+      213: 8021399192022166009
+    second: FullFaceBorder_97
+  - first:
+      213: 5889665272623071592
+    second: FullFaceBorder_98
+  - first:
+      213: 120018025504451246
+    second: FullFaceBorder_99
+  - first:
+      213: -4095688242707858249
+    second: FullFaceBorder_100
+  - first:
+      213: -3879823232524074922
+    second: FullFaceBorder_101
+  - first:
+      213: 8919674619817141465
+    second: FullFaceBorder_102
+  - first:
+      213: 5839089301802634205
+    second: FullFaceBorder_103
+  - first:
+      213: 7902685584655734764
+    second: FullFaceBorder_104
+  - first:
+      213: -2695202888456139460
+    second: FullFaceBorder_105
+  - first:
+      213: 5945177762376494054
+    second: FullFaceBorder_106
+  - first:
+      213: 8417424086226353222
+    second: FullFaceBorder_107
+  - first:
+      213: -1839769659717912130
+    second: FullFaceBorder_108
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FullFaceBorder_0
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 465
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6cd26c49f3771120800000000000000
+      internalID: 2384502042281565295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_1
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 470
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b28e7cc2b55d6a50800000000000000
+      internalID: 6515958462298358457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_2
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 474
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c3cd71a1ae02cb80800000000000000
+      internalID: -8376116269593803839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_3
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 475
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ee80dfb69f5a6710800000000000000
+      internalID: 1687266111471521513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_4
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 474
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72744a1a3641cb9f0800000000000000
+      internalID: -451463444497676505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_5
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 470
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c54224bed19750f50800000000000000
+      internalID: 6847011977894700124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_6
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 464
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2a8538974f2a7f70800000000000000
+      internalID: 9185706374518377007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_7
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 448
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0bd7826e12a5dc50800000000000000
+      internalID: 6689431072914529038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_8
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 458
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d30689238b19bf20800000000000000
+      internalID: 3438810040625398743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_9
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 456
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee47b92de0e0b3320800000000000000
+      internalID: 2538638271779140846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_10
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 445
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce7bbc5555782910800000000000000
+      internalID: 1812827859505086156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_11
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 424
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c8759e4adf043f80800000000000000
+      internalID: -8127853997201196857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_12
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 437
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fad89b0e28055620800000000000000
+      internalID: 2762122940317752053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_13
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 431
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374dcc5173d750770800000000000000
+      internalID: 8576398740939396211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_14
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 409
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd26fe40859a3d2c0800000000000000
+      internalID: -4407993414760570145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_15
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 417
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b1bffce7a692a500800000000000000
+      internalID: 406052564396650935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_16
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 402
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a41aae8ffcad4da0800000000000000
+      internalID: -5958916518331149151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 376
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a4d17b4825cf42f0800000000000000
+      internalID: -986353016515734359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_18
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 392
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 042d07c9ff7ffd5c0800000000000000
+      internalID: -4188356451217911232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_19
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 385
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bd9f55a9454b45f0800000000000000
+      internalID: -771446728554472007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_20
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 390
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a113364e5254df4a0800000000000000
+      internalID: -6558009453333761766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_21
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 389
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f828757923a04420800000000000000
+      internalID: 2612267182334683380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_22
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 381
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e46919d7e05aaad0800000000000000
+      internalID: -2690248870690462495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_23
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 385
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e1ec012a0041e1a0800000000000000
+      internalID: -6782069151594913312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_24
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 388
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 023b66d46a7704c20800000000000000
+      internalID: 3188680092325163808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_25
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 384
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b2edda005a45510800000000000000
+      internalID: 1537034795175783171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_26
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 384
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69e8209b6b85d97c0800000000000000
+      internalID: -4062993747007074666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_27
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 377
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46f5cb844bbe2c3c0800000000000000
+      internalID: -4340647931284791452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_28
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 367
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b0dd7f4e44c4a10800000000000000
+      internalID: 1894965293417827210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_29
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 377
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54f144c4a526443b0800000000000000
+      internalID: -5529186302538014907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_30
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 381
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 018bb8a08dc645070800000000000000
+      internalID: 8094214105437288464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_31
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 350
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84096dbe6ac7ba950800000000000000
+      internalID: 6461395146756231240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_32
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 345
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f9f5a136b2da0ca0800000000000000
+      internalID: -6049791469459998217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_33
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 363
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b869ee9649be89af0800000000000000
+      internalID: -389302345102616949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_34
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 330
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb629adc159923660800000000000000
+      internalID: 7364116917325997758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_35
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 326
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38377ea6b20dd8790800000000000000
+      internalID: -7526130517370506365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_36
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 310
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888ce246909e55130800000000000000
+      internalID: 3555003707423639688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_37
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 306
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1599d90c4c27e1ae0800000000000000
+      internalID: -1576696630162384559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_38
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 290
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a772145f6b5d9f790800000000000000
+      internalID: -7495725123006027910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_39
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 286
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b6562dd7a9ce7a50800000000000000
+      internalID: 6520871033286055608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_40
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 259
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00ba8e75fca0e7610800000000000000
+      internalID: 1620744801549331200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_41
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 270
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43ff309a36270e340800000000000000
+      internalID: 4891034967687298868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_42
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 265
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 830ac7d4eeabd1790800000000000000
+      internalID: -7557679066992828360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_43
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 262
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 746bcf3bd8773ca90800000000000000
+      internalID: -7294855520916294073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_44
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 249
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 222d1804506406ce0800000000000000
+      internalID: -1414053294623305182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_45
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 252
+        width: 23
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73f65b72334469340800000000000000
+      internalID: 4870155033547992887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_46
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 249
+        width: 21
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9b6983059968e750800000000000000
+      internalID: 6334428964626983834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_47
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 250
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41b0cd32bf7f2fc40800000000000000
+      internalID: 5544766749256977172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_48
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 250
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41f987bc3f0541620800000000000000
+      internalID: 2743907080996429588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_49
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 243
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d7f1c42abfca9170800000000000000
+      internalID: 8186083671086856149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_50
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 246
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a407970eaf7ced180800000000000000
+      internalID: -9088607117665275830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_51
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 254
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab80fdcf73522cb40800000000000000
+      internalID: 5458966620722366650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_52
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 252
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c065d754e8e1930800000000000000
+      internalID: 4115883538569890899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_53
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 251
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c72fcf6d649c9e750800000000000000
+      internalID: 6334815656965108348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_54
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 256
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c12a29054a08d7b0800000000000000
+      internalID: -5199394478176460349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_55
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 251
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2cda5a7fba895a20800000000000000
+      internalID: 3051622777516383279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_56
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 229
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f6a66f3f6a3ffd50800000000000000
+      internalID: 6773196614067988208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_57
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 237
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b22ecce7e0e2850800000000000000
+      internalID: 6354032062032390941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_58
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 229
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a05d02a6f24f6950800000000000000
+      internalID: 6444443218838638761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_59
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 221
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67a1e6061598eda0800000000000000
+      internalID: -5915314188713875601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_60
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 226
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7e0d749765db980800000000000000
+      internalID: -8521559841019205723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_61
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 231
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c343eed4768c4d0800000000000000
+      internalID: -3114125557920154586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_62
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 211
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b661025600c69bbb0800000000000000
+      internalID: -4919782368973154709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_63
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 218
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b0fa0825f088bf30800000000000000
+      internalID: 4591561610531369143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_64
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 207
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 051cbb71e60257960800000000000000
+      internalID: 7599015603474252112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_65
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 206
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb2cf88b4960ac60800000000000000
+      internalID: 7827371925511613420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_66
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 206
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84dc74e9a2847fc40800000000000000
+      internalID: 5545980814011387208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_67
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 207
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f3351a0b0425b70800000000000000
+      internalID: 8886236142120419083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_68
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 212
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d978ddadfa3784290800000000000000
+      internalID: -7905941946720483427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_69
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 193
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2533729e3f5296a0800000000000000
+      internalID: -6443983394464123601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_70
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 198
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c386697655846cab0800000000000000
+      internalID: -4988220005618915268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_71
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 203
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e73e70a36dff7e20800000000000000
+      internalID: 3350675252123154405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_72
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 189
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5abf98011532c8e10800000000000000
+      internalID: 2201173148954131365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_73
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 194
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f1efcc29932db10800000000000000
+      internalID: 2004728086800506627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_74
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 176
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d23887745f65c2660800000000000000
+      internalID: 7362355102309974829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_75
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 179
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb8d9ee1134d18f70800000000000000
+      internalID: 9187858022249650364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_76
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 169
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10e87fbf77271b390800000000000000
+      internalID: -7804330819602379263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_77
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 160
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f009a1eb64538cb60800000000000000
+      internalID: 7766516135353815055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_78
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 177
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 272d9f5a511c0dcc0800000000000000
+      internalID: -3688235796093349262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_79
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 159
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3edf30faf4e9a30800000000000000
+      internalID: 4223901113624945652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_80
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 142
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc673efc20f926c60800000000000000
+      internalID: 7809979538240403149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_81
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 159
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2979af6ec53a230800000000000000
+      internalID: 3648862270216704716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_82
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 149
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a708405c5c111940800000000000000
+      internalID: 5265020622182287264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_83
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 143
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4df7627b9b6931970800000000000000
+      internalID: 8724482627532652500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_84
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 125
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9ffb628239a45410800000000000000
+      internalID: 1464981813203828635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_85
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 139
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d4d1a62e927c000800000000000000
+      internalID: 56059572785073408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_86
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 129
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fadf263e9132c10800000000000000
+      internalID: 2027492721655918348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_87
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 126
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6106a355e119520800000000000000
+      internalID: 2706978202426808034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_88
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 111
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e6381a800b62e00800000000000000
+      internalID: 1019695916761968200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_89
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 116
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e366cacb22d3eb80800000000000000
+      internalID: -8366612597196823584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_90
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 124
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8579bfe3031d8ff0800000000000000
+      internalID: -32348714693986933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_91
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 118
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb88687d628c15700800000000000000
+      internalID: 527422700529289403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_92
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 116
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b890f9529d441d40800000000000000
+      internalID: 5554149531424168114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_93
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 117
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 664b3dde5e4e3ec30800000000000000
+      internalID: 4387602138177713254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_94
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 123
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26386968e137f13a0800000000000000
+      internalID: -6692503946305043614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_95
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 122
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c132ebc0107b8fca0800000000000000
+      internalID: -5982830889825066212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_96
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 114
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2001e786054ae8380800000000000000
+      internalID: -8967049142790647806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_97
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 114
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f92612e01cb15f60800000000000000
+      internalID: 8021399192022166009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_98
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 110
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86107a45c5b4cb150800000000000000
+      internalID: 5889665272623071592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_99
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 98
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaa26d022c36aa100800000000000000
+      internalID: 120018025504451246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_100
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 104
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bc77ae3e313927c0800000000000000
+      internalID: -4095688242707858249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_101
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 80
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65048128359182ac0800000000000000
+      internalID: -3879823232524074922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_102
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 70
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d4a44aeecc09cb70800000000000000
+      internalID: 8919674619817141465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_103
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 73
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddbcabd78cc980150800000000000000
+      internalID: 5839089301802634205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_104
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 84
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce751054baafbad60800000000000000
+      internalID: 7902685584655734764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_105
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 66
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3d07f3b047b89ad0800000000000000
+      internalID: -2695202888456139460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_106
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 65
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eba00d0da3818250800000000000000
+      internalID: 5945177762376494054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_107
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 66
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64cb657eb92b0d470800000000000000
+      internalID: 8417424086226353222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullFaceBorder_108
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 68
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb9f8f3fd33d776e0800000000000000
+      internalID: -1839769659717912130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FullFaceBorder_0: 2384502042281565295
+      FullFaceBorder_1: 6515958462298358457
+      FullFaceBorder_10: 1812827859505086156
+      FullFaceBorder_100: -4095688242707858249
+      FullFaceBorder_101: -3879823232524074922
+      FullFaceBorder_102: 8919674619817141465
+      FullFaceBorder_103: 5839089301802634205
+      FullFaceBorder_104: 7902685584655734764
+      FullFaceBorder_105: -2695202888456139460
+      FullFaceBorder_106: 5945177762376494054
+      FullFaceBorder_107: 8417424086226353222
+      FullFaceBorder_108: -1839769659717912130
+      FullFaceBorder_11: -8127853997201196857
+      FullFaceBorder_12: 2762122940317752053
+      FullFaceBorder_13: 8576398740939396211
+      FullFaceBorder_14: -4407993414760570145
+      FullFaceBorder_15: 406052564396650935
+      FullFaceBorder_16: -5958916518331149151
+      FullFaceBorder_17: -986353016515734359
+      FullFaceBorder_18: -4188356451217911232
+      FullFaceBorder_19: -771446728554472007
+      FullFaceBorder_2: -8376116269593803839
+      FullFaceBorder_20: -6558009453333761766
+      FullFaceBorder_21: 2612267182334683380
+      FullFaceBorder_22: -2690248870690462495
+      FullFaceBorder_23: -6782069151594913312
+      FullFaceBorder_24: 3188680092325163808
+      FullFaceBorder_25: 1537034795175783171
+      FullFaceBorder_26: -4062993747007074666
+      FullFaceBorder_27: -4340647931284791452
+      FullFaceBorder_28: 1894965293417827210
+      FullFaceBorder_29: -5529186302538014907
+      FullFaceBorder_3: 1687266111471521513
+      FullFaceBorder_30: 8094214105437288464
+      FullFaceBorder_31: 6461395146756231240
+      FullFaceBorder_32: -6049791469459998217
+      FullFaceBorder_33: -389302345102616949
+      FullFaceBorder_34: 7364116917325997758
+      FullFaceBorder_35: -7526130517370506365
+      FullFaceBorder_36: 3555003707423639688
+      FullFaceBorder_37: -1576696630162384559
+      FullFaceBorder_38: -7495725123006027910
+      FullFaceBorder_39: 6520871033286055608
+      FullFaceBorder_4: -451463444497676505
+      FullFaceBorder_40: 1620744801549331200
+      FullFaceBorder_41: 4891034967687298868
+      FullFaceBorder_42: -7557679066992828360
+      FullFaceBorder_43: -7294855520916294073
+      FullFaceBorder_44: -1414053294623305182
+      FullFaceBorder_45: 4870155033547992887
+      FullFaceBorder_46: 6334428964626983834
+      FullFaceBorder_47: 5544766749256977172
+      FullFaceBorder_48: 2743907080996429588
+      FullFaceBorder_49: 8186083671086856149
+      FullFaceBorder_5: 6847011977894700124
+      FullFaceBorder_50: -9088607117665275830
+      FullFaceBorder_51: 5458966620722366650
+      FullFaceBorder_52: 4115883538569890899
+      FullFaceBorder_53: 6334815656965108348
+      FullFaceBorder_54: -5199394478176460349
+      FullFaceBorder_55: 3051622777516383279
+      FullFaceBorder_56: 6773196614067988208
+      FullFaceBorder_57: 6354032062032390941
+      FullFaceBorder_58: 6444443218838638761
+      FullFaceBorder_59: -5915314188713875601
+      FullFaceBorder_6: 9185706374518377007
+      FullFaceBorder_60: -8521559841019205723
+      FullFaceBorder_61: -3114125557920154586
+      FullFaceBorder_62: -4919782368973154709
+      FullFaceBorder_63: 4591561610531369143
+      FullFaceBorder_64: 7599015603474252112
+      FullFaceBorder_65: 7827371925511613420
+      FullFaceBorder_66: 5545980814011387208
+      FullFaceBorder_67: 8886236142120419083
+      FullFaceBorder_68: -7905941946720483427
+      FullFaceBorder_69: -6443983394464123601
+      FullFaceBorder_7: 6689431072914529038
+      FullFaceBorder_70: -4988220005618915268
+      FullFaceBorder_71: 3350675252123154405
+      FullFaceBorder_72: 2201173148954131365
+      FullFaceBorder_73: 2004728086800506627
+      FullFaceBorder_74: 7362355102309974829
+      FullFaceBorder_75: 9187858022249650364
+      FullFaceBorder_76: -7804330819602379263
+      FullFaceBorder_77: 7766516135353815055
+      FullFaceBorder_78: -3688235796093349262
+      FullFaceBorder_79: 4223901113624945652
+      FullFaceBorder_8: 3438810040625398743
+      FullFaceBorder_80: 7809979538240403149
+      FullFaceBorder_81: 3648862270216704716
+      FullFaceBorder_82: 5265020622182287264
+      FullFaceBorder_83: 8724482627532652500
+      FullFaceBorder_84: 1464981813203828635
+      FullFaceBorder_85: 56059572785073408
+      FullFaceBorder_86: 2027492721655918348
+      FullFaceBorder_87: 2706978202426808034
+      FullFaceBorder_88: 1019695916761968200
+      FullFaceBorder_89: -8366612597196823584
+      FullFaceBorder_9: 2538638271779140846
+      FullFaceBorder_90: -32348714693986933
+      FullFaceBorder_91: 527422700529289403
+      FullFaceBorder_92: 5554149531424168114
+      FullFaceBorder_93: 4387602138177713254
+      FullFaceBorder_94: -6692503946305043614
+      FullFaceBorder_95: -5982830889825066212
+      FullFaceBorder_96: -8967049142790647806
+      FullFaceBorder_97: 8021399192022166009
+      FullFaceBorder_98: 5889665272623071592
+      FullFaceBorder_99: 120018025504451246
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

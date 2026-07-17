@@ -2259,7 +2259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Haz completado tu misi\xF3n el d\xEDa de hoy, \xA1muchas gracias por jugar!"
+  m_text: "Haz completado con el objetivo del d\xEDa, \xA1muchas gracias por jugar!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
   m_sharedMaterial: {fileID: 849725430161218100, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}

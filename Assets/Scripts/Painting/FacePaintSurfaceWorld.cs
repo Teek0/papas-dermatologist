@@ -20,6 +20,8 @@ public class FacePaintSurfaceWorld : MonoBehaviour
     [SerializeField] private Texture2D maskLookTexture;
     [SerializeField, Min(0.1f)] private float lookTiling = 4f;
     [SerializeField] private Color maskTint = new Color(1f, 0.47f, 0.7f, 1f);
+    [SerializeField, Range(0f, 1f)] private float lookAlphaInfluence = 0.35f;
+    [SerializeField, Range(0f, 1f)] private float lookColorInfluence = 0.15f;
 
     [Header("Brush Settings")]
     [SerializeField, Min(1)] private int brushRadius = 10;
@@ -211,22 +213,57 @@ public class FacePaintSurfaceWorld : MonoBehaviour
 
                 int idx = py * textureSize + px;
 
+                float look = SampleLookValue(u, v);
+                float alphaMultiplier = Mathf.Lerp(1f, look, lookAlphaInfluence);
+                Color32 visualTarget = ApplyLookToColor(target, look);
+
                 byte currentA = paintPixels[idx].a;
-                int addA = Mathf.RoundToInt(255f * brushStrength);
+                int addA = Mathf.RoundToInt(255f * brushStrength * alphaMultiplier);
                 byte newA = (byte)Mathf.Clamp(currentA + addA, 0, 255);
 
                 Color32 prev = paintPixels[idx];
                 float t = (addA / 255f);
 
-                byte rCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.r, target.r, t));
-                byte gCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.g, target.g, t));
-                byte bCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.b, target.b, t));
+                byte rCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.r, visualTarget.r, t));
+                byte gCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.g, visualTarget.g, t));
+                byte bCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.b, visualTarget.b, t));
 
                 paintPixels[idx] = new Color32(rCol, gCol, bCol, newA);
             }
         }
 
         dirty = true;
+    }
+
+    private float SampleLookValue(float u, float v)
+    {
+        if (lookPixels == null || lookW <= 0 || lookH <= 0)
+            return 1f;
+
+        float tiledU = Mathf.Repeat(u * lookTiling, 1f);
+        float tiledV = Mathf.Repeat(v * lookTiling, 1f);
+
+        int x = Mathf.Clamp(Mathf.RoundToInt(tiledU * (lookW - 1)), 0, lookW - 1);
+        int y = Mathf.Clamp(Mathf.RoundToInt(tiledV * (lookH - 1)), 0, lookH - 1);
+
+        Color32 sample = lookPixels[y * lookW + x];
+        return Mathf.Clamp01((sample.r + sample.g + sample.b) / (255f * 3f));
+    }
+
+    private Color32 ApplyLookToColor(Color32 baseColor, float look)
+    {
+        if (lookColorInfluence <= 0f)
+            return baseColor;
+
+        float brightness = Mathf.Lerp(0.85f, 1.15f, look);
+        brightness = Mathf.Lerp(1f, brightness, lookColorInfluence);
+
+        return new Color32(
+            (byte)Mathf.Clamp(Mathf.RoundToInt(baseColor.r * brightness), 0, 255),
+            (byte)Mathf.Clamp(Mathf.RoundToInt(baseColor.g * brightness), 0, 255),
+            (byte)Mathf.Clamp(Mathf.RoundToInt(baseColor.b * brightness), 0, 255),
+            baseColor.a
+        );
     }
 
     public void EraseAtUV(Vector2 uv)
