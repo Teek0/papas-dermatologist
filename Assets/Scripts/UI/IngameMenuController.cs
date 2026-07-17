@@ -45,6 +45,14 @@ public class IngameMenuController : MonoBehaviour
         GoToScene(mainMenuSceneName);
     }
 
+    public void GoToMainMenuAndResetRun()
+    {
+        if (GameSession.I != null)
+            GameSession.I.ResetRun();
+
+        GoToScene(mainMenuSceneName);
+    }
+
     public void GoToReception()
     {
         if (!isReturningToReceptionConfirmed && ShouldConfirmReturnToReception())

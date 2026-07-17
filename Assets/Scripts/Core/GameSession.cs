@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class SceneNames
@@ -15,6 +16,22 @@ public enum TreatmentFeedbackTier
     Good
 }
 
+public class TreatmentConditionResult
+{
+    public TreatmentConditionResult(string area, string type, float correctCoverage, float wrongColorRate)
+    {
+        Area = area;
+        Type = type;
+        CorrectCoverage = Mathf.Clamp01(correctCoverage);
+        WrongColorRate = Mathf.Clamp01(wrongColorRate);
+    }
+
+    public string Area { get; }
+    public string Type { get; }
+    public float CorrectCoverage { get; }
+    public float WrongColorRate { get; }
+}
+
 public class TreatmentResultSummary
 {
     public TreatmentResultSummary(
@@ -23,7 +40,8 @@ public class TreatmentResultSummary
         float correctCoverage,
         float wrongColorRate,
         float dirtyRate,
-        bool reachedDailyQuota
+        bool reachedDailyQuota,
+        List<TreatmentConditionResult> conditionResults = null
     )
     {
         FinalPayment = finalPayment;
@@ -32,6 +50,9 @@ public class TreatmentResultSummary
         WrongColorRate = Mathf.Clamp01(wrongColorRate);
         DirtyRate = Mathf.Clamp01(dirtyRate);
         ReachedDailyQuota = reachedDailyQuota;
+        ConditionResults = conditionResults != null
+            ? new List<TreatmentConditionResult>(conditionResults)
+            : new List<TreatmentConditionResult>();
     }
 
     public int FinalPayment { get; }
@@ -40,6 +61,7 @@ public class TreatmentResultSummary
     public float WrongColorRate { get; }
     public float DirtyRate { get; }
     public bool ReachedDailyQuota { get; }
+    public IReadOnlyList<TreatmentConditionResult> ConditionResults { get; }
 
     public TreatmentFeedbackTier FeedbackTier
     {
@@ -106,6 +128,15 @@ public class GameSession : MonoBehaviour
         Money = amount;
     }
 
+    public void ResetRun()
+    {
+        Money = constants != null ? constants.StartingMoney : 0;
+        CurrentCustomer = null;
+        LastTreatedCustomer = null;
+        LastTreatmentResult = null;
+        PendingDayEnd = false;
+    }
+
     public bool AddMoney(int delta)
     {
         bool hadReachedQuota = HasReachedDailyQuota;
@@ -120,7 +151,8 @@ public class GameSession : MonoBehaviour
         float correctCoverage,
         float wrongColorRate,
         float dirtyRate,
-        bool reachedDailyQuota
+        bool reachedDailyQuota,
+        List<TreatmentConditionResult> conditionResults = null
     )
     {
         LastTreatedCustomer = customer;
@@ -130,7 +162,8 @@ public class GameSession : MonoBehaviour
             correctCoverage,
             wrongColorRate,
             dirtyRate,
-            reachedDailyQuota
+            reachedDailyQuota,
+            conditionResults
         );
 
         if (reachedDailyQuota)

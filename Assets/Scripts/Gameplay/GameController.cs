@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Audio;
 
 public class GameController : MonoBehaviour
@@ -127,6 +128,7 @@ public class GameController : MonoBehaviour
         float dirtyPct = 0f;
         float finalScore = 0f;
         bool reachedDailyQuota = false;
+        List<TreatmentConditionResult> conditionResults = null;
 
         if (customer != null && evaluator != null)
         {
@@ -140,6 +142,7 @@ public class GameController : MonoBehaviour
             wrongPct = eval.wrongColorRate * 100f;
             dirtyPct = eval.dirtyRate * 100f;
             finalScore = eval.finalScore;
+            conditionResults = eval.conditionResults;
         }
         else if (customer != null)
         {
@@ -160,7 +163,8 @@ public class GameController : MonoBehaviour
                     correctPct / 100f,
                     wrongPct / 100f,
                     dirtyPct / 100f,
-                    reachedDailyQuota
+                    reachedDailyQuota,
+                    conditionResults
                 );
             }
         }

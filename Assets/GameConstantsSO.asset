@@ -15,4 +15,4 @@ MonoBehaviour:
   basePayment: 10
   baseTimeLimit: 10
   StartingMoney: 0
-  dailyQuota: 50
+  dailyQuota: 10

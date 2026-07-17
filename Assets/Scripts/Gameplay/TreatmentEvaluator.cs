@@ -56,6 +56,7 @@ public class TreatmentEvaluator : MonoBehaviour
         public float dirtyRate;         // Pintado fuera / total pintado (si penalizePaintOutsideRequested está ON)
         public float finalScore;
         public int finalPayment;
+        public List<TreatmentConditionResult> conditionResults;
     }
 
     private void Awake()
@@ -73,7 +74,10 @@ public class TreatmentEvaluator : MonoBehaviour
         float roundDuration
     )
     {
-        var result = new EvalResult();
+        var result = new EvalResult
+        {
+            conditionResults = new List<TreatmentConditionResult>()
+        };
 
         if (conditions == null || conditions.Count == 0 ||
             paintSurface == null || paintSurface.PaintTexture == null)
@@ -110,6 +114,7 @@ public class TreatmentEvaluator : MonoBehaviour
 
             CreamType cream = CreamSelectionManager.CreamForConditionType(sc.Type);
             MarkRequested(zone, tr, invertV, w, h, requested, requiredCream, cream);
+            result.conditionResults.Add(EvaluateCondition(sc, zone, tr, invertV, w, h, paint, cream));
         }
 
         int requestedCount = 0;
@@ -199,6 +204,110 @@ public class TreatmentEvaluator : MonoBehaviour
     }
 
     // ---------------- helpers ----------------
+
+    private TreatmentConditionResult EvaluateCondition(
+        SkinCondition condition,
+        Texture2D zone,
+        MaskTransform tr,
+        bool invertV,
+        int paintWidth,
+        int paintHeight,
+        Color32[] paint,
+        CreamType cream
+    )
+    {
+        if (condition == null || zone == null || paint == null)
+            return new TreatmentConditionResult("", "", 0f, 0f);
+
+        Color32[] maskPixels = zone.GetPixels32();
+        int maskWidth = zone.width;
+        int maskHeight = zone.height;
+        bool useAlpha = HasAlphaVariation(maskPixels);
+
+        int requestedCount = 0;
+        int paintedInRequestedCount = 0;
+        int correctCount = 0;
+        int wrongColorCount = 0;
+        Color expectedColor = ColorForCream(cream);
+
+        for (int y = 0; y < paintHeight; y++)
+        {
+            float v = (paintHeight <= 1) ? 0f : y / (float)(paintHeight - 1);
+
+            for (int x = 0; x < paintWidth; x++)
+            {
+                float u = (paintWidth <= 1) ? 0f : x / (float)(paintWidth - 1);
+
+                if (!IsInsideMask(maskPixels, maskWidth, maskHeight, useAlpha, u, v, tr, invertV))
+                    continue;
+
+                requestedCount++;
+
+                Color32 painted = paint[y * paintWidth + x];
+                if (painted.a < paintedAlphaThreshold)
+                    continue;
+
+                paintedInRequestedCount++;
+
+                if (IsColorMatch(painted, expectedColor))
+                    correctCount++;
+                else
+                    wrongColorCount++;
+            }
+        }
+
+        float correctCoverage = requestedCount > 0
+            ? correctCount / (float)requestedCount
+            : 0f;
+
+        float wrongColorRate = paintedInRequestedCount > 0
+            ? wrongColorCount / (float)paintedInRequestedCount
+            : 0f;
+
+        return new TreatmentConditionResult(
+            condition.AfflictedArea,
+            condition.Type,
+            correctCoverage,
+            wrongColorRate
+        );
+    }
+
+    private bool IsInsideMask(
+        Color32[] maskPixels,
+        int maskWidth,
+        int maskHeight,
+        bool useAlpha,
+        float u,
+        float v,
+        MaskTransform tr,
+        bool invertV
+    )
+    {
+        if (maskPixels == null || maskWidth <= 0 || maskHeight <= 0)
+            return false;
+
+        float uu = u * tr.scale.x + tr.offset.x;
+        float vv = v * tr.scale.y + tr.offset.y;
+
+        if (tr.clamp)
+        {
+            uu = Mathf.Clamp01(uu);
+            vv = Mathf.Clamp01(vv);
+        }
+        else
+        {
+            uu = uu - Mathf.Floor(uu);
+            vv = vv - Mathf.Floor(vv);
+        }
+
+        if (invertV)
+            vv = 1f - vv;
+
+        int mx = Mathf.Clamp(Mathf.RoundToInt(uu * (maskWidth - 1)), 0, maskWidth - 1);
+        int my = Mathf.Clamp(Mathf.RoundToInt(vv * (maskHeight - 1)), 0, maskHeight - 1);
+
+        return SampleMaskValue(maskPixels[my * maskWidth + mx], useAlpha) > maskThreshold;
+    }
 
     private bool TryGetMaskForArea(string area, out Texture2D mask, out MaskTransform tr, out bool invertV)
     {

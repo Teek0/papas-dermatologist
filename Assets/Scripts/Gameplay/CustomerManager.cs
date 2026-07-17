@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,11 +42,33 @@ public class CustomerManager : MonoBehaviour
     private NPCDialogues dialogue;
     public static event Action<string> OnDialogueUpdate;
 
+    [Header("Farewell Visual Feedback")]
+    [SerializeField, Range(0f, 1f)] private float healedCoverageThreshold = 0.75f;
+    [SerializeField, Range(0f, 1f)] private float improvedCoverageThreshold = 0.35f;
+    [SerializeField, Range(0f, 1f)] private float maxWrongColorRateForVisualImprovement = 0.35f;
+    [SerializeField, Range(0f, 1f)] private float improvedConditionAlpha = 0.45f;
+
     [Header("Scene Transition")]
     [SerializeField] private string camillaSceneName = SceneNames.Camilla;
     [SerializeField] private CanvasGroup fadeCanvasGroup;
     [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private float fadeOutDuration = 0.5f;
+
+    [Header("Day End")]
+    [SerializeField] private SpriteRenderer receptionBackgroundRenderer;
+    [SerializeField] private Sprite nightBackgroundSprite;
+    [SerializeField] private GameObject finalThanksPanel;
+    [SerializeField] private AudioClip dayEndMusicClip;
+    [SerializeField] private AudioMixerGroup dayEndMusicGroup;
+    [SerializeField, Range(0f, 1f)] private float dayEndMusicVolume = 1f;
+    [SerializeField] private float dayEndMusicFadeInDuration = 1.5f;
+    [SerializeField] private AudioClip dayEndAmbientClip;
+    [SerializeField] private AudioMixerGroup dayEndAmbientGroup;
+    [SerializeField, Range(0f, 1f)] private float dayEndAmbientVolume = 1f;
+    [SerializeField] private float dayEndAmbientFadeInDuration = 1.5f;
+    [SerializeField] private float dayEndDelay = 1.5f;
+    [SerializeField] private float dayEndFadeDuration = 2.5f;
+    [SerializeField, Range(0f, 1f)] private float dayEndOverlayAlpha = 0.5f;
 
     [Header("Debug")]
     [SerializeField] private bool validateSkinConditionIndexContract = true;
@@ -57,7 +80,15 @@ public class CustomerManager : MonoBehaviour
     private bool customerSpawned;
     private bool dialogueVisible;
     private bool showingFarewell;
+    private bool isDayEnding;
+    private bool dayEndAudioStarted;
     private string defaultRejectButtonText;
+    private Image dayEndOverlay;
+    private AudioSource dayEndMusicSource;
+    private AudioSource dayEndAmbientSource;
+    private float foreheadConditionAlpha = 1f;
+    private float cheeksConditionAlpha = 1f;
+    private float chinConditionAlpha = 1f;
 
     private float timeToNextPatient;
     private float waitingTime;
@@ -89,6 +120,7 @@ public class CustomerManager : MonoBehaviour
         foreheadRenderer.sprite = null;
         cheeksRenderer.sprite = null;
         chinRenderer.sprite = null;
+        ResetConditionVisualAlphas();
 
         bodyRenderer.sprite = customer.Body;
         hairRenderer.sprite = customer.Hair;
@@ -149,9 +181,22 @@ public class CustomerManager : MonoBehaviour
         bodyRenderer.color = color;
         hairRenderer.color = color;
         eyesRenderer.color = color;
-        foreheadRenderer.color = color;
-        cheeksRenderer.color = color;
-        chinRenderer.color = color;
+        foreheadRenderer.color = WithAlphaMultiplier(color, foreheadConditionAlpha);
+        cheeksRenderer.color = WithAlphaMultiplier(color, cheeksConditionAlpha);
+        chinRenderer.color = WithAlphaMultiplier(color, chinConditionAlpha);
+    }
+
+    private Color WithAlphaMultiplier(Color color, float alphaMultiplier)
+    {
+        color.a *= Mathf.Clamp01(alphaMultiplier);
+        return color;
+    }
+
+    private void ResetConditionVisualAlphas()
+    {
+        foreheadConditionAlpha = 1f;
+        cheeksConditionAlpha = 1f;
+        chinConditionAlpha = 1f;
     }
 
     private void CustomerFadeIn()
@@ -359,6 +404,8 @@ public class CustomerManager : MonoBehaviour
         if (!ApplyCustomerVisual(currentCustomer, 1f))
             return false;
 
+        ApplyFarewellTreatmentVisuals(GameSession.I.LastTreatmentResult);
+
         showingFarewell = true;
         attending = true;
         customerSpawned = true;
@@ -372,6 +419,54 @@ public class CustomerManager : MonoBehaviour
 
         SetText(BuildFarewellText(GameSession.I.LastTreatmentResult));
         return true;
+    }
+
+    private void ApplyFarewellTreatmentVisuals(TreatmentResultSummary result)
+    {
+        if (result == null || result.FinalPayment <= 0 || result.ConditionResults == null)
+            return;
+
+        for (int i = 0; i < result.ConditionResults.Count; i++)
+        {
+            TreatmentConditionResult conditionResult = result.ConditionResults[i];
+            if (conditionResult == null)
+                continue;
+
+            float alpha = ConditionAlphaForResult(conditionResult);
+            SetConditionAlphaForArea(conditionResult.Area, alpha);
+        }
+
+        SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
+    }
+
+    private float ConditionAlphaForResult(TreatmentConditionResult conditionResult)
+    {
+        if (conditionResult.WrongColorRate > maxWrongColorRateForVisualImprovement)
+            return 1f;
+
+        if (conditionResult.CorrectCoverage >= healedCoverageThreshold)
+            return 0f;
+
+        if (conditionResult.CorrectCoverage < improvedCoverageThreshold)
+            return 1f;
+
+        float t = Mathf.InverseLerp(
+            improvedCoverageThreshold,
+            healedCoverageThreshold,
+            conditionResult.CorrectCoverage
+        );
+
+        return Mathf.Lerp(1f, improvedConditionAlpha, t);
+    }
+
+    private void SetConditionAlphaForArea(string area, float alpha)
+    {
+        if (area == "frente")
+            foreheadConditionAlpha = alpha;
+        else if (area == "mejillas")
+            cheeksConditionAlpha = alpha;
+        else if (area == "barbilla")
+            chinConditionAlpha = alpha;
     }
 
     private string BuildFarewellText(TreatmentResultSummary result)
@@ -483,6 +578,8 @@ public class CustomerManager : MonoBehaviour
     {
         if (showingFarewell)
         {
+            bool shouldShowDayEnd = GameSession.I != null && GameSession.I.HasPendingDayEnd;
+
             showingFarewell = false;
             customerSpawned = false;
             onHold = false;
@@ -495,6 +592,10 @@ public class CustomerManager : MonoBehaviour
                 GameSession.I.CompletePendingFarewell();
 
             SetDialogueButtonsForRequest();
+
+            if (shouldShowDayEnd)
+                StartCoroutine(DayEndRoutine());
+
             return;
         }
 
@@ -565,15 +666,301 @@ public class CustomerManager : MonoBehaviour
         ResolveDialogueControls();
         SetDialogueButtonsForRequest();
 
+        bool pendingDayEnd = GameSession.I != null && GameSession.I.HasPendingDayEnd;
+
+        if (pendingDayEnd)
+        {
+            isDayEnding = true;
+            ApplyNightReception();
+            StartCoroutine(StartDayEndAudioForNightReception());
+        }
+
         if (TryShowPendingFarewell())
             return;
+
+        if (pendingDayEnd)
+            StartCoroutine(DayEndRoutine());
 
         if (validateSkinConditionIndexContract)
             ValidateSkinConditionIndexContract();
     }
 
+    private IEnumerator DayEndRoutine()
+    {
+        isDayEnding = true;
+        ResolveDayEndReferences();
+        ApplyNightReception();
+        PlayDayEndAudio();
+
+        if (finalThanksPanel != null)
+            finalThanksPanel.SetActive(false);
+
+        Image overlay = ResolveDayEndOverlay();
+        Coroutine customerExitRoutine = StartCoroutine(DayEndCustomerExitRoutine());
+
+        if (overlay != null)
+        {
+            float elapsed = 0f;
+
+            while (elapsed < dayEndFadeDuration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float progress = Mathf.Clamp01(elapsed / dayEndFadeDuration);
+                float alpha = Mathf.Lerp(0f, dayEndOverlayAlpha, progress);
+                overlay.color = new Color(0f, 0f, 0f, alpha);
+                SetReceptionInterfaceAlpha(1f - progress);
+                yield return null;
+            }
+
+            overlay.color = new Color(0f, 0f, 0f, dayEndOverlayAlpha);
+        }
+
+        SetReceptionInterfaceAlpha(0f);
+
+        if (customerExitRoutine != null)
+            yield return customerExitRoutine;
+
+        if (dayEndDelay > 0f)
+            yield return new WaitForSeconds(dayEndDelay);
+
+        HideReceptionForDayEnd();
+
+        if (finalThanksPanel != null)
+        {
+            finalThanksPanel.SetActive(true);
+            finalThanksPanel.transform.SetAsLastSibling();
+        }
+
+        if (GameSession.I != null)
+            GameSession.I.CompletePendingDayEnd();
+    }
+
+    private void ResolveDayEndReferences()
+    {
+        if (finalThanksPanel == null)
+            finalThanksPanel = FindSceneObject("FinalThanks");
+
+        if (receptionBackgroundRenderer == null)
+        {
+            GameObject background = FindSceneObject("Recepcion_01_01 1_0");
+            if (background == null)
+                background = FindSceneObject("Background");
+
+            if (background != null)
+                receptionBackgroundRenderer = background.GetComponent<SpriteRenderer>();
+        }
+    }
+
+    private void ApplyNightReception()
+    {
+        ResolveDayEndReferences();
+
+        if (nightBackgroundSprite == null)
+            return;
+
+        if (receptionBackgroundRenderer != null)
+            receptionBackgroundRenderer.sprite = nightBackgroundSprite;
+
+        GameObject backgroundRoot = FindSceneObject("Background");
+        if (backgroundRoot == null)
+            return;
+
+        SpriteRenderer[] renderers = backgroundRoot.GetComponentsInChildren<SpriteRenderer>(true);
+        for (int i = 0; i < renderers.Length; i++)
+            renderers[i].sprite = nightBackgroundSprite;
+    }
+
+    private Image ResolveDayEndOverlay()
+    {
+        if (dayEndOverlay != null)
+            return dayEndOverlay;
+
+        Transform parent = null;
+
+        if (finalThanksPanel != null)
+            parent = finalThanksPanel.transform.parent;
+
+        if (parent == null)
+        {
+            GameObject uiCanvas = FindSceneObject("UI Canvas");
+            if (uiCanvas != null)
+                parent = uiCanvas.transform;
+        }
+
+        if (parent == null)
+            return null;
+
+        GameObject overlayObject = new GameObject("DayEndFadeOverlay", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        overlayObject.transform.SetParent(parent, false);
+
+        RectTransform rect = overlayObject.GetComponent<RectTransform>();
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+
+        dayEndOverlay = overlayObject.GetComponent<Image>();
+        dayEndOverlay.color = new Color(0f, 0f, 0f, 0f);
+        dayEndOverlay.raycastTarget = true;
+
+        overlayObject.transform.SetAsLastSibling();
+        return dayEndOverlay;
+    }
+
+    private void HideReceptionForDayEnd()
+    {
+        if (DialogueBox != null)
+            DialogueBox.SetActive(false);
+
+        SetCustomerRenderersColor(new Color(1f, 1f, 1f, 0f));
+        SetSceneObjectActive("CurrencyBox", false);
+        SetSceneObjectActive("DailyQuotaBox", false);
+    }
+
+    private IEnumerator DayEndCustomerExitRoutine()
+    {
+        while (customerAlpha > 0f)
+        {
+            customerAlpha = Mathf.Max(0f, customerAlpha - 0.005f);
+            SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
+            yield return null;
+        }
+
+        SetCustomerRenderersColor(new Color(1f, 1f, 1f, 0f));
+    }
+
+    private void SetReceptionInterfaceAlpha(float alpha)
+    {
+        SetSceneCanvasGroupAlpha("Dialogue v1", alpha);
+        SetSceneCanvasGroupAlpha("CurrencyBox", alpha);
+        SetSceneCanvasGroupAlpha("DailyQuotaBox", alpha);
+        SetSceneCanvasGroupAlpha("Canvas Menu", alpha);
+        SetSceneCanvasGroupAlpha("CanvasMenu", alpha);
+    }
+
+    private void SetSceneCanvasGroupAlpha(string objectName, float alpha)
+    {
+        GameObject sceneObject = FindSceneObject(objectName);
+
+        if (sceneObject == null || sceneObject == finalThanksPanel)
+            return;
+
+        CanvasGroup canvasGroup = sceneObject.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+            canvasGroup = sceneObject.AddComponent<CanvasGroup>();
+
+        canvasGroup.alpha = alpha;
+        canvasGroup.interactable = alpha > 0.01f;
+        canvasGroup.blocksRaycasts = alpha > 0.01f;
+    }
+
+    private void PlayDayEndAudio()
+    {
+        StopNormalReceptionAudio();
+
+        if (dayEndAudioStarted)
+            return;
+
+        dayEndAudioStarted = true;
+
+        PlayDayEndClip(ref dayEndMusicSource, dayEndMusicClip, dayEndMusicGroup, dayEndMusicVolume, dayEndMusicFadeInDuration);
+        PlayDayEndClip(ref dayEndAmbientSource, dayEndAmbientClip, dayEndAmbientGroup, dayEndAmbientVolume, dayEndAmbientFadeInDuration);
+    }
+
+    private IEnumerator StartDayEndAudioForNightReception()
+    {
+        PlayDayEndAudio();
+        yield return null;
+        StopNormalReceptionAudio();
+    }
+
+    private void StopNormalReceptionAudio()
+    {
+        SceneMusicPlayer sceneMusic = FindFirstObjectByType<SceneMusicPlayer>();
+        if (sceneMusic != null)
+            sceneMusic.Stop();
+
+        AmbienceManager ambience = FindFirstObjectByType<AmbienceManager>();
+        if (ambience != null)
+            ambience.StopAmbience();
+    }
+
+    private void PlayDayEndClip(
+        ref AudioSource source,
+        AudioClip clip,
+        AudioMixerGroup mixerGroup,
+        float targetVolume,
+        float fadeInDuration)
+    {
+        if (clip == null)
+            return;
+
+        if (source == null)
+        {
+            source = gameObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
+            source.loop = true;
+            source.spatialBlend = 0f;
+        }
+
+        source.outputAudioMixerGroup = mixerGroup;
+        source.clip = clip;
+        source.volume = 0f;
+        source.Play();
+
+        StartCoroutine(FadeDayEndSource(source, targetVolume, fadeInDuration));
+    }
+
+    private IEnumerator FadeDayEndSource(AudioSource source, float targetVolume, float fadeInDuration)
+    {
+        if (source == null)
+            yield break;
+
+        if (fadeInDuration <= 0f)
+        {
+            source.volume = targetVolume;
+            yield break;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < fadeInDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            source.volume = Mathf.Lerp(0f, targetVolume, Mathf.Clamp01(elapsed / fadeInDuration));
+            yield return null;
+        }
+
+        source.volume = targetVolume;
+    }
+
+    private void SetSceneObjectActive(string objectName, bool isActive)
+    {
+        GameObject sceneObject = FindSceneObject(objectName);
+
+        if (sceneObject != null && sceneObject != finalThanksPanel)
+            sceneObject.SetActive(isActive);
+    }
+
+    private GameObject FindSceneObject(string objectName)
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        for (int i = 0; i < transforms.Length; i++)
+        {
+            if (transforms[i].gameObject.scene != gameObject.scene)
+                continue;
+
+            if (transforms[i].name == objectName)
+                return transforms[i].gameObject;
+        }
+
+        return null;
+    }
+
     void Update()
     {
+        if (isDayEnding) return;
         if (onHold) return;
 
         if (!attending)
