@@ -16,13 +16,6 @@ public class FacePaintSurfaceWorld : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float maskThreshold = 0.1f;
     [SerializeField] private bool invertMaskV = false;
 
-    [Header("Mask Look (Visual Appearance)")]
-    [SerializeField] private Texture2D maskLookTexture;
-    [SerializeField, Min(0.1f)] private float lookTiling = 4f;
-    [SerializeField] private Color maskTint = new Color(1f, 0.47f, 0.7f, 1f);
-    [SerializeField, Range(0f, 1f)] private float lookAlphaInfluence = 0.35f;
-    [SerializeField, Range(0f, 1f)] private float lookColorInfluence = 0.15f;
-
     [Header("Brush Settings")]
     [SerializeField, Min(1)] private int brushRadius = 10;
     [SerializeField, Range(0.01f, 1f)] private float brushStrength = 0.25f;
@@ -36,9 +29,6 @@ public class FacePaintSurfaceWorld : MonoBehaviour
     private Color32[] maskPixels;
     private int maskW, maskH;
 
-    private Color32[] lookPixels;
-    private int lookW, lookH;
-
     private int currentTextureSize;
     private bool dirty;
     private bool hasPainted;
@@ -51,7 +41,6 @@ public class FacePaintSurfaceWorld : MonoBehaviour
 
         RecreatePaintTextureAndSprite();
         CacheMaskPixels();
-        CacheLookPixels();
 
         ClearTexture(apply: true);
 
@@ -73,7 +62,6 @@ public class FacePaintSurfaceWorld : MonoBehaviour
     {
         textureSize = Mathf.Max(16, textureSize);
         brushRadius = Mathf.Max(1, brushRadius);
-        lookTiling = Mathf.Max(0.1f, lookTiling);
         pixelsPerUnit = Mathf.Max(1f, pixelsPerUnit);
 
         if (!Application.isPlaying) return;
@@ -82,13 +70,11 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         {
             RecreatePaintTextureAndSprite();
             CacheMaskPixels();
-            CacheLookPixels();
             ClearTexture(apply: true);
         }
         else
         {
             CacheMaskPixels();
-            CacheLookPixels();
         }
     }
 
@@ -157,24 +143,6 @@ public class FacePaintSurfaceWorld : MonoBehaviour
         maskH = paintMask.height;
     }
 
-    private void CacheLookPixels()
-    {
-        lookPixels = null;
-        lookW = lookH = 0;
-
-        if (maskLookTexture == null) return;
-
-        if (!maskLookTexture.isReadable)
-        {
-            Debug.LogWarning($"[FacePaintSurfaceWorld] maskLookTexture '{maskLookTexture.name}' no es legible. Activa Read/Write si quieres usar esta textura de look.");
-            return;
-        }
-
-        lookPixels = maskLookTexture.GetPixels32();
-        lookW = maskLookTexture.width;
-        lookH = maskLookTexture.height;
-    }
-
     public void PaintAtUV(Vector2 uv, Color color)
     {
         if (paintTexture == null || paintPixels == null || paintPixels.Length != textureSize * textureSize)
@@ -213,57 +181,22 @@ public class FacePaintSurfaceWorld : MonoBehaviour
 
                 int idx = py * textureSize + px;
 
-                float look = SampleLookValue(u, v);
-                float alphaMultiplier = Mathf.Lerp(1f, look, lookAlphaInfluence);
-                Color32 visualTarget = ApplyLookToColor(target, look);
-
                 byte currentA = paintPixels[idx].a;
-                int addA = Mathf.RoundToInt(255f * brushStrength * alphaMultiplier);
+                int addA = Mathf.RoundToInt(255f * brushStrength);
                 byte newA = (byte)Mathf.Clamp(currentA + addA, 0, 255);
 
                 Color32 prev = paintPixels[idx];
                 float t = (addA / 255f);
 
-                byte rCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.r, visualTarget.r, t));
-                byte gCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.g, visualTarget.g, t));
-                byte bCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.b, visualTarget.b, t));
+                byte rCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.r, target.r, t));
+                byte gCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.g, target.g, t));
+                byte bCol = (byte)Mathf.RoundToInt(Mathf.Lerp(prev.b, target.b, t));
 
                 paintPixels[idx] = new Color32(rCol, gCol, bCol, newA);
             }
         }
 
         dirty = true;
-    }
-
-    private float SampleLookValue(float u, float v)
-    {
-        if (lookPixels == null || lookW <= 0 || lookH <= 0)
-            return 1f;
-
-        float tiledU = Mathf.Repeat(u * lookTiling, 1f);
-        float tiledV = Mathf.Repeat(v * lookTiling, 1f);
-
-        int x = Mathf.Clamp(Mathf.RoundToInt(tiledU * (lookW - 1)), 0, lookW - 1);
-        int y = Mathf.Clamp(Mathf.RoundToInt(tiledV * (lookH - 1)), 0, lookH - 1);
-
-        Color32 sample = lookPixels[y * lookW + x];
-        return Mathf.Clamp01((sample.r + sample.g + sample.b) / (255f * 3f));
-    }
-
-    private Color32 ApplyLookToColor(Color32 baseColor, float look)
-    {
-        if (lookColorInfluence <= 0f)
-            return baseColor;
-
-        float brightness = Mathf.Lerp(0.85f, 1.15f, look);
-        brightness = Mathf.Lerp(1f, brightness, lookColorInfluence);
-
-        return new Color32(
-            (byte)Mathf.Clamp(Mathf.RoundToInt(baseColor.r * brightness), 0, 255),
-            (byte)Mathf.Clamp(Mathf.RoundToInt(baseColor.g * brightness), 0, 255),
-            (byte)Mathf.Clamp(Mathf.RoundToInt(baseColor.b * brightness), 0, 255),
-            baseColor.a
-        );
     }
 
     public void EraseAtUV(Vector2 uv)

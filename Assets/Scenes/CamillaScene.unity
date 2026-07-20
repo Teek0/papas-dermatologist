@@ -4232,11 +4232,6 @@ MonoBehaviour:
   paintMask: {fileID: 2800000, guid: d3962c89432a58344b088b753103d2c0, type: 3}
   maskThreshold: 0.1
   invertMaskV: 0
-  maskLookTexture: {fileID: 2800000, guid: bc9b68c77d847e9449939a7c5f116833, type: 3}
-  lookTiling: 4
-  maskTint: {r: 1, g: 0.47, b: 0.7, a: 1}
-  lookAlphaInfluence: 0.35
-  lookColorInfluence: 0.15
   brushRadius: 10
   brushStrength: 0.15
   eraserStrength: 0.35
