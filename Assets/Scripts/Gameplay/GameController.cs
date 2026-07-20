@@ -23,6 +23,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject resultsPanel;
     [SerializeField] private TextMeshProUGUI resultsText;
+    [SerializeField] private Sprite star0Sprite;
+    [SerializeField] private Sprite star50Sprite;
+    [SerializeField] private Sprite star100Sprite;
+    [SerializeField] private TreatmentResultsView resultsView = new TreatmentResultsView();
     private CanvasGroup resultsPanelCanvasGroup;
 
     [Header("Evaluation")]
@@ -64,6 +68,11 @@ public class GameController : MonoBehaviour
 
         if (resultsPanel != null)
             resultsPanelCanvasGroup = resultsPanel.GetComponent<CanvasGroup>();
+
+        if (resultsView == null)
+            resultsView = new TreatmentResultsView();
+
+        resultsView.Initialize(resultsPanel, resultsText, star0Sprite, star50Sprite, star100Sprite);
     }
 
     private void Start()
@@ -144,6 +153,9 @@ public class GameController : MonoBehaviour
         float wrongPct = 0f;
         float dirtyPct = 0f;
         float finalScore = 0f;
+        float treatmentQuality = 0f;
+        float productControl = 0f;
+        int potentialPay = 0;
         bool reachedDailyQuota = false;
         List<TreatmentConditionResult> conditionResults = null;
 
@@ -151,6 +163,7 @@ public class GameController : MonoBehaviour
         {
             var conditions = customer.Treatment.SkinConditions;
             int basePay = customer.Treatment.Payment;
+            potentialPay = Mathf.RoundToInt(basePay * 1.2f);
 
             var eval = evaluator.Evaluate(conditions, basePay, remainingTime, roundDuration);
 
@@ -159,12 +172,17 @@ public class GameController : MonoBehaviour
             wrongPct = eval.wrongColorRate * 100f;
             dirtyPct = eval.dirtyRate * 100f;
             finalScore = eval.finalScore;
+            treatmentQuality = Mathf.Clamp01(eval.correctCoverage * (1f - eval.wrongColorRate));
+            productControl = Mathf.Clamp01(1f - eval.dirtyRate);
             conditionResults = eval.conditionResults;
         }
         else if (customer != null)
         {
             finalPay = customer.Treatment.Payment;
             finalScore = finalPay > 0 ? 1f : 0f;
+            treatmentQuality = finalScore;
+            productControl = 1f;
+            potentialPay = finalPay;
         }
 
         if (GameSession.I != null)
@@ -188,15 +206,30 @@ public class GameController : MonoBehaviour
 
         SetResultsPanelVisible(true);
 
-        if (resultsText != null)
-        {
-            int money = (GameSession.I != null) ? GameSession.I.Money : 0;
+        int money = (GameSession.I != null) ? GameSession.I.Money : 0;
+        int discount = Mathf.Max(0, potentialPay - finalPay);
 
+        bool usedStructuredResults = resultsView.Show(new TreatmentResultsView.ResultData
+        {
+            treatmentQuality = treatmentQuality,
+            productControl = productControl,
+            correctCoverage = correctPct / 100f,
+            wrongColorRate = wrongPct / 100f,
+            dirtyRate = dirtyPct / 100f,
+            potentialPay = potentialPay,
+            discount = discount,
+            finalPay = finalPay,
+            totalMoney = money
+        });
+
+        if (!usedStructuredResults && resultsText != null)
+        {
             if (customer != null && evaluator != null)
             {
                 resultsText.text =
                     $"Correcto: {Mathf.RoundToInt(correctPct)}%\n" +
                     $"Color incorrecto: {Mathf.RoundToInt(wrongPct)}%\n" +
+                    $"Fuera de zona: {Mathf.RoundToInt(dirtyPct)}%\n" +
                     $"Pago: {finalPay}\n" +
                     $"Dinero: {money}";
             }

@@ -2,6 +2,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Serialization;
+
+public enum PaintOutsidePenaltyMode
+{
+    Normal,
+    Hard
+}
 
 public class TreatmentEvaluator : MonoBehaviour
 {
@@ -29,9 +36,12 @@ public class TreatmentEvaluator : MonoBehaviour
 
     [Header("Scoring")]
     [Tooltip("Si está OFF: lo pintado fuera del objetivo NO penaliza (se ignora).")]
-    [SerializeField] private bool penalizePaintOutsideRequested = false;
+    [SerializeField] private bool penalizePaintOutsideRequested = true;
 
-    [SerializeField] private float dirtyPenaltyWeight = 0.8f;
+    [SerializeField] private PaintOutsidePenaltyMode paintOutsidePenaltyMode = PaintOutsidePenaltyMode.Normal;
+    [SerializeField, Range(0f, 1f)] private float normalDirtyPenaltyWeight = 0.3f;
+    [FormerlySerializedAs("dirtyPenaltyWeight")]
+    [SerializeField, Range(0f, 1f)] private float hardDirtyPenaltyWeight = 0.8f;
     [SerializeField] private float wrongColorPenaltyWeight = 0.9f;
     [SerializeField] private float timeBonusWeight = 0.2f;
 
@@ -65,6 +75,17 @@ public class TreatmentEvaluator : MonoBehaviour
             paintSurface = FindFirstObjectByType<FacePaintSurfaceWorld>();
         if (creamSelection == null)
             creamSelection = FindFirstObjectByType<CreamSelectionManager>();
+    }
+
+    public void SetPaintOutsidePenaltyMode(PaintOutsidePenaltyMode mode)
+    {
+        paintOutsidePenaltyMode = mode;
+        penalizePaintOutsideRequested = true;
+    }
+
+    public void SetPaintOutsidePenaltyMode(bool useHardMode)
+    {
+        SetPaintOutsidePenaltyMode(useHardMode ? PaintOutsidePenaltyMode.Hard : PaintOutsidePenaltyMode.Normal);
     }
 
     public EvalResult Evaluate(
@@ -192,7 +213,7 @@ public class TreatmentEvaluator : MonoBehaviour
 
         result.finalScore = Mathf.Clamp01(
             result.correctCoverage
-            - result.dirtyRate * dirtyPenaltyWeight
+            - result.dirtyRate * CurrentDirtyPenaltyWeight()
             - result.wrongColorRate * wrongColorPenaltyWeight
             + timeBonus
         );
@@ -204,6 +225,13 @@ public class TreatmentEvaluator : MonoBehaviour
     }
 
     // ---------------- helpers ----------------
+
+    private float CurrentDirtyPenaltyWeight()
+    {
+        return paintOutsidePenaltyMode == PaintOutsidePenaltyMode.Hard
+            ? hardDirtyPenaltyWeight
+            : normalDirtyPenaltyWeight;
+    }
 
     private TreatmentConditionResult EvaluateCondition(
         SkinCondition condition,

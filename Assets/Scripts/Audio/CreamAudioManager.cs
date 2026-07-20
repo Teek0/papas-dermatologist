@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CreamAudioManager : MonoBehaviour
 {
     public AudioSource creamAudioSource;
     [SerializeField] private AudioClip creamLoopClip;
+    [SerializeField] private AudioMixerGroup outputGroup;
     [Header("Fade-in AND Fade-out duration")]
     public float fadeDuration = 0.5f;
 
@@ -25,6 +27,7 @@ public class CreamAudioManager : MonoBehaviour
         creamAudioSource.loop = true;
         creamAudioSource.spatialBlend = 0f;
         creamAudioSource.volume = 0f;
+        creamAudioSource.outputAudioMixerGroup = outputGroup;
 
         if (creamAudioSource.clip == null)
             creamAudioSource.clip = creamLoopClip;
