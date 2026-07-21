@@ -10,6 +10,9 @@ using Random = UnityEngine.Random;
 
 public class CustomerManager : MonoBehaviour
 {
+    private const float LegacyCustomerFadeDuration = 3.3f;
+    private const float DefaultCustomerFadeDuration = 0.3f;
+
     public GameConstantsSO Constants;
     public Customer currentCustomer;
 
@@ -47,6 +50,10 @@ public class CustomerManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float improvedCoverageThreshold = 0.35f;
     [SerializeField, Range(0f, 1f)] private float maxWrongColorRateForVisualImprovement = 0.35f;
     [SerializeField, Range(0f, 1f)] private float improvedConditionAlpha = 0.45f;
+
+    [Header("Customer Animation")]
+    [SerializeField, Min(0.01f)] private float customerFadeInDuration = DefaultCustomerFadeDuration;
+    [SerializeField, Min(0.01f)] private float customerFadeOutDuration = DefaultCustomerFadeDuration;
 
     [Header("Scene Transition")]
     [SerializeField] private string camillaSceneName = SceneNames.Camilla;
@@ -92,6 +99,13 @@ public class CustomerManager : MonoBehaviour
 
     private float timeToNextPatient;
     private float waitingTime;
+
+    private void OnValidate()
+    {
+        MigrateLegacyCustomerAnimationValues();
+        customerFadeInDuration = Mathf.Max(0.01f, customerFadeInDuration);
+        customerFadeOutDuration = Mathf.Max(0.01f, customerFadeOutDuration);
+    }
 
     private void SpawnCustomer()
     {
@@ -206,7 +220,7 @@ public class CustomerManager : MonoBehaviour
 
         if (customerAlpha < 1f)
         {
-            customerAlpha += 0.005f;
+            customerAlpha = Mathf.MoveTowards(customerAlpha, 1f, Time.deltaTime / customerFadeInDuration);
             SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
         }
         else
@@ -222,7 +236,7 @@ public class CustomerManager : MonoBehaviour
 
         if (customerAlpha > 0f)
         {
-            customerAlpha -= 0.005f;
+            customerAlpha = Mathf.MoveTowards(customerAlpha, 0f, Time.deltaTime / customerFadeOutDuration);
             SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
         }
         else
@@ -636,6 +650,8 @@ public class CustomerManager : MonoBehaviour
 
     void Start()
     {
+        MigrateLegacyCustomerAnimationValues();
+
         if (Constants == null)
         {
             Debug.LogError("CustomerManager: Constants no esta asignado.");
@@ -683,6 +699,15 @@ public class CustomerManager : MonoBehaviour
 
         if (validateSkinConditionIndexContract)
             ValidateSkinConditionIndexContract();
+    }
+
+    private void MigrateLegacyCustomerAnimationValues()
+    {
+        if (Mathf.Approximately(customerFadeInDuration, LegacyCustomerFadeDuration))
+            customerFadeInDuration = DefaultCustomerFadeDuration;
+
+        if (Mathf.Approximately(customerFadeOutDuration, LegacyCustomerFadeDuration))
+            customerFadeOutDuration = DefaultCustomerFadeDuration;
     }
 
     private IEnumerator DayEndRoutine()
@@ -821,7 +846,7 @@ public class CustomerManager : MonoBehaviour
     {
         while (customerAlpha > 0f)
         {
-            customerAlpha = Mathf.Max(0f, customerAlpha - 0.005f);
+            customerAlpha = Mathf.MoveTowards(customerAlpha, 0f, Time.unscaledDeltaTime / customerFadeOutDuration);
             SetCustomerRenderersColor(new Color(1f, 1f, 1f, customerAlpha));
             yield return null;
         }

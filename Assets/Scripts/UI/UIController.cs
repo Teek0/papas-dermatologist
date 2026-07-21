@@ -63,7 +63,6 @@ public class UIController : MonoBehaviour
     // ---- Button actions ----
     public void ExitGame()
     {
-        Debug.Log("Quitting game...");
         Application.Quit();
 
         #if UNITY_EDITOR

@@ -30,9 +30,6 @@ public class CustomerViewCamilla : MonoBehaviour
         chin.sprite = null;
 
         foreach (var sc in customer.Treatment.SkinConditions)
-            Debug.Log($"SC: type={sc.Type} area='{sc.AfflictedArea}' sprite='{sc.Sprite.name}'");
-
-        foreach (var sc in customer.Treatment.SkinConditions)
         {
             switch (sc.AfflictedArea)
             {
@@ -55,6 +52,5 @@ public class CustomerViewCamilla : MonoBehaviour
             }
         }
 
-        Debug.Log($"Customer en camilla. Pago: {customer.Treatment.Payment}, Tiempo: {customer.Treatment.TimeLimit}s, Afecciones: {customer.Treatment.SkinConditions.Count}");
     }
 }

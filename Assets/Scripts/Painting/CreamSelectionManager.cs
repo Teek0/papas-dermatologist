@@ -60,7 +60,6 @@ public class CreamSelectionManager : MonoBehaviour
     {
         CurrentCream = cream;
         CurrentTool = PaintTool.Cream;
-        Debug.Log($"Crema seleccionada: {cream}");
     }
 
     public void SelectEraserOrClearAll()
@@ -81,7 +80,6 @@ public class CreamSelectionManager : MonoBehaviour
     public void SelectEraser()
     {
         CurrentTool = PaintTool.Eraser;
-        Debug.Log("Borrador seleccionado");
     }
 
     private void ClearAllPaint()
@@ -93,7 +91,6 @@ public class CreamSelectionManager : MonoBehaviour
             return;
 
         paintSurface.ClearTexture();
-        Debug.Log("Tratamiento borrado por completo");
     }
 
     public static CreamType CreamForConditionType(string type)

@@ -28,7 +28,6 @@ public class IngameMenuController : MonoBehaviour
 
     private void Awake()
     {
-        ResolveReturnToReceptionDialog();
         ConfigureReturnToReceptionDialog();
         SubscribeToMenuPanel();
         SetReturnToReceptionDialogVisible(false);
@@ -120,8 +119,6 @@ public class IngameMenuController : MonoBehaviour
 
     private void ShowReturnToReceptionDialog()
     {
-        ResolveReturnToReceptionDialog();
-
         if (returnToReceptionDialog == null)
         {
             Debug.LogWarning("IngameMenuController: returnToReceptionDialog is null. Cannot show confirmation dialog.");
@@ -175,17 +172,15 @@ public class IngameMenuController : MonoBehaviour
         DisableTextRaycastsInDialog();
         ConfigureReturnDialogDragHandle();
 
-        if (confirmReturnButton == null)
-            confirmReturnButton = FindOrAddButtonInDialog("ConfirmButton");
-
         if (confirmReturnButton != null)
         {
             confirmReturnButton.onClick.RemoveListener(ConfirmReturnToReception);
             confirmReturnButton.onClick.AddListener(ConfirmReturnToReception);
         }
-
-        if (cancelReturnButton == null)
-            cancelReturnButton = FindOrAddButtonInDialog("CancelButton");
+        else
+        {
+            Debug.LogWarning("IngameMenuController: confirmReturnButton is null. Assign it in the Inspector.");
+        }
 
         if (cancelReturnButton != null)
         {
@@ -193,25 +188,12 @@ public class IngameMenuController : MonoBehaviour
             cancelReturnButton.onClick.RemoveListener(ContinueTreatment);
             cancelReturnButton.onClick.AddListener(ContinueTreatment);
         }
+        else
+        {
+            Debug.LogWarning("IngameMenuController: cancelReturnButton is null. Assign it in the Inspector.");
+        }
 
         isReturnDialogConfigured = true;
-    }
-
-    private void ResolveReturnToReceptionDialog()
-    {
-        if (returnToReceptionDialog != null)
-            return;
-
-        Transform[] children = GetComponentsInChildren<Transform>(true);
-
-        foreach (Transform child in children)
-        {
-            if (child.name == "ConfirmReturnDialog")
-            {
-                returnToReceptionDialog = child.gameObject;
-                return;
-            }
-        }
     }
 
     private void SubscribeToMenuPanel()
@@ -242,9 +224,6 @@ public class IngameMenuController : MonoBehaviour
     private void ConfigureReturnDialogDragHandle()
     {
         if (returnDialogDragHandle == null)
-            returnDialogDragHandle = FindOrAddDragHandleInDialog("selectArea");
-
-        if (returnDialogDragHandle == null)
             return;
 
         RectTransform dialogRect = returnToReceptionDialog.GetComponent<RectTransform>();
@@ -260,47 +239,5 @@ public class IngameMenuController : MonoBehaviour
 
         foreach (TextMeshProUGUI text in texts)
             text.raycastTarget = false;
-    }
-
-    private Button FindOrAddButtonInDialog(string name)
-    {
-        Transform[] children = returnToReceptionDialog.GetComponentsInChildren<Transform>(true);
-
-        foreach (Transform child in children)
-        {
-            if (child.name != name)
-                continue;
-
-            Button button = child.GetComponent<Button>();
-            if (button == null)
-                button = child.gameObject.AddComponent<Button>();
-
-            Image image = child.GetComponent<Image>();
-            if (image != null)
-                button.targetGraphic = image;
-
-            return button;
-        }
-
-        return null;
-    }
-
-    private UIDragHandle FindOrAddDragHandleInDialog(string name)
-    {
-        Transform[] children = returnToReceptionDialog.GetComponentsInChildren<Transform>(true);
-
-        foreach (Transform child in children)
-        {
-            if (!string.Equals(child.name, name, System.StringComparison.OrdinalIgnoreCase))
-                continue;
-
-            UIDragHandle dragHandle = child.GetComponent<UIDragHandle>();
-            if (dragHandle == null)
-                dragHandle = child.gameObject.AddComponent<UIDragHandle>();
-
-            return dragHandle;
-        }
-
-        return null;
     }
 }

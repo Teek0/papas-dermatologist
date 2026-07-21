@@ -14,14 +14,8 @@ public class CreamAudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (creamAudioSource == null)
-            creamAudioSource = GetComponent<AudioSource>();
-
-        if (creamAudioSource == null)
-            creamAudioSource = gameObject.AddComponent<AudioSource>();
-
-        if (creamLoopClip == null)
-            creamLoopClip = Resources.Load<AudioClip>("One Shots/cream");
+        if (creamAudioSource == null || creamLoopClip == null)
+            return;
 
         creamAudioSource.playOnAwake = false;
         creamAudioSource.loop = true;
@@ -29,8 +23,7 @@ public class CreamAudioManager : MonoBehaviour
         creamAudioSource.volume = 0f;
         creamAudioSource.outputAudioMixerGroup = outputGroup;
 
-        if (creamAudioSource.clip == null)
-            creamAudioSource.clip = creamLoopClip;
+        creamAudioSource.clip = creamLoopClip;
     }
 
     private void OnEnable()

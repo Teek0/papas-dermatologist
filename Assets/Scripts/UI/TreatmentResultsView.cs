@@ -22,7 +22,6 @@ public class TreatmentResultsView
     [SerializeField] private TMP_Text lossesText;
     [SerializeField] private TMP_Text finalPayText;
     [SerializeField] private TMP_Text totalText;
-    [SerializeField] private bool showDebugPercentages;
 
     private Sprite star0Sprite;
     private Sprite star50Sprite;
@@ -162,14 +161,6 @@ public class TreatmentResultsView
 
         Transform found = ResolveTransform(null, root, objectName);
         return found != null ? found.GetComponent<TMP_Text>() : null;
-    }
-
-    private string BuildDebugText(ResultData data)
-    {
-        return
-            $"Correcto: {Mathf.RoundToInt(data.correctCoverage * 100f)}%\n" +
-            $"Color incorrecto: {Mathf.RoundToInt(data.wrongColorRate * 100f)}%\n" +
-            $"Fuera de zona: {Mathf.RoundToInt(data.dirtyRate * 100f)}%";
     }
 
     private string FormatMoney(int amount)

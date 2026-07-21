@@ -34,28 +34,6 @@ public class Treatment
         return appearanceOptions[areaIndex][typeIndex] != null;
     }
 
-    private static string AreaName(int index)
-    {
-        return index switch
-        {
-            0 => "frente",
-            1 => "mejillas",
-            2 => "mentón",
-            _ => $"area_{index}"
-        };
-    }
-
-    private static string InferConditionTypeFromSprite(Sprite sprite)
-    {
-        if (sprite == null) return "desconocido";
-
-        string n = sprite.name.ToLower();
-        if (n.Contains("acne") || n.Contains("espinilla")) return "acné";
-        if (n.Contains("arruga")) return "arrugas";
-        if (n.Contains("cicatriz")) return "cicatrices";
-        return "desconocido";
-    }
-
     public Treatment(int _difficultyLevel, GameConstantsSO _constants, Sprite[][] _appearanceOptions)
     {
         skinConditions = new();
@@ -68,7 +46,6 @@ public class Treatment
             difficultyLevel = 1;
             payment = 0;
             timeLimit = 0;
-            LogFinalSummary();
             return;
         }
 //----- Sistema de pares
@@ -134,28 +111,6 @@ public class Treatment
             );
         }
 
-        LogFinalSummary();
-    }
-
-    private void LogFinalSummary()
-    {
-        string header =
-            $"dificultad - {difficultyLevel} :: " +
-            $"tiempo - {timeLimit} :: " +
-            $"dinero - {payment}";
-
-        List<string> lines = new() { header };
-
-        for (int area = 0; area < 3; area++)
-        {
-            if (conditionByArea.TryGetValue(area, out SkinCondition sc) && sc != null)
-            {
-                string type = InferConditionTypeFromSprite(sc.Sprite);
-                lines.Add($"{AreaName(area)} - {type}");
-            }
-        }
-
-        Debug.Log("[Treatment Summary]\n" + string.Join("\n", lines));
     }
 
     public int Payment => payment;
