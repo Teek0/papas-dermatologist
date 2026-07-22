@@ -16,6 +16,58 @@ public enum TreatmentFeedbackTier
     Good
 }
 
+public enum DailyQuotaPreset
+{
+    Short,
+    Medium,
+    Long
+}
+
+public enum GameDifficulty
+{
+    Normal,
+    Hard
+}
+
+public struct RunConfiguration
+{
+    public RunConfiguration(DailyQuotaPreset quotaPreset, int dailyQuota, GameDifficulty difficulty)
+    {
+        QuotaPreset = quotaPreset;
+        DailyQuota = Mathf.Max(1, dailyQuota);
+        Difficulty = difficulty;
+    }
+
+    public DailyQuotaPreset QuotaPreset { get; }
+    public int DailyQuota { get; }
+    public GameDifficulty Difficulty { get; }
+    public bool IsHardMode => Difficulty == GameDifficulty.Hard;
+}
+
+public static class RunConfigurationStore
+{
+    private static bool hasConfiguration;
+    private static RunConfiguration current;
+
+    public static bool HasConfiguration => hasConfiguration;
+
+    public static RunConfiguration Current => hasConfiguration
+        ? current
+        : new RunConfiguration(DailyQuotaPreset.Medium, 175, GameDifficulty.Normal);
+
+    public static void Set(RunConfiguration configuration)
+    {
+        current = configuration;
+        hasConfiguration = true;
+    }
+
+    public static void Clear()
+    {
+        hasConfiguration = false;
+        current = default;
+    }
+}
+
 public class TreatmentConditionResult
 {
     public TreatmentConditionResult(string area, string type, float correctCoverage, float wrongColorRate)
@@ -84,6 +136,9 @@ public class TreatmentResultSummary
 public class GameSession : MonoBehaviour
 {
     [SerializeField] private GameConstantsSO constants;
+    [SerializeField] private DailyQuotaPreset selectedQuotaPreset = DailyQuotaPreset.Medium;
+    [SerializeField] private int selectedDailyQuota;
+    [SerializeField] private GameDifficulty selectedDifficulty = GameDifficulty.Normal;
 
     public static GameSession I { get; private set; }
     public Customer CurrentCustomer { get; private set; }
@@ -91,11 +146,19 @@ public class GameSession : MonoBehaviour
     public TreatmentResultSummary LastTreatmentResult { get; private set; }
     public bool PendingDayEnd { get; private set; }
     public int Money { get; private set; }
-    public int DailyQuota => constants != null ? constants.DailyQuota : 2500;
+    public DailyQuotaPreset SelectedQuotaPreset => selectedQuotaPreset;
+    public GameDifficulty SelectedDifficulty => selectedDifficulty;
+    public bool IsHardMode => selectedDifficulty == GameDifficulty.Hard;
+    public int DailyQuota => selectedDailyQuota > 0 ? selectedDailyQuota : (constants != null ? constants.DailyQuota : 2500);
     public bool HasReachedDailyQuota => Money >= DailyQuota;
     public float DailyQuotaProgress => DailyQuota <= 0 ? 1f : Mathf.Clamp01((float)Money / DailyQuota);
     public bool HasPendingFarewell => LastTreatedCustomer != null && LastTreatmentResult != null;
     public bool HasPendingDayEnd => PendingDayEnd;
+    public bool HasRunProgress =>
+        Money != (constants != null ? constants.StartingMoney : 0) ||
+        CurrentCustomer != null ||
+        HasPendingFarewell ||
+        HasPendingDayEnd;
 
     private void Awake()
     {
@@ -108,6 +171,8 @@ public class GameSession : MonoBehaviour
         I = this;
         DontDestroyOnLoad(gameObject);
 
+        ApplyStoredRunConfiguration();
+
         if (constants == null)
         {
             Debug.LogError("GameConstantsSO no esta asignado.");
@@ -116,6 +181,28 @@ public class GameSession : MonoBehaviour
         }
 
         Money = constants.StartingMoney;
+    }
+
+    public void SetRunConfiguration(RunConfiguration configuration)
+    {
+        selectedQuotaPreset = configuration.QuotaPreset;
+        selectedDailyQuota = Mathf.Max(1, configuration.DailyQuota);
+        selectedDifficulty = configuration.Difficulty;
+        RunConfigurationStore.Set(new RunConfiguration(selectedQuotaPreset, selectedDailyQuota, selectedDifficulty));
+    }
+
+    private void ApplyStoredRunConfiguration()
+    {
+        if (RunConfigurationStore.HasConfiguration)
+        {
+            SetRunConfiguration(RunConfigurationStore.Current);
+            return;
+        }
+
+        if (selectedDailyQuota <= 0)
+            selectedDailyQuota = constants != null ? constants.DailyQuota : 2500;
+
+        RunConfigurationStore.Set(new RunConfiguration(selectedQuotaPreset, selectedDailyQuota, selectedDifficulty));
     }
 
     public void SetCustomer(Customer customer)

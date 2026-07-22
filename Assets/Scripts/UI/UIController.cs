@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
     private CanvasGroup settingsCanvasGroup;
     private CanvasGroup creditsCanvasGroup;
     [SerializeField] private TutorialController tutorialController;
+    [SerializeField] private GameSetupController gameSetupController;
 
     [Header("Configuration")]
     public AudioMixer mainMixer;
@@ -72,6 +73,12 @@ public class UIController : MonoBehaviour
 
     public void StartGame()
     {
+        if (gameSetupController != null)
+        {
+            gameSetupController.ApplySelection();
+            gameSetupController.ClosePanel();
+        }
+
         CloseSettings();
         CloseCredits();
 
@@ -86,6 +93,9 @@ public class UIController : MonoBehaviour
 
     public void OpenSettings()
     {
+        if (gameSetupController != null)
+            gameSetupController.ClosePanel();
+
         if (IsCreditsPanelController())
         {
             OpenCredits();
@@ -101,6 +111,9 @@ public class UIController : MonoBehaviour
 
     public void ToggleSettings()
     {
+        if (gameSetupController != null)
+            gameSetupController.ClosePanel();
+
         if (IsCreditsPanelController())
         {
             ToggleCredits();
@@ -131,6 +144,9 @@ public class UIController : MonoBehaviour
     {
         if (EnsureCreditsCanvasGroup())
         {
+            if (gameSetupController != null)
+                gameSetupController.ClosePanel();
+
             CloseSettings();
             SetCanvasGroupState(creditsCanvasGroup, true);
         }
@@ -140,6 +156,9 @@ public class UIController : MonoBehaviour
     {
         if (EnsureCreditsCanvasGroup())
         {
+            if (gameSetupController != null)
+                gameSetupController.ClosePanel();
+
             if (IsCanvasGroupVisible(creditsCanvasGroup))
             {
                 SetCanvasGroupState(creditsCanvasGroup, false);
@@ -227,6 +246,12 @@ public class UIController : MonoBehaviour
 
     public void StartGameDirect()
     {
+        if (gameSetupController != null)
+        {
+            gameSetupController.ApplySelection();
+            gameSetupController.ClosePanel();
+        }
+
         CloseSettings();
         CloseCredits();
 
@@ -244,6 +269,9 @@ public class UIController : MonoBehaviour
 
     public void OpenTutorial()
     {
+        if (gameSetupController != null)
+            gameSetupController.ClosePanel();
+
         CloseSettings();
         CloseCredits();
 
