@@ -43,7 +43,7 @@ public class TreatmentEvaluator : MonoBehaviour
     [FormerlySerializedAs("dirtyPenaltyWeight")]
     [SerializeField, Range(0f, 1f)] private float hardDirtyPenaltyWeight = 0.8f;
     [SerializeField] private float wrongColorPenaltyWeight = 0.9f;
-    [SerializeField] private float timeBonusWeight = 0.2f;
+    [SerializeField] private float timeBonusWeight = 0f;
 
     [Header("Debug Mask Preview")]
     [Tooltip("SpriteRenderer encima del rostro para visualizar las máscaras mapeadas al PaintTexture.")]

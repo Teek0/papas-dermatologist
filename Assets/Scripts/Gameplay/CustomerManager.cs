@@ -65,11 +65,15 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private SpriteRenderer receptionBackgroundRenderer;
     [SerializeField] private Sprite nightBackgroundSprite;
     [SerializeField] private GameObject finalThanksPanel;
+    [SerializeField] private Image dayEndOverlay;
+    [SerializeField] private CanvasGroup[] dayEndFadeGroups;
     [SerializeField] private AudioClip dayEndMusicClip;
+    [SerializeField] private AudioSource dayEndMusicSource;
     [SerializeField] private AudioMixerGroup dayEndMusicGroup;
     [SerializeField, Range(0f, 1f)] private float dayEndMusicVolume = 1f;
     [SerializeField] private float dayEndMusicFadeInDuration = 1.5f;
     [SerializeField] private AudioClip dayEndAmbientClip;
+    [SerializeField] private AudioSource dayEndAmbientSource;
     [SerializeField] private AudioMixerGroup dayEndAmbientGroup;
     [SerializeField, Range(0f, 1f)] private float dayEndAmbientVolume = 1f;
     [SerializeField] private float dayEndAmbientFadeInDuration = 1.5f;
@@ -90,9 +94,6 @@ public class CustomerManager : MonoBehaviour
     private bool isDayEnding;
     private bool dayEndAudioStarted;
     private string defaultRejectButtonText;
-    private Image dayEndOverlay;
-    private AudioSource dayEndMusicSource;
-    private AudioSource dayEndAmbientSource;
     private float foreheadConditionAlpha = 1f;
     private float cheeksConditionAlpha = 1f;
     private float chinConditionAlpha = 1f;
@@ -651,6 +652,7 @@ public class CustomerManager : MonoBehaviour
     void Start()
     {
         MigrateLegacyCustomerAnimationValues();
+        ResetDayEndOverlay();
 
         if (Constants == null)
         {
@@ -798,38 +800,24 @@ public class CustomerManager : MonoBehaviour
     private Image ResolveDayEndOverlay()
     {
         if (dayEndOverlay != null)
-            return dayEndOverlay;
-
-        Transform parent = null;
-
-        if (finalThanksPanel != null)
-            parent = finalThanksPanel.transform.parent;
-
-        if (parent == null)
         {
-            GameObject uiCanvas = FindSceneObject("UI Canvas");
-            if (uiCanvas != null)
-                parent = uiCanvas.transform;
+            dayEndOverlay.color = new Color(0f, 0f, 0f, 0f);
+            dayEndOverlay.raycastTarget = true;
+            dayEndOverlay.transform.SetAsLastSibling();
+            return dayEndOverlay;
         }
 
-        if (parent == null)
-            return null;
+        Debug.LogWarning("CustomerManager: dayEndOverlay is null. Assign ReceptionScene > UI Canvas > DayEndFadeOverlay in the Inspector.");
+        return null;
+    }
 
-        GameObject overlayObject = new GameObject("DayEndFadeOverlay", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-        overlayObject.transform.SetParent(parent, false);
+    private void ResetDayEndOverlay()
+    {
+        if (dayEndOverlay == null)
+            return;
 
-        RectTransform rect = overlayObject.GetComponent<RectTransform>();
-        rect.anchorMin = Vector2.zero;
-        rect.anchorMax = Vector2.one;
-        rect.offsetMin = Vector2.zero;
-        rect.offsetMax = Vector2.zero;
-
-        dayEndOverlay = overlayObject.GetComponent<Image>();
         dayEndOverlay.color = new Color(0f, 0f, 0f, 0f);
-        dayEndOverlay.raycastTarget = true;
-
-        overlayObject.transform.SetAsLastSibling();
-        return dayEndOverlay;
+        dayEndOverlay.raycastTarget = false;
     }
 
     private void HideReceptionForDayEnd()
@@ -856,27 +844,20 @@ public class CustomerManager : MonoBehaviour
 
     private void SetReceptionInterfaceAlpha(float alpha)
     {
-        SetSceneCanvasGroupAlpha("Dialogue v1", alpha);
-        SetSceneCanvasGroupAlpha("CurrencyBox", alpha);
-        SetSceneCanvasGroupAlpha("DailyQuotaBox", alpha);
-        SetSceneCanvasGroupAlpha("Canvas Menu", alpha);
-        SetSceneCanvasGroupAlpha("CanvasMenu", alpha);
-    }
-
-    private void SetSceneCanvasGroupAlpha(string objectName, float alpha)
-    {
-        GameObject sceneObject = FindSceneObject(objectName);
-
-        if (sceneObject == null || sceneObject == finalThanksPanel)
+        if (dayEndFadeGroups == null || dayEndFadeGroups.Length == 0)
             return;
 
-        CanvasGroup canvasGroup = sceneObject.GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-            canvasGroup = sceneObject.AddComponent<CanvasGroup>();
+        for (int i = 0; i < dayEndFadeGroups.Length; i++)
+        {
+            CanvasGroup canvasGroup = dayEndFadeGroups[i];
 
-        canvasGroup.alpha = alpha;
-        canvasGroup.interactable = alpha > 0.01f;
-        canvasGroup.blocksRaycasts = alpha > 0.01f;
+            if (canvasGroup == null)
+                continue;
+
+            canvasGroup.alpha = alpha;
+            canvasGroup.interactable = alpha > 0.01f;
+            canvasGroup.blocksRaycasts = alpha > 0.01f;
+        }
     }
 
     private void PlayDayEndAudio()
@@ -888,8 +869,8 @@ public class CustomerManager : MonoBehaviour
 
         dayEndAudioStarted = true;
 
-        PlayDayEndClip(ref dayEndMusicSource, dayEndMusicClip, dayEndMusicGroup, dayEndMusicVolume, dayEndMusicFadeInDuration);
-        PlayDayEndClip(ref dayEndAmbientSource, dayEndAmbientClip, dayEndAmbientGroup, dayEndAmbientVolume, dayEndAmbientFadeInDuration);
+        PlayDayEndClip(dayEndMusicSource, dayEndMusicClip, dayEndMusicGroup, dayEndMusicVolume, dayEndMusicFadeInDuration);
+        PlayDayEndClip(dayEndAmbientSource, dayEndAmbientClip, dayEndAmbientGroup, dayEndAmbientVolume, dayEndAmbientFadeInDuration);
     }
 
     private IEnumerator StartDayEndAudioForNightReception()
@@ -911,23 +892,18 @@ public class CustomerManager : MonoBehaviour
     }
 
     private void PlayDayEndClip(
-        ref AudioSource source,
+        AudioSource source,
         AudioClip clip,
         AudioMixerGroup mixerGroup,
         float targetVolume,
         float fadeInDuration)
     {
-        if (clip == null)
+        if (source == null || clip == null)
             return;
 
-        if (source == null)
-        {
-            source = gameObject.AddComponent<AudioSource>();
-            source.playOnAwake = false;
-            source.loop = true;
-            source.spatialBlend = 0f;
-        }
-
+        source.playOnAwake = false;
+        source.loop = true;
+        source.spatialBlend = 0f;
         source.outputAudioMixerGroup = mixerGroup;
         source.clip = clip;
         source.volume = 0f;
@@ -1108,4 +1084,3 @@ private string InferConditionTypeFromSpriteName(string spriteName)
 }
 
 }
-

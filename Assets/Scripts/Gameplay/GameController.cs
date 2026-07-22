@@ -39,6 +39,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private string receptionSceneName = SceneNames.Reception;
 
     [Header("Round End Audio")]
+    [SerializeField] private AudioSource roundEndAudioSource;
+    [SerializeField] private AudioSource timerWarningAudioSource;
     [SerializeField] private AudioMixerGroup roundEndOutputGroup;
     [SerializeField] private AudioClip timeUpClip;
     [SerializeField] private AudioClip timerWarningClip;
@@ -46,8 +48,6 @@ public class GameController : MonoBehaviour
     [SerializeField, Range(0f, 2f)] private float timerWarningVolume = 1f;
 
     private GameState currentState;
-    private AudioSource roundEndAudioSource;
-    private AudioSource timerWarningAudioSource;
     private bool timerWarningPlayed;
 
     public bool CanPaint => currentState == GameState.Running && Time.timeScale > 0f;
@@ -59,12 +59,6 @@ public class GameController : MonoBehaviour
 
         if (evaluator == null)
             evaluator = FindFirstObjectByType<TreatmentEvaluator>();
-
-        if (timeUpClip == null)
-            timeUpClip = Resources.Load<AudioClip>("One Shots/finishround2");
-
-        if (timerWarningClip == null)
-            timerWarningClip = Resources.Load<AudioClip>("One Shots/doubletime loop");
 
         if (resultsPanel != null)
             resultsPanelCanvasGroup = resultsPanel.GetComponent<CanvasGroup>();
@@ -260,37 +254,32 @@ public class GameController : MonoBehaviour
 
     private void PlayTimeUpSound()
     {
-        if (timeUpClip == null)
+        if (roundEndAudioSource == null || timeUpClip == null)
             return;
 
-        if (roundEndAudioSource == null)
-        {
-            roundEndAudioSource = gameObject.AddComponent<AudioSource>();
-            roundEndAudioSource.playOnAwake = false;
-            roundEndAudioSource.spatialBlend = 0f;
-        }
-
-        roundEndAudioSource.outputAudioMixerGroup = roundEndOutputGroup;
+        ConfigureRoundAudioSource(roundEndAudioSource, false, 1f);
         roundEndAudioSource.PlayOneShot(timeUpClip);
     }
 
     private void PlayTimerWarningSound()
     {
-        if (timerWarningClip == null)
+        if (timerWarningAudioSource == null || timerWarningClip == null)
             return;
 
-        if (timerWarningAudioSource == null)
-        {
-            timerWarningAudioSource = gameObject.AddComponent<AudioSource>();
-            timerWarningAudioSource.playOnAwake = false;
-            timerWarningAudioSource.spatialBlend = 0f;
-            timerWarningAudioSource.loop = true;
-        }
-
-        timerWarningAudioSource.outputAudioMixerGroup = roundEndOutputGroup;
+        ConfigureRoundAudioSource(timerWarningAudioSource, true, timerWarningVolume);
         timerWarningAudioSource.clip = timerWarningClip;
-        timerWarningAudioSource.volume = timerWarningVolume;
         timerWarningAudioSource.Play();
+    }
+
+    private void ConfigureRoundAudioSource(AudioSource source, bool loop, float volume)
+    {
+        source.playOnAwake = false;
+        source.spatialBlend = 0f;
+        source.loop = loop;
+        source.volume = volume;
+
+        if (roundEndOutputGroup != null)
+            source.outputAudioMixerGroup = roundEndOutputGroup;
     }
 
     private void StopTimerWarningSound()
