@@ -8753,7 +8753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.209, y: -207.69}
+  m_AnchoredPosition: {x: -17.209, y: -195.53}
   m_SizeDelta: {x: 597.78, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069310035
@@ -8776,7 +8776,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Modo dificil: se ocultan las guias y las cremas cambian de posici\xF3n."
+  m_text: "Modo dificil: se ocultan las guias y las cremas cambian de posici\xF3n.\nPenalizaci\xF3n:
+    Alta."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
   m_sharedMaterial: {fileID: 849725430161218100, guid: eb26d59c2478ec24e9fe6bdda6d75d31, type: 2}
